@@ -10,7 +10,7 @@ export const TESTNET = 97;
 export const ETH_MAINNET = 1;
 export const AVALANCHE = 43114;
 export const AVALANCHE_FUJI = 43113;
-export const ARBITRUM = 421613;
+export const ARBITRUM = 31337;
 export const ARBITRUM_TESTNET = 421611;
 
 // TODO take it from web3
@@ -242,7 +242,7 @@ export function getChainName(chainId: number) {
 }
 
 export function getDefaultArbitrumRpcUrl() {
-  return "https://goerli-rollup.arbitrum.io/rpc";
+  return "http://localhost:8545";
 }
 
 export function getRpcUrl(chainId: number): string | undefined {
