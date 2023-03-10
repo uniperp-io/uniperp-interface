@@ -25,7 +25,7 @@ import {
   USDG_DECIMALS,
   adjustForDecimals,
   isAddressZero,
-  MAX_ALLOWED_LEVERAGE,
+  getMaxAllowedLeverage,
 } from "lib/legacy";
 import { ARBITRUM, getChainName, getConstant, IS_NETWORK_DISABLED } from "config/chains";
 import { createDecreaseOrder, useHasOutdatedUi } from "domain/legacy";
@@ -572,8 +572,9 @@ export default function PositionSeller(props) {
       return t`Min leverage: 1.1x`;
     }
 
-    if (nextLeverage && nextLeverage.gt(MAX_ALLOWED_LEVERAGE)) {
-      return t`Max leverage: ${(MAX_ALLOWED_LEVERAGE / BASIS_POINTS_DIVISOR).toFixed(1)}x`;
+    const max_allowed_leverage = getMaxAllowedLeverage(position.indexToken.address)
+    if (nextLeverage && nextLeverage.gt(max_allowed_leverage)) {
+      return t`Max leverage: ${(max_allowed_leverage / BASIS_POINTS_DIVISOR).toFixed(1)}x`;
     }
 
     if (hasPendingProfit && orderOption !== STOP && !isProfitWarningAccepted) {

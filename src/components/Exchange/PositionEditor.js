@@ -10,8 +10,8 @@ import {
   DEPOSIT_FEE,
   DUST_BNB,
   getLiquidationPrice,
-  MAX_ALLOWED_LEVERAGE,
   getFundingFee,
+  getMaxAllowedLeverage,
 } from "lib/legacy";
 import { getContract } from "config/contracts";
 import Tab from "../Tab/Tab";
@@ -222,8 +222,9 @@ export default function PositionEditor(props) {
       return [t`Min leverage: 1.1x`];
     }
 
-    if (nextLeverage && nextLeverage.gt(MAX_ALLOWED_LEVERAGE)) {
-      return [t`Max leverage: ${(MAX_ALLOWED_LEVERAGE / BASIS_POINTS_DIVISOR).toFixed(1)}x`];
+    const max_allowed_leverage = getMaxAllowedLeverage(position.address)
+    if (nextLeverage && nextLeverage.gt(max_allowed_leverage)) {
+      return [t`Max leverage: ${(max_allowed_leverage / BASIS_POINTS_DIVISOR).toFixed(1)}x`];
     }
     return [false];
   };

@@ -40,7 +40,8 @@ import {
   USD_DECIMALS,
   USDG_ADDRESS,
   USDG_DECIMALS,
-  MAX_ALLOWED_LEVERAGE,
+  getMaxAllowedLeverage,
+  getLeverageMarks
 } from "lib/legacy";
 import { ARBITRUM, getChainName, getConstant, IS_NETWORK_DISABLED, isSupportedChain } from "config/chains";
 import * as Api from "domain/legacy";
@@ -184,6 +185,8 @@ export default function SwapBox(props) {
   if (isHigherSlippageAllowed) {
     allowedSlippage = DEFAULT_HIGHER_SLIPPAGE_AMOUNT;
   }
+
+  const max_allowed_leverage  = getMaxAllowedLeverage(toTokenAddress)
 
   const defaultCollateralSymbol = getConstant(chainId, "defaultCollateralSymbol");
   // TODO hack with useLocalStorageSerializeKey
@@ -899,8 +902,8 @@ export default function SwapBox(props) {
       return [t`Min leverage: 1.1x`];
     }
 
-    if (leverage && leverage.gt(MAX_ALLOWED_LEVERAGE)) {
-      return [t`Max leverage: ${(MAX_ALLOWED_LEVERAGE / BASIS_POINTS_DIVISOR).toFixed(1)}x`];
+    if (leverage && leverage.gt(max_allowed_leverage)) {
+      return [t`Max leverage: ${(max_allowed_leverage / BASIS_POINTS_DIVISOR).toFixed(1)}x`];
     }
 
     if (!isMarketOrder && entryMarkPrice && triggerPriceUsd && !savedShouldDisableValidationForTesting) {
@@ -1771,19 +1774,7 @@ export default function SwapBox(props) {
     feeBps = feeBasisPoints;
   }
 
-  const leverageMarks = {
-    2: "2x",
-    5: "5x",
-    10: "10x",
-    15: "15x",
-    20: "20x",
-    25: "25x",
-    30: "30x",
-    35: "35x",
-    40: "40x",
-    45: "45x",
-    50: "50x",
-  };
+  const leverageMarks = getLeverageMarks(max_allowed_leverage)
 
   if (!fromToken || !toToken) {
     return null;
@@ -2095,7 +2086,7 @@ export default function SwapBox(props) {
               >
                 <Slider
                   min={1.1}
-                  max={MAX_ALLOWED_LEVERAGE / BASIS_POINTS_DIVISOR}
+                  max={max_allowed_leverage / BASIS_POINTS_DIVISOR}
                   step={0.1}
                   marks={leverageMarks}
                   handle={leverageSliderHandle}

@@ -18,6 +18,7 @@ import { useChainId } from "./chains";
 import { isValidTimestamp } from "./dates";
 import { t } from "@lingui/macro";
 import { isLocal } from "config/env";
+import { getToken } from "config/tokens";
 
 const { AddressZero } = ethers.constants;
 
@@ -30,7 +31,11 @@ export const USDG_ADDRESS = getContract(CHAIN_ID, "USDG");
 
 export const BASIS_POINTS_DIVISOR = 10000;
 export const MAX_LEVERAGE = 100 * BASIS_POINTS_DIVISOR;
-export const MAX_ALLOWED_LEVERAGE = 50 * BASIS_POINTS_DIVISOR;
+
+export function getMaxAllowedLeverage(tokenAddress) {
+  const tokenInfo = getToken(CHAIN_ID, tokenAddress);
+  return (tokenInfo.max_allowed_leverage ?? 50) * BASIS_POINTS_DIVISOR;
+}
 
 export const MAX_PRICE_DEVIATION_BASIS_POINTS = 750;
 export const DEFAULT_GAS_LIMIT = 1 * 1000 * 1000;
@@ -1524,4 +1529,25 @@ export function shouldShowRedirectModal(timestamp) {
   const thirtyDays = 1000 * 60 * 60 * 24 * 30;
   const expiryTime = timestamp + thirtyDays;
   return !isValidTimestamp(timestamp) || Date.now() > expiryTime;
+}
+
+export function getLeverageMarks(maxNum:number){
+  let tmp = {
+    2: "2x",
+  };
+
+  maxNum = maxNum / BASIS_POINTS_DIVISOR;
+
+  let step = 5;
+  if(maxNum > 50 && maxNum <= 100){
+    step = 10;
+  }  
+
+  let startNum:number = 0;
+  for(let i = 0; i < 10000; i++){
+    startNum += step;
+    if(startNum > maxNum) break;
+    tmp[startNum] = `${startNum}x`;
+  }
+  return tmp;
 }

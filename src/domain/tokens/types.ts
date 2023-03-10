@@ -8,6 +8,7 @@ export type Token = {
   address: string;
   coingeckoUrl?: string;
   imageUrl?: string;
+  max_allowed_leverage?:number;
 
   isUsdg?: boolean;
   isNative?: boolean;

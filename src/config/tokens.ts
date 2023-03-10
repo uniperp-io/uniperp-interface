@@ -179,6 +179,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       address: ethers.constants.AddressZero,
       isNative: true,
       isShortable: true,
+      max_allowed_leverage:50,
       imageUrl: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
     },
     {
@@ -214,15 +215,16 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isStable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
     },
-    {
-      name: "Gold",
-      symbol: "GLD",
-      decimals: 18,
-      address: "0x486b475344F98F02CD27f89693CdD228f62Fb8Af",
-      isSynthesis:true,
-      isShortable: true,
-      imageUrl: "https://img1.baidu.com/it/u=2357240917,2228497455&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500",
-    }
+    // {
+    //   name: "Gold",
+    //   symbol: "GLD",
+    //   decimals: 18,
+    //   address: "0x486b475344F98F02CD27f89693CdD228f62Fb8Af",
+    //   isSynthesis:true,
+    //   isShortable: true,
+    //   max_allowed_leverage:100,
+    //   imageUrl: "https://img1.baidu.com/it/u=2357240917,2228497455&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500",
+    // }
   ],
   [AVALANCHE]: [
     {
