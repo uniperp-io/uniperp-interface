@@ -1847,10 +1847,6 @@ export default function SwapBox(props) {
 
   return (
     <div className="Exchange-swap-box">
-      {/* <div className="Exchange-swap-wallet-box App-box">
-        {active && <div className="Exchange-swap-account" >
-        </div>}
-      </div> */}
       <div className="Exchange-swap-box-inner App-box-highlight">
         <div>
           <Tab
@@ -1920,11 +1916,15 @@ export default function SwapBox(props) {
                 </div>
               </div>
             </div>
-            <div className="Exchange-swap-ball-container">
-              <div className="Exchange-swap-ball" onClick={switchTokens}>
-                <IoMdSwap className="Exchange-swap-ball-icon" />
+
+            {isSwap && (
+              <div className="Exchange-swap-ball-container">
+                <div className="Exchange-swap-ball" onClick={switchTokens}>
+                  <IoMdSwap className="Exchange-swap-ball-icon" />
+                </div>
               </div>
-            </div>
+            )}
+
             <div className="Exchange-swap-section">
               <div className="Exchange-swap-section-top">
                 <div className="muted">

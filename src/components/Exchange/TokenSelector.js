@@ -74,8 +74,7 @@ export default function TokenSelector(props) {
         disableBodyScrollLock={disableBodyScrollLock}
         isVisible={isModalVisible}
         setIsVisible={setIsModalVisible}
-        label={props.label}
-      >
+        label={props.label}>
         <div className="TokenSelector-tokens">
           <div className="TokenSelector-token-row TokenSelector-token-input-row">
             <input
@@ -150,17 +149,22 @@ export default function TokenSelector(props) {
           })}
         </div>
       </Modal>
+
       {selectedTokenLabel ? (
         <div className="TokenSelector-box" onClick={() => setIsModalVisible(true)}>
           {selectedTokenLabel}
           {!showNewCaret && <BiChevronDown className="TokenSelector-caret" />}
         </div>
       ) : (
-        <div className="TokenSelector-box" onClick={() => setIsModalVisible(true)}>
+        <div className="TokenSelector-box" onClick={()=>{
+          if(props.label.toLowerCase() !== "short" && props.label.toLowerCase() !== "long"){
+            setIsModalVisible(true)
+          }
+        }}>
           {tokenInfo.symbol}
           {showSymbolImage && <img src={tokenImage} alt={tokenInfo.symbol} className="TokenSelector-box-symbol" />}
           {showNewCaret && <img src={dropDownIcon} alt="Dropdown Icon" className="TokenSelector-box-caret" />}
-          {!showNewCaret && <BiChevronDown className="TokenSelector-caret" />}
+          {!showNewCaret && (props.label.toLowerCase() !== "short" && props.label.toLowerCase() !== "long") && <BiChevronDown className="TokenSelector-caret" />}
         </div>
       )}
     </div>
