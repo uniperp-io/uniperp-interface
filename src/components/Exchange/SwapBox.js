@@ -258,12 +258,24 @@ export default function SwapBox(props) {
 
   const whitelistedTokens = getWhitelistedTokens(chainId);
   const tokens = getTokens(chainId);
-  const fromTokens = tokens;
+  
+  const fromTokens = tokens.filter((t) => {
+    if(isSwap){
+      return !t.isSynthesis
+    }
+    return true
+  })
   const stableTokens = tokens.filter((token) => token.isStable);
   const indexTokens = whitelistedTokens.filter((token) => !token.isStable && !token.isWrapped);
   const shortableTokens = indexTokens.filter((token) => token.isShortable);
 
-  let toTokens = tokens;
+  let toTokens = tokens.filter((t) => {
+    if(isSwap){
+      return !t.isSynthesis
+    }
+    return true
+  });
+
   if (isLong) {
     toTokens = indexTokens;
   }
@@ -1907,6 +1919,7 @@ export default function SwapBox(props) {
                     label={t`Pay`}
                     chainId={chainId}
                     tokenAddress={fromTokenAddress}
+                    toTokenAddress={toTokenAddress}
                     onSelectToken={onSelectFromToken}
                     tokens={fromTokens}
                     infoTokens={infoTokens}

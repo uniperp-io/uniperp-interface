@@ -74,8 +74,12 @@ export class TVRequests {
 
     if (!this.lastBar) return;
 
+    //the toTokenAddress's price
+    //ticker mean is the token name
     const currentPrice = await getCurrentPriceOfToken(chainId, ticker);
+
     const averagePriceValue = parseFloat(formatAmount(currentPrice, USD_DECIMALS, 4));
+
     if (this.lastBar.time && currentCandleTime === this.lastBar.time && ticker === this.lastBar.ticker) {
       return {
         ...this.lastBar,

@@ -213,6 +213,15 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       address: "0x0d3D8a77A67dCacc41939700eabbf361656Be916",
       isStable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
+    },
+    {
+      name: "Gold",
+      symbol: "GLD",
+      decimals: 18,
+      address: "0x486b475344F98F02CD27f89693CdD228f62Fb8Af",
+      isSynthesis:true,
+      isShortable: true,
+      imageUrl: "https://img1.baidu.com/it/u=2357240917,2228497455&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500",
     }
   ],
   [AVALANCHE]: [
