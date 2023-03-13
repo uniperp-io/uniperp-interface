@@ -111,7 +111,9 @@ export default function GlpSwap(props) {
   const { active, library, account } = useWeb3React();
   const { chainId } = useChainId();
   const tokens = getTokens(chainId);
-  const whitelistedTokens = getWhitelistedTokens(chainId);
+  const whitelistedTokens = getWhitelistedTokens(chainId).filter((t)=>{
+    return !t.isSynthetic
+  });
   const tokenList = whitelistedTokens.filter((t) => !t.isWrapped);
   const visibleTokens = tokenList.filter((t) => !t.isTempHidden);
   const [swapValue, setSwapValue] = useState("");
