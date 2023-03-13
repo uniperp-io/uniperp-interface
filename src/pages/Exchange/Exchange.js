@@ -20,8 +20,10 @@ import {
   getPageTitle,
   getFundingFee,
   getLeverageStr,
+  checkIsSynthetic,
+  getUsdcToken,
 } from "lib/legacy";
-import { getConstant, getExplorerUrl } from "config/chains";
+import { CHAIN_ID, getConstant, getExplorerUrl } from "config/chains";
 import { approvePlugin, useMinExecutionFee, cancelMultipleOrders } from "domain/legacy";
 
 import { getContract } from "config/contracts";
@@ -422,8 +424,11 @@ export const Exchange = forwardRef((props, ref) => {
   );
   const [swapOption, setSwapOption] = useLocalStorageByChainId(chainId, "Swap-option-v2", LONG);
 
-  const fromTokenAddress = tokenSelection[swapOption].from;
+  let fromTokenAddress = tokenSelection[swapOption].from;
   const toTokenAddress = tokenSelection[swapOption].to;
+  if(checkIsSynthetic(CHAIN_ID, toTokenAddress)){
+    fromTokenAddress = getUsdcToken(CHAIN_ID).address
+  }
 
   const setFromTokenAddress = useCallback(
     (selectedSwapOption, address) => {
@@ -434,8 +439,7 @@ export const Exchange = forwardRef((props, ref) => {
     [tokenSelection, setTokenSelection]
   );
 
-  const setToTokenAddress = useCallback(
-    (selectedSwapOption, address) => {
+  const setToTokenAddress = useCallback((selectedSwapOption, address) => {
       const newTokenSelection = JSON.parse(JSON.stringify(tokenSelection));
       newTokenSelection[selectedSwapOption].to = address;
       if (selectedSwapOption === LONG || selectedSwapOption === SHORT) {

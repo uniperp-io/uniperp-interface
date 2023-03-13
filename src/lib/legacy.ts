@@ -13,7 +13,7 @@ import { getMostAbundantStableToken } from "domain/tokens";
 import { getTokenInfo } from "domain/tokens/utils";
 import { getProvider } from "./rpc";
 import { bigNumberify, expandDecimals, formatAmount } from "./numbers";
-import { isValidToken } from "config/tokens";
+import { isValidToken, TOKENS } from "config/tokens";
 import { useChainId } from "./chains";
 import { isValidTimestamp } from "./dates";
 import { t } from "@lingui/macro";
@@ -1550,4 +1550,13 @@ export function getLeverageMarks(maxNum:number){
     tmp[startNum] = `${startNum}x`;
   }
   return tmp;
+}
+
+export function checkIsSynthetic(chainid:number, address){
+  let tmp = getToken(chainid, address)
+  return tmp.isSynthetic
+}
+
+export function getUsdcToken(chainid:number){
+  return TOKENS[chainid].filter((t) => t.symbol.toLowerCase() === "usdc")[0]
 }
