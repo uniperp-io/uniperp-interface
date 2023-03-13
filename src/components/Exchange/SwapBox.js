@@ -41,9 +41,10 @@ import {
   USDG_ADDRESS,
   USDG_DECIMALS,
   getMaxAllowedLeverage,
-  getLeverageMarks
+  getLeverageMarks,
+  checkIsSynthetic
 } from "lib/legacy";
-import { ARBITRUM, getChainName, getConstant, IS_NETWORK_DISABLED, isSupportedChain } from "config/chains";
+import { ARBITRUM, getChainName, getConstant, IS_NETWORK_DISABLED, isSupportedChain, CHAIN_ID } from "config/chains";
 import * as Api from "domain/legacy";
 import { getContract } from "config/contracts";
 
@@ -915,6 +916,8 @@ export default function SwapBox(props) {
       }
     }
 
+    const isSyntheticToken = checkIsSynthetic(CHAIN_ID, toTokenInfo.address)
+
     if (isLong) {
       let requiredAmount = toAmount;
       if (fromTokenAddress !== toTokenAddress) {
@@ -936,16 +939,13 @@ export default function SwapBox(props) {
           if (!toTokenInfo.availableAmount) {
             return [t`Liquidity data not loaded`];
           }
-          if (toTokenInfo.availableAmount && requiredAmount.gt(toTokenInfo.availableAmount)) {
+
+          if (toTokenInfo.availableAmount && requiredAmount.gt(toTokenInfo.availableAmount) && !isSyntheticToken) {
             return [t`Insufficient liquidity`];
           }
         }
 
-        if (
-          toTokenInfo.poolAmount &&
-          toTokenInfo.bufferAmount &&
-          toTokenInfo.bufferAmount.gt(toTokenInfo.poolAmount.sub(swapAmount))
-        ) {
+        if (toTokenInfo.poolAmount && toTokenInfo.bufferAmount &&toTokenInfo.bufferAmount.gt(toTokenInfo.poolAmount.sub(swapAmount)) && !isSyntheticToken) {
           return [t`Insufficient liquidity`, ErrorDisplayType.Modal, ErrorCode.Buffer];
         }
 
