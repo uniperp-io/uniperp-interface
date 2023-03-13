@@ -2,9 +2,7 @@ import { ethers } from "ethers";
 import { Web3Provider } from "@ethersproject/providers";
 import { getFallbackProvider, getProvider } from "../rpc";
 
-export const contractFetcher =
-  <T>(library: Web3Provider | undefined, contractInfo: any, additionalArgs?: any[]) =>
-  (...args: any): Promise<T> => {
+export const contractFetcher =<T>(library: Web3Provider | undefined, contractInfo: any, additionalArgs?: any[]) => (...args: any): Promise<T> => {
     // eslint-disable-next-line
     const [id, chainId, arg0, arg1, ...params] = args;
     const provider = getProvider(library, chainId);
@@ -48,9 +46,7 @@ export const contractFetcher =
         additionalArgs,
       });
 
-      fallbackContractCall
-        .then((result) => resolve(result))
-        .catch((e) => {
+      fallbackContractCall.then((result) => resolve(result)).catch((e) => {
           // eslint-disable-next-line no-console
           console.error("fallback fetcher error", id, contractInfo.contractName, method, e);
           reject(e);
@@ -58,8 +54,7 @@ export const contractFetcher =
     };
 
     return new Promise(async (resolve, reject) => {
-      contractCall
-        .then((result) => {
+      contractCall.then((result) => {
           shouldCallFallback = false;
           resolve(result);
         })

@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { getContract } from "./contracts";
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, MAINNET, TESTNET } from "./chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, AVALANCHE_FUJI, CHAIN_ID, MAINNET, TESTNET } from "./chains";
 import { Token } from "domain/tokens";
 
 export const TOKENS: { [chainId: number]: Token[] } = {
@@ -186,7 +186,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       name: "Wrapped Ethereum",
       symbol: "WETH",
       decimals: 18,
-      address: "0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3",
+      address: getContract(CHAIN_ID, "NATIVE_TOKEN"),
       isWrapped: true,
       baseSymbol: "ETH",
       imageUrl: "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295",

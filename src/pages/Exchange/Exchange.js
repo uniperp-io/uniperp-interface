@@ -181,12 +181,7 @@ export function getPositions(
       markPrice: isLong[i] ? indexToken.minPrice : indexToken.maxPrice,
     };
 
-    if (
-      updatedPositions &&
-      updatedPositions[key] &&
-      updatedPositions[key].updatedAt &&
-      updatedPositions[key].updatedAt + UPDATED_POSITION_VALID_DURATION > Date.now()
-    ) {
+    if (updatedPositions &&updatedPositions[key] &&updatedPositions[key].updatedAt &&updatedPositions[key].updatedAt + UPDATED_POSITION_VALID_DURATION > Date.now()) {
       const updatedPosition = updatedPositions[key];
       position.size = updatedPosition.size;
       position.collateral = updatedPosition.collateral;
@@ -389,6 +384,7 @@ export const Exchange = forwardRef((props, ref) => {
   const nativeTokenAddress = getContract(chainId, "NATIVE_TOKEN");
 
   const vaultAddress = getContract(chainId, "Vault");
+  const vaultUtilAddress = getContract(chainId, "vaultUtils");
   const positionRouterAddress = getContract(chainId, "PositionRouter");
   const readerAddress = getContract(chainId, "Reader");
   const usdgAddress = getContract(chainId, "USDG");
@@ -486,7 +482,7 @@ export const Exchange = forwardRef((props, ref) => {
   const positionsDataIsLoading = active && !positionData && !positionDataError;
 
   const { data: fundingRateInfo } = useSWR([active, chainId, readerAddress, "getFundingRates"], {
-    fetcher: contractFetcher(library, Reader, [vaultAddress, nativeTokenAddress, whitelistedTokenAddresses]),
+    fetcher: contractFetcher(library, Reader, [vaultAddress, vaultUtilAddress, nativeTokenAddress, whitelistedTokenAddresses]),
   });
 
   const { data: totalTokenWeights } = useSWR(
