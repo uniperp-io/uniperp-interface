@@ -264,7 +264,7 @@ export default function SwapBox(props) {
   
   const fromTokens = tokens.filter((t) => {
     if(isSwap){
-      return !t.isSynthesis
+      return !t.isSynthetic
     }
     return true
   })
@@ -274,7 +274,7 @@ export default function SwapBox(props) {
 
   let toTokens = tokens.filter((t) => {
     if(isSwap){
-      return !t.isSynthesis
+      return !t.isSynthetic
     }
     return true
   });

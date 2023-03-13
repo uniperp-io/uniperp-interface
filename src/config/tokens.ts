@@ -200,6 +200,26 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       imageUrl: "https://assets.coingecko.com/coins/images/7598/thumb/wrapped_bitcoin_wbtc.png?1548822744",
     },
     {
+      name: "Chainlink",
+      symbol: "LINK",
+      decimals: 18,
+      address: "0xE4C9643d66fc630dAd31bDD09568Bd5b09ACFF6C",
+      isStable: false,
+      isShortable: true,
+      isSynthetic: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/877/thumb/chainlink-new-logo.png?1547034700",
+    },
+    {
+      name: "Uniswap",
+      symbol: "UNI",
+      decimals: 18,
+      address: "0x57834F907ACdB0a0Ac23D896502B3FD17c16408a",
+      isStable: false,
+      isShortable: true,
+      isSynthetic: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/12504/thumb/uniswap-uni.png?1600306604",
+    },
+    {
       name: "USD Coin",
       symbol: "USDC",
       decimals: 6,
@@ -214,17 +234,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       address: "0x0d3D8a77A67dCacc41939700eabbf361656Be916",
       isStable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
-    },
-    // {
-    //   name: "Gold",
-    //   symbol: "GLD",
-    //   decimals: 18,
-    //   address: "0x486b475344F98F02CD27f89693CdD228f62Fb8Af",
-    //   isSynthesis:true,
-    //   isShortable: true,
-    //   max_allowed_leverage:100,
-    //   imageUrl: "https://img1.baidu.com/it/u=2357240917,2228497455&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500",
-    // }
+    }
   ],
   [AVALANCHE]: [
     {
@@ -570,6 +580,11 @@ for (const chainId of CHAIN_IDS) {
       NATIVE_TOKENS_MAP[chainId] = token;
     }
   }
+}
+
+export function getSyntheticStableToken(chainId: number) {
+  const token = getTokenBySymbol(chainId, "USDC");
+  return token;
 }
 
 export function getWrappedToken(chainId: number) {

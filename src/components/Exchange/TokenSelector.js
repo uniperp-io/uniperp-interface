@@ -71,7 +71,7 @@ export default function TokenSelector(props) {
   let enableSelect = true;
   if(props.label.toLowerCase() === "pay"){
     const toTokenInfo = getToken(props.chainId, props.toTokenAddress);
-    enableSelect = !toTokenInfo.isSynthesis;
+    enableSelect = !toTokenInfo.isSynthetic;
   }
 
   return (
