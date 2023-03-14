@@ -333,6 +333,10 @@ export function getPositionQuery(tokens, nativeTokenAddress) {
       collateralTokens.push(stableToken.address);
       indexTokens.push(getTokenAddress(token, nativeTokenAddress));
       isLong.push(false);
+
+      collateralTokens.push(stableToken.address);
+      indexTokens.push(getTokenAddress(token, nativeTokenAddress));
+      isLong.push(true);
     }
   }
 

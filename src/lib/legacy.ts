@@ -33,6 +33,9 @@ export const BASIS_POINTS_DIVISOR = 10000;
 export const MAX_LEVERAGE = 100 * BASIS_POINTS_DIVISOR;
 
 export function getMaxAllowedLeverage(tokenAddress) {
+  if(!tokenAddress){
+    return 50 * BASIS_POINTS_DIVISOR;
+  }
   const tokenInfo = getToken(CHAIN_ID, tokenAddress);
   return (tokenInfo.max_allowed_leverage ?? 50) * BASIS_POINTS_DIVISOR;
 }

@@ -42,7 +42,8 @@ import {
   USDG_DECIMALS,
   getMaxAllowedLeverage,
   getLeverageMarks,
-  checkIsSynthetic
+  checkIsSynthetic,
+  getUsdcToken
 } from "lib/legacy";
 import { ARBITRUM, getChainName, getConstant, IS_NETWORK_DISABLED, isSupportedChain, CHAIN_ID } from "config/chains";
 import * as Api from "domain/legacy";
@@ -1487,6 +1488,11 @@ export default function SwapBox(props) {
       if (tokenAddress0 !== shortCollateralAddress) {
         path = [tokenAddress0, shortCollateralAddress];
       }
+    }
+
+    //modify where the toToken is IsSynthetic, only usdc can use
+    if((isShort || isLong) && checkIsSynthetic(chainId, toTokenAddress)){
+      path = [getUsdcToken(chainId).address]
     }
 
     const refPrice = isLong ? toTokenInfo.maxPrice : toTokenInfo.minPrice;
