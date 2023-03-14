@@ -971,7 +971,7 @@ export default function DashboardV2() {
                   </tr>
                 </thead>
                 <tbody>
-                  {visibleTokens.map((token) => {
+                  {visibleTokens.filter(t=>!t.isSynthetic).map((token) => {
                     const tokenInfo = infoTokens[token.address];
                     let utilization = bigNumberify(0);
                     if (tokenInfo && tokenInfo.reservedAmount && tokenInfo.poolAmount && tokenInfo.poolAmount.gt(0)) {
