@@ -770,7 +770,9 @@ export async function createDecreaseOrder(
   triggerAboveThreshold,
   opts: any = {}
 ) {
-  invariant(!isLong || indexTokenAddress === collateralTokenAddress, "invalid token addresses");
+  if(!checkIsSynthetic(chainId, indexTokenAddress)){
+    invariant(!isLong || indexTokenAddress === collateralTokenAddress, "invalid token addresses");
+  }
   invariant(indexTokenAddress !== AddressZero, "indexToken is 0");
   invariant(collateralTokenAddress !== AddressZero, "collateralToken is 0");
 
