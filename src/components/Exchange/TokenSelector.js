@@ -32,7 +32,11 @@ export default function TokenSelector(props) {
     disableBodyScrollLock,
   } = props;
 
-  const visibleTokens = tokens.filter((t) => !t.isTempHidden);
+  let visibleTokens = tokens.filter((t) => !t.isTempHidden);
+
+  if(props.label.toLowerCase() === "pay"){
+    visibleTokens = visibleTokens.filter(t => !t.isSynthetic)
+  }
 
   const onSelectToken = (token) => {
     setIsModalVisible(false);
