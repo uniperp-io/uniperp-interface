@@ -394,7 +394,10 @@ export default function SwapBox(props) {
   const toUsdMax = getUsd(toAmount, toTokenAddress, true, infoTokens, orderOption, triggerPriceUsd);
 
   const indexTokenAddress = toTokenAddress === AddressZero ? nativeTokenAddress : toTokenAddress;
-  const collateralTokenAddress = isLong ? indexTokenAddress : shortCollateralAddress;
+  let collateralTokenAddress = isLong ? indexTokenAddress : shortCollateralAddress;
+  if(checkIsSynthetic(chainId, indexTokenAddress)){
+    collateralTokenAddress = getUsdcToken(chainId).address
+  }
   const collateralToken = getToken(chainId, collateralTokenAddress);
 
   const [triggerRatioValue, setTriggerRatioValue] = useState("");

@@ -16,7 +16,7 @@ import PositionRouter from "abis/PositionRouter.json";
 
 import { getContract } from "config/contracts";
 import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, getConstant, getHighExecutionFee } from "config/chains";
-import { DECREASE, getOrderKey, INCREASE, SWAP, USD_DECIMALS } from "lib/legacy";
+import { checkIsSynthetic, DECREASE, getOrderKey, INCREASE, SWAP, USD_DECIMALS } from "lib/legacy";
 
 import { groupBy } from "lodash";
 import { UI_VERSION } from "config/env";
@@ -721,7 +721,9 @@ export async function createIncreaseOrder(
   triggerPrice,
   opts: any = {}
 ) {
-  invariant(!isLong || indexTokenAddress === collateralTokenAddress, "invalid token addresses");
+  if(!checkIsSynthetic(chainId, indexTokenAddress)){
+    invariant(!isLong || indexTokenAddress === collateralTokenAddress, "invalid token addresses");
+  }
   invariant(indexTokenAddress !== AddressZero, "indexToken is 0");
   invariant(collateralTokenAddress !== AddressZero, "collateralToken is 0");
 

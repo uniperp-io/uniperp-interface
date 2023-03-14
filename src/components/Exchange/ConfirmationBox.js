@@ -526,6 +526,10 @@ export default function ConfirmationBox(props) {
       return null;
     }
 
+    if(token.isSynthetic){
+      return <></>
+    }
+
     return (
       <ExchangeInfoRow label={t`Available Liquidity`}>
         <Tooltip
