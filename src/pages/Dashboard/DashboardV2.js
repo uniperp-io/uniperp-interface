@@ -37,8 +37,8 @@ import SEO from "components/Common/SEO";
 import useTotalVolume from "domain/useTotalVolume";
 import StatsTooltip from "components/StatsTooltip/StatsTooltip";
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
-import { ARBITRUM, AVALANCHE, getChainName } from "config/chains";
-import { getServerUrl } from "config/backend";
+import { ARBITRUM, getChainName } from "config/chains";
+import { getServerUrl, getServerUrlNew } from "config/backend";
 import { contractFetcher } from "lib/contracts";
 import { useInfoTokens } from "domain/tokens";
 import { getTokenBySymbol, getWhitelistedTokens, GLP_POOL_COLORS } from "config/tokens";
@@ -46,7 +46,9 @@ import { bigNumberify, expandDecimals, formatAmount, formatKeyAmount, numberWith
 import { useChainId } from "lib/chains";
 import { formatDate } from "lib/dates";
 import { getIcons } from "config/icons";
-const ACTIVE_CHAIN_IDS = [ARBITRUM, AVALANCHE];
+import SyntheticTable from "./SyntheticTable"
+
+const ACTIVE_CHAIN_IDS = [ARBITRUM];
 
 const { AddressZero } = ethers.constants;
 
@@ -132,7 +134,7 @@ export default function DashboardV2() {
   const currentIcons = getIcons(chainId);
 
   const { data: positionStats } = useSWR(
-    ACTIVE_CHAIN_IDS.map((chainId) => getServerUrl(chainId, "/position_stats")),
+    ACTIVE_CHAIN_IDS.map((chainId) => getServerUrlNew(chainId, `/position_stats?chain_id=${chainId}`)),
     {
       fetcher: arrayURLFetcher,
     }
@@ -190,12 +192,9 @@ export default function DashboardV2() {
 
   const { infoTokens } = useInfoTokens(library, chainId, active, undefined, undefined);
   const { infoTokens: infoTokensArbitrum } = useInfoTokens(null, ARBITRUM, active, undefined, undefined);
-  const { infoTokens: infoTokensAvax } = useInfoTokens(null, AVALANCHE, active, undefined, undefined);
 
   const { data: currentFees } = useSWR(
-    infoTokensArbitrum[AddressZero].contractMinPrice && infoTokensAvax[AddressZero].contractMinPrice
-      ? "Dashboard:currentFees"
-      : null,
+    infoTokensArbitrum[AddressZero].contractMinPrice ? "Dashboard:currentFees" : null,
     {
       fetcher: () => {
         return Promise.all(
@@ -211,11 +210,7 @@ export default function DashboardV2() {
         ).then((fees) => {
           return fees.reduce(
             (acc, cv, i) => {
-              const feeUSD = getCurrentFeesUsd(
-                getWhitelistedTokenAddresses(ACTIVE_CHAIN_IDS[i]),
-                cv,
-                ACTIVE_CHAIN_IDS[i] === ARBITRUM ? infoTokensArbitrum : infoTokensAvax
-              );
+              const feeUSD = getCurrentFeesUsd(getWhitelistedTokenAddresses(ACTIVE_CHAIN_IDS[i]), cv, infoTokensArbitrum);
               acc[ACTIVE_CHAIN_IDS[i]] = feeUSD;
               acc.total = acc.total.add(feeUSD);
               return acc;
@@ -252,7 +247,7 @@ export default function DashboardV2() {
       { total: 0 }
     );
 
-  const { gmxPrice, gmxPriceFromArbitrum, gmxPriceFromAvalanche } = useGmxPrice(
+  const { gmxPrice, gmxPriceFromArbitrum} = useGmxPrice(
     chainId,
     { arbitrum: chainId === ARBITRUM ? library : undefined },
     active
@@ -434,7 +429,7 @@ export default function DashboardV2() {
     },
   ];
 
-  const totalStatsStartDate = chainId === AVALANCHE ? t`06 Jan 2022` : t`01 Sep 2021`;
+  const totalStatsStartDate = t`01 Sep 2021`;
 
   let stableGlp = 0;
   let totalGlp = 0;
@@ -519,9 +514,6 @@ export default function DashboardV2() {
                 {chainName} Total Stats start from {totalStatsStartDate}.<br /> For detailed stats:
               </Trans>{" "}
               {chainId === ARBITRUM && <ExternalLink href="https://stats.gmx.io">https://stats.gmx.io</ExternalLink>}
-              {chainId === AVALANCHE && (
-                <ExternalLink href="https://stats.gmx.io/avalanche">https://stats.gmx.io/avalanche</ExternalLink>
-              )}
               .
             </div>
           </div>
@@ -580,7 +572,6 @@ export default function DashboardV2() {
                         <StatsTooltip
                           title={t`Volume`}
                           arbitrumValue={currentVolumeInfo?.[ARBITRUM].totalVolume}
-                          avaxValue={currentVolumeInfo?.[AVALANCHE].totalVolume}
                           total={currentVolumeInfo?.totalVolume}
                         />
                       )}
@@ -605,7 +596,6 @@ export default function DashboardV2() {
                         <StatsTooltip
                           title={t`Long Positions`}
                           arbitrumValue={positionStatsInfo?.[ARBITRUM].totalLongPositionSizes}
-                          avaxValue={positionStatsInfo?.[AVALANCHE].totalLongPositionSizes}
                           total={positionStatsInfo?.totalLongPositionSizes}
                         />
                       )}
@@ -630,7 +620,6 @@ export default function DashboardV2() {
                         <StatsTooltip
                           title={t`Short Positions`}
                           arbitrumValue={positionStatsInfo?.[ARBITRUM].totalShortPositionSizes}
-                          avaxValue={positionStatsInfo?.[AVALANCHE].totalShortPositionSizes}
                           total={positionStatsInfo?.totalShortPositionSizes}
                         />
                       )}
@@ -651,7 +640,6 @@ export default function DashboardV2() {
                           <StatsTooltip
                             title={t`Fees`}
                             arbitrumValue={currentFees?.[ARBITRUM]}
-                            avaxValue={currentFees?.[AVALANCHE]}
                             total={currentFees?.total}
                           />
                         )}
@@ -680,7 +668,6 @@ export default function DashboardV2() {
                         <StatsTooltip
                           title={t`Total Fees`}
                           arbitrumValue={totalFees?.[ARBITRUM]}
-                          avaxValue={totalFees?.[AVALANCHE]}
                           total={totalFees?.total}
                           decimalsForConversion={0}
                         />
@@ -701,7 +688,6 @@ export default function DashboardV2() {
                         <StatsTooltip
                           title={t`Total Volume`}
                           arbitrumValue={totalVolume?.[ARBITRUM]}
-                          avaxValue={totalVolume?.[AVALANCHE]}
                           total={totalVolume?.total}
                         />
                       )}
@@ -761,11 +747,6 @@ export default function DashboardV2() {
                                 <StatsTooltipRow
                                   label={t`Price on Arbitrum`}
                                   value={formatAmount(gmxPriceFromArbitrum, USD_DECIMALS, 2, true)}
-                                  showDollar={true}
-                                />
-                                <StatsTooltipRow
-                                  label={t`Price on Avalanche`}
-                                  value={formatAmount(gmxPriceFromAvalanche, USD_DECIMALS, 2, true)}
                                   showDollar={true}
                                 />
                               </>
@@ -945,6 +926,7 @@ export default function DashboardV2() {
                 </div>
               </div>
             </div>
+
             <div className="token-table-wrapper App-card">
               <div className="App-card-title">
                 <Trans>GLP Index Composition</Trans> <img src={currentIcons.network} width="16" alt="Network Icon" />
@@ -1042,6 +1024,13 @@ export default function DashboardV2() {
                 </tbody>
               </table>
             </div>
+
+            <SyntheticTable currentIcons={currentIcons}
+                visibleTokens={visibleTokens}
+                infoTokens={infoTokens}
+                getWeightText={getWeightText}>
+            </SyntheticTable>
+
             <div className="token-grid">
               {visibleTokens.map((token) => {
                 const tokenInfo = infoTokens[token.address];

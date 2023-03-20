@@ -23,7 +23,7 @@ import TokenCard from "components/TokenCard/TokenCard";
 import { Trans } from "@lingui/macro";
 import { HeaderLink } from "components/Header/HeaderLink";
 import { ARBITRUM, AVALANCHE } from "config/chains";
-import { getServerUrl } from "config/backend";
+import { getServerUrlNew, getServerUrl } from "config/backend";
 import { bigNumberify, formatAmount, numberWithCommas } from "lib/numbers";
 
 export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
@@ -56,7 +56,7 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
 
   // ARBITRUM
 
-  const arbitrumPositionStatsUrl = getServerUrl(ARBITRUM, "/position_stats");
+  const arbitrumPositionStatsUrl = getServerUrlNew(ARBITRUM, `/position_stats?chain_id=${ARBITRUM}`);
   const { data: arbitrumPositionStats } = useSWR([arbitrumPositionStatsUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });
@@ -66,22 +66,9 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });
 
-  // AVALANCHE
-
-  const avalanchePositionStatsUrl = getServerUrl(AVALANCHE, "/position_stats");
-  const { data: avalanchePositionStats } = useSWR([avalanchePositionStatsUrl], {
-    fetcher: (...args) => fetch(...args).then((res) => res.json()),
-  });
-
-  const avalancheTotalVolumeUrl = getServerUrl(AVALANCHE, "/total_volume");
-  const { data: avalancheTotalVolume } = useSWR([avalancheTotalVolumeUrl], {
-    fetcher: (...args) => fetch(...args).then((res) => res.json()),
-  });
-
   // Total Volume
-
   const arbitrumTotalVolumeSum = getTotalVolumeSum(arbitrumTotalVolume);
-  const avalancheTotalVolumeSum = getTotalVolumeSum(avalancheTotalVolume);
+  const avalancheTotalVolumeSum = getTotalVolumeSum([]);
 
   let totalVolumeSum = bigNumberify(0);
   if (arbitrumTotalVolumeSum && avalancheTotalVolumeSum) {
@@ -99,15 +86,6 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
   ) {
     openInterest = openInterest.add(arbitrumPositionStats.totalLongPositionSizes);
     openInterest = openInterest.add(arbitrumPositionStats.totalShortPositionSizes);
-  }
-
-  if (
-    avalanchePositionStats &&
-    avalanchePositionStats.totalLongPositionSizes &&
-    avalanchePositionStats.totalShortPositionSizes
-  ) {
-    openInterest = openInterest.add(avalanchePositionStats.totalLongPositionSizes);
-    openInterest = openInterest.add(avalanchePositionStats.totalShortPositionSizes);
   }
 
   // user stat
@@ -279,47 +257,6 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
           <TokenCard showRedirectModal={showRedirectModal} redirectPopupTimestamp={redirectPopupTimestamp} />
         </div>
       </div>
-
-      {/* <div className="Home-video-section">
-        <div className="Home-video-container default-container">
-          <div className="Home-video-block">
-            <img src={gmxBigIcon} alt="gmxbig" />
-          </div>
-        </div>
-      </div> */}
-      {/* <div className="Home-faqs-section">
-        <div className="Home-faqs-container default-container">
-          <div className="Home-faqs-introduction">
-            <div className="Home-faqs-introduction__title">FAQs</div>
-            <div className="Home-faqs-introduction__description">Most asked questions. If you wish to learn more, please head to our Documentation page.</div>
-            <a href="https://gmxio.gitbook.io/gmx/" className="default-btn Home-faqs-documentation">Documentation</a>
-          </div>
-          <div className="Home-faqs-content-block">
-            {
-              faqContent.map((content, index) => (
-                <div className="Home-faqs-content" key={index} onClick={() => toggleFAQContent(index)}>
-                  <div className="Home-faqs-content-header">
-                    <div className="Home-faqs-content-header__icon">
-                      {
-                        openedFAQIndex === index ? <FiMinus className="opened" /> : <FiPlus className="closed" />
-                      }
-                    </div>
-                    <div className="Home-faqs-content-header__text">
-                      { content.question }
-                    </div>
-                  </div>
-                  <div className={ openedFAQIndex === index ? "Home-faqs-content-main opened" : "Home-faqs-content-main" }>
-                    <div className="Home-faqs-content-main__text">
-                      <div dangerouslySetInnerHTML={{__html: content.answer}} >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div> */}
       <Footer showRedirectModal={showRedirectModal} redirectPopupTimestamp={redirectPopupTimestamp} />
     </div>
   );

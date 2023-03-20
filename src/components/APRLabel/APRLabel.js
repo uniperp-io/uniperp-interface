@@ -25,6 +25,7 @@ import { getContract } from "config/contracts";
 import { getServerUrl } from "config/backend";
 import { contractFetcher } from "lib/contracts";
 import { formatKeyAmount } from "lib/numbers";
+import { getServerUrlNew } from "../../config/backend";
 
 export default function APRLabel({ chainId, label }) {
   let { active } = useWeb3React();
@@ -126,7 +127,7 @@ export default function APRLabel({ chainId, label }) {
 
   const { gmxPrice } = useGmxPrice(chainId, {}, active);
 
-  const gmxSupplyUrl = getServerUrl(chainId, "/gmx_supply");
+  const gmxSupplyUrl = getServerUrlNew(chainId, `/unip_supply?chain_id=${chainId}`);
   const { data: gmxSupply } = useSWR([gmxSupplyUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.text()),
   });

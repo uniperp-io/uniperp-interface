@@ -133,6 +133,10 @@
   margin-right: 0.8rem;
 }
 
+.mt20{
+  margin-top: 2rem;
+}
+
 @media (max-width: 1024px) {
   .stats-wrapper {
     display: grid;

@@ -25,6 +25,7 @@ import { bigNumberify, expandDecimals, formatAmount, numberWithCommas } from "li
 import { getToken, getTokens } from "config/tokens";
 import { useChainId } from "lib/chains";
 import { formatDate } from "lib/dates";
+import { getServerUrlNew } from "../../config/backend";
 
 const USD_DECIMALS = 30;
 const PRECISION = expandDecimals(1, 30);
@@ -235,7 +236,7 @@ export default function DashboardV1() {
   const { chainId } = useChainId();
   const { library } = useWeb3React();
 
-  const positionStatsUrl = getServerUrl(chainId, "/position_stats");
+  const positionStatsUrl = getServerUrlNew(chainId, `/position_stats?chain_id=${chainId}`);
   const { data: positionStats, mutate: updatePositionStats } = useSWR([positionStatsUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });

@@ -1544,7 +1544,7 @@ export function getLeverageMarks(maxNum:number){
   let step = 5;
   if(maxNum > 50 && maxNum <= 100){
     step = 10;
-  }  
+  }
 
   let startNum:number = 0;
   for(let i = 0; i < 10000; i++){

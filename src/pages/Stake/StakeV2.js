@@ -40,7 +40,6 @@ import "./StakeV2.css";
 import SEO from "components/Common/SEO";
 import StatsTooltip from "components/StatsTooltip/StatsTooltip";
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
-import { getServerUrl } from "config/backend";
 import { callContract, contractFetcher } from "lib/contracts";
 import { useLocalStorageSerializeKey } from "lib/localStorage";
 import { helperToast } from "lib/helperToast";
@@ -49,6 +48,7 @@ import { bigNumberify, expandDecimals, formatAmount, formatAmountFree, formatKey
 import { useChainId } from "lib/chains";
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import GMXAprTooltip from "components/Stake/GMXAprTooltip";
+import { getServerUrlNew } from "../../config/backend";
 
 const { AddressZero } = ethers.constants;
 
@@ -1078,7 +1078,7 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
     }
   );
 
-  const { gmxPrice, gmxPriceFromArbitrum, gmxPriceFromAvalanche } = useGmxPrice(
+  const { gmxPrice, gmxPriceFromArbitrum} = useGmxPrice(
     chainId,
     { arbitrum: chainId === ARBITRUM ? library : undefined },
     active
@@ -1086,9 +1086,9 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
 
   let { total: totalGmxSupply } = useTotalGmxSupply();
 
-  let { avax: avaxGmxStaked, arbitrum: arbitrumGmxStaked, total: totalGmxStaked } = useTotalGmxStaked();
+  let {arbitrum: arbitrumGmxStaked, total: totalGmxStaked } = useTotalGmxStaked();
 
-  const gmxSupplyUrl = getServerUrl(chainId, "/gmx_supply");
+  const gmxSupplyUrl = getServerUrlNew(chainId, `/unip_supply?chain_id=${chainId}`);
   const { data: gmxSupply } = useSWR([gmxSupplyUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.text()),
   });
@@ -1485,10 +1485,6 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
                       renderContent={() => (
                         <>
                           <StatsTooltipRow
-                            label={t`Price on Avalanche`}
-                            value={formatAmount(gmxPriceFromAvalanche, USD_DECIMALS, 2, true)}
-                          />
-                          <StatsTooltipRow
                             label={t`Price on Arbitrum`}
                             value={formatAmount(gmxPriceFromArbitrum, USD_DECIMALS, 2, true)}
                           />
@@ -1623,7 +1619,6 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
                         <StatsTooltip
                           showDollar={false}
                           title={t`Staked`}
-                          avaxValue={avaxGmxStaked}
                           arbitrumValue={arbitrumGmxStaked}
                           total={totalGmxStaked}
                           decimalsForConversion={18}

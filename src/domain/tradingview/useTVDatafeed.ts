@@ -87,7 +87,7 @@ export default function useTVDatafeed() {
           if (!isStable) {
             intervalRef.current = setInterval(function () {
               tvRequests.current?.getLiveBar(chainId, ticker, resolution).then((bar) => {
-                if (ticker === activeTicker.current) {
+                if (ticker === activeTicker.current && bar) {
                   onRealtimeCallback(bar);
                 }
               });

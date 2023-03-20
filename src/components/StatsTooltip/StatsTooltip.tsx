@@ -7,7 +7,6 @@ import { formatAmount } from "lib/numbers";
 type Props = {
   title: string;
   total?: BigNumber;
-  avaxValue?: BigNumber;
   arbitrumValue?: BigNumber;
   showDollar?: boolean;
   decimalsForConversion: number;
@@ -17,7 +16,6 @@ type Props = {
 export default function StatsTooltip({
   title,
   total,
-  avaxValue,
   arbitrumValue,
   showDollar = true,
   decimalsForConversion = USD_DECIMALS,
@@ -35,16 +33,6 @@ export default function StatsTooltip({
           {!showDollar && symbol && " " + symbol}
         </span>
       </p>
-      {/*<p className="Tooltip-row">*/}
-      {/*  <span className="label">*/}
-      {/*    <Trans>{title} on Avalanche:</Trans>*/}
-      {/*  </span>*/}
-      {/*  <span className="amount">*/}
-      {/*    {showDollar && "$"}*/}
-      {/*    {formatAmount(avaxValue, decimalsForConversion, 0, true)}*/}
-      {/*    {!showDollar && symbol && " " + symbol}*/}
-      {/*  </span>*/}
-      {/*</p>*/}
       <div className="Tooltip-divider" />
       <p className="Tooltip-row">
         <span className="label">

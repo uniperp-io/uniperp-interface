@@ -29,3 +29,8 @@ export function getServerBaseUrl(chainId: number) {
 export function getServerUrl(chainId: number, path: string) {
   return `${getServerBaseUrl(chainId)}${path}`;
 }
+
+
+export function getServerUrlNew(chainId: number, path: string) {
+  return `https://api.uniperp.io${path}`;
+}

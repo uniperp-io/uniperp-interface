@@ -1,4 +1,4 @@
-import { getServerUrl } from "config/backend";
+import { getServerUrlNew } from "config/backend";
 import { getTokenBySymbol, getWrappedToken } from "config/tokens";
 import { getChainlinkChartPricesFromGraph, getChartPricesFromStats } from "domain/prices";
 
@@ -22,7 +22,7 @@ export const getTokenChartPrice = async (chainId: number, symbol: string, period
 
 export async function getCurrentPriceOfToken(chainId: number, symbol: string) {
   try {
-    const indexPricesUrl = getServerUrl(chainId, "/prices");
+    const indexPricesUrl = getServerUrlNew(chainId, "/targetprices");
     const response = await fetch(indexPricesUrl);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
