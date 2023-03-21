@@ -19,8 +19,7 @@ import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, getConstant, getHighExecutionFee
 import { checkIsSynthetic, DECREASE, getOrderKey, INCREASE, SWAP, USD_DECIMALS } from "lib/legacy";
 
 import { groupBy } from "lodash";
-import { UI_VERSION } from "config/env";
-import { getServerBaseUrl, getServerUrl, getServerUrlNew } from "config/backend";
+import { getServerBaseUrl, getServerUrlNew } from "config/backend";
 import { getGmxGraphClient, nissohGraphClient } from "lib/subgraph/clients";
 import { callContract, contractFetcher } from "lib/contracts";
 import { replaceNativeTokenAddress } from "./tokens";

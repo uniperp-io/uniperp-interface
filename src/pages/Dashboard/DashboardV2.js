@@ -38,7 +38,7 @@ import useTotalVolume from "domain/useTotalVolume";
 import StatsTooltip from "components/StatsTooltip/StatsTooltip";
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
 import { ARBITRUM, getChainName } from "config/chains";
-import { getServerUrl, getServerUrlNew } from "config/backend";
+import { getServerUrlNew } from "config/backend";
 import { contractFetcher } from "lib/contracts";
 import { useInfoTokens } from "domain/tokens";
 import { getTokenBySymbol, getWhitelistedTokens, GLP_POOL_COLORS } from "config/tokens";
@@ -141,7 +141,7 @@ export default function DashboardV2() {
   );
 
   const { data: hourlyVolumes } = useSWR(
-    ACTIVE_CHAIN_IDS.map((chainId) => getServerUrl(chainId, "/hourly_volume")),
+    ACTIVE_CHAIN_IDS.map((chainId) => getServerUrlNew(chainId, `/hourly_volume?chain_id=${chainId}`)),
     {
       fetcher: arrayURLFetcher,
     }
@@ -511,10 +511,11 @@ export default function DashboardV2() {
             </div>
             <div className="Page-description">
               <Trans>
-                {chainName} Total Stats start from {totalStatsStartDate}.<br /> For detailed stats:
+                {chainName} Total Stats start from {totalStatsStartDate}.<br />
+                {/*For detailed stats:*/}
               </Trans>{" "}
-              {chainId === ARBITRUM && <ExternalLink href="https://stats.gmx.io">https://stats.gmx.io</ExternalLink>}
-              .
+              {/*{chainId === ARBITRUM && <ExternalLink href="https://stats.gmx.io">https://stats.gmx.io</ExternalLink>}*/}
+              {/*.*/}
             </div>
           </div>
         </div>
@@ -535,14 +536,14 @@ export default function DashboardV2() {
                       handle={`$${formatAmount(tvl, USD_DECIMALS, 0, true)}`}
                       position="right-bottom"
                       renderContent={() => (
-                        <span>{t`Assets Under Management: GMX staked (All chains) + GLP pool (${chainName}).`}</span>
+                        <span>{t`Assets Under Management: UNIP staked (All chains) + ULP pool (${chainName}).`}</span>
                       )}
                     />
                   </div>
                 </div>
                 <div className="App-card-row">
                   <div className="label">
-                    <Trans>GLP Pool</Trans>
+                    <Trans>ULP Pool</Trans>
                   </div>
                   <div>
                     <TooltipComponent
@@ -550,9 +551,9 @@ export default function DashboardV2() {
                       position="right-bottom"
                       renderContent={() => (
                         <Trans>
-                          <p>Total value of tokens in GLP pool ({chainName}).</p>
+                          <p>Total value of tokens in ULP pool ({chainName}).</p>
                           <p>
-                            Other websites may show a higher value as they add positions' collaterals to the GLP pool.
+                            Other websites may show a higher value as they add positions' collaterals to the ULP pool.
                           </p>
                         </Trans>
                       )}
@@ -708,7 +709,7 @@ export default function DashboardV2() {
               <Trans>Tokens</Trans> <img src={currentIcons.network} width="24" alt="Network Icon" />
             </div>
             <div className="Page-description">
-              <Trans>Platform and GLP index tokens.</Trans>
+              <Trans>Platform and ULP index tokens.</Trans>
             </div>
           </div>
           <div className="DashboardV2-token-cards">
@@ -721,11 +722,11 @@ export default function DashboardV2() {
                         <img src={currentIcons.gmx} width="40" alt="GMX Token Icon" />
                       </div>
                       <div className="App-card-title-mark-info">
-                        <div className="App-card-title-mark-title">GMX</div>
-                        <div className="App-card-title-mark-subtitle">GMX</div>
+                        <div className="App-card-title-mark-title">UNIP</div>
+                        <div className="App-card-title-mark-subtitle">UNIP</div>
                       </div>
                       <div>
-                        <AssetDropdown assetSymbol="GMX" />
+                        <AssetDropdown assetSymbol="UNIP" />
                       </div>
                     </div>
                   </div>
@@ -759,7 +760,7 @@ export default function DashboardV2() {
                       <div className="label">
                         <Trans>Supply</Trans>
                       </div>
-                      <div>{formatAmount(totalGmxSupply, GMX_DECIMALS, 0, true)} GMX</div>
+                      <div>{formatAmount(totalGmxSupply, GMX_DECIMALS, 0, true)} UNIP</div>
                     </div>
                     <div className="App-card-row">
                       <div className="label">
@@ -838,14 +839,14 @@ export default function DashboardV2() {
                   <div className="App-card-title">
                     <div className="App-card-title-mark">
                       <div className="App-card-title-mark-icon">
-                        <img src={currentIcons.glp} width="40" alt="GLP Icon" />
+                        <img src={currentIcons.glp} width="40" alt="ULP Icon" />
                       </div>
                       <div className="App-card-title-mark-info">
-                        <div className="App-card-title-mark-title">GLP</div>
-                        <div className="App-card-title-mark-subtitle">GLP</div>
+                        <div className="App-card-title-mark-title">ULP</div>
+                        <div className="App-card-title-mark-subtitle">ULP</div>
                       </div>
                       <div>
-                        <AssetDropdown assetSymbol="GLP" />
+                        <AssetDropdown assetSymbol="ULP" />
                       </div>
                     </div>
                   </div>
@@ -861,7 +862,7 @@ export default function DashboardV2() {
                       <div className="label">
                         <Trans>Supply</Trans>
                       </div>
-                      <div>{formatAmount(glpSupply, GLP_DECIMALS, 0, true)} GLP</div>
+                      <div>{formatAmount(glpSupply, GLP_DECIMALS, 0, true)} ULP</div>
                     </div>
                     <div className="App-card-row">
                       <div className="label">
@@ -918,7 +919,7 @@ export default function DashboardV2() {
                         ))}
                       </Pie>
                       <text x={"50%"} y={"50%"} fill="white" textAnchor="middle" dominantBaseline="middle">
-                        GLP Pool
+                        ULP Pool
                       </text>
                       <Tooltip content={<CustomTooltip />} />
                     </PieChart>
@@ -929,7 +930,7 @@ export default function DashboardV2() {
 
             <div className="token-table-wrapper App-card">
               <div className="App-card-title">
-                <Trans>GLP Index Composition</Trans> <img src={currentIcons.network} width="16" alt="Network Icon" />
+                <Trans>ULP Index Composition</Trans> <img src={currentIcons.network} width="16" alt="Network Icon" />
               </div>
               <div className="App-card-divider"></div>
               <table className="token-table">
@@ -955,6 +956,7 @@ export default function DashboardV2() {
                 <tbody>
                   {visibleTokens.filter(t=>!t.isSynthetic).map((token) => {
                     const tokenInfo = infoTokens[token.address];
+
                     let utilization = bigNumberify(0);
                     if (tokenInfo && tokenInfo.reservedAmount && tokenInfo.poolAmount && tokenInfo.poolAmount.gt(0)) {
                       utilization = tokenInfo.reservedAmount.mul(BASIS_POINTS_DIVISOR).div(tokenInfo.poolAmount);
@@ -1032,7 +1034,7 @@ export default function DashboardV2() {
             </SyntheticTable>
 
             <div className="token-grid">
-              {visibleTokens.map((token) => {
+              {visibleTokens.filter(t=>!t.isSynthetic).map((token) => {
                 const tokenInfo = infoTokens[token.address];
                 let utilization = bigNumberify(0);
                 if (tokenInfo && tokenInfo.reservedAmount && tokenInfo.poolAmount && tokenInfo.poolAmount.gt(0)) {

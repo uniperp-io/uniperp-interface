@@ -429,20 +429,20 @@ export const PLATFORM_TOKENS: { [chainId: number]: { [symbol: string]: Token } }
 
 export const ICONLINKS = {
   [ARBITRUM_TESTNET]: {
-    GMX: {
+    UNIP: {
       coingecko: "https://www.coingecko.com/en/coins/gmx",
       arbitrum: "https://arbiscan.io/address/0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a",
     },
-    GLP: {
+    ULP: {
       arbitrum: "https://testnet.arbiscan.io/token/0xb4f81Fa74e06b5f762A104e47276BA9b2929cb27",
     },
   },
   [ARBITRUM]: {
-    GMX: {
+    UNIP: {
       coingecko: "https://www.coingecko.com/en/coins/gmx",
       arbitrum: "https://arbiscan.io/address/0xfc5a1a6eb076a2c7ad06ed22c90d7e710e35ad0a",
     },
-    GLP: {
+    ULP: {
       arbitrum: "https://arbiscan.io/token/0x1aDDD80E6039594eE970E5872D247bf0414C8903",
       reserves: "https://portfolio.nansen.ai/dashboard/gmx?chain=ARBITRUM",
     },

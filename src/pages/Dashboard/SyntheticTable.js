@@ -44,7 +44,7 @@ export default function SyntheticTable({currentIcons,visibleTokens,infoTokens,ge
                     if (tokenInfo.maxUsdgAmount && tokenInfo.maxUsdgAmount.gt(0)) {
                       maxUsdgAmount = tokenInfo.maxUsdgAmount;
                     }
-                    const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_40.svg");
+                    const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_40.png");
 
                     return (
                       <tr key={token.symbol}>
@@ -57,9 +57,6 @@ export default function SyntheticTable({currentIcons,visibleTokens,infoTokens,ge
                               <div className="App-card-title-info-text">
                                 <div className="App-card-info-title">{token.name}</div>
                                 <div className="App-card-info-subtitle">{token.symbol}</div>
-                              </div>
-                              <div>
-                                <AssetDropdown assetSymbol={token.symbol} assetInfo={token} />
                               </div>
                             </div>
                           </div>
