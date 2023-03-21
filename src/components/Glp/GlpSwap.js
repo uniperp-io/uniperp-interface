@@ -106,8 +106,8 @@ export default function GlpSwap(props) {
     savedShouldDisableValidationForTesting,
   } = props;
   const history = useHistory();
-  const swapLabel = isBuying ? "BuyGlp" : "SellGlp";
-  const tabLabel = isBuying ? t`Buy GLP` : t`Sell GLP`;
+  const swapLabel = isBuying ? "BuyUlp" : "SellUlp";
+  const tabLabel = isBuying ? t`Buy ULP` : t`Sell ULP`;
   const { active, library, account } = useWeb3React();
   const { chainId } = useChainId();
   const tokens = getTokens(chainId);
@@ -540,7 +540,7 @@ export default function GlpSwap(props) {
       return isBuying ? t`Buying...` : t`Selling...`;
     }
 
-    return isBuying ? t`Buy GLP` : t`Sell GLP`;
+    return isBuying ? t`Buy ULP` : t`Sell ULP`;
   };
 
   const approveFromToken = () => {
@@ -699,11 +699,11 @@ export default function GlpSwap(props) {
           <div className="App-card-title">
             <div className="App-card-title-mark">
               <div className="App-card-title-mark-icon">
-                <img width="40" src={glpIcon} alt="GLP" />
+                <img width="40" src={glpIcon} alt="ULP" />
               </div>
               <div className="App-card-title-mark-info">
-                <div className="App-card-title-mark-title">GLP</div>
-                <div className="App-card-title-mark-subtitle">GLP</div>
+                <div className="App-card-title-mark-title">ULP</div>
+                <div className="App-card-title-mark-subtitle">ULP</div>
               </div>
               <div>
                 <AssetDropdown assetSymbol="GLP" />
@@ -723,7 +723,7 @@ export default function GlpSwap(props) {
                 <Trans>Wallet</Trans>
               </div>
               <div className="value">
-                {formatAmount(glpBalance, GLP_DECIMALS, 4, true)} GLP ($
+                {formatAmount(glpBalance, GLP_DECIMALS, 4, true)} ULP ($
                 {formatAmount(glpBalanceUsd, USD_DECIMALS, 2, true)})
               </div>
             </div>
@@ -732,7 +732,7 @@ export default function GlpSwap(props) {
                 <Trans>Staked</Trans>
               </div>
               <div className="value">
-                {formatAmount(glpBalance, GLP_DECIMALS, 4, true)} GLP ($
+                {formatAmount(glpBalance, GLP_DECIMALS, 4, true)} ULP ($
                 {formatAmount(glpBalanceUsd, USD_DECIMALS, 2, true)})
               </div>
             </div>
@@ -746,7 +746,7 @@ export default function GlpSwap(props) {
                 </div>
                 <div className="value">
                   <Tooltip
-                    handle={`${formatAmount(reservedAmount, 18, 4, true)} GLP ($${formatAmount(
+                    handle={`${formatAmount(reservedAmount, 18, 4, true)} ULP ($${formatAmount(
                       reserveAmountUsd,
                       USD_DECIMALS,
                       2,
@@ -754,7 +754,7 @@ export default function GlpSwap(props) {
                     )})`}
                     position="right-bottom"
                     renderContent={() =>
-                      t`${formatAmount(reservedAmount, 18, 4, true)} GLP have been reserved for vesting.`
+                      t`${formatAmount(reservedAmount, 18, 4, true)} ULP have been reserved for vesting.`
                     }
                   />
                 </div>
@@ -777,7 +777,7 @@ export default function GlpSwap(props) {
                           showDollar={false}
                         />
                         <StatsTooltipRow
-                          label={t`Escrowed GMX APR`}
+                          label={t`Escrowed UNIP APR`}
                           value={`${formatAmount(stakedGlpTrackerApr, 2, 2, false)}%`}
                           showDollar={false}
                         />
@@ -793,7 +793,7 @@ export default function GlpSwap(props) {
               </div>
               <div className="value">
                 <Trans>
-                  {formatAmount(glpSupply, GLP_DECIMALS, 4, true)} GLP ($
+                  {formatAmount(glpSupply, GLP_DECIMALS, 4, true)} ULP ($
                   {formatAmount(glpSupplyUsd, USD_DECIMALS, 2, true)})
                 </Trans>
               </div>
@@ -802,7 +802,7 @@ export default function GlpSwap(props) {
         </div>
         <div className="GlpSwap-box App-box">
           <Tab
-            options={[t`Buy GLP`, t`Sell GLP`]}
+            options={[t`Buy ULP`, t`Sell ULP`]}
             option={tabLabel}
             onChange={onSwapOptionChange}
             className="Exchange-swap-option-tabs"
@@ -847,7 +847,7 @@ export default function GlpSwap(props) {
               balance={payBalance}
               defaultTokenName={"GLP"}
             >
-              <div className="selected-token">GLP</div>
+              <div className="selected-token">ULP</div>
             </BuyInputSection>
           )}
 
@@ -874,7 +874,7 @@ export default function GlpSwap(props) {
               balance={receiveBalance}
               defaultTokenName={"GLP"}
             >
-              <div className="selected-token">GLP</div>
+              <div className="selected-token">ULP</div>
             </BuyInputSection>
           )}
 
@@ -965,16 +965,16 @@ export default function GlpSwap(props) {
         {isBuying && (
           <div className="Page-description">
             <Trans>
-              Fees may vary depending on which asset you use to buy GLP. <br />
-              Enter the amount of GLP you want to purchase in the order form, then check here to compare fees.
+              Fees may vary depending on which asset you use to buy ULP. <br />
+              Enter the amount of ULP you want to purchase in the order form, then check here to compare fees.
             </Trans>
           </div>
         )}
         {!isBuying && (
           <div className="Page-description">
             <Trans>
-              Fees may vary depending on which asset you sell GLP for. <br />
-              Enter the amount of GLP you want to redeem in the order form, then check here to compare fees.
+              Fees may vary depending on which asset you sell ULP for. <br />
+              Enter the amount of ULP you want to redeem in the order form, then check here to compare fees.
             </Trans>
           </div>
         )}
@@ -998,7 +998,7 @@ export default function GlpSwap(props) {
                     position="right-bottom text-none"
                     renderContent={() => (
                       <p className="text-white">
-                        <Trans>Available amount to deposit into GLP.</Trans>
+                        <Trans>Available amount to deposit into ULP.</Trans>
                       </p>
                     )}
                   />
@@ -1011,7 +1011,7 @@ export default function GlpSwap(props) {
                       return (
                         <p className="text-white">
                           <Trans>
-                            Available amount to withdraw from GLP. Funds not utilized by current open positions.
+                            Available amount to withdraw from ULP. Funds not utilized by current open positions.
                           </Trans>
                         </p>
                       );
@@ -1105,7 +1105,7 @@ export default function GlpSwap(props) {
                               Max pool capacity reached for {tokenInfo.symbol}
                               <br />
                               <br />
-                              Please mint GLP using another token
+                              Please mint ULP using another token
                             </Trans>
                             <br />
                             <p>
