@@ -251,7 +251,7 @@ export default function DashboardV1() {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });
 
-  const totalVolumeUrl = getServerUrl(chainId, "/total_volume");
+  const totalVolumeUrl = getServerUrlNew(chainId, `/total_volume?chain_id=${chainId}`);
   const { data: totalVolume, mutate: updateTotalVolume } = useSWR([totalVolumeUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });

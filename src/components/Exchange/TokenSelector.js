@@ -132,13 +132,16 @@ export default function TokenSelector(props) {
                     renderContent={() => tokenState.message}
                   />
                 )}
+
                 <div className="Token-info">
                   {showTokenImgInDropdown && <img src={tokenPopupImage} alt={token.name} className="token-logo" />}
                   <div className="Token-symbol">
                     <div className="Token-text">{token.symbol}</div>
                     <span className="text-accent">{token.name}</span>
+                    <span className="text-accent red">Market Close</span>
                   </div>
                 </div>
+
                 <div className="Token-balance">
                   {showBalances && balance && (
                     <div className="Token-text">

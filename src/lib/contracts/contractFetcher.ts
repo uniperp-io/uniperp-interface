@@ -19,6 +19,11 @@ export const contractFetcher =<T>(library: Web3Provider | undefined, contractInf
       additionalArgs,
     });
 
+    const debugMethod = 'minExecutionFee111'
+    if (method === debugMethod){
+      console.log(arg0, arg1, method, params, additionalArgs,);
+    }
+
     let shouldCallFallback = true;
 
     const handleFallback = async (resolve, reject, error) => {
@@ -56,6 +61,11 @@ export const contractFetcher =<T>(library: Web3Provider | undefined, contractInf
     return new Promise(async (resolve, reject) => {
       contractCall.then((result) => {
           shouldCallFallback = false;
+
+        if (method === debugMethod){
+          console.log(result.toString());
+        }
+
           resolve(result);
         })
         .catch((e) => {

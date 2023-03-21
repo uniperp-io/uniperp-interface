@@ -153,6 +153,7 @@ export function getPositions(
     return { positions, positionsMap };
   }
   const { collateralTokens, indexTokens, isLong } = positionQuery;
+
   for (let i = 0; i < collateralTokens.length; i++) {
     const collateralToken = getTokenInfo(infoTokens, collateralTokens[i], true, getContract(chainId, "NATIVE_TOKEN"));
     const indexToken = getTokenInfo(infoTokens, indexTokens[i], true, getContract(chainId, "NATIVE_TOKEN"));
@@ -333,7 +334,7 @@ export function getPositionQuery(tokens, nativeTokenAddress) {
       collateralTokens.push(stableToken.address);
       indexTokens.push(getTokenAddress(token, nativeTokenAddress));
       isLong.push(false);
-      
+
       collateralTokens.push(stableToken.address);
       indexTokens.push(getTokenAddress(token, nativeTokenAddress));
       isLong.push(true);

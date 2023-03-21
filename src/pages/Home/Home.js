@@ -23,45 +23,17 @@ import TokenCard from "components/TokenCard/TokenCard";
 import { Trans } from "@lingui/macro";
 import { HeaderLink } from "components/Header/HeaderLink";
 import { ARBITRUM, AVALANCHE } from "config/chains";
-import { getServerUrlNew, getServerUrl } from "config/backend";
+import { getServerUrlNew } from "config/backend";
 import { bigNumberify, formatAmount, numberWithCommas } from "lib/numbers";
 
 export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
-  // const [openedFAQIndex, setOpenedFAQIndex] = useState(null)
-  // const faqContent = [{
-  //   id: 1,
-  //   question: "What is GMX?",
-  //   answer: "GMX is a decentralized spot and perpetual exchange that supports low swap fees and zero price impact trades.<br><br>Trading is supported by a unique multi-asset pool that earns liquidity providers fees from market making, swap fees, leverage trading (spreads, funding fees & liquidations), and asset rebalancing.<br><br>Dynamic pricing is supported by Chainlink Oracles along with TWAP pricing from leading volume DEXs."
-  // }, {
-  //   id: 2,
-  //   question: "What is the GMX Governance Token? ",
-  //   answer: "The GMX token is the governance token of the GMX ecosystem, it provides the token owner voting rights on the direction of the GMX platform.<br><br>Additionally, when GMX is staked you will earn 30% of the platform-generated fees, you will also earn Escrowed GMX tokens and Multiplier Points."
-  // }, {
-  //   id: 3,
-  //   question: "What is the GLP Token? ",
-  //   answer: "The GLP token represents the liquidity users provide to the GMX platform for Swaps and Margin Trading.<br><br>To provide liquidity to GLP you <a href='https://gmx.io/buy_glp' target='_blank'>trade</a> your crypto asset BTC, ETH, LINK, UNI, USDC, USDT, MIM, or FRAX to the liquidity pool, in exchange, you gain exposure to a diversified index of tokens while earning 50% of the platform trading fees and esGMX."
-  // }, {
-  //   id: 4,
-  //   question: "What can I trade on GMX? ",
-  //   answer: "On GMX you can swap or margin trade any of the following assets: ETH, BTC, LINK, UNI, USDC, USDT, MIM, FRAX, with others to be added. "
-  // }]
-
-  // const toggleFAQContent = function(index) {
-  //   if (openedFAQIndex === index) {
-  //     setOpenedFAQIndex(null)
-  //   } else {
-  //     setOpenedFAQIndex(index)
-  //   }
-  // }
-
   // ARBITRUM
-
   const arbitrumPositionStatsUrl = getServerUrlNew(ARBITRUM, `/position_stats?chain_id=${ARBITRUM}`);
   const { data: arbitrumPositionStats } = useSWR([arbitrumPositionStatsUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });
 
-  const arbitrumTotalVolumeUrl = getServerUrl(ARBITRUM, "/total_volume");
+  const arbitrumTotalVolumeUrl = getServerUrlNew(ARBITRUM, `/total_volume?chain_id=${ARBITRUM}`);
   const { data: arbitrumTotalVolume } = useSWR([arbitrumTotalVolumeUrl], {
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
   });

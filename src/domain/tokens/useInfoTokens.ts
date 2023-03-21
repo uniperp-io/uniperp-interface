@@ -9,7 +9,7 @@ import {
   USD_DECIMALS,
   USDG_ADDRESS,
 } from "lib/legacy";
-import { getServerUrl, getServerUrlNew } from "config/backend";
+import { getServerUrlNew } from "config/backend";
 import { InfoTokens, Token, TokenInfo } from "./types";
 import { BigNumber } from "ethers";
 import { bigNumberify, expandDecimals } from "lib/numbers";
@@ -47,7 +47,6 @@ export function useInfoTokens(
   );
 
   const indexPricesUrl = getServerUrlNew(chainId, "/targetprices");
-
   const { data: indexPrices } = useSWR([indexPricesUrl], {
     // @ts-ignore spread args incorrect type
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
