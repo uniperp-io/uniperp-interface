@@ -484,7 +484,7 @@ export function useGmxPrice(chainId, libraries, active) {
   };
 }
 
-// use only the supply endpoint on arbitrum, it includes the supply on avalanche
+// use only the supply endpoint on arbitrum
 export function useTotalGmxSupply() {
   const gmxSupplyUrlArbitrum = getServerUrlNew(ARBITRUM, `/unip_supply?chain_id=${ARBITRUM}`);
   const { data: gmxSupply, mutate: updateGmxSupply } = useSWR([gmxSupplyUrlArbitrum], {
@@ -532,7 +532,6 @@ export function useTotalGmxStaked() {
 
 export function useTotalGmxInLiquidity() {
   let poolAddressArbitrum = getContract(ARBITRUM, "UniswapGmxEthPool");
-  //let poolAddressAvax = getContract(AVALANCHE, "TraderJoeGmxAvaxPool");
   let totalGMX = useRef(bigNumberify(0));
 
   const { data: gmxInLiquidityOnArbitrum, mutate: mutateGMXInLiquidityOnArbitrum } = useSWR<any>(

@@ -71,17 +71,12 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
           </div>
           <div className="Home-token-card-option-apr">
             <Trans>Arbitrum APR:</Trans> <APRLabel chainId={ARBITRUM} label="gmxAprTotal" />
-            {/*,{" "}*/}
-            {/*<Trans>Avalanche APR:</Trans> <APRLabel chainId={AVALANCHE} label="gmxAprTotal" key="AVALANCHE" />*/}
           </div>
           <div className="Home-token-card-option-action">
             <div className="buy">
               <BuyLink to="/buy_gmx" className="default-btn" network={ARBITRUM}>
                 <Trans>Buy on Arbitrum</Trans>
               </BuyLink>
-              {/*<BuyLink to="/buy_gmx" className="default-btn" network={AVALANCHE}>*/}
-              {/*  <Trans>Buy on Avalanche</Trans>*/}
-              {/*</BuyLink>*/}
             </div>
             <ExternalLink href="https://gmxio.gitbook.io/gmx/tokenomics" className="default-btn read-more">
               <Trans>Read more</Trans>

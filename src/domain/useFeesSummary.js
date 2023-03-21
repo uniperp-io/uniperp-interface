@@ -3,7 +3,6 @@ import { arrayURLFetcher } from "lib/legacy";
 import { ARBITRUM } from "config/chains";
 import { getServerUrlNew } from "config/backend";
 
-//const ACTIVE_CHAIN_IDS = [ARBITRUM, AVALANCHE];
 const ACTIVE_CHAIN_IDS = [ARBITRUM];
 
 export default function useFeesSummary() {
