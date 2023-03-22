@@ -15,6 +15,7 @@ import { BigNumber } from "ethers";
 import { bigNumberify, expandDecimals } from "lib/numbers";
 import { getTokens, getWhitelistedTokens } from "config/tokens";
 import { Web3Provider } from "@ethersproject/providers";
+import VauUilts from "abis/VaultUtils.json";
 
 export function useInfoTokens(
   library: Web3Provider,
@@ -30,7 +31,11 @@ export function useInfoTokens(
   const positionRouterAddress = getContract(chainId, "PositionRouter");
   const nativeTokenAddress = getContract(chainId, "NATIVE_TOKEN");
 
-  const whitelistedTokens = getWhitelistedTokens(chainId);
+  let whitelistedTokens = getWhitelistedTokens(chainId).map((t)=> {
+    t.isTradeable=true
+    return t
+  });
+
   const whitelistedTokenAddresses = whitelistedTokens.map((token) => token.address);
 
   const { data: vaultTokenInfo } = useSWR<BigNumber[], any>(
@@ -53,6 +58,32 @@ export function useInfoTokens(
     refreshInterval: 500,
     refreshWhenHidden: true,
   });
+
+
+  const vaultUtilAddress = getContract(chainId, "vaultUtils");
+  const { data: isCanTrades } = useSWR([active, chainId, vaultUtilAddress, "isTradableBatch"], {
+    fetcher: contractFetcher(library, VauUilts, [whitelistedTokenAddresses]),
+  });
+
+  let isCanTradesTmp:boolean[]
+  if (isCanTrades){
+    isCanTradesTmp= JSON.parse(JSON.stringify(isCanTrades));
+    whitelistedTokens = whitelistedTokens.map((t, i) => {
+      t.isTradeable = isCanTradesTmp[i]
+      return t
+    })
+
+    whitelistedTokens = whitelistedTokens.map((t) => {
+      if (t.symbol.toLowerCase() === "eth"){
+        for (let i = 0; i < whitelistedTokens.length; i++){
+          if(whitelistedTokens[i].symbol.toLowerCase() === "weth"){
+            t.isTradeable = whitelistedTokens[i].isTradeable;
+          }
+        }
+      }
+      return t
+    })
+  }
 
   return {
     infoTokens: getInfoTokens(

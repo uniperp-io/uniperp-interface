@@ -3,7 +3,7 @@ import { Menu } from "@headlessui/react";
 import { FaChevronDown } from "react-icons/fa";
 import cx from "classnames";
 import "./ChartTokenSelector.css";
-import { LONG, SHORT, SWAP } from "lib/legacy";
+import { LONG, SHORT, SWAP, importImage } from "lib/legacy";
 import { getTokens, getWhitelistedTokens } from "config/tokens";
 
 export default function ChartTokenSelector(props) {
@@ -31,6 +31,10 @@ export default function ChartTokenSelector(props) {
 
   var value = selectedToken;
 
+  const getTokenIcon = function(token){
+    return importImage("ic_" + token.symbol.toLowerCase() + "_40.svg");
+  }
+
   return (
     <Menu>
       <Menu.Button as="div" disabled={isSwap}>
@@ -43,17 +47,20 @@ export default function ChartTokenSelector(props) {
         <Menu.Items as="div" className="menu-items chart-token-menu-items">
           {options.map((option, index) => (
             <Menu.Item key={index}>
-              <div
-                className="menu-item"
-                onClick={() => {
-                  onSelect(option);
-                }}
-              >
-                <span style={{ marginLeft: 5 }} className="token-label">
-                  {option.symbol} / USD
-                </span>
-              </div>
-            </Menu.Item>
+                <div className="menu-item" onClick={() => {onSelect(option);}}>
+                  <img src={getTokenIcon(option)} alt={option.symbol} width="20" />
+                  <span style={{ marginLeft: 5 }} className="token-label">
+                    {option.symbol} / USD
+                  </span>
+
+                  {!option.isTradeable && (
+                      <span style={{ marginLeft: 5, color: "red", fontSize: "12px" }}>
+                        Market Closed
+                      </span>
+                    )
+                  }
+                </div>
+              </Menu.Item>
           ))}
         </Menu.Items>
       </div>

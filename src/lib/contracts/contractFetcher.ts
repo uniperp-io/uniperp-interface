@@ -19,7 +19,7 @@ export const contractFetcher =<T>(library: Web3Provider | undefined, contractInf
       additionalArgs,
     });
 
-    const debugMethod = 'minExecutionFee111'
+    const debugMethod = 'isTradableBatch00'
     if (method === debugMethod){
       console.log(arg0, arg1, method, params, additionalArgs,);
     }

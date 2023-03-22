@@ -138,7 +138,7 @@ export default function TokenSelector(props) {
                   <div className="Token-symbol">
                     <div className="Token-text">{token.symbol}</div>
                     <span className="text-accent">{token.name}</span>
-                    <span className="text-accent red">Market Close</span>
+                    {!token.isTradeable && <span className="text-accent red">Market Close</span>}
                   </div>
                 </div>
 

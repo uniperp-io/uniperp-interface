@@ -263,7 +263,7 @@ export default function SwapBox(props) {
 
   const whitelistedTokens = getWhitelistedTokens(chainId);
   const tokens = getTokens(chainId);
-  
+
   const fromTokens = tokens.filter((t) => {
     if(isSwap){
       return !t.isSynthetic
@@ -788,6 +788,16 @@ export default function SwapBox(props) {
       }
     }
 
+    const fromTokenInfo = getTokenInfo(infoTokens, fromTokenAddress);
+    if(!fromTokenInfo.isTradeable){
+      return [t`${fromTokenInfo.symbol} Market Closed`];
+    }
+
+    const toTokenInfo = getTokenInfo(infoTokens, toTokenAddress);
+    if(!toTokenInfo.isTradeable){
+      return [t`${toTokenInfo.symbol} Market Closed`];
+    }
+
     if (!fromAmount || fromAmount.eq(0)) {
       return [t`Enter an amount`];
     }
@@ -795,7 +805,6 @@ export default function SwapBox(props) {
       return [t`Enter an amount`];
     }
 
-    const fromTokenInfo = getTokenInfo(infoTokens, fromTokenAddress);
     if (!fromTokenInfo || !fromTokenInfo.minPrice) {
       return [t`Incorrect network`];
     }
@@ -808,8 +817,6 @@ export default function SwapBox(props) {
     ) {
       return [t`Insufficient ${fromTokenInfo.symbol} balance`];
     }
-
-    const toTokenInfo = getTokenInfo(infoTokens, toTokenAddress);
 
     if (!isMarketOrder) {
       if (!triggerRatioValue || triggerRatio.eq(0)) {
@@ -868,11 +875,20 @@ export default function SwapBox(props) {
       return [t`Page outdated, please refresh`];
     }
 
+    const fromTokenInfo = getTokenInfo(infoTokens, fromTokenAddress);
+    if(!fromTokenInfo.isTradeable){
+      return [t`${fromTokenInfo.symbol} Market Closed`];
+    }
+
+    let toTokenInfo = getTokenInfo(infoTokens, toTokenAddress);
+    if(!toTokenInfo.isTradeable){
+      return [t`${toTokenInfo.symbol} Market Closed`];
+    }
+
     if (!toAmount || toAmount.eq(0)) {
       return [t`Enter an amount`];
     }
 
-    let toTokenInfo = getTokenInfo(infoTokens, toTokenAddress);
     if (toTokenInfo && toTokenInfo.isStable) {
       const SWAP_OPTION_LABEL = {
         [LONG]: "Longing",
@@ -881,7 +897,6 @@ export default function SwapBox(props) {
       return [t`${SWAP_OPTION_LABEL[swapOption]} ${toTokenInfo.symbol} not supported`];
     }
 
-    const fromTokenInfo = getTokenInfo(infoTokens, fromTokenAddress);
     if (
       !savedShouldDisableValidationForTesting &&
       fromTokenInfo &&
