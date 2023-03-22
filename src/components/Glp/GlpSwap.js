@@ -63,7 +63,7 @@ function getStakingData(stakingInfo) {
     return;
   }
 
-  const keys = ["stakedGlpTracker", "feeGlpTracker"];
+  const keys = ["stakedUlpTracker", "feeUlpTracker"];
   const data = {};
   const propsLength = 5;
 
@@ -77,7 +77,6 @@ function getStakingData(stakingInfo) {
       totalSupply: stakingInfo[i * propsLength + 4],
     };
   }
-
   return data;
 }
 
@@ -291,14 +290,14 @@ export default function GlpSwap(props) {
   let feeGlpTrackerApr;
   if (
     stakingData &&
-    stakingData.feeGlpTracker &&
-    stakingData.feeGlpTracker.tokensPerInterval &&
+    stakingData.feeUlpTracker &&
+    stakingData.feeUlpTracker.tokensPerInterval &&
     nativeToken &&
     nativeToken.minPrice &&
     glpSupplyUsd &&
     glpSupplyUsd.gt(0)
   ) {
-    feeGlpTrackerAnnualRewardsUsd = stakingData.feeGlpTracker.tokensPerInterval
+    feeGlpTrackerAnnualRewardsUsd = stakingData.feeUlpTracker.tokensPerInterval
       .mul(SECONDS_PER_YEAR)
       .mul(nativeToken.minPrice)
       .div(expandDecimals(1, 18));
@@ -312,12 +311,12 @@ export default function GlpSwap(props) {
   if (
     gmxPrice &&
     stakingData &&
-    stakingData.stakedGlpTracker &&
-    stakingData.stakedGlpTracker.tokensPerInterval &&
+    stakingData.stakedUlpTracker &&
+    stakingData.stakedUlpTracker.tokensPerInterval &&
     glpSupplyUsd &&
     glpSupplyUsd.gt(0)
   ) {
-    stakedGlpTrackerAnnualRewardsUsd = stakingData.stakedGlpTracker.tokensPerInterval
+    stakedGlpTrackerAnnualRewardsUsd = stakingData.stakedUlpTracker.tokensPerInterval
       .mul(SECONDS_PER_YEAR)
       .mul(gmxPrice)
       .div(expandDecimals(1, 18));
