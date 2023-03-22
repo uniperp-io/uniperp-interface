@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
-
 import { BiChevronDown } from "react-icons/bi";
-
 import Modal from "../Modal/Modal";
-
 import dropDownIcon from "img/DROP_DOWN.svg";
 import "./TokenSelector.css";
 import TooltipWithPortal from "../Tooltip/TooltipWithPortal";
@@ -78,6 +75,20 @@ export default function TokenSelector(props) {
     enableSelect = !toTokenInfo.isSynthetic;
   }
 
+  const enableClick = () => {
+    if(props.label.toLowerCase() !== "short" && props.label.toLowerCase() !== "long"){
+      if(enableSelect){
+        setIsModalVisible(true)
+      }
+    }
+  }
+
+  const isShortAndLong = (props.label.toLowerCase() === "short" || props.label.toLowerCase() === "long")
+  let className = "TokenSelector-box"
+  if (!enableSelect || isShortAndLong){
+    className += " currorAuto"
+  }
+  console.log(className);
   return (
     <div className={cx("TokenSelector", { disabled }, props.className)}>
       <Modal
@@ -169,17 +180,13 @@ export default function TokenSelector(props) {
           {!showNewCaret && <BiChevronDown className="TokenSelector-caret" />}
         </div>
       ) : (
-        <div className="TokenSelector-box" onClick={()=>{
-          if(props.label.toLowerCase() !== "short" && props.label.toLowerCase() !== "long"){
-            if(enableSelect){
-              setIsModalVisible(true)
-            }
-          }
-        }}>
+        <div className={className} onClick={enableClick}>
           {tokenInfo.symbol}
           {showSymbolImage && <img src={tokenImage} alt={tokenInfo.symbol} className="TokenSelector-box-symbol" />}
           {showNewCaret && <img src={dropDownIcon} alt="Dropdown Icon" className="TokenSelector-box-caret" />}
-          {!showNewCaret && (props.label.toLowerCase() !== "short" && props.label.toLowerCase() !== "long") && enableSelect && <BiChevronDown className="TokenSelector-caret" />}
+          {isShortAndLong
+            ? (<></>)
+            : !showNewCaret && <BiChevronDown className="TokenSelector-caret" />}
         </div>
       )}
     </div>

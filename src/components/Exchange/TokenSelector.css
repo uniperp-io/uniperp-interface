@@ -144,6 +144,10 @@
   border: none;
 }
 
+.currorAuto{
+  cursor: auto;
+}
+
 @media (max-width: 700px) {
   .TokenSelector.right .Modal {
     align-items: center;
