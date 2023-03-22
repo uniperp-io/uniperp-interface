@@ -63,11 +63,11 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
     <div className="Home-token-card-options">
       <div className="Home-token-card-option">
         <div className="Home-token-card-option-icon">
-          <img src={gmxIcon} width="40" alt="GMX Icons" /> GMX
+          <img src={gmxIcon} width="40" alt="UNIP Icons" /> UNIP
         </div>
         <div className="Home-token-card-option-info">
           <div className="Home-token-card-option-title">
-            <Trans>GMX is the utility and governance token. Accrues 30% of the platform's generated fees.</Trans>
+            <Trans>UNIP is the utility and governance token. Accrues 30% of the platform's generated fees.</Trans>
           </div>
           <div className="Home-token-card-option-apr">
             <Trans>Arbitrum APR:</Trans> <APRLabel chainId={ARBITRUM} label="gmxAprTotal" />
@@ -86,25 +86,20 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
       </div>
       <div className="Home-token-card-option">
         <div className="Home-token-card-option-icon">
-          <img src={glpIcon} width="40" alt="GLP Icon" /> GLP
+          <img src={glpIcon} width="40" alt="GLP Icon" /> ULP
         </div>
         <div className="Home-token-card-option-info">
           <div className="Home-token-card-option-title">
-            <Trans>GLP is the liquidity provider token. Accrues 70% of the platform's generated fees.</Trans>
+            <Trans>ULP is the liquidity provider token. Accrues 70% of the platform's generated fees.</Trans>
           </div>
           <div className="Home-token-card-option-apr">
             <Trans>Arbitrum APR:</Trans> <APRLabel chainId={ARBITRUM} label="glpAprTotal" key="ARBITRUM" />
-            {/*,{" "}*/}
-            {/*<Trans>Avalanche APR:</Trans> <APRLabel chainId={AVALANCHE} label="glpAprTotal" key="AVALANCHE" />*/}
           </div>
           <div className="Home-token-card-option-action">
             <div className="buy">
-              <BuyLink to="/buy_glp" className="default-btn" network={ARBITRUM}>
+              <BuyLink to="/buy_ulp" className="default-btn" network={ARBITRUM}>
                 <Trans>Buy on Arbitrum</Trans>
               </BuyLink>
-              {/*<BuyLink to="/buy_glp" className="default-btn" network={AVALANCHE}>*/}
-              {/*  <Trans>Buy on Avalanche</Trans>*/}
-              {/*</BuyLink>*/}
             </div>
             <a
               href="https://gmxio.gitbook.io/gmx/glp"

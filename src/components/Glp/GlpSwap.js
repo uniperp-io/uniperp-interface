@@ -432,8 +432,8 @@ export default function GlpSwap(props) {
 
   const getError = () => {
     if (IS_NETWORK_DISABLED[chainId]) {
-      if (isBuying) return [t`GLP buy disabled, pending ${getChainName(chainId)} upgrade`];
-      return [t`GLP sell disabled, pending ${getChainName(chainId)} upgrade`];
+      if (isBuying) return [t`ULP buy disabled, pending ${getChainName(chainId)} upgrade`];
+      return [t`ULP sell disabled, pending ${getChainName(chainId)} upgrade`];
     }
 
     if (!isBuying && inCooldownWindow) {
@@ -470,7 +470,7 @@ export default function GlpSwap(props) {
 
     if (!isBuying) {
       if (maxSellAmount && glpAmount && glpAmount.gt(maxSellAmount)) {
-        return [t`Insufficient GLP balance`];
+        return [t`Insufficient ULP balance`];
       }
 
       const swapTokenInfo = getTokenInfo(infoTokens, swapTokenAddress);
@@ -564,7 +564,7 @@ export default function GlpSwap(props) {
     const minGlp = glpAmount.mul(BASIS_POINTS_DIVISOR - savedSlippageAmount).div(BASIS_POINTS_DIVISOR);
 
     const contract = new ethers.Contract(glpRewardRouterAddress, RewardRouter.abi, library.getSigner());
-    const method = swapTokenAddress === AddressZero ? "mintAndStakeGlpETH" : "mintAndStakeGlp";
+    const method = swapTokenAddress === AddressZero ? "mintAndStakeUlpETH" : "mintAndStakeUlp";
     const params = swapTokenAddress === AddressZero ? [0, minGlp] : [swapTokenAddress, swapAmount, 0, minGlp];
     const value = swapTokenAddress === AddressZero ? swapAmount : 0;
 
@@ -572,7 +572,7 @@ export default function GlpSwap(props) {
       value,
       sentMsg: t`Buy submitted.`,
       failMsg: t`Buy failed.`,
-      successMsg: t`${formatAmount(glpAmount, 18, 4, true)} GLP bought with ${formatAmount(
+      successMsg: t`${formatAmount(glpAmount, 18, 4, true)} ULP bought with ${formatAmount(
         swapAmount,
         swapTokenInfo.decimals,
         4,
@@ -592,14 +592,14 @@ export default function GlpSwap(props) {
     const minOut = swapAmount.mul(BASIS_POINTS_DIVISOR - savedSlippageAmount).div(BASIS_POINTS_DIVISOR);
 
     const contract = new ethers.Contract(glpRewardRouterAddress, RewardRouter.abi, library.getSigner());
-    const method = swapTokenAddress === AddressZero ? "unstakeAndRedeemGlpETH" : "unstakeAndRedeemGlp";
+    const method = swapTokenAddress === AddressZero ? "unstakeAndRedeemUlpETH" : "unstakeAndRedeemUlp";
     const params =
       swapTokenAddress === AddressZero ? [glpAmount, minOut, account] : [swapTokenAddress, glpAmount, minOut, account];
 
     callContract(chainId, contract, method, params, {
       sentMsg: t`Sell submitted!`,
       failMsg: t`Sell failed.`,
-      successMsg: t`${formatAmount(glpAmount, 18, 4, true)} GLP sold for ${formatAmount(
+      successMsg: t`${formatAmount(glpAmount, 18, 4, true)} ULP sold for ${formatAmount(
         swapAmount,
         swapTokenInfo.decimals,
         4,
@@ -673,7 +673,7 @@ export default function GlpSwap(props) {
   const nativeTokenSymbol = getNativeToken(chainId).symbol;
 
   const onSwapOptionChange = (opt) => {
-    if (opt === t`Sell GLP`) {
+    if (opt === t`Sell ULP`) {
       switchSwapOption("redeem");
     } else {
       switchSwapOption();
@@ -706,7 +706,7 @@ export default function GlpSwap(props) {
                 <div className="App-card-title-mark-subtitle">ULP</div>
               </div>
               <div>
-                <AssetDropdown assetSymbol="GLP" />
+                <AssetDropdown assetSymbol="ULP" />
               </div>
             </div>
           </div>
@@ -845,7 +845,7 @@ export default function GlpSwap(props) {
               onClickTopRightLabel={fillMaxAmount}
               onClickMax={fillMaxAmount}
               balance={payBalance}
-              defaultTokenName={"GLP"}
+              defaultTokenName={"ULP"}
             >
               <div className="selected-token">ULP</div>
             </BuyInputSection>
@@ -872,7 +872,7 @@ export default function GlpSwap(props) {
               inputValue={glpValue}
               onInputValueChange={onGlpValueChange}
               balance={receiveBalance}
-              defaultTokenName={"GLP"}
+              defaultTokenName={"ULP"}
             >
               <div className="selected-token">ULP</div>
             </BuyInputSection>
@@ -1254,7 +1254,7 @@ export default function GlpSwap(props) {
                       position="right-bottom"
                       renderContent={() => (
                         <Trans>
-                          Max pool capacity reached for {tokenInfo.symbol}. Please mint GLP using another token
+                          Max pool capacity reached for {tokenInfo.symbol}. Please mint ULP using another token
                         </Trans>
                       )}
                     />
@@ -1293,7 +1293,7 @@ export default function GlpSwap(props) {
                         className="label"
                         renderContent={() => (
                           <p className="text-white">
-                            <Trans>Available amount to deposit into GLP.</Trans>
+                            <Trans>Available amount to deposit into ULP.</Trans>
                           </p>
                         )}
                       />
@@ -1317,7 +1317,7 @@ export default function GlpSwap(props) {
                             return (
                               <p className="text-white">
                                 <Trans>
-                                  Available amount to withdraw from GLP. Funds not utilized by current open positions.
+                                  Available amount to withdraw from ULP. Funds not utilized by current open positions.
                                 </Trans>
                               </p>
                             );

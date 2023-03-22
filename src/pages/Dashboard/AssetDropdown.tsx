@@ -53,9 +53,8 @@ function AssetDropdown({ assetSymbol, assetInfo }: Props) {
             {active && unavailableTokenSymbols.indexOf(assetSymbol) < 0 && (
               <div
                 onClick={() => {
-                  let token = assetInfo
-                    ? { ...assetInfo, image: assetInfo.imageUrl }
-                    : PLATFORM_TOKENS[chainId][assetSymbol];
+                  let token = assetInfo ? { ...assetInfo, image: assetInfo.imageUrl } : PLATFORM_TOKENS[chainId][assetSymbol];
+                  console.log(assetInfo, PLATFORM_TOKENS[chainId], assetSymbol);
                   addTokenToMetamask(token);
                 }}
                 className="asset-item"

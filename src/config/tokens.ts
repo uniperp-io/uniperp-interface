@@ -393,16 +393,16 @@ export const ADDITIONAL_TOKENS: { [chainId: number]: Token[] } = {
 export const PLATFORM_TOKENS: { [chainId: number]: { [symbol: string]: Token } } = {
   [ARBITRUM]: {
     // arbitrum
-    GMX: {
-      name: "GMX",
-      symbol: "GMX",
+    UNIP: {
+      name: "UNIP",
+      symbol: "UNIP",
       decimals: 18,
       address: getContract(ARBITRUM, "GMX"),
       imageUrl: "https://assets.coingecko.com/coins/images/18323/small/arbit.png?1631532468",
     },
-    GLP: {
-      name: "GMX LP",
-      symbol: "GLP",
+    ULP: {
+      name: "UNIP LP",
+      symbol: "ULP",
       decimals: 18,
       address: getContract(ARBITRUM, "StakedGlpTracker"), // address of fsGLP token because user only holds fsGLP
       imageUrl: "https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/PNG/GLP_LOGO%20ONLY.png?raw=true",

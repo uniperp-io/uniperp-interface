@@ -107,7 +107,6 @@ function StakeModal(props) {
 
     setIsStaking(true);
     const contract = new ethers.Contract(rewardRouterAddress, RewardRouter.abi, library.getSigner());
-
     callContract(chainId, contract, stakeMethodName, [amount], {
       sentMsg: t`Stake submitted!`,
       failMsg: t`Stake failed.`,
@@ -915,7 +914,7 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
 
   const chainName = getChainName(chainId);
 
-  const hasInsurance = true;
+  const hasInsurance = false;
 
   const [isStakeModalVisible, setIsStakeModalVisible] = useState(false);
   const [stakeModalTitle, setStakeModalTitle] = useState("");
