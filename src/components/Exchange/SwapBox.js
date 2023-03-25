@@ -2187,11 +2187,11 @@ export default function SwapBox(props) {
               <div className="align-right">
                 {hasExistingPosition && toAmount && toAmount.gt(0) && (
                   <div className="inline-block muted">
-                    ${formatAmount(existingPosition.averagePrice, USD_DECIMALS, 2, true)}
+                    ${formatAmount(existingPosition.averagePrice, USD_DECIMALS, toToken.displayPricePrecision, true)}
                     <BsArrowRight className="transition-arrow" />
                   </div>
                 )}
-                {nextAveragePrice && `$${formatAmount(nextAveragePrice, USD_DECIMALS, 2, true)}`}
+                {nextAveragePrice && `$${formatAmount(nextAveragePrice, USD_DECIMALS, toToken.displayPricePrecision, true)}`}
                 {!nextAveragePrice && `-`}
               </div>
             </div>
@@ -2202,13 +2202,13 @@ export default function SwapBox(props) {
               <div className="align-right">
                 {hasExistingPosition && toAmount && toAmount.gt(0) && (
                   <div className="inline-block muted">
-                    ${formatAmount(existingLiquidationPrice, USD_DECIMALS, 2, true)}
+                    ${formatAmount(existingLiquidationPrice, USD_DECIMALS, toToken.displayPricePrecision, true)}
                     <BsArrowRight className="transition-arrow" />
                   </div>
                 )}
                 {toAmount &&
                   displayLiquidationPrice &&
-                  `$${formatAmount(displayLiquidationPrice, USD_DECIMALS, 2, true)}`}
+                  `$${formatAmount(displayLiquidationPrice, USD_DECIMALS, toToken.displayPricePrecision, true)}`}
                 {!toAmount && displayLiquidationPrice && `-`}
                 {!displayLiquidationPrice && `-`}
               </div>
@@ -2338,7 +2338,7 @@ export default function SwapBox(props) {
             </div>
             <div className="align-right">
               <Tooltip
-                handle={`$${formatAmount(entryMarkPrice, USD_DECIMALS, 2, true)}`}
+                handle={`$${formatAmount(entryMarkPrice, USD_DECIMALS, toToken.displayPricePrecision, true)}`}
                 position="right-bottom"
                 renderContent={() => {
                   return (
@@ -2368,7 +2368,7 @@ export default function SwapBox(props) {
             </div>
             <div className="align-right">
               <Tooltip
-                handle={`$${formatAmount(exitMarkPrice, USD_DECIMALS, 2, true)}`}
+                handle={`$${formatAmount(exitMarkPrice, USD_DECIMALS, toToken.displayPricePrecision, true)}`}
                 position="right-bottom"
                 renderContent={() => {
                   return (

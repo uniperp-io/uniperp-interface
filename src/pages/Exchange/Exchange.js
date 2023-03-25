@@ -529,7 +529,7 @@ export const Exchange = forwardRef((props, ref) => {
     const fromToken = getTokenInfo(infoTokens, fromTokenAddress);
     const toToken = getTokenInfo(infoTokens, toTokenAddress);
     let selectedToken = getChartToken(swapOption, fromToken, toToken, chainId);
-    let currentTokenPriceStr = formatAmount(selectedToken.maxPrice, USD_DECIMALS, 2, true);
+    let currentTokenPriceStr = formatAmount(selectedToken.maxPrice, USD_DECIMALS, selectedToken.displayPricePrecision, true);
     let title = getPageTitle(currentTokenPriceStr + ` | ${selectedToken.symbol}${selectedToken.isStable ? "" : "USD"}`);
     document.title = title;
   }, [tokenSelection, swapOption, infoTokens, chainId, fromTokenAddress, toTokenAddress]);

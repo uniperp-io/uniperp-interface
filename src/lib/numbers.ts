@@ -68,7 +68,7 @@ export const formatAmount = (
     return defaultValue;
   }
   if (displayDecimals === undefined) {
-    displayDecimals = 4;
+    displayDecimals = 2;
   }
   let amountStr = ethers.utils.formatUnits(amount, tokenDecimals);
   amountStr = limitDecimals(amountStr, displayDecimals);

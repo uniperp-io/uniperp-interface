@@ -220,6 +220,7 @@ export default function PositionsList(props) {
           isContractAccount={isContractAccount}
         />
       )}
+
       {positions && (
         <div className="Exchange-list small">
           <div>
@@ -652,13 +653,13 @@ export default function PositionsList(props) {
                   </div>
                 </td>
                 <td className="clickable" onClick={() => onPositionClick(position)}>
-                  ${formatAmount(position.averagePrice, USD_DECIMALS, 2, true)}
+                  ${formatAmount(position.averagePrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
                 </td>
                 <td className="clickable" onClick={() => onPositionClick(position)}>
-                  ${formatAmount(position.markPrice, USD_DECIMALS, 2, true)}
+                  ${formatAmount(position.markPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
                 </td>
                 <td className="clickable" onClick={() => onPositionClick(position)}>
-                  ${formatAmount(liquidationPrice, USD_DECIMALS, 2, true)}
+                  ${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
                 </td>
 
                 <td>

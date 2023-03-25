@@ -1023,13 +1023,13 @@ export default function PositionSeller(props) {
               <div className="Exchange-info-label">
                 <Trans>Mark Price</Trans>
               </div>
-              <div className="align-right">${formatAmount(position.markPrice, USD_DECIMALS, 2, true)}</div>
+              <div className="align-right">${formatAmount(position.markPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</div>
             </div>
             <div className="Exchange-info-row">
               <div className="Exchange-info-label">
                 <Trans>Entry Price</Trans>
               </div>
-              <div className="align-right">${formatAmount(position.averagePrice, USD_DECIMALS, 2, true)}</div>
+              <div className="align-right">${formatAmount(position.averagePrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</div>
             </div>
             <div className="Exchange-info-row">
               <div className="Exchange-info-label">
@@ -1040,15 +1040,15 @@ export default function PositionSeller(props) {
                 {(!isClosing || orderOption === STOP) && (
                   <div>
                     {(!nextLiquidationPrice || nextLiquidationPrice.eq(liquidationPrice)) && (
-                      <div>{`$${formatAmount(liquidationPrice, USD_DECIMALS, 2, true)}`}</div>
+                      <div>{`$${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}`}</div>
                     )}
                     {nextLiquidationPrice && !nextLiquidationPrice.eq(liquidationPrice) && (
                       <div>
                         <div className="inline-block muted">
-                          ${formatAmount(liquidationPrice, USD_DECIMALS, 2, true)}
+                          ${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
                           <BsArrowRight className="transition-arrow" />
                         </div>
-                        ${formatAmount(nextLiquidationPrice, USD_DECIMALS, 2, true)}
+                        ${formatAmount(nextLiquidationPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
                       </div>
                     )}
                   </div>

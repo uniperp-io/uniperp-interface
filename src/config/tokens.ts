@@ -218,6 +218,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isShortable: true,
       isSynthetic: true,
       imageUrl: "https://assets.coingecko.com/coins/images/25971/small/2023jpyc.png?1675935375",
+      displayPricePrecision:4,
     },
     {
       name: "USD Coin",

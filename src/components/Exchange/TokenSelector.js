@@ -88,7 +88,7 @@ export default function TokenSelector(props) {
   if (!enableSelect || isShortAndLong){
     className += " currorAuto"
   }
-  console.log(className);
+
   return (
     <div className={cx("TokenSelector", { disabled }, props.className)}>
       <Modal
