@@ -1,0 +1,113 @@
+.tc{
+  text-align: center;
+}
+
+.logo{
+  margin-top: 8rem;
+  width: 18rem;
+}
+
+h1{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.card{
+  width: 100%;
+  text-align: center;
+}
+
+.deposited_usdc button{
+  border-radius: 1rem 1rem;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1.5rem;
+  border: none;
+  font-size: var(--font-sm);
+  width: 100%;
+  background-color: rgb(255, 177, 26);
+}
+
+.coininfo{
+  font-size: 6rem;
+  padding: 2rem 0;
+}
+
+.button_group{
+  text-align: center;
+  width: 100%;
+}
+
+.button_group .left,.button_group .right{
+  width: 48%;
+  display: inline-block;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem 2rem;
+  border-radius: 10px 10px;
+}
+
+.button_group .left{
+  margin-right: 2rem;
+}
+
+.information{
+  text-align: left;
+  padding-left: 2.5rem;
+}
+
+.information h1{
+  margin-bottom: 1rem;
+}
+
+.button_group button{
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .logo{
+    margin-top: 5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1{
+    padding: 3rem 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .coininfo{
+    font-size: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .ido_process{
+    padding: 2rem 0;
+    font-weight: bold;
+  }
+
+  .claim,.deposited_usdc{
+    text-align: center;
+    padding: 2rem 2rem;
+  }
+  .claim button,.deposited_usdc button{
+    margin-top: 2rem;
+  }
+
+  .information{
+    padding: 0 1rem;
+  }
+
+  .information h1{
+    padding-bottom: 0.1rem;
+  }
+}
