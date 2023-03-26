@@ -29,7 +29,7 @@ export function AppHeaderLinks({
       {small && (
         <div className="App-header-links-header">
           <Link className="App-header-link-main" to="/">
-            <img src={logoImg} alt="GMX Logo" />
+            <img src={logoImg} alt="UNIP Logo" />
           </Link>
           <div
             className="App-header-menu-icon-block mobile-cross-menu"
@@ -51,6 +51,11 @@ export function AppHeaderLinks({
       <div className="App-header-link-container">
         <HeaderLink to="/earn" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
           <Trans>Earn</Trans>
+        </HeaderLink>
+      </div>
+      <div className="App-header-link-container">
+        <HeaderLink to="/hyper" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
+          <Trans>HyperUlp</Trans>
         </HeaderLink>
       </div>
       <div className="App-header-link-container">
@@ -76,6 +81,11 @@ export function AppHeaderLinks({
       {/*    <Trans>Ecosystem</Trans>*/}
       {/*  </HeaderLink>*/}
       {/*</div>*/}
+      <div className="App-header-link-container">
+        <HeaderLink to="/presale" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
+          <Trans>Presale</Trans>
+        </HeaderLink>
+      </div>
       <div className="App-header-link-container">
         <ExternalLink href="https://gmxio.gitbook.io/gmx/">
           <Trans>Docs</Trans>

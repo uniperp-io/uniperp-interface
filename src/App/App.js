@@ -98,6 +98,8 @@ import {
 import { useChainId } from "lib/chains";
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import { isDevelopment } from "config/env";
+import Presale from "pages/Presale/Presale";
+import Hyper from "pages/Hyper/Hyper";
 
 if ("ethereum" in window) {
   window.ethereum.autoRefreshOnNetworkChange = false;
@@ -526,6 +528,12 @@ function FullApp() {
               </Route>
               <Route exact path="/begin_account_transfer">
                 <BeginAccountTransfer setPendingTxns={setPendingTxns} />
+              </Route>
+              <Route exact path="/presale">
+                <Presale/>
+              </Route>
+              <Route exact path="/hyper">
+                <Hyper/>
               </Route>
               <Route exact path="/complete_account_transfer/:sender/:receiver">
                 <CompleteAccountTransfer setPendingTxns={setPendingTxns} />
