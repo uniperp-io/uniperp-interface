@@ -123,7 +123,8 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
               <div className="Home-latest-info__title">
                 <Trans>Open Interest</Trans>
               </div>
-              <div className="Home-latest-info__value">${formatAmount(openInterest, USD_DECIMALS, 0, true)}</div>
+              {/*<div className="Home-latest-info__value">${formatAmount(openInterest, USD_DECIMALS, 0, true)}</div>*/}
+              <div className="Home-latest-info__value">$0</div>
             </div>
           </div>
           <div className="Home-latest-info-block">
@@ -132,7 +133,8 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
               <div className="Home-latest-info__title">
                 <Trans>Total Users</Trans>
               </div>
-              <div className="Home-latest-info__value">{numberWithCommas(totalUsers.toFixed(0))}</div>
+              {/*<div className="Home-latest-info__value">{numberWithCommas(totalUsers.toFixed(0))}</div>*/}
+              <div className="Home-latest-info__value">0</div>
             </div>
           </div>
         </div>
@@ -190,7 +192,7 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
               <Trans>Available on your preferred network</Trans>
             </div>
             <div className="Home-cta-info__description">
-              <Trans>GMX is currently live on Arbitrum and Avalanche.</Trans>
+              <Trans>UNIP is currently live on Arbitrum and Avalanche.</Trans>
             </div>
           </div>
           <div className="Home-cta-options">
@@ -200,17 +202,6 @@ export default function Home({ showRedirectModal, redirectPopupTimestamp }) {
               </div>
               <div className="Home-cta-option-info">
                 <div className="Home-cta-option-title">Arbitrum</div>
-                <div className="Home-cta-option-action">
-                  <LaunchExchangeButton />
-                </div>
-              </div>
-            </div>
-            <div className="Home-cta-option Home-cta-option-ava">
-              <div className="Home-cta-option-icon">
-                <img src={avaxIcon} width="96" alt="Avalanche Icon" />
-              </div>
-              <div className="Home-cta-option-info">
-                <div className="Home-cta-option-title">Avalanche</div>
                 <div className="Home-cta-option-action">
                   <LaunchExchangeButton />
                 </div>
