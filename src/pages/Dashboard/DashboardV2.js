@@ -48,6 +48,7 @@ import { formatDate } from "lib/dates";
 import { getIcons } from "config/icons";
 import SyntheticTable from "./SyntheticTable"
 import MobileShow from "./MobileShow";
+import gmxIcon from "img/logo_800.png";
 
 const ACTIVE_CHAIN_IDS = [ARBITRUM];
 
@@ -133,6 +134,7 @@ export default function DashboardV2() {
 
   const chainName = getChainName(chainId);
   const currentIcons = getIcons(chainId);
+
 
   const { data: positionStats } = useSWR(
     ACTIVE_CHAIN_IDS.map((chainId) => getServerUrlNew(chainId, `/position_stats?chain_id=${chainId}`)),
@@ -720,7 +722,7 @@ export default function DashboardV2() {
                   <div className="App-card-title">
                     <div className="App-card-title-mark">
                       <div className="App-card-title-mark-icon">
-                        <img src={currentIcons.gmx} width="40" alt="GMX Token Icon" />
+                        <img src={gmxIcon} width="40" alt="UINP Token Icon" />
                       </div>
                       <div className="App-card-title-mark-info">
                         <div className="App-card-title-mark-title">UNIP</div>

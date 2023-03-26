@@ -1,5 +1,5 @@
 import { FiX } from "react-icons/fi";
-import logoImg from "img/logo_GMX.svg";
+import logoImg from "img/logo_GMX.png";
 import { t } from "@lingui/macro";
 
 import "./Header.css";
