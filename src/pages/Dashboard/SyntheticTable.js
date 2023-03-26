@@ -2,11 +2,10 @@ import { Trans, t } from "@lingui/macro";
 import StatsTooltipRow from "components/StatsTooltip/StatsTooltipRow";
 import { BASIS_POINTS_DIVISOR, DEFAULT_MAX_USDG_AMOUNT, importImage, USD_DECIMALS } from "lib/legacy";
 import { bigNumberify, formatAmount, formatKeyAmount } from "lib/numbers";
-import AssetDropdown from "./AssetDropdown";
 import TooltipComponent from "components/Tooltip/Tooltip";
 import "./DashboardV2.css";
 
-export default function SyntheticTable({currentIcons,visibleTokens,infoTokens,getWeightText}) {
+export default function SyntheticTable({visibleTokens,infoTokens,getWeightText}) {
     return (
         <div className="token-table-wrapper App-card mt20">
               <div className="App-card-title">
@@ -26,10 +25,10 @@ export default function SyntheticTable({currentIcons,visibleTokens,infoTokens,ge
                       <Trans>POOL</Trans>
                     </th>
                     <th>
-                      <Trans>WEIGHT</Trans>
+                      <Trans>USDC ASSET OCCUPANCY</Trans>
                     </th>
                     <th>
-                      <Trans>UTILIZATION</Trans>
+                      <Trans>USDC PROPORTION</Trans>
                     </th>
                   </tr>
                 </thead>
@@ -61,7 +60,7 @@ export default function SyntheticTable({currentIcons,visibleTokens,infoTokens,ge
                             </div>
                           </div>
                         </td>
-                        <td>${formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, 2, true)}</td>
+                        <td>${formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, true)}</td>
                         <td>
                           <TooltipComponent
                             handle={`$${formatKeyAmount(tokenInfo, "managedUsd", USD_DECIMALS, 0, true)}`}

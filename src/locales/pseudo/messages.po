@@ -3917,7 +3917,7 @@ msgid "{0} GLP (${1})"
 msgstr ""
 
 #: src/components/Glp/GlpSwap.js
-msgid "{0} GLP bought with {1} {2}!"
+msgid "{0} ULP bought with {1} {2}!"
 msgstr ""
 
 #: src/components/Glp/GlpSwap.js
