@@ -1,8 +1,11 @@
 import "./Hyper.css"
+import SEO from "components/Common/SEO";
+import { getPageTitle} from "lib/legacy";
 
 export default function Hyper() {
   return (
-    <div className="main_body">
+    <SEO title={getPageTitle("Uniperp")}>
+      <div className="main_body">
       <div>
         <h1>Hyper ULP Rewards</h1>
         <h3>Earn high APR bonus rewards for minting early</h3>
@@ -187,5 +190,6 @@ export default function Hyper() {
         </div>
       </div>
     </div>
+    </SEO>
   )
 }

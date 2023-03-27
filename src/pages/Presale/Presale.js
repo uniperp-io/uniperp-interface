@@ -1,4 +1,4 @@
-import logoImg from "img/logo_GMX.png";
+import logoImg from "img/logo_long.png";
 import React from "react";
 import "./Presale.css"
 
