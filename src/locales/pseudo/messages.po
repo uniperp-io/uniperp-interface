@@ -1386,10 +1386,6 @@ msgstr ""
 msgid "GMX fundamentals"
 msgstr ""
 
-#: src/pages/Home/Home.js
-msgid "GMX is currently live on Arbitrum and Avalanche."
-msgstr ""
-
 #: src/pages/Jobs/Jobs.js
 msgid "GMX is not actively looking for new hires at the moment. However, if you think you can contribute to the project, please email <0>jobs@gmx.io</0>."
 msgstr ""
@@ -3394,6 +3390,10 @@ msgstr ""
 msgid "UNIP Vault"
 msgstr ""
 
+#: src/pages/Home/Home.js
+msgid "UNIP is currently live on Arbitrum and Avalanche."
+msgstr ""
+
 #: src/components/TokenCard/TokenCard.js
 msgid "UNIP is the utility and governance token. Accrues 30% of the platform's generated fees."
 msgstr ""
@@ -3727,7 +3727,7 @@ msgid "You are earning {nativeTokenSymbol} rewards with {0} tokens.<0/>Tokens: {
 msgstr ""
 
 #: src/components/ModalViews/RedirectModal.js
-msgid "You are leaving GMX.io and will be redirected to a third party, independent website."
+msgid "You are leaving uniperp.io and will be redirected to a third party, independent website."
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js

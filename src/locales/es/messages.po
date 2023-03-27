@@ -1386,10 +1386,6 @@ msgstr "Explorador de GMX para estadísticas y traders"
 msgid "GMX fundamentals"
 msgstr "Fundamentales de GMX"
 
-#: src/pages/Home/Home.js
-msgid "GMX is currently live on Arbitrum and Avalanche."
-msgstr "GMX esta actualmente en vivo en Arbitrum y Avalanche."
-
 #: src/pages/Jobs/Jobs.js
 msgid "GMX is not actively looking for new hires at the moment. However, if you think you can contribute to the project, please email <0>jobs@gmx.io</0>."
 msgstr "GMX no se encuentra contratando en este momento. Sin embargo, si crees que puedes contribuir al proyecto, manda un email por favor <0>jobs@gmx.io</0>."
@@ -3069,7 +3065,7 @@ msgstr ""
 
 #: src/components/ModalViews/RedirectModal.js
 msgid "The website is a community deployed and maintained instance of the open source <0>UNIP front end</0>, hosted and served on the distributed, peer-to-peer <1>IPFS network</1>."
-msgstr "La página web es una instancia desplegada y mantenida del código abierto <0>Interfaz de GMX</0>, alojado y recibiendo servicio de la distribuida, de usuario a usuario <1>red IPFS</1>."
+msgstr ""
 
 #: src/components/Exchange/SwapBox.js
 msgid "There are more longs than shorts, borrow fees for shorting is currently zero"
@@ -3395,6 +3391,10 @@ msgstr ""
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 msgid "UNIP Vault"
+msgstr ""
+
+#: src/pages/Home/Home.js
+msgid "UNIP is currently live on Arbitrum and Avalanche."
 msgstr ""
 
 #: src/components/TokenCard/TokenCard.js
@@ -3730,7 +3730,7 @@ msgid "You are earning {nativeTokenSymbol} rewards with {0} tokens.<0/>Tokens: {
 msgstr "Estás ganando {nativeTokenSymbol} recompensas con {0} tokens.<0/>Tokens: {amountStr}."
 
 #: src/components/ModalViews/RedirectModal.js
-msgid "You are leaving GMX.io and will be redirected to a third party, independent website."
+msgid "You are leaving uniperp.io and will be redirected to a third party, independent website."
 msgstr "Estas dejando GMX.io y serás redirigido a una página independiente y gestionada por terceras partes."
 
 #: src/components/Exchange/SwapBox.js

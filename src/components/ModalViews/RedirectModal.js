@@ -25,12 +25,12 @@ export function RedirectPopupModal({
       setIsVisible={setRedirectModalVisible}
       label={t`Launch App`}
     >
-      <Trans>You are leaving GMX.io and will be redirected to a third party, independent website.</Trans>
+      <Trans>You are leaving uniperp.io and will be redirected to a third party, independent website.</Trans>
       <br />
       <br />
       <Trans>
         The website is a community deployed and maintained instance of the open source{" "}
-        <ExternalLink href="https://github.com/gmx-io/gmx-interface">GMX front end</ExternalLink>, hosted and served on
+        <ExternalLink href="https://github.com/uniperp-io/uniperp-interface">UNIP front end</ExternalLink>, hosted and served on
         the distributed, peer-to-peer <ExternalLink href="https://ipfs.io/">IPFS network</ExternalLink>.
       </Trans>
       <br />
@@ -40,10 +40,10 @@ export function RedirectPopupModal({
         <ExternalLink href="https://gmxio.gitbook.io/gmx/app-links">docs</ExternalLink>.
         <br />
         <br />
-        By clicking Agree you accept the <ExternalLink href="https://gmx.io/#/terms-and-conditions">
+        By clicking Agree you accept the <ExternalLink href="https://uniperp.io/#/terms-and-conditions">
           T&Cs
         </ExternalLink>{" "}
-        and <ExternalLink href="https://gmx.io/#/referral-terms">Referral T&Cs</ExternalLink>.
+        and <ExternalLink href="https://uniperp.io/#/referral-terms">Referral T&Cs</ExternalLink>.
         <br />
         <br />
       </Trans>

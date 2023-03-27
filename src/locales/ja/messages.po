@@ -1386,10 +1386,6 @@ msgstr "統計とトレーダー情報のためのGMXエクスプローラー"
 msgid "GMX fundamentals"
 msgstr "GMXの基本"
 
-#: src/pages/Home/Home.js
-msgid "GMX is currently live on Arbitrum and Avalanche."
-msgstr "GMXは現在ArbitrumとAvalancheで稼働中です。"
-
 #: src/pages/Jobs/Jobs.js
 msgid "GMX is not actively looking for new hires at the moment. However, if you think you can contribute to the project, please email <0>jobs@gmx.io</0>."
 msgstr "GMXは現在積極的には求人を行っていませんが、プロジェクトに貢献できると思われる方は、<0>jobs@gmx.io</0>にメールをしてください。"
@@ -3069,7 +3065,7 @@ msgstr "スプレッドが1%を超えています。このトレードの詳細�
 
 #: src/components/ModalViews/RedirectModal.js
 msgid "The website is a community deployed and maintained instance of the open source <0>UNIP front end</0>, hosted and served on the distributed, peer-to-peer <1>IPFS network</1>."
-msgstr "ウェブサイトはオープンソースの<0>GMXフロントエンド</0>を利用してコミュニティが設置し維持しているものであり、P2Pの<1>IPFSネットワーク</1>上にホストされ提供されています。"
+msgstr ""
 
 #: src/components/Exchange/SwapBox.js
 msgid "There are more longs than shorts, borrow fees for shorting is currently zero"
@@ -3395,6 +3391,10 @@ msgstr ""
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 msgid "UNIP Vault"
+msgstr ""
+
+#: src/pages/Home/Home.js
+msgid "UNIP is currently live on Arbitrum and Avalanche."
 msgstr ""
 
 #: src/components/TokenCard/TokenCard.js
@@ -3730,7 +3730,7 @@ msgid "You are earning {nativeTokenSymbol} rewards with {0} tokens.<0/>Tokens: {
 msgstr "あなたは{nativeTokenSymbol}報酬を{0}トークンで稼いでいます。<0/>トークン: {amountStr}."
 
 #: src/components/ModalViews/RedirectModal.js
-msgid "You are leaving GMX.io and will be redirected to a third party, independent website."
+msgid "You are leaving uniperp.io and will be redirected to a third party, independent website."
 msgstr "あなたはGMX.ioを離れ、第三者の別のウェブサイトへ転送されます。"
 
 #: src/components/Exchange/SwapBox.js

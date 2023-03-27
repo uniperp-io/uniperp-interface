@@ -1386,10 +1386,6 @@ msgstr "Проводник GMX для статистики и трейдеров
 msgid "GMX fundamentals"
 msgstr "Фундаментальные показатели GMX"
 
-#: src/pages/Home/Home.js
-msgid "GMX is currently live on Arbitrum and Avalanche."
-msgstr "В настоящее время GMX работает на Arbitrum и Avalanche."
-
 #: src/pages/Jobs/Jobs.js
 msgid "GMX is not actively looking for new hires at the moment. However, if you think you can contribute to the project, please email <0>jobs@gmx.io</0>."
 msgstr "В настоящее время GMX не ведет активного поиска новых сотрудников. Однако, если вы считаете, что можете внести свой вклад в проект, пожалуйста, напишите <0>jobs@gmx.io</0>."
@@ -3069,7 +3065,7 @@ msgstr ""
 
 #: src/components/ModalViews/RedirectModal.js
 msgid "The website is a community deployed and maintained instance of the open source <0>UNIP front end</0>, hosted and served on the distributed, peer-to-peer <1>IPFS network</1>."
-msgstr "Сайт представляет собой развернутый и поддерживаемый сообществом экземпляр открытого источника <0>GMX фронт-энда</0>, размещенный и обслуживаемый в распределенной, peer-to-peer <1>IPFS сети</1>."
+msgstr ""
 
 #: src/components/Exchange/SwapBox.js
 msgid "There are more longs than shorts, borrow fees for shorting is currently zero"
@@ -3395,6 +3391,10 @@ msgstr ""
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 msgid "UNIP Vault"
+msgstr ""
+
+#: src/pages/Home/Home.js
+msgid "UNIP is currently live on Arbitrum and Avalanche."
 msgstr ""
 
 #: src/components/TokenCard/TokenCard.js
@@ -3730,7 +3730,7 @@ msgid "You are earning {nativeTokenSymbol} rewards with {0} tokens.<0/>Tokens: {
 msgstr "Вы зарабатываете {nativeTokenSymbol} вознаграждения с {0} токенами.<0/> Токены: {amountStr}."
 
 #: src/components/ModalViews/RedirectModal.js
-msgid "You are leaving GMX.io and will be redirected to a third party, independent website."
+msgid "You are leaving uniperp.io and will be redirected to a third party, independent website."
 msgstr "Вы покидаете сайт GMX.io и будете перенаправлены на сторонний, независимый сайт."
 
 #: src/components/Exchange/SwapBox.js

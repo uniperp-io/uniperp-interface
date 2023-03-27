@@ -1386,10 +1386,6 @@ msgstr "GMX-Explorer für Statistiken und Trader"
 msgid "GMX fundamentals"
 msgstr "GMX-Grundlagen"
 
-#: src/pages/Home/Home.js
-msgid "GMX is currently live on Arbitrum and Avalanche."
-msgstr "GMX ist derzeit auf Arbitrum und Avalanche verfügbar."
-
 #: src/pages/Jobs/Jobs.js
 msgid "GMX is not actively looking for new hires at the moment. However, if you think you can contribute to the project, please email <0>jobs@gmx.io</0>."
 msgstr "GMX sucht im Moment nicht aktiv nach neuen Mitarbeitern. Wenn du jedoch der Meinung bist, dass du zu dem Projekt beitragen kannst, sende bitte eine E-Mail an <0>jobs@gmx.io</0>."
@@ -3069,7 +3065,7 @@ msgstr "Der Spread ist > 1%, bitte stelle sicher, dass die Handelsdetails akzept
 
 #: src/components/ModalViews/RedirectModal.js
 msgid "The website is a community deployed and maintained instance of the open source <0>UNIP front end</0>, hosted and served on the distributed, peer-to-peer <1>IPFS network</1>."
-msgstr "Die Website ist eine von der Community betriebene und gewartete Instanz des open-source <0>GMX-Frontends</0>, das im verteilten Peer-to-Peer-Netzwerk <1>IPFS</1> gehostet und bereitgestellt wird."
+msgstr ""
 
 #: src/components/Exchange/SwapBox.js
 msgid "There are more longs than shorts, borrow fees for shorting is currently zero"
@@ -3395,6 +3391,10 @@ msgstr ""
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
 msgid "UNIP Vault"
+msgstr ""
+
+#: src/pages/Home/Home.js
+msgid "UNIP is currently live on Arbitrum and Avalanche."
 msgstr ""
 
 #: src/components/TokenCard/TokenCard.js
@@ -3730,7 +3730,7 @@ msgid "You are earning {nativeTokenSymbol} rewards with {0} tokens.<0/>Tokens: {
 msgstr "Du verdienst {0}% mehr {nativeTokenSymbol} Rewards mit {1} gestaketen Multiplikatorpunkten."
 
 #: src/components/ModalViews/RedirectModal.js
-msgid "You are leaving GMX.io and will be redirected to a third party, independent website."
+msgid "You are leaving uniperp.io and will be redirected to a third party, independent website."
 msgstr "Du verlässt GMX.io und wirst  auf eine unabhängige Website eines Drittanbieters weitergeleitet."
 
 #: src/components/Exchange/SwapBox.js
