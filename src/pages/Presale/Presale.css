@@ -2,9 +2,67 @@
   text-align: center;
 }
 
+.presale input{
+  color: #ffffff;
+  border-radius: 20px 20px;
+  background-color: #372F47;
+  vertical-align: middle;
+  margin-right: 1rem;
+}
+
+.presale .big_input{
+  background-color: #012848;
+  padding: 1rem 1rem;
+  border-radius: 10px 10px;
+}
+
+.presale .big_input .left,.presale .big_input .right{
+  display: inline-block;
+  width: 50%;
+  margin-bottom: 1rem;
+}
+
+.presale .big_input .left{
+  text-align: left;
+}
+.presale .big_input .right{
+  text-align: right;
+}
+
+
 .presale .logo{
-  margin-top: 8rem;
-  width: 18rem;
+  margin-top: 6rem;
+  width: 38rem;
+}
+
+.presale .input button, .presale .btn_group button{
+  border-radius: 1rem 1rem;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1.2rem;
+  border: none;
+  width: 8rem;
+  background-color: rgb(255, 177, 26);
+  margin-right: 1rem;
+  font-size: 1.8rem;
+  vertical-align: middle;
+}
+
+.presale .btn_group{
+  margin-top: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.presale .btn_group button{
+  width: 10rem;
+}
+
+.presale .btn_group button:last-child{
+  margin-left: 2rem;
 }
 
 h1{
@@ -18,7 +76,7 @@ h1{
 }
 
 .deposited_usdc button{
-  border-radius: 1rem 1rem;
+  border-radius: 5px 5px;
   color: white;
   text-decoration: none;
   text-align: center;
@@ -67,8 +125,13 @@ h1{
   margin-top: 2rem;
 }
 
+.presale .deposited_usdc button,.presale .deposited_usdc button:hover, .presale .btn_group button, .presale .btn_group button:hover{
+  background: #FFB11A;
+}
+
 @media (max-width: 900px) {
-  .logo{
+  .presale .logo{
+    width: 30rem;
     margin-top: 5rem;
     display: block;
     margin-left: auto;
@@ -76,7 +139,7 @@ h1{
   }
 
   h1{
-    padding: 3rem 2rem;
+    padding: 0 2rem;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -109,5 +172,17 @@ h1{
 
   .information h1{
     padding-bottom: 0.1rem;
+  }
+
+  .presale input{
+    width: 15rem;
+  }
+  .presale .Modal{
+    top: -10%;
+  }
+  .button_group .left, .button_group .right{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
