@@ -3,6 +3,10 @@ import React from "react";
 import "./Presale.css"
 
 export default function Presale(){
+  function DepositedUSDC(){
+
+  }
+
   return(
     <div>
       <div className="card">
@@ -34,7 +38,7 @@ export default function Presale(){
           <h3>Invest USDC</h3>
           <div>Your balance: <span>0.00</span></div>
           <div>Deposited: <span>0</span></div>
-          <button className="primary-btn">Deposited USDC</button>
+          <button className="primary-btn" onClick={DepositedUSDC}>Deposited USDC</button>
         </div>
       </div>
 

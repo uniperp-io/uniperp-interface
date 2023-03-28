@@ -350,7 +350,7 @@ export default function SwapBox(props) {
         </div>
         <div className="align-right">
           <Tooltip
-            handle={`$${formatAmount(toTokenInfo.maxAvailableLong, USD_DECIMALS, 2, true)}`}
+            handle={`$${formatAmount(toTokenInfo.maxAvailableLong, USD_DECIMALS, toTokenInfo.displayPricePrecision, true)}`}
             position="right-bottom"
             renderContent={() => {
               return (
@@ -2058,10 +2058,10 @@ export default function SwapBox(props) {
               <div
                 className="muted align-right clickable"
                 onClick={() => {
-                  setTriggerPriceValue(formatAmountFree(entryMarkPrice, USD_DECIMALS, 2));
+                  setTriggerPriceValue(formatAmountFree(entryMarkPrice, USD_DECIMALS, toTokenInfo.displayPricePrecision));
                 }}
               >
-                <Trans>Mark: {formatAmount(entryMarkPrice, USD_DECIMALS, 2, true)}</Trans>
+                <Trans>Mark: {formatAmount(entryMarkPrice, USD_DECIMALS, toTokenInfo.displayPricePrecision, true)}</Trans>
               </div>
             </div>
             <div className="Exchange-swap-section-bottom">
@@ -2375,7 +2375,7 @@ export default function SwapBox(props) {
                     <div>
                       <Trans>
                         If you have an existing position, the position will be closed at{" "}
-                        {formatAmount(entryMarkPrice, USD_DECIMALS, 2, true)} USD.
+                        {formatAmount(entryMarkPrice, USD_DECIMALS, toToken.displayPricePrecision, true)} USD.
                         <br />
                         <br />
                         This exit price will change with the price of the asset.
