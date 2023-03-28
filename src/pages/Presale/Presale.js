@@ -8,7 +8,7 @@ export default function Presale(){
   }
 
   return(
-    <div>
+    <div className="presale">
       <div className="card">
         <img className="logo" src={logoImg} alt="UNIP Logo" />
         <h1>

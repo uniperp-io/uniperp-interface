@@ -208,6 +208,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isShortable: true,
       isSynthetic: true,
       imageUrl: "https://assets.coingecko.com/coins/images/26045/small/euro-coin.png?1655394420",
+      displayPricePrecision:5,
     },
     {
       name: "Japanese Yen",
@@ -218,7 +219,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isShortable: true,
       isSynthetic: true,
       imageUrl: "https://assets.coingecko.com/coins/images/25971/small/2023jpyc.png?1675935375",
-      displayPricePrecision:4,
+      displayPricePrecision:5,
     },
     {
       name: "USD Coin",

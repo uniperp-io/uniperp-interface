@@ -940,7 +940,7 @@ export default function PositionSeller(props) {
                     setTriggerPriceValue(formatAmountFree(position.markPrice, USD_DECIMALS, 2));
                   }}
                 >
-                  <Trans>Mark: {formatAmount(position.markPrice, USD_DECIMALS, 2, true)}</Trans>
+                  <Trans>Mark: {formatAmount(position.markPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</Trans>
                 </div>
               </div>
               <div className="Exchange-swap-section-bottom">
@@ -1015,7 +1015,7 @@ export default function PositionSeller(props) {
                 </div>
                 <div className="align-right">
                   {!triggerPriceUsd && "-"}
-                  {triggerPriceUsd && `${triggerPricePrefix} ${formatAmount(triggerPriceUsd, USD_DECIMALS, 2, true)}`}
+                  {triggerPriceUsd && `${triggerPricePrefix} ${formatAmount(triggerPriceUsd, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}`}
                 </div>
               </div>
             )}
@@ -1066,11 +1066,11 @@ export default function PositionSeller(props) {
                       ${formatAmount(position.size, USD_DECIMALS, 2, true)}
                       <BsArrowRight className="transition-arrow" />
                     </div>
-                    ${formatAmount(position.size.sub(fromAmount), USD_DECIMALS, 2, true)}
+                    ${formatAmount(position.size.sub(fromAmount), USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
                   </div>
                 )}
                 {position && position.size && !fromAmount && (
-                  <div>${formatAmount(position.size, USD_DECIMALS, 2, true)}</div>
+                  <div>${formatAmount(position.size, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</div>
                 )}
               </div>
             </div>
@@ -1085,7 +1085,7 @@ export default function PositionSeller(props) {
                       ${formatAmount(position.collateral, USD_DECIMALS, 2, true)}
                       <BsArrowRight className="transition-arrow" />
                     </div>
-                    ${formatAmount(nextCollateral, USD_DECIMALS, 2, true)}
+                    ${formatAmount(nextCollateral, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
                   </div>
                 ) : (
                   `$${formatAmount(position.collateral, USD_DECIMALS, 4, true)}`
@@ -1216,7 +1216,12 @@ export default function PositionSeller(props) {
                       setSwapToToken(token);
                       setSavedRecieveTokenAddress(token.address);
                     }}
-                    tokens={toTokens}
+                    tokens={toTokens.filter(t=>{
+                      if (position.indexToken.isSynthetic){
+                        return t.symbol.toLowerCase() === "usdc"
+                      }
+                      return t
+                    })}
                     getTokenState={(tokenOptionInfo) => {
                       if (!shouldSwap(collateralToken, tokenOptionInfo)) {
                         return;

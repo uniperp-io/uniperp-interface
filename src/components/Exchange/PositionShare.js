@@ -7,7 +7,7 @@ import { RiFileDownloadLine } from "react-icons/ri";
 import { FiTwitter } from "react-icons/fi";
 import { useCopyToClipboard, useMedia } from "react-use";
 import Modal from "../Modal/Modal";
-import gmxLogo from "img/gmx-logo-with-name.svg";
+import gmxLogo from "img/logo_long.png";
 import "./PositionShare.css";
 import { QRCodeSVG } from "qrcode.react";
 import { getHomeUrl, getRootShareApiUrl, getTwitterIntentURL, USD_DECIMALS } from "lib/legacy";
@@ -149,11 +149,11 @@ function PositionShareCard({
         <div className="prices">
           <div>
             <p>Entry Price</p>
-            <p className="price">${formatAmount(averagePrice, USD_DECIMALS, 2, true)}</p>
+            <p className="price">${formatAmount(averagePrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</p>
           </div>
           <div>
             <p>Index Price</p>
-            <p className="price">${formatAmount(markPrice, USD_DECIMALS, 2, true)}</p>
+            <p className="price">${formatAmount(markPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</p>
           </div>
         </div>
         <div className="referral-code">
