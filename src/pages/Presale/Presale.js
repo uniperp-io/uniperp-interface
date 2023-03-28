@@ -173,6 +173,16 @@ export default function Presale(){
         </div>
       </div>
 
+      <div className="card ido_process">
+        <h1>IDO Start at: 2023-04-01 20:00:00</h1>
+        <div className="countdown">
+          <span>{`10D`}</span>
+          <span>{`10H`}</span>
+          <span>{`10M`}</span>
+          <span>{`10S`}</span>
+        </div>
+      </div>
+
       <div className="button_group">
         <div className="card claim left">
           <h3>CLAIM UNIP</h3>
