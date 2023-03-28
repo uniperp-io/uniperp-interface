@@ -207,7 +207,7 @@ function FullApp() {
             </Trans>
           ) : (
             <Trans>
-              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink> to start using GMX.
+              <ExternalLink href="https://metamask.io">Install MetaMask</ExternalLink> to start using UNIP.
             </Trans>
           )}
         </div>

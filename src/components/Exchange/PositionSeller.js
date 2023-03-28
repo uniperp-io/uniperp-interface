@@ -1219,8 +1219,9 @@ export default function PositionSeller(props) {
                     tokens={toTokens.filter(t=>{
                       if (position.indexToken.isSynthetic){
                         return t.symbol.toLowerCase() === "usdc"
+                      }else{
+                        return !t.isSynthetic
                       }
-                      return t
                     })}
                     getTokenState={(tokenOptionInfo) => {
                       if (!shouldSwap(collateralToken, tokenOptionInfo)) {
