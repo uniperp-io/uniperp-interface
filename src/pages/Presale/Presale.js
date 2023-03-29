@@ -15,8 +15,11 @@ import IdoAbi from "abis/ido.json";
 import { approveTokens } from "domain/tokens";
 import { formatAmount, parseValue } from "lib/numbers";
 import { ethers } from "ethers";
+import {makeDateText, getRemainingTime} from "pages/Presale/lib"
 
-export default function Presale(){
+const initCountdown = "<span>0D</span><span>0H</span><span>0M</span><span>0S</span>";
+
+export default function Presale() {
   const [isWaitingForApproval, setIsWaitingForApproval] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isWithdrawAble, setWithdrawAble] = useState(true)
@@ -24,9 +27,10 @@ export default function Presale(){
   const [isApproving, setIsApproving] = useState(false);
   const [inputAmount, setInputAmount] = useState(100);
   const [IsConfirming, setIsConfirming] = useState(false);
-  const [TotalContributed, setTotalContributed] = useState(false);
+  const [countdown, setCountdown] = useState(initCountdown);
 
   const { active, account, library } = useWeb3React();
+
   const { chainId } = useChainId();
   const usdcTokenInfo = getUsdcToken(chainId);
   const idoAddress = getContract(chainId, "Ido");
@@ -45,12 +49,29 @@ export default function Presale(){
     }
   );
 
-  const { data: totalContributed } = useSWR(
-    active && [active, chainId, idoAddress, "totalContributed"],
-    {
-      fetcher: contractFetcher(library, IdoAbi),
-    }
-  );
+  const { data } = useSWR("idoinfo", {
+      fetcher: () => {
+          return Promise.all(["totalContributed", "startTime", "endTime", "rate"].map((method) =>
+              contractFetcher(library, IdoAbi)(
+                method,
+                chainId,
+                idoAddress,
+                method
+              )
+          )
+        ).then((responses) => {
+            return responses
+        })
+      }
+  });
+
+  let totalContributed = parseValue(0), startTime = 0, endTime = 0, rate = 0;
+  if (data){
+    totalContributed = data[0]
+    startTime = data[1].toString()
+    endTime = data[2].toString()
+    rate = parseInt(data[3].toString())
+  }
 
   const { data: claimableTokens } = useSWR(
     active && [active, chainId, idoAddress, "claimableTokens", account],
@@ -74,6 +95,56 @@ export default function Presale(){
       setDepositedAble(false)
     }
   }, [needApproval])
+
+  let status = "unstart";
+  const now = Date.now() / 1000; // 将当前时间转换为秒
+  if (now > startTime){
+    status = "starting"
+  }
+  if (endTime && (now > endTime)){
+    status = "end"
+  }
+
+  useEffect(()=>{
+    let timer;
+    timer = setInterval(()=>{
+      let remainingTime;
+      if(status === "unstart") {
+        remainingTime = getRemainingTime(startTime);
+        if (!needApproval){
+          setDepositedAble(true)
+        }
+        if (remainingTime){
+          setCountdown(`<span>${remainingTime.days}D</span><span>${remainingTime.hours}H</span><span>${remainingTime.minutes}M</span><span>${remainingTime.seconds}S</span>`);
+          if (startTime && (remainingTime.seconds === 0 && remainingTime.hours === 0 && remainingTime.minutes === 0)){
+            window.location.reload()
+            clearInterval(timer)
+          }
+        }
+      }
+
+      if(status === "starting") {
+        remainingTime = getRemainingTime(endTime);
+        setDepositedAble(false)
+        if (remainingTime){
+          setCountdown(`<span>${remainingTime.days}D</span><span>${remainingTime.hours}H</span><span>${remainingTime.minutes}M</span><span>${remainingTime.seconds}S</span>`);
+          if (endTime && (remainingTime.seconds === 0 && remainingTime.hours === 0 && remainingTime.minutes === 0)){
+            window.location.reload()
+            clearInterval(timer)
+          }
+        }
+      }
+
+      if (status === "end"){
+        setDepositedAble(true)
+        setWithdrawAble(false)
+      }
+
+    }, 1000)
+    return () => {
+      clearInterval(timer);
+    };
+  }, [startTime, endTime, needApproval, status])
 
   const getPrimaryText = () => {
     if (!active) {
@@ -125,8 +196,8 @@ export default function Presale(){
     const contract = new ethers.Contract(idoAddress, IdoAbi.abi, library.getSigner());
     callContract(chainId, contract, "buyTokens", [parseValue(inputAmount, usdcTokenInfo.decimals)], {
         sentMsg: t`buyTokens submitted!`,
-        successMsg: `ido ${inputAmount} for 10000UNIP`,
-        failMsg: t`Swap failed.`,
+        successMsg: `ido ${inputAmount} for ${inputAmount*rate}UNIP`,
+        failMsg: t`buyTokens failed.`,
       })
       .then(async () => {
 
@@ -134,6 +205,21 @@ export default function Presale(){
         setDepositedAble(false)
         setIsConfirming(false);
       })
+  }
+
+  const claimToken = () => {
+    setWithdrawAble(true)
+    const contract = new ethers.Contract(idoAddress, IdoAbi.abi, library.getSigner());
+    callContract(chainId, contract, "claimTokens", {
+        sentMsg: t`claimTokens submitted!`,
+        successMsg: `claimTokens success`,
+        failMsg: t`claimTokens failed.`,
+      })
+      .then(async () => {
+
+      }).finally(()=>{
+      setWithdrawAble(false)
+    })
   }
 
   return(
@@ -174,21 +260,26 @@ export default function Presale(){
       </div>
 
       <div className="card ido_process">
-        <h1>IDO Start at: 2023-04-01 20:00:00</h1>
-        <div className="countdown">
-          <span>{`10D`}</span>
-          <span>{`10H`}</span>
-          <span>{`10M`}</span>
-          <span>{`10S`}</span>
-        </div>
+        {status === "unstart" && (
+          <>
+            <h1>IDO Start at: {makeDateText(startTime)}</h1>
+            <div className="countdown" dangerouslySetInnerHTML={{ __html: countdown }}></div>
+          </>
+        )}
+        {status === "starting" && (
+          <>
+            <h1>IDO End at: {makeDateText(endTime)}</h1>
+            <div className="countdown" dangerouslySetInnerHTML={{ __html: countdown }}></div>
+          </>
+        )}
       </div>
 
       <div className="button_group">
         <div className="card claim left">
           <h3>CLAIM UNIP</h3>
           <div>Deposited($): <span>${formatAmount(contributions, usdcTokenInfo.decimals, 2)}</span></div>
-          <div>UNIP Amount: <span>{formatAmount(claimableTokens, usdcTokenInfo.decimals, 2)}</span></div>
-          <button className="App-cta Exchange-swap-button" disabled={isWithdrawAble}>WithDraw UNIP</button>
+          <div>UNIP Amount: <span>{formatAmount(claimableTokens, 18, 2)}</span></div>
+          <button className="App-cta Exchange-swap-button" onClick={claimToken} disabled={isWithdrawAble}>WithDraw UNIP</button>
         </div>
 
         <div className="card deposited_usdc right">
@@ -202,7 +293,8 @@ export default function Presale(){
       <div className="card information">
         <h1>General Information</h1>
         <ul>
-          <li>$1 USDC = 10 UNIP ($0.0016/token)</li>
+          <li>$1 USDC = {rate} UNIP ($0.01/token)</li>
+          <li>Each person can only buy a maximum of $1000 USDC</li>
           <li>WHEN CLAIM BUTTON OPENS, you will claim your equivalent of new UNIP</li>
           <li>5% released every after week</li>
           <li>Token Economics</li>

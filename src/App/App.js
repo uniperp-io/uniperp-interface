@@ -32,6 +32,8 @@ import NftWallet from "pages/NftWallet/NftWallet";
 import ClaimEsGmx from "pages/ClaimEsGmx/ClaimEsGmx";
 import BeginAccountTransfer from "pages/BeginAccountTransfer/BeginAccountTransfer";
 import CompleteAccountTransfer from "pages/CompleteAccountTransfer/CompleteAccountTransfer";
+import Presale from "pages/Presale/Presale";
+import Hyper from "pages/Hyper/Hyper";
 
 import { cssTransition, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -98,8 +100,6 @@ import {
 import { useChainId } from "lib/chains";
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import { isDevelopment } from "config/env";
-import Presale from "pages/Presale/Presale";
-import Hyper from "pages/Hyper/Hyper";
 
 if ("ethereum" in window) {
   window.ethereum.autoRefreshOnNetworkChange = false;
