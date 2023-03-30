@@ -310,11 +310,11 @@ export default function OrdersList(props) {
             )}
           </td>
           <td>
-            {triggerPricePrefix} {formatAmount(order.triggerPrice, USD_DECIMALS, 2, true)}
+            {triggerPricePrefix} {formatAmount(order.triggerPrice, USD_DECIMALS, indexToken.displayPricePrecision, true)}
           </td>
           <td>
             <Tooltip
-              handle={formatAmount(markPrice, USD_DECIMALS, 2, true)}
+              handle={formatAmount(markPrice, USD_DECIMALS, indexToken.displayPricePrecision, true)}
               position="right-bottom"
               renderContent={() => {
                 return (

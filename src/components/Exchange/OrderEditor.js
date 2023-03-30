@@ -242,10 +242,10 @@ export default function OrderEditor(props) {
             <div
               className="muted align-right clickable"
               onClick={() => {
-                setTriggerPriceValue(formatAmountFree(indexTokenMarkPrice, USD_DECIMALS, 2));
+                setTriggerPriceValue(formatAmountFree(indexTokenMarkPrice, USD_DECIMALS, position.indexToken.displayPricePrecision));
               }}
             >
-              <Trans>Mark: {formatAmount(indexTokenMarkPrice, USD_DECIMALS, 2)}</Trans>
+              <Trans>Mark: {formatAmount(indexTokenMarkPrice, USD_DECIMALS, position.indexToken.displayPricePrecision)}</Trans>
             </div>
           </div>
           <div className="Exchange-swap-section-bottom">
@@ -266,16 +266,16 @@ export default function OrderEditor(props) {
           {triggerPrice && !triggerPrice.eq(order.triggerPrice) ? (
             <>
               <span className="muted">
-                {triggerPricePrefix} {formatAmount(order.triggerPrice, USD_DECIMALS, 2, true)}
+                {triggerPricePrefix} {formatAmount(order.triggerPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
               </span>
               &nbsp;
               <BsArrowRight />
               &nbsp;
-              {triggerPricePrefix} {formatAmount(triggerPrice, USD_DECIMALS, 2, true)}
+              {triggerPricePrefix} {formatAmount(triggerPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
             </>
           ) : (
             <span>
-              {triggerPricePrefix} {formatAmount(order.triggerPrice, USD_DECIMALS, 2, true)}
+              {triggerPricePrefix} {formatAmount(order.triggerPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
             </span>
           )}
         </ExchangeInfoRow>
