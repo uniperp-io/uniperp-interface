@@ -75,7 +75,7 @@ export async function getLimitChartPricesFromStats(chainId, symbol, period, limi
     symbol = getNativeToken(chainId).symbol;
   }
 
-  const url = `${getServerUrlNew(chainId, '/candleprices')}?symbol=${symbol}&preferableChainId=${chainId}&period=${period}&limit=${limit}`;
+  const url = `${getServerUrlNew(chainId, '/candleprices')}?symbol=${symbol}&preferableChainId=${chainId}&period=${period}&limit=${limit}&chainId=${chainId}`;
 
   try {
     const response = await fetch(url);
@@ -96,7 +96,7 @@ export async function getChartPricesFromStats(chainId, symbol, period) {
   const timeDiff = CHART_PERIODS[period] * 3000;
   const from = Math.floor(Date.now() / 1000 - timeDiff);
 
-  const url = `${getServerUrlNew(chainId, '/candleprices')}?symbol=${symbol}&preferableChainId=${chainId}&period=${period}&from=${from}&preferableSource=fast`;
+  const url = `${getServerUrlNew(chainId, '/candleprices')}?symbol=${symbol}&preferableChainId=${chainId}&period=${period}&from=${from}&preferableSource=fast&chainId=${chainId}`;
 
   const TIMEOUT = 5000;
   const res: Response = await new Promise(async (resolve, reject) => {
