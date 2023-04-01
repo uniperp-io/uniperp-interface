@@ -175,6 +175,22 @@ export default function DashboardV2() {
 
   const tokensForSupplyQuery = [gmxAddress, glpAddress, usdgAddress];
 
+  const { data:syntheticCollateralAmounts } = useSWR("syntheticCollateralAmounts", {
+    fetcher: () => {
+      return Promise.all(visibleTokens.filter(t=>t.isSynthetic).map((token) => {
+        return contractFetcher(library, VaultV2)(
+          token.address,
+          chainId,
+          vaultAddress,
+          "syntheticCollateralAmounts",
+          token.address
+        )
+      })).then((responses) => {
+        return responses
+      })
+    }
+  });
+
   const { data: aums } = useSWR([`Dashboard:getAums:${active}`, chainId, glpManagerAddress, "getAums"], {
     fetcher: contractFetcher(library, GlpManager),
   });
@@ -1029,7 +1045,7 @@ export default function DashboardV2() {
                 </tbody>
               </table>
             </div>
-            <SyntheticTable visibleTokens={visibleTokens} infoTokens={infoTokens} getWeightText={getWeightText}></SyntheticTable>
+            <SyntheticTable visibleTokens={visibleTokens} infoTokens={infoTokens} getWeightText={getWeightText} syntheticCollateralAmounts={syntheticCollateralAmounts}></SyntheticTable>
             <MobileShow visibleTokens={visibleTokens} infoTokens={infoTokens} getWeightText={getWeightText}></MobileShow>
           </div>
         </div>
