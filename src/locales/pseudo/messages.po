@@ -34,7 +34,7 @@ msgid "<0>Install Coinbase Wallet</0>, and use GMX with its built-in browser."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install MetaMask</0> to start using GMX."
+msgid "<0>Install MetaMask</0> to start using UNIP."
 msgstr ""
 
 #: src/App/App.js
@@ -257,6 +257,7 @@ msgstr ""
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
+#: src/pages/Presale/Presale.js
 msgid "Approve {0}"
 msgstr ""
 
@@ -272,6 +273,7 @@ msgstr ""
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
+#: src/pages/Presale/Presale.js
 msgid "Approving {0}..."
 msgstr ""
 
@@ -656,6 +658,7 @@ msgstr ""
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/PositionsList.js
 #: src/components/Exchange/PositionsList.js
+#: src/pages/Dashboard/SyntheticTable.js
 msgid "Collateral"
 msgstr ""
 
@@ -717,6 +720,10 @@ msgstr ""
 msgid "Compounding..."
 msgstr ""
 
+#: src/pages/Presale/Presale.js
+msgid "Confirm"
+msgstr ""
+
 #: src/components/Exchange/ConfirmationBox.js
 msgid "Confirm Limit Order"
 msgstr ""
@@ -733,6 +740,10 @@ msgstr ""
 msgid "Confirm Swap"
 msgstr ""
 
+#: src/pages/Presale/Presale.js
+msgid "Confirming..."
+msgstr ""
+
 #: src/components/Header/AppHeaderUser.tsx
 msgid "Connect"
 msgstr ""
@@ -744,6 +755,7 @@ msgstr ""
 #: src/components/Migration/Migration.js
 #: src/components/Referrals/AddAffiliateCode.js
 #: src/components/Referrals/JoinReferralCode.js
+#: src/pages/Presale/Presale.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -986,6 +998,10 @@ msgstr ""
 
 #: src/pages/Stake/StakeV2.js
 msgid "Deposited"
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "Deposited USDC"
 msgstr ""
 
 #: src/pages/Exchange/Exchange.js
@@ -1451,6 +1467,7 @@ msgid "Incorrect Account"
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
+#: src/pages/Presale/Presale.js
 #: src/pages/Stake/StakeV1.js
 msgid "Incorrect Network"
 msgstr ""
@@ -2189,7 +2206,6 @@ msgid "Overview"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/SyntheticTable.js
 msgid "POOL"
 msgstr ""
 
@@ -2737,6 +2753,7 @@ msgstr ""
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/PositionsList.js
 #: src/components/Exchange/PositionsList.js
+#: src/pages/Dashboard/SyntheticTable.js
 msgid "Size"
 msgstr ""
 
@@ -3609,6 +3626,7 @@ msgstr ""
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
+#: src/pages/Presale/Presale.js
 msgid "Waiting for Approval"
 msgstr ""
 
@@ -3822,6 +3840,22 @@ msgstr ""
 
 #: src/pages/PositionsOverview/PositionsOverview.js
 msgid "account"
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "buyTokens failed."
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "buyTokens submitted!"
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "claimTokens failed."
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "claimTokens submitted!"
 msgstr ""
 
 #: src/pages/PositionsOverview/PositionsOverview.js

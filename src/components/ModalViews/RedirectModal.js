@@ -37,7 +37,7 @@ export function RedirectPopupModal({
       <br />
       <Trans>
         Alternative links can be found in the{" "}
-        <ExternalLink href="https://gmxio.gitbook.io/gmx/app-links">docs</ExternalLink>.
+        <ExternalLink href="https://uniperp.gitbook.io/v1/">docs</ExternalLink>.
         <br />
         <br />
         By clicking Agree you accept the <ExternalLink href="https://uniperp.io/#/terms-and-conditions">

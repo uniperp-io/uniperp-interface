@@ -78,7 +78,7 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
                 <Trans>Buy on Arbitrum</Trans>
               </BuyLink>
             </div>
-            <ExternalLink href="https://gmxio.gitbook.io/gmx/tokenomics" className="default-btn read-more">
+            <ExternalLink href="https://uniperp.gitbook.io/v1/tokenomics" className="default-btn read-more">
               <Trans>Read more</Trans>
             </ExternalLink>
           </div>
@@ -102,7 +102,7 @@ export default function TokenCard({ showRedirectModal, redirectPopupTimestamp })
               </BuyLink>
             </div>
             <a
-              href="https://gmxio.gitbook.io/gmx/glp"
+              href="https://uniperp.gitbook.io/v1/ulp"
               target="_blank"
               rel="noreferrer"
               className="default-btn read-more"

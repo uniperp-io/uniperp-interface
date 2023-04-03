@@ -405,7 +405,7 @@ export default function DashboardV2() {
               )}
               <br />
               <div>
-                <ExternalLink href="https://gmxio.gitbook.io/gmx/glp">
+                <ExternalLink href="https://uniperp.gitbook.io/v1/glp">
                   <Trans>More Info</Trans>
                 </ExternalLink>
               </div>
@@ -1046,7 +1046,7 @@ export default function DashboardV2() {
               </table>
             </div>
             <SyntheticTable visibleTokens={visibleTokens} infoTokens={infoTokens} getWeightText={getWeightText} syntheticCollateralAmounts={syntheticCollateralAmounts}></SyntheticTable>
-            <MobileShow visibleTokens={visibleTokens} infoTokens={infoTokens} getWeightText={getWeightText}></MobileShow>
+            <MobileShow visibleTokens={visibleTokens} infoTokens={infoTokens} getWeightText={getWeightText} syntheticCollateralAmounts={syntheticCollateralAmounts}></MobileShow>
           </div>
         </div>
         <Footer />

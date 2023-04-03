@@ -7,7 +7,14 @@ import "./DashboardV2.css";
 import AssetDropdown from "./AssetDropdown";
 import React from "react";
 
-export default function MobileShow({visibleTokens, infoTokens, getWeightText}) {
+export default function MobileShow({visibleTokens, infoTokens, getWeightText, syntheticCollateralAmounts}) {
+  let usdcInfo;
+  for (let idx in infoTokens){
+    if (infoTokens[idx].symbol.toLowerCase() === "usdc"){
+      usdcInfo = infoTokens[idx]
+    }
+  }
+
   return (
     <>
     <div className="token-grid">
@@ -96,15 +103,17 @@ export default function MobileShow({visibleTokens, infoTokens, getWeightText}) {
     </div>
 
     <div className="token-grid">
-        {visibleTokens.filter(t=>t.isSynthetic).map((token) => {
+        {visibleTokens.filter(t=>t.isSynthetic).map((token, idx) => {
           const tokenInfo = infoTokens[token.address];
-          let utilization = bigNumberify(0);
-          if (tokenInfo && tokenInfo.reservedAmount && tokenInfo.poolAmount && tokenInfo.poolAmount.gt(0)) {
-            utilization = tokenInfo.reservedAmount.mul(BASIS_POINTS_DIVISOR).div(tokenInfo.poolAmount);
-          }
-          let maxUsdgAmount = DEFAULT_MAX_USDG_AMOUNT;
-          if (tokenInfo.maxUsdgAmount && tokenInfo.maxUsdgAmount.gt(0)) {
-            maxUsdgAmount = tokenInfo.maxUsdgAmount;
+
+          let size = 0, Collateral=0,OCCUPANCY=0,PROPORTION=0,minPriceTmp=0;
+          if (syntheticCollateralAmounts && syntheticCollateralAmounts[idx]){
+            Collateral = parseFloat(formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayPricePrecision))
+            minPriceTmp = parseFloat(formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
+            Collateral = Collateral * minPriceTmp
+            size =Collateral + parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
+            OCCUPANCY = (size - Collateral) / parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
+            PROPORTION = size/parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
           }
 
           const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_24.svg");
@@ -126,50 +135,27 @@ export default function MobileShow({visibleTokens, infoTokens, getWeightText}) {
                 </div>
                 <div className="App-card-row">
                   <div className="label">
-                    <Trans>Pool</Trans>
+                    <Trans>Size</Trans>
                   </div>
-                  <div>
-                    <TooltipComponent
-                      handle={`$${formatKeyAmount(tokenInfo, "managedUsd", USD_DECIMALS, 0, true)}`}
-                      position="right-bottom"
-                      renderContent={() => {
-                        return (
-                          <>
-                            <StatsTooltipRow
-                              label={t`Pool Amount`}
-                              value={`${formatKeyAmount(tokenInfo, "managedAmount", token.decimals, 0, true)} ${
-                                token.symbol
-                              }`}
-                              showDollar={false}
-                            />
-                            <StatsTooltipRow
-                              label={t`Target Min Amount`}
-                              value={`${formatKeyAmount(tokenInfo, "bufferAmount", token.decimals, 0, true)} ${
-                                token.symbol
-                              }`}
-                              showDollar={false}
-                            />
-                            <StatsTooltipRow
-                              label={t`Max ${tokenInfo.symbol} Capacity`}
-                              value={formatAmount(maxUsdgAmount, 18, 0, true)}
-                            />
-                          </>
-                        );
-                      }}
-                    />
+                  <div>${size.toFixed(2)}</div>
+                </div>
+                <div className="App-card-row">
+                  <div className="label">
+                    <Trans>Collateral</Trans>
                   </div>
+                  <div>${Collateral.toFixed(tokenInfo.displayPricePrecision)}</div>
                 </div>
                 <div className="App-card-row">
                   <div className="label">
                     <Trans>USDC ASSET OCCUPANCY</Trans>
                   </div>
-                  <div>{getWeightText(tokenInfo)}</div>
+                  <div>{OCCUPANCY.toFixed(4)}%</div>
                 </div>
                 <div className="App-card-row">
                   <div className="label">
                     <Trans>USDC PROPORTION</Trans>
                   </div>
-                  <div>{formatAmount(utilization, 2, 2, false)}%</div>
+                  <div>{PROPORTION.toFixed(4)}%</div>
                 </div>
               </div>
             </div>

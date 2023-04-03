@@ -34,7 +34,7 @@ msgid "<0>Install Coinbase Wallet</0>, and use GMX with its built-in browser."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install MetaMask</0> to start using GMX."
+msgid "<0>Install MetaMask</0> to start using UNIP."
 msgstr ""
 
 #: src/App/App.js
@@ -257,6 +257,7 @@ msgstr ""
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
+#: src/pages/Presale/Presale.js
 msgid "Approve {0}"
 msgstr "核准"
 
@@ -272,6 +273,7 @@ msgstr "核准GMX中"
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
+#: src/pages/Presale/Presale.js
 msgid "Approving {0}..."
 msgstr "核准中"
 
@@ -656,6 +658,7 @@ msgstr "无法侦测Coinbase钱包"
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/PositionsList.js
 #: src/components/Exchange/PositionsList.js
+#: src/pages/Dashboard/SyntheticTable.js
 msgid "Collateral"
 msgstr "抵押品"
 
@@ -717,6 +720,10 @@ msgstr "复利送出"
 msgid "Compounding..."
 msgstr "复利中"
 
+#: src/pages/Presale/Presale.js
+msgid "Confirm"
+msgstr ""
+
 #: src/components/Exchange/ConfirmationBox.js
 msgid "Confirm Limit Order"
 msgstr "确认限制订单"
@@ -733,6 +740,10 @@ msgstr "确认做空"
 msgid "Confirm Swap"
 msgstr "确认交换"
 
+#: src/pages/Presale/Presale.js
+msgid "Confirming..."
+msgstr ""
+
 #: src/components/Header/AppHeaderUser.tsx
 msgid "Connect"
 msgstr "连接"
@@ -744,6 +755,7 @@ msgstr "连接"
 #: src/components/Migration/Migration.js
 #: src/components/Referrals/AddAffiliateCode.js
 #: src/components/Referrals/JoinReferralCode.js
+#: src/pages/Presale/Presale.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -987,6 +999,10 @@ msgstr "存取{0} USD 至 {1} {longOrShortText}"
 #: src/pages/Stake/StakeV2.js
 msgid "Deposited"
 msgstr "已存取"
+
+#: src/pages/Presale/Presale.js
+msgid "Deposited USDC"
+msgstr ""
 
 #: src/pages/Exchange/Exchange.js
 msgid "Deposited {0} USD into {tokenSymbol} {longOrShortText}"
@@ -1451,6 +1467,7 @@ msgid "Incorrect Account"
 msgstr "账户错误"
 
 #: src/components/Exchange/SwapBox.js
+#: src/pages/Presale/Presale.js
 #: src/pages/Stake/StakeV1.js
 msgid "Incorrect Network"
 msgstr "网络错误"
@@ -2192,7 +2209,6 @@ msgid "Overview"
 msgstr "总览"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/SyntheticTable.js
 msgid "POOL"
 msgstr "池子"
 
@@ -2740,6 +2756,7 @@ msgstr ""
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/PositionsList.js
 #: src/components/Exchange/PositionsList.js
+#: src/pages/Dashboard/SyntheticTable.js
 msgid "Size"
 msgstr "规模"
 
@@ -3612,6 +3629,7 @@ msgstr "重量"
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
+#: src/pages/Presale/Presale.js
 msgid "Waiting for Approval"
 msgstr "等待核准"
 
@@ -3826,6 +3844,22 @@ msgstr "你的钱包: {0}"
 #: src/pages/PositionsOverview/PositionsOverview.js
 msgid "account"
 msgstr "帐户"
+
+#: src/pages/Presale/Presale.js
+msgid "buyTokens failed."
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "buyTokens submitted!"
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "claimTokens failed."
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "claimTokens submitted!"
+msgstr ""
 
 #: src/pages/PositionsOverview/PositionsOverview.js
 msgid "collateral"

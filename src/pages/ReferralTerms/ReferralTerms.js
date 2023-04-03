@@ -89,8 +89,8 @@ export default function ReferralTerms() {
               <p className="body-text">
                 The Rebates and Discounts percentages for the default tier Tier 1, and instructions to upgrade to Tier 2
                 and Tier 3, are contained in{" "}
-                <ExternalLink href="https://gmxio.gitbook.io/gmx/referrals">
-                  https://gmxio.gitbook.io/gmx/referrals.
+                <ExternalLink href="https://uniperp.gitbook.io/v1/referrals">
+                  https://uniperp.gitbook.io/v1/referrals.
                 </ExternalLink>
               </p>
             </div>

@@ -34,7 +34,7 @@ msgid "<0>Install Coinbase Wallet</0>, and use GMX with its built-in browser."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install MetaMask</0> to start using GMX."
+msgid "<0>Install MetaMask</0> to start using UNIP."
 msgstr ""
 
 #: src/App/App.js
@@ -257,6 +257,7 @@ msgstr ""
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
+#: src/pages/Presale/Presale.js
 msgid "Approve {0}"
 msgstr "Approuver {0}"
 
@@ -272,6 +273,7 @@ msgstr "Approbation de GMX..."
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
+#: src/pages/Presale/Presale.js
 msgid "Approving {0}..."
 msgstr "Approbation {0}..."
 
@@ -656,6 +658,7 @@ msgstr "Portefeuille Coinbase non détecté."
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/PositionsList.js
 #: src/components/Exchange/PositionsList.js
+#: src/pages/Dashboard/SyntheticTable.js
 msgid "Collateral"
 msgstr "Collatéral"
 
@@ -717,6 +720,10 @@ msgstr "Composition soumise !"
 msgid "Compounding..."
 msgstr "Composition en cours..."
 
+#: src/pages/Presale/Presale.js
+msgid "Confirm"
+msgstr ""
+
 #: src/components/Exchange/ConfirmationBox.js
 msgid "Confirm Limit Order"
 msgstr "Confirmer l'ordre limite"
@@ -733,6 +740,10 @@ msgstr "Confirmer le Short"
 msgid "Confirm Swap"
 msgstr "Confirmer l'échange"
 
+#: src/pages/Presale/Presale.js
+msgid "Confirming..."
+msgstr ""
+
 #: src/components/Header/AppHeaderUser.tsx
 msgid "Connect"
 msgstr "Connecter"
@@ -744,6 +755,7 @@ msgstr "Connecter"
 #: src/components/Migration/Migration.js
 #: src/components/Referrals/AddAffiliateCode.js
 #: src/components/Referrals/JoinReferralCode.js
+#: src/pages/Presale/Presale.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
 #: src/pages/Stake/StakeV1.js
@@ -987,6 +999,10 @@ msgstr "Déposer {0} USD sur {1} {longOrShortText}"
 #: src/pages/Stake/StakeV2.js
 msgid "Deposited"
 msgstr "Déposé"
+
+#: src/pages/Presale/Presale.js
+msgid "Deposited USDC"
+msgstr ""
 
 #: src/pages/Exchange/Exchange.js
 msgid "Deposited {0} USD into {tokenSymbol} {longOrShortText}"
@@ -1451,6 +1467,7 @@ msgid "Incorrect Account"
 msgstr "Compte incorrect"
 
 #: src/components/Exchange/SwapBox.js
+#: src/pages/Presale/Presale.js
 #: src/pages/Stake/StakeV1.js
 msgid "Incorrect Network"
 msgstr "Réseau incorrect"
@@ -2192,7 +2209,6 @@ msgid "Overview"
 msgstr "Aperçu"
 
 #: src/pages/Dashboard/DashboardV2.js
-#: src/pages/Dashboard/SyntheticTable.js
 msgid "POOL"
 msgstr "POOL"
 
@@ -2740,6 +2756,7 @@ msgstr ""
 #: src/components/Exchange/PositionSeller.js
 #: src/components/Exchange/PositionsList.js
 #: src/components/Exchange/PositionsList.js
+#: src/pages/Dashboard/SyntheticTable.js
 msgid "Size"
 msgstr "Montant"
 
@@ -3612,6 +3629,7 @@ msgstr "POIDS"
 #: src/components/Exchange/SwapBox.js
 #: src/components/Glp/GlpSwap.js
 #: src/components/Migration/Migration.js
+#: src/pages/Presale/Presale.js
 msgid "Waiting for Approval"
 msgstr "En attente d'autorisation"
 
@@ -3826,6 +3844,22 @@ msgstr "Votre portefeuille: {0}"
 #: src/pages/PositionsOverview/PositionsOverview.js
 msgid "account"
 msgstr "compte"
+
+#: src/pages/Presale/Presale.js
+msgid "buyTokens failed."
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "buyTokens submitted!"
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "claimTokens failed."
+msgstr ""
+
+#: src/pages/Presale/Presale.js
+msgid "claimTokens submitted!"
+msgstr ""
 
 #: src/pages/PositionsOverview/PositionsOverview.js
 msgid "collateral"

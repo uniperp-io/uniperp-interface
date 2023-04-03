@@ -38,7 +38,7 @@ const HOME_MENUS: HomeLink[] = [
   },
   {
     label: t`Docs`,
-    // link: "https://gmxio.gitbook.io/gmx/",
+    // link: "https://uniperp.gitbook.io/v1/",
     link: "#",
   },
 ];

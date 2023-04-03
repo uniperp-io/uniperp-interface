@@ -312,7 +312,7 @@ function UnstakeModal(props) {
           <div className="Modal-note">
             <Trans>
               Unstaking will burn&nbsp;
-              <ExternalLink href="https://gmxio.gitbook.io/gmx/rewards">
+              <ExternalLink href="https://uniperp.gitbook.io/v1/rewards">
                 {formatAmount(burnAmount, 18, 4, true)} Multiplier Points
               </ExternalLink>
               .&nbsp;
@@ -1316,7 +1316,7 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
           return (
             <Trans>
               Boost your rewards with Multiplier Points.&nbsp;
-              <ExternalLink href="https://gmxio.gitbook.io/gmx/rewards#multiplier-points">More info</ExternalLink>.
+              <ExternalLink href="https://uniperp.gitbook.io/v1/rewards#multiplier-points">More info</ExternalLink>.
             </Trans>
           );
         }}
@@ -1457,8 +1457,8 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
           </div>
           <div className="Page-description">
             <Trans>
-              Stake <ExternalLink href="https://gmxio.gitbook.io/gmx/tokenomics">UNIP</ExternalLink> and{" "}
-              <ExternalLink href="https://gmxio.gitbook.io/gmx/glp">ULP</ExternalLink> to earn rewards.
+              Stake <ExternalLink href="https://uniperp.gitbook.io/v1/tokenomics">UNIP</ExternalLink> and{" "}
+              <ExternalLink href="https://uniperp.gitbook.io/v1/glp">ULP</ExternalLink> to earn rewards.
             </Trans>
           </div>
           {earnMsg && <div className="Page-description">{earnMsg}</div>}
@@ -2006,7 +2006,7 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
               Convert esUNIP tokens to UNIP tokens.
               <br />
               Please read the{" "}
-              <ExternalLink href="https://gmxio.gitbook.io/gmx/rewards#vesting">vesting details</ExternalLink> before
+              <ExternalLink href="https://uniperp.gitbook.io/v1/rewards#vesting">vesting details</ExternalLink> before
               using the vaults.
             </Trans>
           </div>
