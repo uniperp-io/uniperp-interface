@@ -8,17 +8,16 @@ import OrderBookReader from "abis/OrderBookReader.json";
 import OrderBook from "abis/OrderBook.json";
 
 import { CHAIN_ID, ETH_MAINNET, getExplorerUrl, getRpcUrl } from "config/chains";
-import { getServerBaseUrl, getServerUrlNew } from "config/backend";
+import { getServerUrlNew } from "config/backend";
 import { getMostAbundantStableToken } from "domain/tokens";
 import { getTokenInfo } from "domain/tokens/utils";
 import { getProvider } from "./rpc";
 import { bigNumberify, expandDecimals, formatAmount } from "./numbers";
-import { isValidToken, TOKENS } from "config/tokens";
+import { getToken, isValidToken, TOKENS } from "config/tokens";
 import { useChainId } from "./chains";
 import { isValidTimestamp } from "./dates";
 import { t } from "@lingui/macro";
 import { isLocal } from "config/env";
-import { getToken } from "config/tokens";
 
 const { AddressZero } = ethers.constants;
 

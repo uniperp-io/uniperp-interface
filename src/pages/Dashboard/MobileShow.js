@@ -7,7 +7,7 @@ import "./DashboardV2.css";
 import AssetDropdown from "./AssetDropdown";
 import React from "react";
 
-export default function MobileShow({visibleTokens, infoTokens, getWeightText, syntheticCollateralAmounts}) {
+export default function MobileShow({visibleTokens, infoTokens, getWeightText, syntheticCollateralAmounts, globalShortSizes}) {
   let usdcInfo;
   for (let idx in infoTokens){
     if (infoTokens[idx].symbol.toLowerCase() === "usdc"){
@@ -106,14 +106,15 @@ export default function MobileShow({visibleTokens, infoTokens, getWeightText, sy
         {visibleTokens.filter(t=>t.isSynthetic).map((token, idx) => {
           const tokenInfo = infoTokens[token.address];
 
-          let size = 0, Collateral=0,OCCUPANCY=0,PROPORTION=0,minPriceTmp=0;
-          if (syntheticCollateralAmounts && syntheticCollateralAmounts[idx]){
-            Collateral = parseFloat(formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayPricePrecision))
-            minPriceTmp = parseFloat(formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
-            Collateral = Collateral * minPriceTmp
-            size =Collateral + parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
-            OCCUPANCY = (size - Collateral) / parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
-            PROPORTION = size/parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
+          let size=0,PROPORTION=0;
+          if (syntheticCollateralAmounts && globalShortSizes){
+            const guaranteedUsd = parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
+            const amount = parseFloat(formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayPricePrecision))
+            const shortSize = parseFloat(formatAmount(globalShortSizes[idx], USD_DECIMALS, tokenInfo.displayPricePrecision))
+            const usdcPrice = parseFloat(formatKeyAmount(usdcInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
+            size = guaranteedUsd + amount * usdcPrice + shortSize;
+            const usdcAsset = formatAmount(tokenInfo.managedUsd, USD_DECIMALS, tokenInfo.displayPricePrecision);
+            PROPORTION = size/parseFloat(usdcAsset) * 100
           }
 
           const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_24.svg");
@@ -141,21 +142,15 @@ export default function MobileShow({visibleTokens, infoTokens, getWeightText, sy
                 </div>
                 <div className="App-card-row">
                   <div className="label">
-                    <Trans>Collateral</Trans>
+                    <Trans>USDC ASSET</Trans>
                   </div>
-                  <div>${Collateral.toFixed(tokenInfo.displayPricePrecision)}</div>
-                </div>
-                <div className="App-card-row">
-                  <div className="label">
-                    <Trans>USDC ASSET OCCUPANCY</Trans>
-                  </div>
-                  <div>{OCCUPANCY.toFixed(4)}%</div>
+                  <div>{`$${formatKeyAmount(tokenInfo, "managedUsd", USD_DECIMALS, 2, true)}`}</div>
                 </div>
                 <div className="App-card-row">
                   <div className="label">
                     <Trans>USDC PROPORTION</Trans>
                   </div>
-                  <div>{PROPORTION.toFixed(4)}%</div>
+                  <div>{PROPORTION.toFixed(2)}%</div>
                 </div>
               </div>
             </div>

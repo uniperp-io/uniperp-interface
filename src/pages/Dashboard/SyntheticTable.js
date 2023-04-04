@@ -1,9 +1,9 @@
 import { Trans } from "@lingui/macro";
-import { BASIS_POINTS_DIVISOR, DEFAULT_MAX_USDG_AMOUNT, importImage, USD_DECIMALS } from "lib/legacy";
+import { BASIS_POINTS_DIVISOR, DEFAULT_MAX_USDG_AMOUNT, importImage, USD_DECIMALS, fetchMulticallData } from "lib/legacy";
 import { bigNumberify, formatAmount, formatKeyAmount } from "lib/numbers";
 import "./DashboardV2.css";
 
-export default function SyntheticTable({visibleTokens,infoTokens,getWeightText, syntheticCollateralAmounts}) {
+export default function SyntheticTable({visibleTokens,infoTokens, syntheticCollateralAmounts, globalShortSizes}) {
   let usdcInfo;
   for (let idx in infoTokens){
     if (infoTokens[idx].symbol.toLowerCase() === "usdc"){
@@ -30,10 +30,7 @@ export default function SyntheticTable({visibleTokens,infoTokens,getWeightText, 
                     <Trans>Size</Trans>
                   </th>
                   <th>
-                    <Trans>Collateral</Trans>
-                  </th>
-                  <th>
-                    <Trans>USDC ASSET OCCUPANCY</Trans>
+                    <Trans>USDC ASSET</Trans>
                   </th>
                   <th>
                     <Trans>USDC PROPORTION</Trans>
@@ -43,24 +40,17 @@ export default function SyntheticTable({visibleTokens,infoTokens,getWeightText, 
               <tbody>
                 {visibleTokens.filter(t=>t.isSynthetic).map((token, idx) => {
                   const tokenInfo = infoTokens[token.address];
-                  let utilization = bigNumberify(0);
-                  if (tokenInfo && tokenInfo.reservedAmount && tokenInfo.poolAmount && tokenInfo.poolAmount.gt(0)) {
-                    utilization = tokenInfo.reservedAmount.mul(BASIS_POINTS_DIVISOR).div(tokenInfo.poolAmount);
-                  }
-                  let maxUsdgAmount = DEFAULT_MAX_USDG_AMOUNT;
-                  if (tokenInfo.maxUsdgAmount && tokenInfo.maxUsdgAmount.gt(0)) {
-                    maxUsdgAmount = tokenInfo.maxUsdgAmount;
-                  }
                   const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_40.png");
 
-                  let size = 0, Collateral=0,OCCUPANCY=0,PROPORTION=0,minPriceTmp=0;
-                  if (syntheticCollateralAmounts && syntheticCollateralAmounts[idx]){
-                    Collateral = formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayPricePrecision)
-                    minPriceTmp = formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, false)
-                    Collateral = parseFloat(Collateral, 6)*parseFloat(minPriceTmp);
-                    size = parseFloat(Collateral) + parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
-                    OCCUPANCY = (size - Collateral) / parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
-                    PROPORTION = size/parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
+                  let size=0,PROPORTION=0;
+                  if (syntheticCollateralAmounts && globalShortSizes){
+                    const guaranteedUsd = parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
+                    const amount = parseFloat(formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayPricePrecision))
+                    const shortSize = parseFloat(formatAmount(globalShortSizes[idx], USD_DECIMALS, tokenInfo.displayPricePrecision))
+                    const usdcPrice = parseFloat(formatKeyAmount(usdcInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
+                    size = guaranteedUsd + amount * usdcPrice + shortSize;
+                    const usdcAsset = formatAmount(tokenInfo.managedUsd, USD_DECIMALS, tokenInfo.displayPricePrecision);
+                    PROPORTION = size/parseFloat(usdcAsset) * 100
                   }
 
                   return (
@@ -80,11 +70,8 @@ export default function SyntheticTable({visibleTokens,infoTokens,getWeightText, 
                       </td>
                       <td>${formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, true)}</td>
                       <td>${size.toFixed(2)}</td>
-                      <td>
-                        ${Collateral.toFixed(tokenInfo.displayPricePrecision)}
-                      </td>
-                      <td>{OCCUPANCY.toFixed(4)}%</td>
-                      <td>{PROPORTION.toFixed(4)}%</td>
+                      <td>{`$${formatKeyAmount(tokenInfo, "managedUsd", USD_DECIMALS, 2, true)}`}</td>
+                      <td>{PROPORTION.toFixed(2)}%</td>
                     </tr>
                   );
                 })}
