@@ -114,7 +114,7 @@ export default function MobileShow({visibleTokens, infoTokens, getWeightText, sy
             const usdcPrice = parseFloat(formatKeyAmount(usdcInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
             size = guaranteedUsd + amount * usdcPrice + shortSize;
             const usdcAsset = formatAmount(tokenInfo.managedUsd, USD_DECIMALS, tokenInfo.displayPricePrecision);
-            PROPORTION = size/parseFloat(usdcAsset) * 100
+            PROPORTION = size/parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
           }
 
           const tokenImage = importImage("ic_" + token.symbol.toLowerCase() + "_24.svg");
