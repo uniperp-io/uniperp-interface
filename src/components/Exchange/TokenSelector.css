@@ -145,7 +145,7 @@
 }
 
 .currorAuto{
-  cursor: auto;
+  cursor: default;
 }
 
 @media (max-width: 700px) {

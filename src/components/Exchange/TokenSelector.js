@@ -70,7 +70,7 @@ export default function TokenSelector(props) {
   };
 
   let enableSelect = true;
-  if(props.label.toLowerCase() === "pay" && props.toTokenAddress){
+  if(props.hasOwnProperty("toTokenAddress")){
     const toTokenInfo = getToken(props.chainId, props.toTokenAddress);
     enableSelect = !toTokenInfo.isSynthetic;
   }
@@ -87,6 +87,20 @@ export default function TokenSelector(props) {
   let className = "TokenSelector-box"
   if (!enableSelect || isShortAndLong){
     className += " currorAuto"
+  }
+
+  function showDownIcon(){
+    if (isShortAndLong){
+      return (<></>)
+    }
+
+    if (!enableSelect){
+      return (<></>)
+    }
+
+    if (!showNewCaret){
+      return <BiChevronDown className="TokenSelector-caret" />
+    }
   }
 
   return (
@@ -184,9 +198,7 @@ export default function TokenSelector(props) {
           {tokenInfo.symbol}
           {showSymbolImage && <img src={tokenImage} alt={tokenInfo.symbol} className="TokenSelector-box-symbol" />}
           {showNewCaret && <img src={dropDownIcon} alt="Dropdown Icon" className="TokenSelector-box-caret" />}
-          {isShortAndLong
-            ? (<></>)
-            : !showNewCaret && <BiChevronDown className="TokenSelector-caret" />}
+          {showDownIcon()}
         </div>
       )}
     </div>

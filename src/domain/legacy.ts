@@ -19,7 +19,7 @@ import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, getConstant, getHighExecutionFee
 import { checkIsSynthetic, DECREASE, getOrderKey, INCREASE, SWAP, USD_DECIMALS } from "lib/legacy";
 
 import { groupBy } from "lodash";
-import { getServerBaseUrl, getServerUrlNew } from "config/backend";
+import { getServerUrlNew } from "config/backend";
 import { getGmxGraphClient, nissohGraphClient } from "lib/subgraph/clients";
 import { callContract, contractFetcher } from "lib/contracts";
 import { replaceNativeTokenAddress } from "./tokens";
@@ -293,8 +293,8 @@ function invariant(condition, errorMsg) {
 export function useTrades(chainId, account, forSingleAccount, afterId) {
   let url =
     account && account.length > 0
-      ? `${getServerBaseUrl(chainId)}/actions?account=${account}&chain_id=${chainId}`
-      : !forSingleAccount && `${getServerBaseUrl(chainId)}/actions?chain_id=${chainId}`;
+      ? getServerUrlNew(chainId, `/actions?account=${account}&chain_id=${chainId}`)
+      : !forSingleAccount && getServerUrlNew(chainId, `/actions?chain_id=${chainId}`);
 
   if (afterId && afterId.length > 0) {
     const urlItem = new URL(url as string);

@@ -51,7 +51,7 @@ export function useInfoTokens(
     }
   );
 
-  const indexPricesUrl = getServerUrlNew(chainId, "/targetprices");
+  const indexPricesUrl = getServerUrlNew(chainId, `/targetprices?chainId=${chainId}`);
   const { data: indexPrices } = useSWR([indexPricesUrl], {
     // @ts-ignore spread args incorrect type
     fetcher: (...args) => fetch(...args).then((res) => res.json()),
