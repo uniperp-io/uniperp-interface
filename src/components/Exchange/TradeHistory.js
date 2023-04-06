@@ -353,7 +353,7 @@ export default function TradeHistory(props) {
         }
         const longShortDisplay = order.isLong ? t`Long` : t`Short`;
         const orderTypeText = order.type === INCREASE ? t`Increase` : t`Decrease`;
-        const executionPriceDisplay = formatAmount(order.executionPrice, USD_DECIMALS, 2, true);
+        const executionPriceDisplay = formatAmount(order.executionPrice, USD_DECIMALS, indexToken.displayPricePrecision, true);
         const sizeDeltaDisplay = `${order.type === "Increase" ? "+" : "-"}${formatAmount(
           order.sizeDelta,
           USD_DECIMALS,
@@ -382,7 +382,7 @@ export default function TradeHistory(props) {
         const priceDisplay = `${order.triggerAboveThreshold ? ">" : "<"} ${formatAmount(
           order.triggerPrice,
           USD_DECIMALS,
-          2,
+          indexToken.displayPricePrecision,
           true
         )}`;
         return t`
@@ -401,7 +401,7 @@ export default function TradeHistory(props) {
           return defaultMsg;
         }
         const fromAmountDisplay = formatAmount(order.amountIn, fromToken.decimals, fromToken.isStable ? 2 : 4, true);
-        const toAmountDisplay = formatAmount(order.amountOut, toToken.decimals, toToken.isStable ? 2 : 4, true);
+        const toAmountDisplay = formatAmount(order.minOut, toToken.decimals, toToken.isStable ? 2 : 4, true);
         return t`
         Execute Order: Swap ${fromAmountDisplay} ${fromToken.symbol} for ${toAmountDisplay} ${toToken.symbol}
       `;
