@@ -231,7 +231,7 @@ function FullApp() {
           ) : (
             <Trans>
               <ExternalLink href="https://www.coinbase.com/wallet">Install Coinbase Wallet</ExternalLink> to start using
-              GMX.
+              UNIP.
             </Trans>
           )}
         </div>
