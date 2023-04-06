@@ -276,7 +276,7 @@ export default function Presale() {
 
       <div className="button_group">
         <div className="card claim left">
-          <h3>Cliam UNIP</h3>
+          <h3>Claim UNIP</h3>
           <div>Deposited($): <span>${formatAmount(contributions, usdcTokenInfo.decimals, 2)}</span></div>
           <div>UNIP Amount: <span>{formatAmount(claimableTokens, 18, 2)}</span></div>
           <button className="App-cta Exchange-swap-button" onClick={claimToken} disabled={isWithdrawAble}>Withdraw UNIP</button>
