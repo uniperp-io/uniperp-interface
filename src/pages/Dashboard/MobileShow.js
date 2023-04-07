@@ -144,7 +144,7 @@ export default function MobileShow({visibleTokens, infoTokens, getWeightText, sy
                   <div className="label">
                     <Trans>USDC ASSET</Trans>
                   </div>
-                  <div>{`$${formatKeyAmount(tokenInfo, "managedUsd", USD_DECIMALS, 2, true)}`}</div>
+                  <div>{`$${formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 0)}`}</div>
                 </div>
                 <div className="App-card-row">
                   <div className="label">

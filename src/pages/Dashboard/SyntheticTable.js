@@ -70,7 +70,7 @@ export default function SyntheticTable({visibleTokens,infoTokens, syntheticColla
                       </td>
                       <td>${formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, true)}</td>
                       <td>${size.toFixed(2)}</td>
-                      <td>{`$${formatKeyAmount(tokenInfo, "managedUsd", USD_DECIMALS, 2, true)}`}</td>
+                      <td>{`$${formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 0)}`}</td>
                       <td>{PROPORTION.toFixed(2)}%</td>
                     </tr>
                   );
