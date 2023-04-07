@@ -17,25 +17,25 @@ export default function TermsAndConditions() {
           <div className="content">
             <div className="section">
               <p className="body-text">
-                Welcome to GMX.io ("we," "us," or "our"), the informational resource for GMX Protocol, as defined below.
+                Welcome to uniperp.io ("we," "us," or "our"), the informational resource for GMX Protocol, as defined below.
               </p>
               <p className="body-text">
-                GMX.io provides information and resources about the fundamentals of the decentralized non-custodial
-                protocol called the GMX Protocol (the "GMX Protocol," "Protocol," or "GMX DApp"). GMX.io is not an
+                uniperp.io provides information and resources about the fundamentals of the decentralized non-custodial
+                protocol called the GMX Protocol (the "GMX Protocol," "Protocol," or "GMX DApp"). uniperp.io is not an
                 available access point to the GMX Protocol.
               </p>
               <p className="body-text">
                 These Terms and Conditions and any other documents incorporated herein by reference (collectively, these
                 "Terms") to you or the company or other legal entity you represent ("you" or "your") explains the terms
-                and conditions by which you may access GMX.io ("the Site") and app.GMX.io ("the Interface"). Please do
+                and conditions by which you may access uniperp.io ("the Site") and app.uniperp.io ("the Interface"). Please do
                 not use the Site or Interface if you disagree with any of these Terms.
               </p>
             </div>
             <div className="section">
               <h3 className="body-title">1. USE OF THE SITE AND THE INTERFACE</h3>
-              <p className="body-text">The GMX.io site is for informational purposes only.</p>
+              <p className="body-text">The uniperp.io site is for informational purposes only.</p>
               <p className="body-text">
-                GMX.io is not part of any transaction on the blockchain networks underlying the GMX Protocol; we do not
+                uniperp.io is not part of any transaction on the blockchain networks underlying the GMX Protocol; we do not
                 have possession, custody, or control over any crypto assets appearing on the Interface; and we do not
                 have possession, custody, or control over any user's funds. Further, we do not store, send, or receive
                 any crypto assets. You understand that when you interact with any GMX Protocol smart contracts, you
@@ -44,7 +44,7 @@ export default function TermsAndConditions() {
               <ul className="list-style-none">
                 <li>
                   <p className="body-text">
-                    1.1. As a condition to accessing or using the Site or Interface, you represent and warrant to GMX.io
+                    1.1. As a condition to accessing or using the Site or Interface, you represent and warrant to uniperp.io
                     the following:
                   </p>
                   <ul className="list-style-none">
@@ -102,7 +102,7 @@ export default function TermsAndConditions() {
                         transaction, activity, event or other matter, including any rule, letter, order, judgment,
                         directive or other requirements, guidance, or guideline issued by any domestic or foreign
                         federal, provincial or state, municipal, local or other governmental, regulatory, judicial or
-                        administrative authority having jurisdiction over GMX.io or you as otherwise duly enacted,
+                        administrative authority having jurisdiction over uniperp.io or you as otherwise duly enacted,
                         enforceable by law, the common law or equity (collectively, "Applicable Laws"); or (b)
                         contribute to or facilitate any illegal activity.
                       </p>
@@ -121,8 +121,8 @@ export default function TermsAndConditions() {
                       <p className="body-text">
                         1.2.1. From time to time, the Site or the Interface may be inaccessible or inoperable for any
                         reason, including, but not limited to: (a) equipment malfunctions; (b) periodic maintenance
-                        procedures or repairs that GMX.io or any of its suppliers or contractors may undertake from time
-                        to time; (c) causes beyond GMX.io's control or that GMX.io could not reasonably foresee; (d)
+                        procedures or repairs that uniperp.io or any of its suppliers or contractors may undertake from time
+                        to time; (c) causes beyond uniperp.io's control or that uniperp.io could not reasonably foresee; (d)
                         disruptions and temporary or permanent unavailability of underlying blockchain infrastructure;
                         or (e) unavailability of third-party service providers or external partners for any reason;
                       </p>
@@ -146,11 +146,11 @@ export default function TermsAndConditions() {
                       <p className="body-text">
                         1.2.4. The pricing information provided on the Site or the Interface does not represent an
                         offer, a solicitation of an offer, or any advice regarding, or recommendation to enter into, a
-                        transaction with GMX.io;
+                        transaction with uniperp.io;
                       </p>
                     </li>
                     <li>
-                      <p className="body-text">1.2.5. GMX.io does not act as a broker or advisor for you;</p>
+                      <p className="body-text">1.2.5. uniperp.io does not act as a broker or advisor for you;</p>
                     </li>
                     <li>
                       <p className="body-text">
@@ -190,7 +190,7 @@ export default function TermsAndConditions() {
               <p className="body-text">
                 You are required to pay all fees for transactions involving certain blockchain networks. These fees may
                 include gas costs and all other fees reflected on the Interface at your use, including trading-related
-                fees. GMX.io does not receive fees for any blockchain transactions or using the Site or the Interface.
+                fees. uniperp.io does not receive fees for any blockchain transactions or using the Site or the Interface.
               </p>
             </div>
             <div className="section">
@@ -210,18 +210,18 @@ export default function TermsAndConditions() {
               <ul className="list-style-none">
                 <li>
                   <p className="body-text">
-                    4.1. GMX.io own all rights, names, logos, and other marks used on the Site and the Interface,
+                    4.1. uniperp.io own all rights, names, logos, and other marks used on the Site and the Interface,
                     including, without limitation, any copyrights in and to any content, code, data, or other materials
                     that you may access or use on or through the Site or the Interface; however, the code for the GMX
-                    Protocol and the Interface (app.GMX.io) deployed on IPFS is open-sourced. Except as expressly set
+                    Protocol and the Interface (app.uniperp.io) deployed on IPFS is open-sourced. Except as expressly set
                     forth herein, your use of or access to the Site or the Interface does not grant you any ownership or
                     other rights therein.
                   </p>
                 </li>
                 <li>
                   <p className="body-text">
-                    4.2. GMX.io may use and share your comments, bug reports, ideas, or other feedback that you may
-                    provide, including suggestions about how we might improve. You agree that GMX.io is free to use or
+                    4.2. uniperp.io may use and share your comments, bug reports, ideas, or other feedback that you may
+                    provide, including suggestions about how we might improve. You agree that uniperp.io is free to use or
                     not use any feedback we receive from you as we see fit, including copying and sharing such feedback
                     with third parties, without any obligation to you.
                   </p>
@@ -233,19 +233,19 @@ export default function TermsAndConditions() {
               <ul className="list-style-none">
                 <li>
                   <p className="body-text">
-                    5.1. GMX.io reserve the right, at our sole discretion, from time to time and with or without prior
+                    5.1. uniperp.io reserve the right, at our sole discretion, from time to time and with or without prior
                     notice to you, to modify, suspend or disable (temporarily or permanently) the Site or our subdomain
                     to the Interface, in whole or in part, for any reason whatsoever, including, without limitation.
                     Upon termination of your access, your right to use the Site or the Interface from our subdomain will
                     immediately cease. However, it would still be accessible via a third party since we do not host or
-                    own its code. GMX.io will not be liable for any losses suffered by you resulting from any
+                    own its code. uniperp.io will not be liable for any losses suffered by you resulting from any
                     modification to the Site or the Interface or from any modification, suspension, or termination, for
                     any reason, of your access to all or any portion of the Site or the Interface.
                   </p>
                 </li>
                 <li>
                   <p className="body-text">
-                    5.2. GMX.io may revise these Terms from time to time. We will notify you by updating the date at the
+                    5.2. uniperp.io may revise these Terms from time to time. We will notify you by updating the date at the
                     top of the Terms and maintaining a current version. The most current version of the Terms will
                     always be at https://uniperp.io/#/terms-and-conditions. All modifications will be effective when they
                     are posted. By continuing to access or use the Site or the Interface after those revisions become
@@ -260,7 +260,7 @@ export default function TermsAndConditions() {
                 <li>
                   <p className="body-text">
                     6.1. The use of technology related to blockchain, smart contracts, and cryptocurrencies, among
-                    others, entails a risk that by accessing transactions, you are assuming. GMX.io does not own or
+                    others, entails a risk that by accessing transactions, you are assuming. uniperp.io does not own or
                     control any underlying software through which blockchain networks are formed. The software
                     underlying blockchain networks are open-source so anyone can use, copy, modify, and distribute it.
                     By using the Interface, you acknowledge and agree:
@@ -268,7 +268,7 @@ export default function TermsAndConditions() {
                   <ul className="list-style-none">
                     <li>
                       <p className="body-text">
-                        6.1.1. That GMX.io is not responsible for the operation of the open-source software and networks
+                        6.1.1. That uniperp.io is not responsible for the operation of the open-source software and networks
                         underlying the Interface;
                       </p>
                     </li>
@@ -284,7 +284,7 @@ export default function TermsAndConditions() {
                         those commonly referred to as "forks," which may materially affect the Interface. You are
                         responsible for securing your private key(s). We do not have access to your private key(s);
                         losing control of your private key(s) will permanently and irreversibly deny you access to any
-                        blockchain-based network. Neither GMX.io nor any other person or entity will be able to retrieve
+                        blockchain-based network. Neither uniperp.io nor any other person or entity will be able to retrieve
                         or protect your digital assets. If your private key(s) are lost, you will not be able to
                         transfer your digital assets to any blockchain address or wallet. If this occurs, you will not
                         be able to realize any value or utility from the digital assets you may hold.
@@ -294,13 +294,13 @@ export default function TermsAndConditions() {
                 </li>
                 <li>
                   <p className="body-text">
-                    6.2. GMX.io is not responsible for the content of any third party, including, but not limited to,
-                    information, materials, products, or services that GMX.io does not own or control. In addition,
-                    third parties may offer promotions related to your access and use of the Interface. GMX.io does not
+                    6.2. uniperp.io is not responsible for the content of any third party, including, but not limited to,
+                    information, materials, products, or services that uniperp.io does not own or control. In addition,
+                    third parties may offer promotions related to your access and use of the Interface. uniperp.io does not
                     endorse or assume any responsibility for such resources or promotions. Suppose you access any such
                     resources or participate in any such promotions. In that case, you do so at your own risk and
                     understand that these Terms do not apply to your dealings or relationships with any third parties.
-                    You expressly relieve GMX.io of all liability arising from using such resources or participating in
+                    You expressly relieve uniperp.io of all liability arising from using such resources or participating in
                     such promotions.
                   </p>
                 </li>

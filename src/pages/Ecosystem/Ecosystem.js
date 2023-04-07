@@ -24,7 +24,7 @@ const NETWORK_ICON_ALTS = {
 export default function Ecosystem() {
   const gmxPages = [
     {
-      title: "GMX Governance",
+      title: "UNIP Governance",
       link: "https://gov.gmx.io/",
       linkLabel: "gov.gmx.io",
       about: t`GMX Governance Page`,

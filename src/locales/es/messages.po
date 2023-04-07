@@ -54,7 +54,7 @@ msgid "<0>Return to </0><1>Homepage</1> <2>or </2> <3>Trade</3>"
 msgstr "<0>Volver a </0><1>Página inicial</1> <2>o </2> <3>Operar</3>"
 
 #: src/components/Glp/SwapErrorModal.tsx
-msgid "<0>The pool's capacity has been reached for {0}. Please use another token to buy GLP.</0><1>Check the \"Save on Fees\" section for tokens with the lowest fees.</1>"
+msgid "<0>The pool's capacity has been reached for {0}. Please use another token to buy ULP.</0><1>Check the \"Save on Fees\" section for tokens with the lowest fees.</1>"
 msgstr "<0>La capacidad de la reserva ha sido alcanzada para {0}. Por favor use otro token para comprar GLP.</0><1>Comprueba la sección \"Ahorrar en Comisiones\" para tokens con las menores comisiones.</1>"
 
 #: src/components/Exchange/OrdersList.js
@@ -3749,7 +3749,7 @@ msgstr "Estás ganando {nativeTokenSymbol} recompensas con {0} tokens.<0/>Tokens
 
 #: src/components/ModalViews/RedirectModal.js
 msgid "You are leaving uniperp.io and will be redirected to a third party, independent website."
-msgstr "Estas dejando GMX.io y serás redirigido a una página independiente y gestionada por terceras partes."
+msgstr "Estas dejando uniperp.io y serás redirigido a una página independiente y gestionada por terceras partes."
 
 #: src/components/Exchange/SwapBox.js
 msgid "You can change the \"Collateral In\" token above to find lower fees"
@@ -3965,7 +3965,7 @@ msgid "{0} is above its target weight.<0/><1/>Get lower fees to <2>swap</2> toke
 msgstr "{0} está por encima de su peso objetivo.<0/><1/>Consigue menores comisiones para <2>intercambiar</2> tokens por {1}."
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy GLP</2> with {1}, and to <3>swap</3> {2} for other tokens."
+msgid "{0} is below its target weight.<0/><1/>Get lower fees to <2>buy ULP</2> with {1}, and to <3>swap</3> {2} for other tokens."
 msgstr "{0} está por debajo de su peso objetivo.<0/><1/>Consigue menores comisiones <2>comprar GLP</2> con {1}, y para <3>intercambiar</3> {2} por otros tokens."
 
 #: src/components/Exchange/SwapBox.js
