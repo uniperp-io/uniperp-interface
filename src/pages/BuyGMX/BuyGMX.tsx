@@ -187,7 +187,7 @@ function DecentralisedExchangesbak({ chainId, externalLinks }) {
         ) : (
           <div className="exchange-info-group">
             <div className="BuyGMXGLP-description">
-              <Trans>Buy GMX from Traderjoe:</Trans>
+              <Trans>Buy UNIP from Traderjoe:</Trans>
             </div>
             <div className="buttons-group col-1">
               <Button imgSrc={traderjoeIcon} href={externalLinks.buyGmx.traderjoe}>
@@ -198,7 +198,7 @@ function DecentralisedExchangesbak({ chainId, externalLinks }) {
         )}
         <div className="exchange-info-group">
           <div className="BuyGMXGLP-description">
-            <Trans>Buy GMX using Decentralized Exchange Aggregators:</Trans>
+            <Trans>Buy UNIP using Decentralized Exchange Aggregators:</Trans>
           </div>
           <div className="buttons-group">
             {DECENTRALISED_AGGRIGATORS.filter((e) => chainId in e.links).map((exchange) => {
@@ -214,7 +214,7 @@ function DecentralisedExchangesbak({ chainId, externalLinks }) {
         </div>
         <div className="exchange-info-group">
           <div className="BuyGMXGLP-description">
-            <Trans>Buy GMX using any token from any network:</Trans>
+            <Trans>Buy UNIP using any token from any network:</Trans>
           </div>
           <div className="buttons-group">
             {GMX_FROM_ANY_NETWORKS.filter((e) => chainId in e.links).map((exchange) => {
@@ -231,7 +231,7 @@ function DecentralisedExchangesbak({ chainId, externalLinks }) {
         {isArbitrum && (
           <div className="exchange-info-group">
             <div className="BuyGMXGLP-description">
-              <Trans>GMX bonds can be bought on Bond Protocol with a discount and a small vesting period:</Trans>
+              <Trans>UNIP bonds can be bought on Bond Protocol with a discount and a small vesting period:</Trans>
             </div>
             <div className="buttons-group col-1">
               <Button imgSrc={bondProtocolIcon} href="https://app.bondprotocol.finance/#/issuers/GMX">
@@ -247,11 +247,11 @@ function DecentralisedExchangesbak({ chainId, externalLinks }) {
 
 function CentralisedExchanges({ chainId }) {
   return (
-    <Card title={t`Buy GMX from centralized services`}>
+    <Card title={t`Buy UNIP from centralized services`}>
       <div className="App-card-content">
         <div className="exchange-info-group">
           <div className="BuyGMXGLP-description">
-            <Trans>Buy GMX from centralized exchanges:</Trans>
+            <Trans>Buy UNIP from centralized exchanges:</Trans>
           </div>
           <div className="buttons-group">
             {CENTRALISED_EXCHANGES.filter((e) => chainId in e.links).map((exchange) => {

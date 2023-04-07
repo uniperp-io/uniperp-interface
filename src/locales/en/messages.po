@@ -62,8 +62,8 @@ msgid "<0>The price that orders can be executed at may differ slightly from the 
 msgstr "<0>The price that orders can be executed at may differ slightly from the chart price, as market orders update oracle prices, while limit/trigger orders do not.</0><1>This can also cause limit/triggers to not be executed if the price is not reached for long enough. <2>Read more</2>.</1>"
 
 #: src/pages/Stake/StakeV2.js
-msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to GMX will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
-msgstr "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to GMX will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
+msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to UNIP will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
+msgstr "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to UNIP will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
 
 #: src/pages/Dashboard/DashboardV2.js
 msgid "<0>Total value of tokens in ULP pool ({chainName}).</0><1>Other websites may show a higher value as they add positions' collaterals to the ULP pool.</1>"
@@ -174,7 +174,7 @@ msgid "Affiliates"
 msgstr "Affiliates"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "After claiming you will be able to vest a maximum of {0} esGMX at a ratio of {1} {stakingToken} to 1 esGMX."
+msgid "After claiming you will be able to vest a maximum of {0} esUNIP at a ratio of {1} {stakingToken} to 1 esGMX."
 msgstr "After claiming you will be able to vest a maximum of {0} esGMX at a ratio of {1} {stakingToken} to 1 esGMX."
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
@@ -3919,8 +3919,8 @@ msgstr "{0} Capacity Reached"
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "{0} GMX tokens can be claimed, use the options under the Total Rewards section to claim them."
-msgstr "{0} GMX tokens can be claimed, use the options under the Total Rewards section to claim them."
+msgid "{0} UNIP tokens can be claimed, use the options under the Total Rewards section to claim them."
+msgstr "{0} UNIP tokens can be claimed, use the options under the Total Rewards section to claim them."
 
 #: src/components/Exchange/SwapBox.js
 #: src/components/Exchange/SwapBox.js
@@ -3996,8 +3996,8 @@ msgid "{0} selected in order form"
 msgstr "{0} selected in order form"
 
 #: src/pages/Stake/StakeV2.js
-msgid "{0} tokens have been converted to GMX from the {1} esUNIP deposited for vesting."
-msgstr "{0} tokens have been converted to GMX from the {1} esUNIP deposited for vesting."
+msgid "{0} tokens have been converted to UNIP from the {1} esUNIP deposited for vesting."
+msgstr "{0} tokens have been converted to UNIP from the {1} esUNIP deposited for vesting."
 
 #: src/pages/Stake/StakeV2.js
 msgid "{0} tokens have been converted to UNIP from the {1} esUNIP deposited for vesting."

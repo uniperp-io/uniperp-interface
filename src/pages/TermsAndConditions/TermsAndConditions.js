@@ -10,19 +10,19 @@ export default function TermsAndConditions() {
       <div className="default-container Page page-layout">
         <div>
           <div className="Page-title-section center">
-            <div className="Page-title">GMX</div>
+            <div className="Page-title">UNIP</div>
             <div className="Page-subtitle">Terms and Conditions</div>
             <div className="Page-description">Last modified: August 1st, 2022</div>
           </div>
           <div className="content">
             <div className="section">
               <p className="body-text">
-                Welcome to uniperp.io ("we," "us," or "our"), the informational resource for GMX Protocol, as defined below.
+                Welcome to uniperp.io ("we," "us," or "our"), the informational resource for UNIP Protocol, as defined below.
               </p>
               <p className="body-text">
                 uniperp.io provides information and resources about the fundamentals of the decentralized non-custodial
-                protocol called the GMX Protocol (the "GMX Protocol," "Protocol," or "GMX DApp"). uniperp.io is not an
-                available access point to the GMX Protocol.
+                protocol called the UNIP Protocol (the "UNIP Protocol," "Protocol," or "UNIP DApp"). uniperp.io is not an
+                available access point to the UNIP Protocol.
               </p>
               <p className="body-text">
                 These Terms and Conditions and any other documents incorporated herein by reference (collectively, these
@@ -35,10 +35,10 @@ export default function TermsAndConditions() {
               <h3 className="body-title">1. USE OF THE SITE AND THE INTERFACE</h3>
               <p className="body-text">The uniperp.io site is for informational purposes only.</p>
               <p className="body-text">
-                uniperp.io is not part of any transaction on the blockchain networks underlying the GMX Protocol; we do not
+                uniperp.io is not part of any transaction on the blockchain networks underlying the UNIP Protocol; we do not
                 have possession, custody, or control over any crypto assets appearing on the Interface; and we do not
                 have possession, custody, or control over any user's funds. Further, we do not store, send, or receive
-                any crypto assets. You understand that when you interact with any GMX Protocol smart contracts, you
+                any crypto assets. You understand that when you interact with any UNIP Protocol smart contracts, you
                 always retain control over your crypto assets. We do not have access to your private keys.
               </p>
               <ul className="list-style-none">
@@ -212,7 +212,7 @@ export default function TermsAndConditions() {
                   <p className="body-text">
                     4.1. uniperp.io own all rights, names, logos, and other marks used on the Site and the Interface,
                     including, without limitation, any copyrights in and to any content, code, data, or other materials
-                    that you may access or use on or through the Site or the Interface; however, the code for the GMX
+                    that you may access or use on or through the Site or the Interface; however, the code for the UNIP
                     Protocol and the Interface (app.uniperp.io) deployed on IPFS is open-sourced. Except as expressly set
                     forth herein, your use of or access to the Site or the Interface does not grant you any ownership or
                     other rights therein.
@@ -329,9 +329,9 @@ export default function TermsAndConditions() {
                 </li>
                 <li>
                   <p className="body-text">
-                    6.6. You hereby assume and agree that GMX.io will have no responsibility or liability for the risks
+                    6.6. You hereby assume and agree that UNIP.io will have no responsibility or liability for the risks
                     in Section 9. You hereby irrevocably waive, release and discharge all claims, whether known or
-                    unknown to you, against GMX.io, its affiliates, and their respective shareholders, members,
+                    unknown to you, against UNIP.io, its affiliates, and their respective shareholders, members,
                     directors, officers, employees, agents, representatives, suppliers, and contractors related to any
                     of the risks set forth in this Section 6.
                   </p>
@@ -358,7 +358,7 @@ export default function TermsAndConditions() {
                     <li>
                       <p className="body-text">
                         7.1.2. Engage in transactions involving items that infringe or violate any copyright, trademark,
-                        right of publicity, privacy, or any other proprietary right of GMX.io;
+                        right of publicity, privacy, or any other proprietary right of UNIP.io;
                       </p>
                     </li>
                     <li>
@@ -389,7 +389,7 @@ export default function TermsAndConditions() {
                     </li>
                     <li>
                       <p className="body-text">
-                        7.1.6. Harass, abuse, or harm another person or entity, including GMX.io's collaborator and
+                        7.1.6. Harass, abuse, or harm another person or entity, including UNIP.io's collaborator and
                         service providers;
                       </p>
                     </li>
@@ -413,7 +413,7 @@ export default function TermsAndConditions() {
             <div className="section">
               <h3 className="body-title">8. DISCLOSURES; DISCLAIMERS</h3>
               <p className="body-text">
-                GMX.io is an informational site for the GMX Protocol. GMX.io does not operate an exchange platform or
+                UNIP.io is an informational site for the UNIP Protocol. GMX.io does not operate an exchange platform or
                 offer trade execution or clearing services and has no oversight, involvement, or control concerning your
                 transactions using the Interface. All transactions between users of the Interface are executed
                 peer-to-peer directly between the users' blockchain addresses through a third-party developed

@@ -62,7 +62,7 @@ msgid "<0>The price that orders can be executed at may differ slightly from the 
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to GMX will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
+msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to UNIP will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
@@ -174,7 +174,7 @@ msgid "Affiliates"
 msgstr "Affiliate"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "After claiming you will be able to vest a maximum of {0} esGMX at a ratio of {1} {stakingToken} to 1 esGMX."
+msgid "After claiming you will be able to vest a maximum of {0} esUNIP at a ratio of {1} {stakingToken} to 1 esGMX."
 msgstr "Nach Inanspruchnahme kannst du maximal {0} esGMX in einem Verhältnis von {1} {stakingToken} zu 1 esGMX erwerben."
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
@@ -3919,7 +3919,7 @@ msgstr "{0} Erreichte Kapazität"
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "{0} GMX tokens can be claimed, use the options under the Total Rewards section to claim them."
+msgid "{0} UNIP tokens can be claimed, use the options under the Total Rewards section to claim them."
 msgstr "{0} GMX-Token können eingefordert werden. Verwende die Optionen im Abschnitt Gesamtrewards, um sie einzufordern."
 
 #: src/components/Exchange/SwapBox.js
@@ -3996,7 +3996,7 @@ msgid "{0} selected in order form"
 msgstr "{0} ausgewählt im Orderformular"
 
 #: src/pages/Stake/StakeV2.js
-msgid "{0} tokens have been converted to GMX from the {1} esUNIP deposited for vesting."
+msgid "{0} tokens have been converted to UNIP from the {1} esUNIP deposited for vesting."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js

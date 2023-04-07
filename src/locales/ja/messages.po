@@ -62,7 +62,7 @@ msgid "<0>The price that orders can be executed at may differ slightly from the 
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to GMX will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
+msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to UNIP will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
@@ -174,12 +174,12 @@ msgid "Affiliates"
 msgstr "アフィリエイト"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "After claiming you will be able to vest a maximum of {0} esGMX at a ratio of {1} {stakingToken} to 1 esGMX."
-msgstr "請求後、最大で{1} {stakingToken} 対 1esGMXトークンの比率でべスティングすることができます。"
+msgid "After claiming you will be able to vest a maximum of {0} esUNIP at a ratio of {1} {stakingToken} to 1 esUNIP."
+msgstr "請求後、最大で{1} {stakingToken} 対 1esUNIPトークンの比率でべスティングすることができます。"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "After claiming, the esGMX tokens will be airdropped to your account on the selected network within 7 days."
-msgstr "請求後7日以内に指定のネットワーク上のあなたのアカウントにesGMXトークンがエアドロップされます"
+msgid "After claiming, the esUNIP tokens will be airdropped to your account on the selected network within 7 days."
+msgstr "請求後7日以内に指定のネットワーク上のあなたのアカウントにesUNIPトークンがエアドロップされます"
 
 #: src/components/ModalViews/RedirectModal.js
 msgid "Agree"
@@ -548,8 +548,8 @@ msgid "Claim completed!"
 msgstr "請求完了!"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Claim esGMX"
-msgstr "esGMXの請求"
+msgid "Claim esUNIP"
+msgstr "esUNIPの請求"
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -1218,7 +1218,7 @@ msgstr "エントリー価格"
 
 #: src/components/Stake/GMXAprTooltip.tsx
 msgid "Escrowed GMX APR"
-msgstr "esGMXのAPR(実質年利)"
+msgstr "esUNIPのAPR(実質年利)"
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
@@ -2045,8 +2045,8 @@ msgid "No PnLs found"
 msgstr "損益が見つかりません"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "No esGMX to claim"
-msgstr "請求できるesGMXはありません"
+msgid "No esUNIP to claim"
+msgstr "請求できるesUNIPはありません"
 
 #: src/components/Exchange/OrdersList.js
 #: src/components/Exchange/OrdersList.js
@@ -3037,20 +3037,20 @@ msgid "The Gambit protocol is in beta, please read the <0>staking details</0>be
 msgstr "Gambitプロトコルはベータ版であり、参加する前に<0>ステーキングの詳細</0>を読んでください。"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "The address of the esGMX (IOU) token is {esGmxIouAddress}."
-msgstr "esGMX (IOU)トークンのアドレスは{esGmxIouAddress}です。"
+msgid "The address of the esUNIP (IOU) token is {esGmxIouAddress}."
+msgstr "esUNIP (IOU)トークンのアドレスは{esGmxIouAddress}です。"
 
 #: src/components/Exchange/SwapBox.js
 msgid "The borrow fee is calculated as (assets borrowed) / (total assets in pool) * 0.01% per hour."
 msgstr "借入手数料は1時間につき、(借入アセット額 ÷ プール内アセット総額) × 0.01% の式で計算されます。"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "The esGMX (IOU) token is transferrable. You can add the token to your wallet and send it to another address to claim if you'd like."
-msgstr "esGMX (IOU)は移転可能です。自分のウォレットに加えてから別のアドレスに移してトークンを請求することもできます。"
+msgid "The esUNIP (IOU) token is transferrable. You can add the token to your wallet and send it to another address to claim if you'd like."
+msgstr "esUNIP (IOU)は移転可能です。自分のウォレットに加えてから別のアドレスに移してトークンを請求することもできます。"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "The esGMX tokens can be staked or vested at any time."
-msgstr "esGMXトークンはいつでもステークまたはべスティングすることができます。"
+msgid "The esUNIP tokens can be staked or vested at any time."
+msgstr "esUNIPトークンはいつでもステークまたはべスティングすることができます。"
 
 #: src/lib/contracts/callContract.tsx
 msgid "The mark price has changed, consider increasing your Allowed Slippage by clicking on the \"...\" icon next to your address."
@@ -3765,8 +3765,8 @@ msgid "You can check your claim history <0>here</0>."
 msgstr "<0>こちら</0>で請求履歴を確認できます。"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "You can currently vest a maximum of {0} esGMX tokens at a ratio of {1} {stakingToken} to 1 esGMX."
-msgstr "{1} {stakingToken}対1 esGMXの比率で最大{0} esGMXトークンを現在べスティングすることができます。"
+msgid "You can currently vest a maximum of {0} esUNIP tokens at a ratio of {1} {stakingToken} to 1 esUNIP."
+msgstr "{1} {stakingToken}対1 esUNIPの比率で最大{0} esUNIPトークンを現在べスティングすることができます。"
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "You have a <0>pending transfer</0> to {pendingReceiver}."
@@ -3794,8 +3794,8 @@ msgid "You have not deposited any tokens for vesting."
 msgstr "べスティング用のトークンが入金されていません。"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "You have {0} esGMX (IOU) tokens."
-msgstr "あなたは{0} esGMX (IOU)トークンを保有しています。"
+msgid "You have {0} esUNIP (IOU) tokens."
+msgstr "あなたは{0} esUNIP (IOU)トークンを保有しています。"
 
 #: src/pages/Stake/StakeV2.js
 msgid "You need a total of at least {0} {stakeTokenLabel} to vest {1} esUNIP."
@@ -3822,8 +3822,8 @@ msgid "You will receive at least {0} {1} if this order is executed. The executio
 msgstr "この注文が執行された場合、少なくとも{0} {1}を受け取ることになります。正確な執行価格は注文執行時のスワップ手数料によって異なります。"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "Your esGMX (IOU) balance will decrease by your claim amount after claiming, this is expected behaviour."
-msgstr "あなたのesGMX (IOU)残高は請求後に請求額分だけ減少しますが、これは想定通りの挙動です。"
+msgid "Your esUNIP (IOU) balance will decrease by your claim amount after claiming, this is expected behaviour."
+msgstr "あなたのesUNIP (IOU)残高は請求後に請求額分だけ減少しますが、これは想定通りの挙動です。"
 
 #: src/components/Exchange/ConfirmationBox.js
 msgid "Your position's collateral after deducting fees."
@@ -3919,7 +3919,7 @@ msgstr "{0}のキャパシティに到達しました"
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "{0} GMX tokens can be claimed, use the options under the Total Rewards section to claim them."
+msgid "{0} UNIP tokens can be claimed, use the options under the Total Rewards section to claim them."
 msgstr "{0} GMXトークンを請求可能です。総報酬セクションの下の選択肢を使用して請求してください。"
 
 #: src/components/Exchange/SwapBox.js
@@ -3996,7 +3996,7 @@ msgid "{0} selected in order form"
 msgstr "{0}が注文フォームで選択されました"
 
 #: src/pages/Stake/StakeV2.js
-msgid "{0} tokens have been converted to GMX from the {1} esUNIP deposited for vesting."
+msgid "{0} tokens have been converted to UNIP from the {1} esUNIP deposited for vesting."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
