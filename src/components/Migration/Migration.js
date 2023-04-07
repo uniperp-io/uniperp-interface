@@ -413,7 +413,7 @@ export default function Migration() {
         </div>
       </div>
       <div className="Migration-note">
-        <Trans>Your wallet: {formatAmount(gmxBalance, 18, 4, true)}</Trans> GMX
+        <Trans>Your wallet: {formatAmount(gmxBalance, 18, 4, true)}</Trans> UNIP
       </div>
       <div className="Migration-note">
         <Trans>
