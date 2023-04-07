@@ -26,11 +26,11 @@ msgid "<0/>Profit price: {0} ${1}. This rule applies for the next {2}, until {3}
 msgstr "利润价格： {0} ${1}此规则生效从{2}至{3}"
 
 #: src/App/App.js
-msgid "<0>Install Coinbase Wallet</0> to start using GMX."
+msgid "<0>Install Coinbase Wallet</0> to start using UNIP."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install Coinbase Wallet</0>, and use GMX with its built-in browser."
+msgid "<0>Install Coinbase Wallet</0>, and use UNIP with its built-in browser."
 msgstr ""
 
 #: src/App/App.js
@@ -38,7 +38,7 @@ msgid "<0>Install MetaMask</0> to start using UNIP."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install MetaMask</0>, and use GMX with its built-in browser."
+msgid "<0>Install MetaMask</0>, and use UNIP with its built-in browser."
 msgstr ""
 
 #: src/components/Exchange/OrdersToa.js
@@ -62,7 +62,7 @@ msgid "<0>The price that orders can be executed at may differ slightly from the 
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to GMX will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
+msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to UNIP will remain as UNIP tokens.<3/><4/>To claim UNIP tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
@@ -174,12 +174,12 @@ msgid "Affiliates"
 msgstr "结盟企业"
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "After claiming you will be able to vest a maximum of {0} esGMX at a ratio of {1} {stakingToken} to 1 esGMX."
-msgstr "申领后，您将能够以{1}{stakingToken}比1 esGMX的比例获得最多的{0}esGMX."
+msgid "After claiming you will be able to vest a maximum of {0} esUNIP at a ratio of {1} {stakingToken} to 1 esUNIP."
+msgstr "申领后，您将能够以{1}{stakingToken}比1 esUNIP的比例获得最多的{0}esUNIP."
 
 #: src/pages/ClaimEsGmx/ClaimEsGmx.js
-msgid "After claiming, the esGMX tokens will be airdropped to your account on the selected network within 7 days."
-msgstr "申领后，esGMX代币将在7天内空投到您所选网络的账户中"
+msgid "After claiming, the esUNIP tokens will be airdropped to your account on the selected network within 7 days."
+msgstr "申领后，esUNIP代币将在7天内空投到您所选网络的账户中"
 
 #: src/components/ModalViews/RedirectModal.js
 msgid "Agree"
@@ -246,8 +246,8 @@ msgid "Approval was cancelled"
 msgstr "核准已被取消"
 
 #: src/pages/Stake/StakeV2.js
-msgid "Approve GMX"
-msgstr "核准GMX"
+msgid "Approve UNIP"
+msgstr "核准UNIP"
 
 #: src/pages/BeginAccountTransfer/BeginAccountTransfer.js
 msgid "Approve UNIP"
@@ -267,8 +267,8 @@ msgid "Approve {stakingTokenSymbol}"
 msgstr "核准"
 
 #: src/pages/Stake/StakeV2.js
-msgid "Approving GMX..."
-msgstr "核准GMX中"
+msgid "Approving UNIP..."
+msgstr "核准UNIP中"
 
 #: src/components/Exchange/PositionEditor.js
 #: src/components/Exchange/SwapBox.js
@@ -390,31 +390,31 @@ msgid "Buy / Sell ULP"
 msgstr ""
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from Traderjoe:"
+msgid "Buy UNIP from Traderjoe:"
 msgstr ""
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from a Decentralized Exchange"
+msgid "Buy UNIP from a Decentralized Exchange"
 msgstr ""
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from centralized exchanges:"
+msgid "Buy UNIP from centralized exchanges:"
 msgstr ""
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from centralized services"
+msgid "Buy UNIP from centralized services"
 msgstr ""
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using Decentralized Exchange Aggregators:"
+msgid "Buy UNIP using Decentralized Exchange Aggregators:"
 msgstr ""
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using FIAT gateways:"
+msgid "Buy UNIP using FIAT gateways:"
 msgstr ""
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using any token from any network:"
+msgid "Buy UNIP using any token from any network:"
 msgstr ""
 
 #: src/components/Glp/GlpSwap.js
@@ -3919,7 +3919,7 @@ msgstr "{0} 到达容量"
 
 #: src/pages/Stake/StakeV2.js
 #: src/pages/Stake/StakeV2.js
-msgid "{0} GMX tokens can be claimed, use the options under the Total Rewards section to claim them."
+msgid "{0} UNIP tokens can be claimed, use the options under the Total Rewards section to claim them."
 msgstr "{0}GMX代币可认领，使用总奖励下的选项以领取。"
 
 #: src/components/Exchange/SwapBox.js
@@ -3996,7 +3996,7 @@ msgid "{0} selected in order form"
 msgstr "{0}在指令表中选择"
 
 #: src/pages/Stake/StakeV2.js
-msgid "{0} tokens have been converted to GMX from the {1} esUNIP deposited for vesting."
+msgid "{0} tokens have been converted to UNIP from the {1} esUNIP deposited for vesting."
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
