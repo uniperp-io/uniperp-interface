@@ -10,7 +10,7 @@ export const getTokenChartPrice = async (chainId: number, symbol: string, period
     // eslint-disable-next-line no-console
     console.warn(ex, "Switching to graph chainlink data");
     try {
-       prices = await getChainlinkChartPricesFromGraph(symbol, period);
+       //prices = await getChainlinkChartPricesFromGraph(symbol, period);
     } catch (ex2) {
       // eslint-disable-next-line no-console
       console.warn("getChainlinkChartPricesFromGraph failed", ex2);
