@@ -2,7 +2,7 @@ import { getServerUrlNew } from "config/backend";
 import { getTokenBySymbol, getWrappedToken } from "config/tokens";
 import { getChainlinkChartPricesFromGraph, getChartPricesFromStats } from "domain/prices";
 
-export const getTokenChartPrice = async (chainId: number, symbol: string, period: string) => {
+export const getTokenChartPriceBak = async (chainId: number, symbol: string, period: string) => {
   let prices;
   try {
     prices = await getChartPricesFromStats(chainId, symbol, period);
@@ -10,12 +10,22 @@ export const getTokenChartPrice = async (chainId: number, symbol: string, period
     // eslint-disable-next-line no-console
     console.warn(ex, "Switching to graph chainlink data");
     try {
-       //prices = await getChainlinkChartPricesFromGraph(symbol, period);
+       prices = await getChainlinkChartPricesFromGraph(symbol, period);
     } catch (ex2) {
       // eslint-disable-next-line no-console
       console.warn("getChainlinkChartPricesFromGraph failed", ex2);
       prices = [];
     }
+  }
+  return prices;
+};
+
+export const getTokenChartPrice = async (chainId: number, symbol: string, period: string) => {
+  let prices;
+  try {
+    prices = await getChartPricesFromStats(chainId, symbol, period);
+  } catch (ex) {
+      prices = [];
   }
   return prices;
 };
