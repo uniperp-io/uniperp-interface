@@ -19,11 +19,11 @@ import {makeDateText, getRemainingTime} from "pages/Presale/lib"
 
 const initCountdown = "<span>0D</span><span>0H</span><span>0M</span><span>0S</span>";
 
-export default function Presale() {
+export default function Presale({connectWallet}) {
   const [isWaitingForApproval, setIsWaitingForApproval] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [isWithdrawAble, setWithdrawAble] = useState(true)
-  const [isDepositedAble, setDepositedAble] = useState(false)
+  const [isWithdrawAble, setWithdrawAble] = useState(false)
+  const [isDepositedAble, setDepositedAble] = useState(true)
   const [isApproving, setIsApproving] = useState(false);
   const [inputAmount, setInputAmount] = useState(100);
   const [IsConfirming, setIsConfirming] = useState(false);
@@ -92,7 +92,7 @@ export default function Presale() {
   const needApproval = tokenAllowance && (tokenAllowance.toString() === "0" || tokenAllowance.toString() === "0.00");
   useEffect(()=>{
     if (!needApproval){
-      setDepositedAble(false)
+      setDepositedAble(true)
     }
   }, [needApproval])
 
@@ -106,13 +106,17 @@ export default function Presale() {
   }
 
   useEffect(()=>{
+    if (!active){
+      return
+    }
+
     let timer;
     timer = setInterval(()=>{
       let remainingTime;
       if(status === "unstart") {
         remainingTime = getRemainingTime(startTime);
         if (!needApproval){
-          setDepositedAble(true)
+          setDepositedAble(false)
         }
         if (remainingTime){
           setCountdown(`<span>${remainingTime.days}D</span><span>${remainingTime.hours}H</span><span>${remainingTime.minutes}M</span><span>${remainingTime.seconds}S</span>`);
@@ -125,7 +129,7 @@ export default function Presale() {
 
       if(status === "starting") {
         remainingTime = getRemainingTime(endTime);
-        setDepositedAble(false)
+        setDepositedAble(true)
         if (remainingTime){
           setCountdown(`<span>${remainingTime.days}D</span><span>${remainingTime.hours}H</span><span>${remainingTime.minutes}M</span><span>${remainingTime.seconds}S</span>`);
           if (endTime && (remainingTime.seconds === 0 && remainingTime.hours === 0 && remainingTime.minutes === 0)){
@@ -136,15 +140,15 @@ export default function Presale() {
       }
 
       if (status === "end"){
-        setDepositedAble(true)
-        setWithdrawAble(false)
+        setDepositedAble(false)
+        setWithdrawAble(true)
       }
 
     }, 1000)
     return () => {
       clearInterval(timer);
     };
-  }, [startTime, endTime, needApproval, status])
+  }, [startTime, endTime, needApproval, status, active])
 
   const getPrimaryText = () => {
     if (!active) {
@@ -170,6 +174,11 @@ export default function Presale() {
   };
 
   const depositedUSDCClick = () => {
+    if (!active){
+      connectWallet()
+      return
+    }
+
     if(needApproval){
       approveTokens({
         setIsApproving,
@@ -208,7 +217,12 @@ export default function Presale() {
   }
 
   const claimToken = () => {
-    setWithdrawAble(true)
+    if (!active){
+      connectWallet()
+      return
+    }
+
+    setWithdrawAble(false)
     const contract = new ethers.Contract(idoAddress, IdoAbi.abi, library.getSigner());
     callContract(chainId, contract, "claimTokens", {
         sentMsg: t`claimTokens submitted!`,
@@ -218,7 +232,7 @@ export default function Presale() {
       .then(async () => {
 
       }).finally(()=>{
-      setWithdrawAble(false)
+      setWithdrawAble(true)
     })
   }
 
@@ -238,7 +252,7 @@ export default function Presale() {
         </div>
         <div className="btn_group">
           <button className="primary-btn" onClick={()=>setIsModalVisible(false)}>Cancel</button>
-          <button className="App-cta Exchange-swap-button" disabled={isDepositedAble} onClick={clickConfirm}>{t`Confirm`}{IsConfirming ? '...' : ''}</button>
+          <button className="App-cta Exchange-swap-button" disabled={!isDepositedAble} onClick={clickConfirm}>{t`Confirm`}{IsConfirming ? '...' : ''}</button>
         </div>
       </Modal>
 
@@ -279,14 +293,14 @@ export default function Presale() {
           <h3>Claim UNIP</h3>
           <div>Deposited($): <span>${formatAmount(contributions, usdcTokenInfo.decimals, 2)}</span></div>
           <div>UNIP Amount: <span>{formatAmount(claimableTokens, 18, 2)}</span></div>
-          <button className="App-cta Exchange-swap-button" onClick={claimToken} disabled={isWithdrawAble}>Withdraw UNIP</button>
+          <button className="App-cta Exchange-swap-button" onClick={claimToken} disabled={active ? !isWithdrawAble : false}>{active ? 'Withdraw UNIP' : t`Connect Wallet` }</button>
         </div>
 
         <div className="card deposited_usdc right">
           <h3>Invest USDC</h3>
           <div>Your balance: <span>{usdcBalance}</span></div>
           <div>Deposited: <span>{formatAmount(contributions, usdcTokenInfo.decimals, 2)}</span></div>
-          <button className="App-cta Exchange-swap-button" disabled={isDepositedAble} onClick={depositedUSDCClick}>{getPrimaryText()}</button>
+          <button className="App-cta Exchange-swap-button" disabled={!isDepositedAble} onClick={depositedUSDCClick}>{getPrimaryText()}</button>
         </div>
       </div>
 
