@@ -2,6 +2,7 @@ import logoImg from "img/logo_long.png";
 import React, { useEffect, useState } from "react";
 import "./Presale.css"
 import Modal from "components/Modal/Modal";
+import ExternalLink from "components/ExternalLink/ExternalLink";
 import { t } from "@lingui/macro";
 import { useWeb3React } from "@web3-react/core";
 import {isSupportedChain} from "config/chains";
@@ -23,7 +24,7 @@ export default function Presale({connectWallet}) {
   const [isWaitingForApproval, setIsWaitingForApproval] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isWithdrawAble, setWithdrawAble] = useState(false)
-  const [isDepositedAble, setDepositedAble] = useState(true)
+  const [isDepositAble, setDepositAble] = useState(true)
   const [isApproving, setIsApproving] = useState(false);
   const [inputAmount, setInputAmount] = useState(100);
   const [IsConfirming, setIsConfirming] = useState(false);
@@ -51,7 +52,7 @@ export default function Presale({connectWallet}) {
 
   const { data } = useSWR("idoinfo", {
       fetcher: () => {
-          return Promise.all(["totalContributed", "startTime", "endTime", "rate"].map((method) =>
+          return Promise.all(["totalContributed", "startTime", "endTime", "rate", "blockTimestamp"].map((method) =>
               contractFetcher(library, IdoAbi)(
                 method,
                 chainId,
@@ -65,16 +66,24 @@ export default function Presale({connectWallet}) {
       }
   });
 
-  let totalContributed = parseValue(0), startTime = 0, endTime = 0, rate = 0;
+  let totalContributed = parseValue(0), startTime = 0, endTime = 0, rate = 0, blockTimestamp = 0;
   if (data){
     totalContributed = data[0]
-    startTime = data[1].toString()
-    endTime = data[2].toString()
+    startTime = parseInt(data[1].toString())
+    endTime = parseInt(data[2].toString())
     rate = parseInt(data[3].toString())
+    blockTimestamp = parseInt(data[4].toString())
   }
 
-  const { data: claimableTokens } = useSWR(
-    active && [active, chainId, idoAddress, "claimableTokens", account],
+  const { data: purchasedAmounts } = useSWR(
+    active && [active, chainId, idoAddress, "purchasedAmounts", account],
+    {
+      fetcher: contractFetcher(library, IdoAbi),
+    }
+  );
+
+  const { data: claimedAmounts } = useSWR(
+    active && [active, chainId, idoAddress, "claimedAmounts", account],
     {
       fetcher: contractFetcher(library, IdoAbi),
     }
@@ -92,12 +101,12 @@ export default function Presale({connectWallet}) {
   const needApproval = tokenAllowance && (tokenAllowance.toString() === "0" || tokenAllowance.toString() === "0.00");
   useEffect(()=>{
     if (!needApproval){
-      setDepositedAble(true)
+      setDepositAble(true)
     }
   }, [needApproval])
 
   let status = "unstart";
-  const now = Date.now() / 1000; // 将当前时间转换为秒
+  const now = blockTimestamp;
   if (now > startTime){
     status = "starting"
   }
@@ -114,9 +123,9 @@ export default function Presale({connectWallet}) {
     timer = setInterval(()=>{
       let remainingTime;
       if(status === "unstart") {
-        remainingTime = getRemainingTime(startTime);
+        remainingTime = getRemainingTime(now, startTime);
         if (!needApproval){
-          setDepositedAble(false)
+          setDepositAble(false)
         }
         if (remainingTime){
           setCountdown(`<span>${remainingTime.days}D</span><span>${remainingTime.hours}H</span><span>${remainingTime.minutes}M</span><span>${remainingTime.seconds}S</span>`);
@@ -128,8 +137,8 @@ export default function Presale({connectWallet}) {
       }
 
       if(status === "starting") {
-        remainingTime = getRemainingTime(endTime);
-        setDepositedAble(true)
+        remainingTime = getRemainingTime(now, endTime);
+        setDepositAble(true)
         if (remainingTime){
           setCountdown(`<span>${remainingTime.days}D</span><span>${remainingTime.hours}H</span><span>${remainingTime.minutes}M</span><span>${remainingTime.seconds}S</span>`);
           if (endTime && (remainingTime.seconds === 0 && remainingTime.hours === 0 && remainingTime.minutes === 0)){
@@ -140,10 +149,9 @@ export default function Presale({connectWallet}) {
       }
 
       if (status === "end"){
-        setDepositedAble(false)
+        setDepositAble(false)
         setWithdrawAble(true)
       }
-
     }, 1000)
     return () => {
       clearInterval(timer);
@@ -173,7 +181,7 @@ export default function Presale({connectWallet}) {
     return  t`Deposited USDC`;
   };
 
-  const depositedUSDCClick = () => {
+  const depositUSDCClick = () => {
     if (!active){
       connectWallet()
       return
@@ -200,7 +208,7 @@ export default function Presale({connectWallet}) {
   }
 
   const clickConfirm = () => {
-    setDepositedAble(true)
+    setDepositAble(true)
     setIsConfirming(true)
     const contract = new ethers.Contract(idoAddress, IdoAbi.abi, library.getSigner());
     callContract(chainId, contract, "buyTokens", [parseValue(inputAmount, usdcTokenInfo.decimals)], {
@@ -211,7 +219,7 @@ export default function Presale({connectWallet}) {
       .then(async () => {
 
       }).finally(()=>{
-        setDepositedAble(false)
+        setDepositAble(false)
         setIsConfirming(false);
       })
   }
@@ -252,24 +260,37 @@ export default function Presale({connectWallet}) {
         </div>
         <div className="btn_group">
           <button className="primary-btn" onClick={()=>setIsModalVisible(false)}>Cancel</button>
-          <button className="App-cta Exchange-swap-button" disabled={!isDepositedAble} onClick={clickConfirm}>{t`Confirm`}{IsConfirming ? '...' : ''}</button>
+          <button className="App-cta Exchange-swap-button" disabled={!isDepositAble} onClick={clickConfirm}>{t`Confirm`}{IsConfirming ? '...' : ''}</button>
         </div>
       </Modal>
 
       <div className="card">
         <img className="logo" src={logoImg} alt="UNIP Logo" />
-        <h1>
-          <span>Participate in </span>
-          <span>UNIP </span>
-          <span>pre-IDO sale</span>
-        </h1>
+        {status !== "end" && (
+          <>
+            <h2>
+              <span>Participate in </span>
+              <span>UNIP </span>
+              <span>pre-IDO sale</span>
+            </h2>
+          </>
+        )}
+        {status === "end" && (
+          <>
+            <h2>
+              <span>UNIP </span>
+              <span>pre-IDO sale</span>
+              <span> Finished! Thanks very much</span>
+            </h2>
+          </>
+        )}
       </div>
 
       <div className="card ido_process">
         <div className="coininfo">
           <span>${formatAmount(totalContributed, usdcTokenInfo.decimals, 2)}</span>
           <span> / </span>
-          <span>$1,200,000</span>
+          <span>$800,000</span>
         </div>
       </div>
 
@@ -280,19 +301,13 @@ export default function Presale({connectWallet}) {
             <div className="countdown" dangerouslySetInnerHTML={{ __html: countdown }}></div>
           </>
         )}
-        {status === "starting" && (
-          <>
-            <h1>IDO End at: {makeDateText(endTime)}</h1>
-            <div className="countdown" dangerouslySetInnerHTML={{ __html: countdown }}></div>
-          </>
-        )}
       </div>
 
       <div className="button_group">
         <div className="card claim left">
           <h3>Claim UNIP</h3>
-          <div>Deposited($): <span>${formatAmount(contributions, usdcTokenInfo.decimals, 2)}</span></div>
-          <div>UNIP Amount: <span>{formatAmount(claimableTokens, 18, 2)}</span></div>
+          <div>Purchased amount: <span>{formatAmount(purchasedAmounts, 18, 2)}</span></div>
+          <div>Claimed amount: <span>{formatAmount(claimedAmounts, 18, 2)}</span></div>
           <button className="App-cta Exchange-swap-button" onClick={claimToken} disabled={active ? !isWithdrawAble : false}>{active ? 'Withdraw UNIP' : t`Connect Wallet` }</button>
         </div>
 
@@ -300,18 +315,17 @@ export default function Presale({connectWallet}) {
           <h3>Invest USDC</h3>
           <div>Your balance: <span>{usdcBalance}</span></div>
           <div>Deposited: <span>{formatAmount(contributions, usdcTokenInfo.decimals, 2)}</span></div>
-          <button className="App-cta Exchange-swap-button" disabled={!isDepositedAble} onClick={depositedUSDCClick}>{getPrimaryText()}</button>
+          <button className="App-cta Exchange-swap-button" disabled={!isDepositAble} onClick={depositUSDCClick}>{getPrimaryText()}</button>
         </div>
       </div>
 
       <div className="card information">
         <h1>General Information</h1>
         <ul>
-          <li>$1 USDC = {rate} UNIP ($0.01/token)</li>
-          <li>Each person can only buy a maximum of $1000 USDC</li>
-          <li>WHEN CLAIM BUTTON OPENS, you will claim your equivalent of new UNIP</li>
-          <li>5% released every after week</li>
-          <li>Token Economics</li>
+          <li>$1 USDC = {rate} UNIP ($0.1/token)</li>
+          <li>When Claim button opens, you can claim your equivalent of new UNIP</li>
+          <li>3.33% released every after week</li>
+          <li><ExternalLink href="https://uniperp.gitbook.io/v1/tokenomics">Token Economics</ExternalLink></li>
         </ul>
       </div>
     </div>

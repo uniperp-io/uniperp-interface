@@ -14,7 +14,7 @@ export const makeDateText = (timestamp)=>{
 }
 
 //get the time info
-export const getRemainingTime = (endTime) => {
+export const getRemainingTime = (now, endTime) => {
   if(!endTime)
     return {
       days: 0,
@@ -23,7 +23,7 @@ export const getRemainingTime = (endTime) => {
       seconds: 0,
     };
 
-  const now = Date.now() / 1000; // 将当前时间转换为秒
+  //const now = Date.now() / 1000; // 将当前时间转换为秒
   const remainingTime = endTime - now;
 
   if (remainingTime <= 0) {

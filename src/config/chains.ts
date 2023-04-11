@@ -245,14 +245,14 @@ export function getAlchemyHttpUrl() {
   if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
     return "https://arb-mainnet.g.alchemy.com/v2/86zbimir5o_-mUcBAC_2QeUPhiLTICju";
   }
-  return "https://arb-mainnet.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
+  return "https://arb-goerli.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
 }
 
 export function getAlchemyWsUrl() {
   if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
     return "wss://arb-mainnet.g.alchemy.com/v2/86zbimir5o_-mUcBAC_2QeUPhiLTICju";
   }
-  return "wss://arb-mainnet.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
+  return "wss://arb-goerli.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
 }
 
 export function getExplorerUrl(chainId) {
