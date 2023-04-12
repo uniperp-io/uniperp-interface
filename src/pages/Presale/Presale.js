@@ -1,4 +1,4 @@
-import logoImg from "img/logo_long.png";
+import logoImg from "img/ulp-logo-with-name.svg";
 import React, { useEffect, useState } from "react";
 import "./Presale.css"
 import Modal from "components/Modal/Modal";
