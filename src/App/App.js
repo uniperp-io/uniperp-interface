@@ -530,7 +530,7 @@ function FullApp() {
                 <BeginAccountTransfer setPendingTxns={setPendingTxns} />
               </Route>
               <Route exact path="/presale">
-                <Presale/>
+                <Presale connectWallet={connectWallet} />
               </Route>
               <Route exact path="/hyper">
                 <Hyper/>

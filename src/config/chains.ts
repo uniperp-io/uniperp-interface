@@ -125,7 +125,7 @@ const constants = {
   },
 };
 
-const ALCHEMY_WHITELISTED_DOMAINS = ["uniperp.io", "app.uniperp.io"];
+const ALCHEMY_WHITELISTED_DOMAINS = ["uniperp.io", "app.uniperp.io", "www.uniperp.io"];
 
 export const RPC_PROVIDERS = {
   [ETH_MAINNET]: ["https://rpc.ankr.com/eth"],
@@ -243,16 +243,16 @@ export function getFallbackRpcUrl(chainId: number): string | undefined {
 
 export function getAlchemyHttpUrl() {
   if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
-    return "https://arb-mainnet.g.alchemy.com/v2/ha7CFsr1bx5ZItuR6VZBbhKozcKDY4LZ";
+    return "https://arb-mainnet.g.alchemy.com/v2/86zbimir5o_-mUcBAC_2QeUPhiLTICju";
   }
-  return "https://arb-mainnet.g.alchemy.com/v2/EmVYwUw0N2tXOuG0SZfe5Z04rzBsCbr2";
+  return "https://arb-goerli.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
 }
 
 export function getAlchemyWsUrl() {
   if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
-    return "wss://arb-mainnet.g.alchemy.com/v2/ha7CFsr1bx5ZItuR6VZBbhKozcKDY4LZ";
+    return "wss://arb-mainnet.g.alchemy.com/v2/86zbimir5o_-mUcBAC_2QeUPhiLTICju";
   }
-  return "wss://arb-mainnet.g.alchemy.com/v2/EmVYwUw0N2tXOuG0SZfe5Z04rzBsCbr2";
+  return "wss://arb-goerli.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
 }
 
 export function getExplorerUrl(chainId) {
