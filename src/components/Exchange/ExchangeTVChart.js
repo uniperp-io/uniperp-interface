@@ -315,14 +315,14 @@ export default function ExchangeTVChart(props) {
             <div className="ExchangeChart-info-label">24h High</div>
             <div>
               {!high && "-"}
-              {high && numberWithCommas(high.toFixed(2))}
+              {high && numberWithCommas(high.toFixed(chartToken.displayPricePrecision??2))}
             </div>
           </div>
           <div className="ExchangeChart-additional-info">
             <div className="ExchangeChart-info-label">24h Low</div>
             <div>
               {!low && "-"}
-              {low && numberWithCommas(low.toFixed(2))}
+              {low && numberWithCommas(low.toFixed(chartToken.displayPricePrecision??2))}
             </div>
           </div>
         </div>
