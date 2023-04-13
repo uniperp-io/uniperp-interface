@@ -267,7 +267,7 @@ export function getExplorerUrl(chainId) {
   } else if (chainId === ARBITRUM_TESTNET) {
     return "https://testnet.arbiscan.io/";
   } else if (chainId === ARBITRUM) {
-    return "https://goerli.arbiscan.io/";
+    return "https://arbiscan.io/";
   } else if (chainId === AVALANCHE) {
     return "https://snowtrace.io/";
   } else if (chainId === AVALANCHE_FUJI) {
