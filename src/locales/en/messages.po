@@ -390,32 +390,32 @@ msgid "Buy / Sell ULP"
 msgstr "Buy / Sell ULP"
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from Traderjoe:"
-msgstr "Buy GMX from Traderjoe:"
+msgid "Buy UNIP from Traderjoe:"
+msgstr "Buy UNIP from Traderjoe:"
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from a Decentralized Exchange"
-msgstr "Buy GMX from a Decentralized Exchange"
+msgid "Buy UNIP from a Decentralized Exchange"
+msgstr "Buy UNIP from a Decentralized Exchange"
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from centralized exchanges:"
-msgstr "Buy GMX from centralized exchanges:"
+msgid "Buy UNIP from centralized exchanges:"
+msgstr "Buy UNIP from centralized exchanges:"
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX from centralized services"
-msgstr "Buy GMX from centralized services"
+msgid "Buy UNIP from centralized services"
+msgstr "Buy UNIP from centralized services"
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using Decentralized Exchange Aggregators:"
-msgstr "Buy GMX using Decentralized Exchange Aggregators:"
+msgid "Buy UNIP using Decentralized Exchange Aggregators:"
+msgstr "Buy UNIP using Decentralized Exchange Aggregators:"
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using FIAT gateways:"
-msgstr "Buy GMX using FIAT gateways:"
+msgid "Buy UNIP using FIAT gateways:"
+msgstr "Buy UNIP using FIAT gateways:"
 
 #: src/pages/BuyGMX/BuyGMX.tsx
-msgid "Buy GMX using any token from any network:"
-msgstr "Buy GMX using any token from any network:"
+msgid "Buy UNIP using any token from any network:"
+msgstr "Buy UNIP using any token from any network:"
 
 #: src/components/Glp/GlpSwap.js
 #: src/components/Glp/GlpSwap.js

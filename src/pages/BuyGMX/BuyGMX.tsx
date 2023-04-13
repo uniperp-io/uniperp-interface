@@ -171,7 +171,7 @@ function DecentralisedExchanges({ chainId, externalLinks }) {
 function DecentralisedExchangesbak({ chainId, externalLinks }) {
   const isArbitrum = chainId === ARBITRUM;
   return (
-    <Card title={t`Buy GMX from a Decentralized Exchange`}>
+    <Card title={t`Buy UNIP from a Decentralized Exchange`}>
       <div className="App-card-content">
         {isArbitrum ? (
           <div className="exchange-info-group">
@@ -268,7 +268,7 @@ function CentralisedExchanges({ chainId }) {
 
         <div className="exchange-info-group">
           <div className="BuyGMXGLP-description">
-            <Trans>Buy GMX using FIAT gateways:</Trans>
+            <Trans>Buy UNIP using FIAT gateways:</Trans>
           </div>
           <div className="buttons-group col-2">
             {FIAT_GATEWAYS.filter((e) => chainId in e.links).map((exchange) => {
