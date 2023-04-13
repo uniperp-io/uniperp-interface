@@ -1347,8 +1347,8 @@ msgid "GLP doesn't accept this amount of {0}."
 msgstr "GLP doesn't accept this amount of {0}."
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Announcements and Updates"
-msgstr "GMX Announcements and Updates"
+msgid "UNIP Announcements and Updates"
+msgstr "UNIP Announcements and Updates"
 
 #: src/pages/Ecosystem/Ecosystem.js
 msgid "GMX Blueberry NFTs"

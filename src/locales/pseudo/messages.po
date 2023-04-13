@@ -1347,7 +1347,7 @@ msgid "GLP doesn't accept this amount of {0}."
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "GMX Announcements and Updates"
+msgid "UNIP Announcements and Updates"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
