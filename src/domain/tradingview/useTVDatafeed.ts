@@ -46,7 +46,7 @@ export default function useTVDatafeed() {
             ticker: symbolName,
             session: "24x7",
             minmov: 1,
-            pricescale: 10**(tokenInfo.displayPricePrecision ?? 2),
+            pricescale: 10**(tokenInfo.displayDecimals ?? 2),
             timezone: "Etc/UTC",
             has_intraday: true,
             has_daily: true,

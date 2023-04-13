@@ -590,11 +590,11 @@ export default function ConfirmationBox(props) {
           <ExchangeInfoRow label={t`Liq. Price`}>
             {hasExistingPosition && toAmount && toAmount.gt(0) && (
               <div className="inline-block muted">
-                ${formatAmount(existingLiquidationPrice, USD_DECIMALS, toTokenInfo.displayPricePrecision, true)}
+                ${formatAmount(existingLiquidationPrice, USD_DECIMALS, toTokenInfo.displayDecimals, true)}
                 <BsArrowRight className="transition-arrow" />
               </div>
             )}
-            {toAmount && displayLiquidationPrice && `$${formatAmount(displayLiquidationPrice, USD_DECIMALS, toTokenInfo.displayPricePrecision, true)}`}
+            {toAmount && displayLiquidationPrice && `$${formatAmount(displayLiquidationPrice, USD_DECIMALS, toTokenInfo.displayDecimals, true)}`}
             {!toAmount && displayLiquidationPrice && `-`}
             {!displayLiquidationPrice && `-`}
           </ExchangeInfoRow>
@@ -640,7 +640,7 @@ export default function ConfirmationBox(props) {
           )}
           {!isMarketOrder && (
             <ExchangeInfoRow label={t`Limit Price`} isTop={true}>
-              ${formatAmount(triggerPriceUsd, USD_DECIMALS, toTokenInfo.displayPricePrecision, true)}
+              ${formatAmount(triggerPriceUsd, USD_DECIMALS, toTokenInfo.displayDecimals, true)}
             </ExchangeInfoRow>
           )}
           <ExchangeInfoRow label={t`Borrow Fee`}>

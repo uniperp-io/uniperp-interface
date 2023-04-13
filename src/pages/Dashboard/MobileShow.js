@@ -108,12 +108,12 @@ export default function MobileShow({visibleTokens, infoTokens, getWeightText, sy
 
           let size=0,PROPORTION=0;
           if (syntheticCollateralAmounts && globalShortSizes){
-            const guaranteedUsd = parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
-            const amount = parseFloat(formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayPricePrecision))
-            const shortSize = parseFloat(formatAmount(globalShortSizes[idx], USD_DECIMALS, tokenInfo.displayPricePrecision))
-            const usdcPrice = parseFloat(formatKeyAmount(usdcInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
+            const guaranteedUsd = parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayDecimals, false))
+            const amount = parseFloat(formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayDecimals))
+            const shortSize = parseFloat(formatAmount(globalShortSizes[idx], USD_DECIMALS, tokenInfo.displayDecimals))
+            const usdcPrice = parseFloat(formatKeyAmount(usdcInfo, "minPrice", USD_DECIMALS, tokenInfo.displayDecimals, false))
             size = guaranteedUsd + amount * usdcPrice + shortSize;
-            const usdcAsset = formatAmount(tokenInfo.managedUsd, USD_DECIMALS, tokenInfo.displayPricePrecision);
+            const usdcAsset = formatAmount(tokenInfo.managedUsd, USD_DECIMALS, tokenInfo.displayDecimals);
             PROPORTION = size/parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
           }
 
@@ -132,7 +132,7 @@ export default function MobileShow({visibleTokens, infoTokens, getWeightText, sy
                   <div className="label">
                     <Trans>Price</Trans>
                   </div>
-                  <div>${formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, true)}</div>
+                  <div>${formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayDecimals, true)}</div>
                 </div>
                 <div className="App-card-row">
                   <div className="label">

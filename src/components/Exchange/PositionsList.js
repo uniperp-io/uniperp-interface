@@ -653,13 +653,13 @@ export default function PositionsList(props) {
                   </div>
                 </td>
                 <td className="clickable" onClick={() => onPositionClick(position)}>
-                  ${formatAmount(position.averagePrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
+                  ${formatAmount(position.averagePrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}
                 </td>
                 <td className="clickable" onClick={() => onPositionClick(position)}>
-                  ${formatAmount(position.markPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
+                  ${formatAmount(position.markPrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}
                 </td>
                 <td className="clickable" onClick={() => onPositionClick(position)}>
-                  ${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
+                  ${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}
                 </td>
 
                 <td>

@@ -353,7 +353,7 @@ export default function TradeHistory(props) {
         }
         const longShortDisplay = order.isLong ? t`Long` : t`Short`;
         const orderTypeText = order.type === INCREASE ? t`Increase` : t`Decrease`;
-        const executionPriceDisplay = formatAmount(order.executionPrice, USD_DECIMALS, indexToken.displayPricePrecision, true);
+        const executionPriceDisplay = formatAmount(order.executionPrice, USD_DECIMALS, indexToken.displayDecimals, true);
         const sizeDeltaDisplay = `${order.type === "Increase" ? "+" : "-"}${formatAmount(
           order.sizeDelta,
           USD_DECIMALS,
@@ -382,7 +382,7 @@ export default function TradeHistory(props) {
         const priceDisplay = `${order.triggerAboveThreshold ? ">" : "<"} ${formatAmount(
           order.triggerPrice,
           USD_DECIMALS,
-          indexToken.displayPricePrecision,
+          indexToken.displayDecimals,
           true
         )}`;
         return t`

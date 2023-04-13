@@ -44,10 +44,10 @@ export default function SyntheticTable({visibleTokens,infoTokens, syntheticColla
 
                   let size=0,PROPORTION=0;
                   if (syntheticCollateralAmounts && globalShortSizes){
-                    const guaranteedUsd = parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
-                    const amount = parseFloat(formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayPricePrecision))
-                    const shortSize = parseFloat(formatAmount(globalShortSizes[idx], USD_DECIMALS, tokenInfo.displayPricePrecision))
-                    const usdcPrice = parseFloat(formatKeyAmount(usdcInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, false))
+                    const guaranteedUsd = parseFloat(formatKeyAmount(tokenInfo, "guaranteedUsd", USD_DECIMALS, tokenInfo.displayDecimals, false))
+                    const amount = parseFloat(formatAmount(syntheticCollateralAmounts[idx], usdcInfo.decimals, tokenInfo.displayDecimals))
+                    const shortSize = parseFloat(formatAmount(globalShortSizes[idx], USD_DECIMALS, tokenInfo.displayDecimals))
+                    const usdcPrice = parseFloat(formatKeyAmount(usdcInfo, "minPrice", USD_DECIMALS, tokenInfo.displayDecimals, false))
                     size = guaranteedUsd + amount * usdcPrice + shortSize;
                     PROPORTION = size/parseFloat(formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 2)) * 100
                   }
@@ -67,7 +67,7 @@ export default function SyntheticTable({visibleTokens,infoTokens, syntheticColla
                           </div>
                         </div>
                       </td>
-                      <td>${formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayPricePrecision, true)}</td>
+                      <td>${formatKeyAmount(tokenInfo, "minPrice", USD_DECIMALS, tokenInfo.displayDecimals, true)}</td>
                       <td>${size.toFixed(2)}</td>
                       <td>{`$${formatAmount(usdcInfo.poolAmount, usdcInfo.decimals, 0)}`}</td>
                       <td>{PROPORTION.toFixed(2)}%</td>

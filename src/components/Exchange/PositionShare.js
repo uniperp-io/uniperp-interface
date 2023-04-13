@@ -149,11 +149,11 @@ function PositionShareCard({
         <div className="prices">
           <div>
             <p>Entry Price</p>
-            <p className="price">${formatAmount(averagePrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</p>
+            <p className="price">${formatAmount(averagePrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}</p>
           </div>
           <div>
             <p>Index Price</p>
-            <p className="price">${formatAmount(markPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</p>
+            <p className="price">${formatAmount(markPrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}</p>
           </div>
         </div>
         <div className="referral-code">

@@ -600,7 +600,7 @@ export default function PositionEditor(props) {
                     <div className="Exchange-info-label">
                       <Trans>Mark Price</Trans>
                     </div>
-                    <div className="align-right">${formatAmount(position.markPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}</div>
+                    <div className="align-right">${formatAmount(position.markPrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}</div>
                   </div>
                   <div className="Exchange-info-row">
                     <div className="Exchange-info-label">
@@ -609,17 +609,17 @@ export default function PositionEditor(props) {
                     <div className="align-right">
                       {!nextLiquidationPrice && (
                         <div>
-                          {!fromAmount && `$${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}`}
+                          {!fromAmount && `$${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}`}
                           {fromAmount && "-"}
                         </div>
                       )}
                       {nextLiquidationPrice && (
                         <div>
                           <div className="inline-block muted">
-                            ${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
+                            ${formatAmount(liquidationPrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}
                             <BsArrowRight className="transition-arrow" />
                           </div>
-                          ${formatAmount(nextLiquidationPrice, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
+                          ${formatAmount(nextLiquidationPrice, USD_DECIMALS, position.indexToken.displayDecimals, true)}
                         </div>
                       )}
                     </div>
@@ -634,7 +634,7 @@ export default function PositionEditor(props) {
                           handle={
                             <>
                               <div className="inline-block muted">
-                                ${formatAmount(fundingFee, USD_DECIMALS, position.indexToken.displayPricePrecision, true)}
+                                ${formatAmount(fundingFee, USD_DECIMALS, position.indexToken.displayDecimals, true)}
                                 <BsArrowRight className="transition-arrow" />
                               </div>
                               $0

@@ -350,7 +350,7 @@ export default function SwapBox(props) {
         </div>
         <div className="align-right">
           <Tooltip
-            handle={`$${formatAmount(toTokenInfo.maxAvailableLong, USD_DECIMALS, toTokenInfo.displayPricePrecision, true)}`}
+            handle={`$${formatAmount(toTokenInfo.maxAvailableLong, USD_DECIMALS, toTokenInfo.displayDecimals, true)}`}
             position="right-bottom"
             renderContent={() => {
               return (
@@ -2058,10 +2058,10 @@ export default function SwapBox(props) {
               <div
                 className="muted align-right clickable"
                 onClick={() => {
-                  setTriggerPriceValue(formatAmountFree(entryMarkPrice, USD_DECIMALS, toTokenInfo.displayPricePrecision));
+                  setTriggerPriceValue(formatAmountFree(entryMarkPrice, USD_DECIMALS, toTokenInfo.displayDecimals));
                 }}
               >
-                <Trans>Mark: {formatAmount(entryMarkPrice, USD_DECIMALS, toTokenInfo.displayPricePrecision, true)}</Trans>
+                <Trans>Mark: {formatAmount(entryMarkPrice, USD_DECIMALS, toTokenInfo.displayDecimals, true)}</Trans>
               </div>
             </div>
             <div className="Exchange-swap-section-bottom">
@@ -2187,11 +2187,11 @@ export default function SwapBox(props) {
               <div className="align-right">
                 {hasExistingPosition && toAmount && toAmount.gt(0) && (
                   <div className="inline-block muted">
-                    ${formatAmount(existingPosition.averagePrice, USD_DECIMALS, toToken.displayPricePrecision, true)}
+                    ${formatAmount(existingPosition.averagePrice, USD_DECIMALS, toToken.displayDecimals, true)}
                     <BsArrowRight className="transition-arrow" />
                   </div>
                 )}
-                {nextAveragePrice && `$${formatAmount(nextAveragePrice, USD_DECIMALS, toToken.displayPricePrecision, true)}`}
+                {nextAveragePrice && `$${formatAmount(nextAveragePrice, USD_DECIMALS, toToken.displayDecimals, true)}`}
                 {!nextAveragePrice && `-`}
               </div>
             </div>
@@ -2202,13 +2202,13 @@ export default function SwapBox(props) {
               <div className="align-right">
                 {hasExistingPosition && toAmount && toAmount.gt(0) && (
                   <div className="inline-block muted">
-                    ${formatAmount(existingLiquidationPrice, USD_DECIMALS, toToken.displayPricePrecision, true)}
+                    ${formatAmount(existingLiquidationPrice, USD_DECIMALS, toToken.displayDecimals, true)}
                     <BsArrowRight className="transition-arrow" />
                   </div>
                 )}
                 {toAmount &&
                   displayLiquidationPrice &&
-                  `$${formatAmount(displayLiquidationPrice, USD_DECIMALS, toToken.displayPricePrecision, true)}`}
+                  `$${formatAmount(displayLiquidationPrice, USD_DECIMALS, toToken.displayDecimals, true)}`}
                 {!toAmount && displayLiquidationPrice && `-`}
                 {!displayLiquidationPrice && `-`}
               </div>
@@ -2338,7 +2338,7 @@ export default function SwapBox(props) {
             </div>
             <div className="align-right">
               <Tooltip
-                handle={`$${formatAmount(entryMarkPrice, USD_DECIMALS, toToken.displayPricePrecision, true)}`}
+                handle={`$${formatAmount(entryMarkPrice, USD_DECIMALS, toToken.displayDecimals, true)}`}
                 position="right-bottom"
                 renderContent={() => {
                   return (
@@ -2368,14 +2368,14 @@ export default function SwapBox(props) {
             </div>
             <div className="align-right">
               <Tooltip
-                handle={`$${formatAmount(exitMarkPrice, USD_DECIMALS, toToken.displayPricePrecision, true)}`}
+                handle={`$${formatAmount(exitMarkPrice, USD_DECIMALS, toToken.displayDecimals, true)}`}
                 position="right-bottom"
                 renderContent={() => {
                   return (
                     <div>
                       <Trans>
                         If you have an existing position, the position will be closed at{" "}
-                        {formatAmount(entryMarkPrice, USD_DECIMALS, toToken.displayPricePrecision, true)} USD.
+                        {formatAmount(entryMarkPrice, USD_DECIMALS, toToken.displayDecimals, true)} USD.
                         <br />
                         <br />
                         This exit price will change with the price of the asset.

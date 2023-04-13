@@ -298,10 +298,10 @@ export default function ExchangeTVChart(props) {
           </div>
           <div>
             <div className="ExchangeChart-main-price">
-              {chartToken.maxPrice && formatAmount(chartToken.maxPrice, USD_DECIMALS, chartToken.displayPricePrecision, true)}
+              {chartToken.maxPrice && formatAmount(chartToken.maxPrice, USD_DECIMALS, chartToken.displayDecimals, true)}
             </div>
             <div className="ExchangeChart-info-label">
-              ${chartToken.minPrice && formatAmount(chartToken.minPrice, USD_DECIMALS, chartToken.displayPricePrecision, true)}
+              ${chartToken.minPrice && formatAmount(chartToken.minPrice, USD_DECIMALS, chartToken.displayDecimals, true)}
             </div>
           </div>
           <div>
