@@ -681,7 +681,7 @@ export function getNormalizedTokenSymbol(tokenSymbol) {
 }
 
 const AVAILABLE_CHART_TOKENS = {
-  [ARBITRUM]: ["ETH", "BTC", "LINK", "UNI"],
+  [ARBITRUM]: ["ETH", "BTC", "LINK", "UNI", "JPY", "EUR", "BNB", "ARB"],
   [AVALANCHE]: ["AVAX", "ETH", "BTC"],
 };
 

@@ -1,4 +1,4 @@
-import { getNativeToken, getTokens, isChartAvailabeForToken } from "config/tokens";
+import { getNativeToken, getTokenBySymbol, getTokens, isChartAvailabeForToken } from "config/tokens";
 import { SUPPORTED_RESOLUTIONS } from "config/tradingview";
 import { timezoneOffset } from "domain/prices";
 import { useChainId } from "lib/chains";
@@ -36,9 +36,9 @@ export default function useTVDatafeed() {
             symbolName = getNativeToken(chainId).symbol;
           }
 
-          const stableTokens = getTokens(chainId)
-            .filter((t) => t.isStable)
-            .map((t) => t.symbol);
+          const stableTokens = getTokens(chainId).filter((t) => t.isStable).map((t) => t.symbol);
+          const tokenInfo = getTokenBySymbol(chainId, symbolName)
+
           const symbolInfo = {
             name: symbolName,
             type: "crypto",
@@ -46,7 +46,7 @@ export default function useTVDatafeed() {
             ticker: symbolName,
             session: "24x7",
             minmov: 1,
-            pricescale: 100,
+            pricescale: 10**(tokenInfo.displayPricePrecision ?? 2),
             timezone: "Etc/UTC",
             has_intraday: true,
             has_daily: true,
