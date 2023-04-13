@@ -1470,7 +1470,7 @@ export function importImage(name) {
     const pngs = ['ic_arb_', 'ic_bnb_'];
     for(let item of pngs){
       if(name.indexOf(item) !== -1){
-        name = name.replace(".svg", ".png")
+        name = name.replace(".svg", ".png").toLowerCase()
         break
       }
     }
