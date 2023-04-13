@@ -4,10 +4,10 @@ import avalanche from "img/ic_avalanche_24.svg";
 import avalancheTestnet from "img/ic_avalanche_testnet_24.svg";
 
 import gmxIcon from "img/ic_gmx_40.svg";
-import glpIcon from "img/ulp-logo-40x40.svg";
+import glpIcon from "img/ulp-logo.png";
 import gmxArbitrum from "img/ic_gmx_arbitrum.svg";
 import gmxAvax from "img/ic_gmx_avax.svg";
-import glpArbitrum from "img/ulp-logo-40x40.svg";
+import glpArbitrum from "img/ulp-logo.png";
 import glpAvax from "img/ic_glp_avax.svg";
 
 const ICONS = {

@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import "./Footer.css";
-import logoImg from "img/ulp-logo-with-name.svg";
+import logoImg from "img/ulp-logo-with-name.png";
 import { NavLink } from "react-router-dom";
 import { isHomeSite, getAppBaseUrl, shouldShowRedirectModal } from "lib/legacy";
 import { getFooterLinks, SOCIAL_LINKS } from "./constants";

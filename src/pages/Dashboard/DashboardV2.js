@@ -48,7 +48,7 @@ import { formatDate } from "lib/dates";
 import { getIcons } from "config/icons";
 import SyntheticTable from "./SyntheticTable"
 import MobileShow from "./MobileShow";
-import gmxIcon from "img/unip-logo-40x40.svg";
+import gmxIcon from "img/unip-logo.png";
 
 const ACTIVE_CHAIN_IDS = [ARBITRUM];
 

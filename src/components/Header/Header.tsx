@@ -4,7 +4,7 @@ import cx from "classnames";
 import { AppHeaderUser } from "./AppHeaderUser";
 import { AppHeaderLinks } from "./AppHeaderLinks";
 
-import logoImg from "img/ulp-logo-with-name.svg";
+import logoImg from "img/ulp-logo-with-name.png";
 import logoSmallImg from "img/logo_800.png";
 import { RiMenuLine } from "react-icons/ri";
 import { FaTimes } from "react-icons/fa";
