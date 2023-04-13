@@ -32,5 +32,5 @@ export function getServerUrl(chainId: number, path: string) {
 
 
 export function getServerUrlNew(chainId: number, path: string) {
-  return `https://api.uniperp.io${path}`;
+  return `https://arbgoerli.api.uniperp.io${path}`;
 }
