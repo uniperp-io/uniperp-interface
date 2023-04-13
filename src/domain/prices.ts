@@ -75,7 +75,10 @@ export async function getLimitChartPricesFromStats(chainId, symbol, period, limi
     symbol = getNativeToken(chainId).symbol;
   }
 
-  const url = `${getServerUrlNew(chainId, '/candleprices')}?symbol=${symbol}&period=${period}&source=fast&from=0&chainId=${chainId}&limit=${limit}`;
+  const timeDiff = CHART_PERIODS[period] * (limit + 1);
+  const from = Math.floor(Date.now() / 1000 - timeDiff);
+
+  const url = `${getServerUrlNew(chainId, '/candleprices')}?symbol=${symbol}&period=${period}&source=fast&from=${from}&chainId=${chainId}&limit=${limit}`;
 
   try {
     const response = await fetch(url);
