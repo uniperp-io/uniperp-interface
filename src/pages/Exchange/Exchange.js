@@ -597,14 +597,14 @@ export const Exchange = forwardRef((props, ref) => {
         message = t`Deposited ${formatAmount(
           collateralDelta,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD into ${tokenSymbol} ${longOrShortText}`;
       } else {
         message = t`Increased ${tokenSymbol} ${longOrShortText}, +${formatAmount(
           sizeDelta,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD.`;
       }
@@ -626,14 +626,14 @@ export const Exchange = forwardRef((props, ref) => {
         message = t`Withdrew ${formatAmount(
           collateralDelta,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD from ${tokenSymbol} ${longOrShortText}.`;
       } else {
         message = t`Decreased ${tokenSymbol} ${longOrShortText}, -${formatAmount(
           sizeDelta,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD.`;
       }

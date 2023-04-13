@@ -175,12 +175,12 @@ export default function TradeHistory(props) {
         return t`Request increase ${indexToken.symbol} ${longOrShortText}, +${formatAmount(
           params.sizeDelta,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD, Acceptable Price: ${params.isLong ? "<" : ">"} ${formatAmount(
           params.acceptablePrice,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD`;
       }
@@ -198,12 +198,12 @@ export default function TradeHistory(props) {
         return t`Request decrease ${indexToken.symbol} ${longOrShortText}, -${formatAmount(
           params.sizeDelta,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD, Acceptable Price: ${params.isLong ? ">" : "<"} ${formatAmount(
           params.acceptablePrice,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD`;
       }
@@ -285,7 +285,7 @@ export default function TradeHistory(props) {
         return t`Increase ${indexToken.symbol} ${longOrShortText}, +${formatAmount(
           params.sizeDelta,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )} USD, ${indexToken.symbol} Price: ${formatAmount(params.price, USD_DECIMALS, 2, true)} USD`;
       }
@@ -357,7 +357,7 @@ export default function TradeHistory(props) {
         const sizeDeltaDisplay = `${order.type === "Increase" ? "+" : "-"}${formatAmount(
           order.sizeDelta,
           USD_DECIMALS,
-          2,
+          indexToken.displayDecimals,
           true
         )}`;
         return t`Execute Order: ${orderTypeText} ${indexToken.symbol} ${longShortDisplay} ${sizeDeltaDisplay} USD, Price: ${executionPriceDisplay} USD`;
