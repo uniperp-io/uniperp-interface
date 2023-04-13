@@ -1339,7 +1339,7 @@ msgid "ULP and UNIP autocompounding vaults"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "GLP autocompounding vaults"
+msgid "ULP autocompounding vaults"
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js

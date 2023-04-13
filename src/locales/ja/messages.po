@@ -26,11 +26,11 @@ msgid "<0/>Profit price: {0} ${1}. This rule applies for the next {2}, until {3}
 msgstr "<0/>利益価格: {0} ${1} このルールはつぎの{2}のあいだ{3}まで適用されます。"
 
 #: src/App/App.js
-msgid "<0>Install Coinbase Wallet</0> to start using GMX."
+msgid "<0>Install Coinbase Wallet</0> to start using UNIP."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install Coinbase Wallet</0>, and use GMX with its built-in browser."
+msgid "<0>Install Coinbase Wallet</0>, and use UNIP with its built-in browser."
 msgstr ""
 
 #: src/App/App.js
@@ -38,7 +38,7 @@ msgid "<0>Install MetaMask</0> to start using UNIP."
 msgstr ""
 
 #: src/App/App.js
-msgid "<0>Install MetaMask</0>, and use GMX with its built-in browser."
+msgid "<0>Install MetaMask</0>, and use UNIP with its built-in browser."
 msgstr ""
 
 #: src/components/Exchange/OrdersToa.js
@@ -62,7 +62,7 @@ msgid "<0>The price that orders can be executed at may differ slightly from the 
 msgstr ""
 
 #: src/pages/Stake/StakeV2.js
-msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to UNIP will remain as GMX tokens.<3/><4/>To claim GMX tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
+msgid "<0>This will withdraw and unreserve all tokens as well as pause vesting.<1/><2/>esUNIP tokens that have been converted to UNIP will remain as UNIP tokens.<3/><4/>To claim UNIP tokens without withdrawing, use the \"Claim\" button under the Total Rewards section.<5/><6/></0>"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
@@ -267,7 +267,7 @@ msgid "Approve {stakingTokenSymbol}"
 msgstr "{stakingTokenSymbol}を承認する"
 
 #: src/pages/Stake/StakeV2.js
-msgid "Approving GMX..."
+msgid "Approving UNIP..."
 msgstr "GMXを承認中"
 
 #: src/components/Exchange/PositionEditor.js
@@ -1335,11 +1335,11 @@ msgid "GBC NFTs APR tracker and rewards"
 msgstr "GBC NFTのAPRトラッカーおよび報酬"
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "GLP and GMX autocompounding vaults"
+msgid "ULP and UNIP autocompounding vaults"
 msgstr ""
 
 #: src/pages/Ecosystem/Ecosystem.js
-msgid "GLP autocompounding vaults"
+msgid "ULP autocompounding vaults"
 msgstr ""
 
 #: src/components/Exchange/SwapBox.js
