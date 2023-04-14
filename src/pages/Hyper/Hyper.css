@@ -57,14 +57,21 @@
   text-align: right;
   vertical-align: middle;
 }
-.card_header .line{
-  background-color: #00F0FF;
-  width: 100%;
-  height: 1rem;
+.card_header .line, .card_header .disline{
+  height: 2rem;
   border-radius: 10px 10px;
-  margin-top: 1rem;
   text-align: right;
   display: flex;
+}
+
+.card_header .line{
+  background-color: #00F0FF;
+}
+
+.card_header .disline{
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #f2f2;
 }
 
 .inblock{

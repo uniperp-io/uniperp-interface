@@ -1,19 +1,89 @@
 import "./Hyper.css"
+import { contractFetcher } from "lib/contracts";
+import ReaderV2 from "abis/ReaderV2.json";
 import SEO from "components/Common/SEO";
-import { getPageTitle} from "lib/legacy";
+import { getPageTitle, GLP_DECIMALS} from "lib/legacy";
 import { useWeb3React } from "@web3-react/core";
+import useSWR from "swr";
+import { getContract } from "config/contracts";
+import { ethers } from "ethers";
+import { useChainId } from "lib/chains";
+import { formatAmount } from "../../lib/numbers";
+import { Trans } from "@lingui/macro";
+import React from "react";
+import Tooltip from "components/Tooltip/Tooltip";
+const { AddressZero } = ethers.constants;
 
 export default function Hyper() {
-  const {chainId, library, active, account} = useWeb3React()
+  const {library, active} = useWeb3React()
+  const {chainId} = useChainId()
+  const readerAddress = getContract(chainId, "Reader");
+
+  const glpAddress = getContract(chainId, "GLP");
+  const tokensForSupplyQuery = [glpAddress];
+
+  const { data: totalSupplies } = useSWR(
+    [`Dashboard:totalSupplies:${active}`, chainId, readerAddress, "getTokenBalancesWithSupplies", AddressZero],
+    {
+      fetcher: contractFetcher(library, ReaderV2, [tokensForSupplyQuery]),
+    }
+  );
+
+  let glpSupply;
+  if (totalSupplies && totalSupplies[1]) {
+    glpSupply = totalSupplies[1];
+  }
 
   const tierLists = [
-    {"num":1},
-    {"num":2},
-    {"num":3},
-    {"num":4},
-    {"num":5},
-    {"num":6},
+    {index:1, filled:500000, rate:"0.500"},
+    {index:2, filled:1500000, rate:"0.375"},
+    {index:3, filled:3000000, rate:"0.333"},
+    {index:4, filled:5000000, rate:"0.250"},
+    {index:5, filled:7500000, rate:"0.200"},
+    {index:6, filled:10000000, rate:"0.150"},
   ];
+
+  const getText = (filled) =>{
+    return (filled/1000) + '.0K'
+  }
+
+  const nowGlpSupply = parseInt(formatAmount(glpSupply, GLP_DECIMALS, 0, true, 0))
+
+  const currentTier = (tierLists, glpSupply)=>{
+    if (!glpSupply){
+      return tierLists[0]
+    }
+    for (const idx in tierLists){
+      const item = tierLists[idx]
+      if (item.filled > nowGlpSupply){
+        return tierLists[idx]
+      }
+    }
+    return tierLists[0]
+  }
+
+  const tmpCurrentTier = currentTier(tierLists, glpSupply)
+
+  const sumLine = (filled, nowGlpSupply) => {
+    const isFilled = filled < nowGlpSupply;
+    if (isFilled){
+      return (<div className="line" style={{ width: "100%" }}/>)
+    }
+
+    let t = ((nowGlpSupply / filled)*100).toFixed(2)
+    t = t > 1 ? 100 : t;
+    return (<div className="line" style={{ width: `${t}%` }}>
+      <Tooltip
+        handle={`${t}%`}
+        position="left-bottom"
+        renderContent={() => {
+          return (
+            <Trans>UlpSupply: {nowGlpSupply}</Trans>
+          );
+        }}
+      />
+    </div>)
+  }
 
   return (
     <SEO title={getPageTitle("Uniperp")}>
@@ -31,20 +101,24 @@ export default function Hyper() {
         <div className="cardinfo">
           <h2>Hyper ULP Event</h2>
           <div className="card_block">
-            {tierLists.map(item=>{
+            {tierLists.map((item, idx)=>{
               return(
-                <div className="card_item">
-                  <div className="card_header active">
-                    <div className="inblock left">Tier{item.num}</div>
+                <div className="card_item" key={idx}>
+                  <div className={`card_header ${item.index === tmpCurrentTier.index ? 'active' : 'default'}`}>
+                    <div className="inblock left">Tier{item.index}</div>
                     <div className="inblock right">
-                      <div>500.0K Filled</div>
-                      <div className="line"></div>
+                      <div>{getText(item.filled)} Filled</div>
+                      {item.index === tmpCurrentTier.index ? (
+                        <div className="disline">{sumLine(item.filled, nowGlpSupply)}</div>
+                      ):(
+                        <div className="disline"></div>
+                      )}
                     </div>
                   </div>
-                  <div className="info_list lactive">
+                  <div className={`info_list ${item.index === tmpCurrentTier.index ? 'lactive' : ''}`}>
                     <div>
                       <div className="left">ULP</div>
-                      <div className="right">First 500.0K</div>
+                      <div className="right">First {getText(item.filled)}</div>
                     </div>
                     <div>
                       <div className="left">ARP</div>
@@ -52,7 +126,7 @@ export default function Hyper() {
                     </div>
                     <div>
                       <div className="left">220.2%</div>
-                      <div className="right">0.500</div>
+                      <div className="right">{item.rate.toString()}</div>
                     </div>
                   </div>
                 </div>
