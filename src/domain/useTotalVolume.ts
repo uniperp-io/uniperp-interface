@@ -1,13 +1,13 @@
 import useSWR from "swr";
 import { arrayURLFetcher, getTotalVolumeSum } from "lib/legacy";
-import { ARBITRUM } from "config/chains";
+import { DEFAULT_CHAIN_ID } from "config/chains";
 import { getServerUrlNew } from "config/backend";
 import { bigNumberify } from "lib/numbers";
-const ACTIVE_CHAIN_IDS = [ARBITRUM];
+const ACTIVE_CHAIN_IDS = [DEFAULT_CHAIN_ID];
 
 export default function useTotalVolume() {
   const { data: totalVolume } = useSWR<any>(
-    ACTIVE_CHAIN_IDS.map((chain) => getServerUrlNew(chain, `/total_volume?chain_id=${ARBITRUM}`)),
+    ACTIVE_CHAIN_IDS.map((chainId) => getServerUrlNew(chainId, `/total_volume?chain_id=${chainId}`)),
     {
       fetcher: arrayURLFetcher,
     }

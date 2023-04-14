@@ -49,8 +49,9 @@ import { getIcons } from "config/icons";
 import SyntheticTable from "./SyntheticTable"
 import MobileShow from "./MobileShow";
 import gmxIcon from "img/unip-logo.png";
+import { DEFAULT_CHAIN_ID } from "config/chains";
 
-const ACTIVE_CHAIN_IDS = [ARBITRUM];
+const ACTIVE_CHAIN_IDS = [DEFAULT_CHAIN_ID];
 
 const { AddressZero } = ethers.constants;
 
@@ -226,7 +227,7 @@ export default function DashboardV2() {
   );
 
   const { infoTokens } = useInfoTokens(library, chainId, active, undefined, undefined);
-  const { infoTokens: infoTokensArbitrum } = useInfoTokens(null, ARBITRUM, active, undefined, undefined);
+  const { infoTokens: infoTokensArbitrum } = useInfoTokens(null, chainId, active, undefined, undefined);
 
   const { data: currentFees } = useSWR(
     infoTokensArbitrum[AddressZero].contractMinPrice ? "Dashboard:currentFees" : null,
@@ -257,7 +258,7 @@ export default function DashboardV2() {
     }
   );
 
-  const { data: feesSummaryByChain } = useFeesSummary();
+  const { data: feesSummaryByChain } = useFeesSummary(chainId);
   const feesSummary = feesSummaryByChain[chainId];
 
   const eth = infoTokens[getTokenBySymbol(chainId, "ETH").address];

@@ -128,37 +128,59 @@ export const TOKENS: { [chainId: number]: Token[] } = {
   ],
   [ARBITRUM_TESTNET]: [
     {
-      name: "Bitcoin",
-      symbol: "BTC",
-      decimals: 8,
-      address: "0x27960f9A322BE96A1535E6c19B3958e80E6a2670",
-      isShortable: true,
-      imageUrl: "https://assets.coingecko.com/coins/images/7598/thumb/wrapped_bitcoin_wbtc.png?1548822744",
-    },
-    {
       name: "Ethereum",
       symbol: "ETH",
       decimals: 18,
       address: ethers.constants.AddressZero,
       isNative: true,
       isShortable: true,
+      max_allowed_leverage:50,
       imageUrl: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
     },
-    // https://github.com/OffchainLabs/arbitrum/blob/950c2f91b2e951cd3764394e0a73eac3797aecf3/packages/arb-ts/src/lib/networks.ts#L65
     {
       name: "Wrapped Ethereum",
       symbol: "WETH",
       decimals: 18,
-      address: "0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681",
+      address: getContract(CHAIN_ID, "NATIVE_TOKEN"),
       isWrapped: true,
       baseSymbol: "ETH",
       imageUrl: "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295",
     },
     {
+      name: "Bitcoin (WBTC)",
+      symbol: "BTC",
+      decimals: 8,
+      address: "0x40c2228f2Bc74420363bbF27A316cf49D56C4907",
+      isShortable: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/7598/thumb/wrapped_bitcoin_wbtc.png?1548822744",
+    },
+    {
+      name: "Euro",
+      symbol: "EUR",
+      decimals: 18,
+      address: "0x2634D24058E14C8aac2F4C650a0B2A4Fc51324B3",
+      isStable: false,
+      isShortable: true,
+      isSynthetic: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/26045/small/euro-coin.png?1655394420",
+      displayPricePrecision:5,
+    },
+    {
+      name: "Japanese Yen",
+      symbol: "JPY",
+      decimals: 18,
+      address: "0x82b0B58C989916A9C4CABDB483B715fc86fD6000",
+      isStable: false,
+      isShortable: true,
+      isSynthetic: true,
+      imageUrl: "https://assets.coingecko.com/coins/images/25971/small/2023jpyc.png?1675935375",
+      displayPricePrecision:5,
+    },
+    {
       name: "USD Coin",
       symbol: "USDC",
       decimals: 6,
-      address: "0xf0DCd4737A20ED33481A49De94C599944a3Ca737",
+      address: "0x5BB509Ea9C86d0Ff42ecF5E5DA88671197a1BaC0",
       isStable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/6319/thumb/USD_Coin_icon.png?1547042389",
     },
@@ -166,10 +188,10 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       name: "Tether",
       symbol: "USDT",
       decimals: 6,
-      address: "0x818ED84bA1927945b631016e0d402Db50cE8865f",
+      address: "0x0d3D8a77A67dCacc41939700eabbf361656Be916",
       isStable: true,
-      imageUrl: "https://assets.coingecko.com/coins/images/325/small/Tether-logo.png",
-    },
+      imageUrl: "https://assets.coingecko.com/coins/images/325/thumb/Tether-logo.png?1598003707",
+    }
   ],
   [ARBITRUM]: [
     {
@@ -682,6 +704,7 @@ export function getNormalizedTokenSymbol(tokenSymbol) {
 
 const AVAILABLE_CHART_TOKENS = {
   [ARBITRUM]: ["ETH", "BTC", "LINK", "UNI", "JPY", "EUR", "BNB", "ARB"],
+  [ARBITRUM_TESTNET]: ["ETH", "BTC", "LINK", "UNI", "JPY", "EUR", "BNB", "ARB"],
   [AVALANCHE]: ["AVAX", "ETH", "BTC"],
 };
 

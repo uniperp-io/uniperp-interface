@@ -11,10 +11,10 @@ export const ETH_MAINNET = 1;
 export const AVALANCHE = 43114;
 export const AVALANCHE_FUJI = 43113;
 export const ARBITRUM = 42161;
-export const ARBITRUM_TESTNET = 421611;
+export const ARBITRUM_TESTNET = 421613;
 
 // TODO take it from web3
-export const DEFAULT_CHAIN_ID = ARBITRUM;
+export const DEFAULT_CHAIN_ID = ARBITRUM_TESTNET;
 export const CHAIN_ID = DEFAULT_CHAIN_ID;
 
 export const SUPPORTED_CHAIN_IDS = [ARBITRUM, AVALANCHE];
@@ -25,13 +25,14 @@ if (isDevelopment()) {
 
 export const IS_NETWORK_DISABLED = {
   [ARBITRUM]: false,
+  [ARBITRUM_TESTNET]: false,
   [AVALANCHE]: false,
 };
 
 export const CHAIN_NAMES_MAP = {
   [MAINNET]: "BSC",
   [TESTNET]: "BSC Testnet",
-  [ARBITRUM_TESTNET]: "ArbRinkeby",
+  [ARBITRUM_TESTNET]: "ArbitrumGoerli",
   [ARBITRUM]: "ArbitrumOne",
   [AVALANCHE]: "Avalanche",
   [AVALANCHE_FUJI]: "Avalanche Fuji",
@@ -39,16 +40,19 @@ export const CHAIN_NAMES_MAP = {
 
 export const GAS_PRICE_ADJUSTMENT_MAP = {
   [ARBITRUM]: "0",
+  [ARBITRUM_TESTNET]: "0",
   [AVALANCHE]: "3000000000", // 3 gwei
 };
 
 export const MAX_GAS_PRICE_MAP = {
   [AVALANCHE]: "200000000000", // 200 gwei
   [ARBITRUM]: "20000000000", // 20 gwei
+  [ARBITRUM_TESTNET]: "20000000000", // 20 gwei
 };
 
 export const HIGH_EXECUTION_FEES_MAP = {
   [ARBITRUM]: 3, // 3 USD
+  [ARBITRUM_TESTNET]: 3, // 3 USD
   [AVALANCHE]: 3, // 3 USD
 };
 
@@ -70,6 +74,7 @@ const constants = {
   },
 
   [ARBITRUM_TESTNET]: {
+    wrappedTokenSymbol: "WETH",
     nativeTokenSymbol: "ETH",
     defaultCollateralSymbol: "USDC",
     defaultFlagOrdersEnabled: false,
@@ -134,13 +139,14 @@ export const RPC_PROVIDERS = {
   ],
   [TESTNET]: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
   [ARBITRUM]: [getDefaultArbitrumRpcUrl()],
-  [ARBITRUM_TESTNET]: ["https://rinkeby.arbitrum.io/rpc"],
+  [ARBITRUM_TESTNET]: ["https://goerli-rollup.arbitrum.io/rpc/"],
   [AVALANCHE]: [""],
   [AVALANCHE_FUJI]: ["https://api.avax-test.network/ext/bc/C/rpc"],
 };
 
 export const FALLBACK_PROVIDERS = {
   [ARBITRUM]: [getAlchemyHttpUrl()],
+  [ARBITRUM_TESTNET]: ["https://goerli-rollup.arbitrum.io/rpc/"],
   [AVALANCHE]: ["https://avax-mainnet.gateway.pokt.network/v1/lb/626f37766c499d003aada23b"],
 };
 
@@ -169,14 +175,14 @@ export const NETWORK_METADATA: { [chainId: number]: NetworkMetadata } = {
   },
   [ARBITRUM_TESTNET]: {
     chainId: "0x" + ARBITRUM_TESTNET.toString(16),
-    chainName: "Arbitrum Testnet",
+    chainName: "ArbitrumGoerli",
     nativeCurrency: {
       name: "ETH",
       symbol: "ETH",
       decimals: 18,
     },
     rpcUrls: RPC_PROVIDERS[ARBITRUM_TESTNET],
-    blockExplorerUrls: ["https://rinkeby-explorer.arbitrum.io/"],
+    blockExplorerUrls: [getExplorerUrl(ARBITRUM_TESTNET)],
   },
   [ARBITRUM]: {
     chainId: "0x" + ARBITRUM.toString(16),
@@ -265,7 +271,7 @@ export function getExplorerUrl(chainId) {
   } else if (chainId === TESTNET) {
     return "https://testnet.bscscan.com/";
   } else if (chainId === ARBITRUM_TESTNET) {
-    return "https://testnet.arbiscan.io/";
+    return "https://goerli.arbiscan.io/";
   } else if (chainId === ARBITRUM) {
     return "https://arbiscan.io/";
   } else if (chainId === AVALANCHE) {

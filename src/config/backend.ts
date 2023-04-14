@@ -1,10 +1,9 @@
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, MAINNET } from "./chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, MAINNET, CHAIN_ID } from "./chains";
 
 export const GMX_STATS_API_URL = "https://stats.gmx.io/api";
 
 const BACKEND_URLS = {
   default: "https://gmx-server-mainnet.uw.r.appspot.com",
-
   [MAINNET]: "https://gambit-server-staging.uc.r.appspot.com",
   [ARBITRUM_TESTNET]: "https://gambit-server-devnet.uc.r.appspot.com",
   [ARBITRUM]: "https://gmx-server-mainnet.uw.r.appspot.com",
@@ -32,5 +31,8 @@ export function getServerUrl(chainId: number, path: string) {
 
 
 export function getServerUrlNew(chainId: number, path: string) {
+  if (CHAIN_ID === ARBITRUM_TESTNET){
+    return `https://arbgoerli.api.uniperp.io${path}`;
+  }
   return `https://api.uniperp.io${path}`;
 }

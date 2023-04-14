@@ -28,6 +28,7 @@ import { getProvider } from "lib/rpc";
 import { bigNumberify, expandDecimals, parseValue } from "lib/numbers";
 import { getTokenBySymbol } from "config/tokens";
 import { t } from "@lingui/macro";
+import { useChainId } from "../lib/chains";
 
 export * from "./prices";
 
@@ -469,7 +470,7 @@ export function useHasOutdatedUi() {
 
 export function useGmxPrice(chainId, libraries, active) {
   const arbitrumLibrary = libraries && libraries.arbitrum ? libraries.arbitrum : undefined;
-  const { data: gmxPriceFromArbitrum, mutate: mutateFromArbitrum } = useGmxPriceFromArbitrum(arbitrumLibrary, active);
+  const { data: gmxPriceFromArbitrum, mutate: mutateFromArbitrum } = useGmxPriceFromArbitrum(arbitrumLibrary, active, chainId);
 
   const gmxPrice = gmxPriceFromArbitrum;
   const mutate = useCallback(() => {
@@ -485,7 +486,7 @@ export function useGmxPrice(chainId, libraries, active) {
 
 // use only the supply endpoint on arbitrum
 export function useTotalGmxSupply() {
-  const gmxSupplyUrlArbitrum = getServerUrlNew(ARBITRUM, `/unip_supply?chain_id=${ARBITRUM}`);
+  const gmxSupplyUrlArbitrum = getServerUrlNew(ARBITRUM, `/unip_supply?chain_id=${useChainId().chainId}`);
   const { data: gmxSupply, mutate: updateGmxSupply } = useSWR([gmxSupplyUrlArbitrum], {
     // @ts-ignore
     fetcher: (...args) => fetch(...args).then((res) => res.text()),
@@ -588,19 +589,19 @@ function useGmxPriceFromAvalanche() {
   return { data: gmxPrice, mutate };
 }
 
-function useGmxPriceFromArbitrum(library, active) {
-  const poolAddress = getContract(ARBITRUM, "UniswapGmxEthPool");
+function useGmxPriceFromArbitrum(library, active, chainId) {
+  const poolAddress = getContract(chainId, "UniswapGmxEthPool");
   const { data: uniPoolSlot0, mutate: updateUniPoolSlot0 } = useSWR<any>(
-    [`StakeV2:uniPoolSlot0:${active}`, ARBITRUM, poolAddress, "slot0"],
+    [`StakeV2:uniPoolSlot0:${active}`, chainId, poolAddress, "slot0"],
     {
       fetcher: contractFetcher(library, UniPool),
     }
   );
 
-  const vaultAddress = getContract(ARBITRUM, "Vault");
-  const ethAddress = getTokenBySymbol(ARBITRUM, "WETH").address;
+  const vaultAddress = getContract(chainId, "Vault");
+  const ethAddress = getTokenBySymbol(chainId, "WETH").address;
   const { data: ethPrice, mutate: updateEthPrice } = useSWR<BigNumber>(
-    [`StakeV2:ethPrice:${active}`, ARBITRUM, vaultAddress, "getMinPrice", ethAddress],
+    [`StakeV2:ethPrice:${active}`, chainId, vaultAddress, "getMinPrice", ethAddress],
     {
       fetcher: contractFetcher(library, Vault),
     }
@@ -608,10 +609,10 @@ function useGmxPriceFromArbitrum(library, active) {
 
   const gmxPrice = useMemo(() => {
     if (uniPoolSlot0 && ethPrice) {
-      const tokenA = new UniToken(ARBITRUM, ethAddress, 18, "SYMBOL", "NAME");
+      const tokenA = new UniToken(chainId, ethAddress, 18, "SYMBOL", "NAME");
 
-      const gmxAddress = getContract(ARBITRUM, "GMX");
-      const tokenB = new UniToken(ARBITRUM, gmxAddress, 18, "SYMBOL", "NAME");
+      const gmxAddress = getContract(chainId, "GMX");
+      const tokenB = new UniToken(chainId, gmxAddress, 18, "SYMBOL", "NAME");
 
       const pool = new Pool(
         tokenA, // tokenA
@@ -627,7 +628,7 @@ function useGmxPriceFromArbitrum(library, active) {
       const poolTokenPriceAmount = parseValue(poolTokenPrice, 18);
       return poolTokenPriceAmount?.mul(ethPrice).div(expandDecimals(1, 18));
     }
-  }, [ethPrice, uniPoolSlot0, ethAddress]);
+  }, [ethPrice, uniPoolSlot0, ethAddress, chainId]);
 
   const mutate = useCallback(() => {
     updateUniPoolSlot0(undefined, true);

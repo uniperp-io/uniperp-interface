@@ -1,11 +1,11 @@
 import useSWR from "swr";
 import { arrayURLFetcher } from "lib/legacy";
-import { ARBITRUM } from "config/chains";
 import { getServerUrlNew } from "config/backend";
-
-const ACTIVE_CHAIN_IDS = [ARBITRUM];
+import { DEFAULT_CHAIN_ID } from "config/chains";
 
 export default function useFeesSummary() {
+  const ACTIVE_CHAIN_IDS = [DEFAULT_CHAIN_ID];
+
   const { data: feesSummary } = useSWR(
     ACTIVE_CHAIN_IDS.map((chainId) => getServerUrlNew(chainId, `/fees_summary?chain_id=${chainId}`)),
     {

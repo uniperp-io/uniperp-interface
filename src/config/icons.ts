@@ -23,6 +23,8 @@ const ICONS = {
   },
   [ARBITRUM_TESTNET]: {
     network: arbitrum,
+    gmx: gmxArbitrum,
+    glp: glpArbitrum,
   },
   [AVALANCHE_FUJI]: {
     network: avalancheTestnet,
