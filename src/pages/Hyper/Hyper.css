@@ -126,3 +126,12 @@
 .contribution .table div{
   display: flex;
 }
+
+@media (max-width: 900px) {
+  .main_body{
+    padding-left: 1rem;
+  }
+  .pre_cardinfo, .your_cardinfo,.card_item{
+    width: 100%;
+  }
+}

@@ -7,12 +7,12 @@ export default function Hyper() {
   const {chainId, library, active, account} = useWeb3React()
 
   const tierLists = [
-    {"num":1, supply_total:500000, apr:"220.2%", rate:"0.500"},
-    {"num":2, supply_total:500000, apr:"220.2%", rate:"0.500"},
-    {"num":3, supply_total:500000, apr:"220.2%", rate:"0.500"},
-    {"num":4, supply_total:500000, apr:"220.2%", rate:"0.500"},
-    {"num":5, supply_total:500000, apr:"220.2%", rate:"0.500"},
-    {"num":6, supply_total:500000, apr:"220.2%", rate:"0.500"},
+    {"num":1},
+    {"num":2},
+    {"num":3},
+    {"num":4},
+    {"num":5},
+    {"num":6},
   ];
 
   return (
@@ -24,151 +24,40 @@ export default function Hyper() {
       </div>
 
       <div className="pre_cardinfo">
-        <div>
-          <h4>Hyper ULP has ended, but you can still obtain up to 0.0% APR by minting and staking ULP</h4>
-        </div>
+        {/*<div>*/}
+        {/*  <h4>Hyper ULP has ended, but you can still obtain up to 0.0% APR by minting and staking ULP</h4>*/}
+        {/*</div>*/}
 
         <div className="cardinfo">
           <h2>Hyper ULP Event</h2>
           <div className="card_block">
-            <div className="card_item">
-              <div className="card_header active">
-                <div className="inblock left">Tier1</div>
-                <div className="inblock right">
-                  <div>500.0K Filled</div>
-                  <div className="line"></div>
+            {tierLists.map(item=>{
+              return(
+                <div className="card_item">
+                  <div className="card_header active">
+                    <div className="inblock left">Tier{item.num}</div>
+                    <div className="inblock right">
+                      <div>500.0K Filled</div>
+                      <div className="line"></div>
+                    </div>
+                  </div>
+                  <div className="info_list lactive">
+                    <div>
+                      <div className="left">ULP</div>
+                      <div className="right">First 500.0K</div>
+                    </div>
+                    <div>
+                      <div className="left">ARP</div>
+                      <div className="right">Reward rate (UNIP/ULP)</div>
+                    </div>
+                    <div>
+                      <div className="left">220.2%</div>
+                      <div className="right">0.500</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="info_list lactive">
-                <div>
-                  <div className="left">ULP</div>
-                  <div className="right">First 500.0K</div>
-                </div>
-                <div>
-                  <div className="left">ARP</div>
-                  <div className="right">Reward rate (UNIP/ULP)</div>
-                </div>
-                <div>
-                  <div className="left">220.2%</div>
-                  <div className="right">0.500</div>
-                </div>
-              </div>
-            </div>
-            <div className="card_item">
-              <div className="card_header default">
-                <div className="inblock left">Tier1</div>
-                <div className="inblock right">
-                  <div>500.0K Filled</div>
-                  <div className="line"></div>
-                </div>
-              </div>
-              <div className="info_list">
-                <div>
-                  <div className="left">ULP</div>
-                  <div className="right">First 500.0K</div>
-                </div>
-                <div>
-                  <div className="left">ARP</div>
-                  <div className="right">Reward rate (UNIP/ULP)</div>
-                </div>
-                <div>
-                  <div className="left">220.2%</div>
-                  <div className="right">0.500</div>
-                </div>
-              </div>
-            </div>
-            <div className="card_item">
-              <div className="card_header default">
-                <div className="inblock left">Tier1</div>
-                <div className="inblock right">
-                  <div>500.0K Filled</div>
-                  <div className="line"></div>
-                </div>
-              </div>
-              <div className="info_list">
-                <div>
-                  <div className="left">ULP</div>
-                  <div className="right">First 500.0K</div>
-                </div>
-                <div>
-                  <div className="left">ARP</div>
-                  <div className="right">Reward rate (UNIP/ULP)</div>
-                </div>
-                <div>
-                  <div className="left">220.2%</div>
-                  <div className="right">0.500</div>
-                </div>
-              </div>
-            </div>
-            <div className="card_item">
-              <div className="card_header default">
-                <div className="inblock left">Tier1</div>
-                <div className="inblock right">
-                  <div>500.0K Filled</div>
-                  <div className="line"></div>
-                </div>
-              </div>
-              <div className="info_list">
-                <div>
-                  <div className="left">ULP</div>
-                  <div className="right">First 500.0K</div>
-                </div>
-                <div>
-                  <div className="left">ARP</div>
-                  <div className="right">Reward rate (UNIP/ULP)</div>
-                </div>
-                <div>
-                  <div className="left">220.2%</div>
-                  <div className="right">0.500</div>
-                </div>
-              </div>
-            </div>
-            <div className="card_item">
-              <div className="card_header default">
-                <div className="inblock left">Tier1</div>
-                <div className="inblock right">
-                  <div>500.0K Filled</div>
-                  <div className="line"></div>
-                </div>
-              </div>
-              <div className="info_list">
-                <div>
-                  <div className="left">ULP</div>
-                  <div className="right">First 500.0K</div>
-                </div>
-                <div>
-                  <div className="left">ARP</div>
-                  <div className="right">Reward rate (UNIP/ULP)</div>
-                </div>
-                <div>
-                  <div className="left">220.2%</div>
-                  <div className="right">0.500</div>
-                </div>
-              </div>
-            </div>
-            <div className="card_item">
-              <div className="card_header default">
-                <div className="inblock left">Tier1</div>
-                <div className="inblock right">
-                  <div>500.0K Filled</div>
-                  <div className="line"></div>
-                </div>
-              </div>
-              <div className="info_list">
-                <div>
-                  <div className="left">ULP</div>
-                  <div className="right">First 500.0K</div>
-                </div>
-                <div>
-                  <div className="left">ARP</div>
-                  <div className="right">Reward rate (UNIP/ULP)</div>
-                </div>
-                <div>
-                  <div className="left">220.2%</div>
-                  <div className="right">0.500</div>
-                </div>
-              </div>
-            </div>
+              )
+            })}
           </div>
         </div>
 
