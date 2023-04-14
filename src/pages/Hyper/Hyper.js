@@ -1,8 +1,20 @@
 import "./Hyper.css"
 import SEO from "components/Common/SEO";
 import { getPageTitle} from "lib/legacy";
+import { useWeb3React } from "@web3-react/core";
 
 export default function Hyper() {
+  const {chainId, library, active, account} = useWeb3React()
+
+  const tierLists = [
+    {"num":1, supply_total:500000, apr:"220.2%", rate:"0.500"},
+    {"num":2, supply_total:500000, apr:"220.2%", rate:"0.500"},
+    {"num":3, supply_total:500000, apr:"220.2%", rate:"0.500"},
+    {"num":4, supply_total:500000, apr:"220.2%", rate:"0.500"},
+    {"num":5, supply_total:500000, apr:"220.2%", rate:"0.500"},
+    {"num":6, supply_total:500000, apr:"220.2%", rate:"0.500"},
+  ];
+
   return (
     <SEO title={getPageTitle("Uniperp")}>
       <div className="main_body">
