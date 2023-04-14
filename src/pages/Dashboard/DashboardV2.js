@@ -291,7 +291,7 @@ export default function DashboardV2() {
 
   let { total: totalGmxInLiquidity } = useTotalGmxInLiquidity(chainId, active);
 
-  let { avax: avaxStakedGmx, arbitrum: arbitrumStakedGmx, total: totalStakedGmx } = useTotalGmxStaked();
+  let { avax: avaxStakedGmx, arbitrum: arbitrumStakedGmx, total: totalStakedGmx } = useTotalGmxStaked(chainId);
 
   let gmxMarketCap;
   if (gmxPrice && totalGmxSupply) {
@@ -608,7 +608,7 @@ export default function DashboardV2() {
                       renderContent={() => (
                         <StatsTooltip
                           title={t`Volume`}
-                          arbitrumValue={currentVolumeInfo?.[ARBITRUM].totalVolume}
+                          arbitrumValue={currentVolumeInfo?.[chainId].totalVolume}
                           total={currentVolumeInfo?.totalVolume}
                         />
                       )}

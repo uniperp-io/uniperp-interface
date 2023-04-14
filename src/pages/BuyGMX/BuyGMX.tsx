@@ -52,96 +52,12 @@ export default function BuyGMX() {
             <div className="Page-description">
               <Trans>Choose to buy from decentralized or centralized exchanges.</Trans>
               <br />
-              {/*<Trans>*/}
-              {/*  To purchase UNIP on the {isArbitrum ? "Avalanche" : "Arbitrum"} blockchain, please{" "}*/}
-              {/*  <span onClick={() => onNetworkSelect(isArbitrum ? AVALANCHE : ARBITRUM)}>change your network</span>.*/}
-              {/*</Trans>*/}
             </div>
           </div>
         </div>
         <div className="cards-row">
           <DecentralisedExchanges chainId={chainId} externalLinks={externalLinks} />
-          {/*<CentralisedExchanges chainId={chainId} />*/}
         </div>
-
-        {/*{isArbitrum ? (*/}
-        {/*  <div className="section-title-block mt-top">*/}
-        {/*    <div className="section-title-content">*/}
-        {/*      <div className="Page-title">*/}
-        {/*        <Trans>Buy or Transfer ETH to Arbitrum</Trans>*/}
-        {/*      </div>*/}
-        {/*      <div className="Page-description">*/}
-        {/*        <Trans>Buy ETH directly to Arbitrum or transfer it there.</Trans>*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*) : (*/}
-        {/*  <div className="section-title-block mt-top">*/}
-        {/*    <div className="section-title-content">*/}
-        {/*      <div className="Page-title">*/}
-        {/*        <Trans>Buy or Transfer AVAX to Avalanche</Trans>*/}
-        {/*      </div>*/}
-        {/*      <div className="Page-description">*/}
-        {/*        <Trans>Buy AVAX directly to Avalanche or transfer it there.</Trans>*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*)}*/}
-
-        {/*<div className="cards-row">*/}
-        {/*  <Card title={t`Buy ${nativeTokenSymbol}`}>*/}
-        {/*    <div className="App-card-content">*/}
-        {/*      <div className="BuyGMXGLP-description">*/}
-        {/*        {isArbitrum ? (*/}
-        {/*          <Trans>*/}
-        {/*            You can buy ETH directly on{" "}*/}
-        {/*            <ExternalLink href={externalLinks.networkWebsite}>Arbitrum</ExternalLink> using these options:*/}
-        {/*          </Trans>*/}
-        {/*        ) : (*/}
-        {/*          <Trans>*/}
-        {/*            You can buy AVAX directly on{" "}*/}
-        {/*            <ExternalLink href={externalLinks.networkWebsite}>Avalanche</ExternalLink> using these options:*/}
-        {/*          </Trans>*/}
-        {/*        )}*/}
-        {/*      </div>*/}
-        {/*      <div className="buttons-group">*/}
-        {/*        {BUY_NATIVE_TOKENS.filter((e) => chainId in e.links).map((exchange) => {*/}
-        {/*          const icon = importImage(exchange.icon) || "";*/}
-        {/*          const link = exchange.links[chainId];*/}
-        {/*          return (*/}
-        {/*            <Button key={exchange.name} href={link} imgSrc={icon}>*/}
-        {/*              {exchange.name}*/}
-        {/*            </Button>*/}
-        {/*          );*/}
-        {/*        })}*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </Card>*/}
-        {/*  <Card title={t`Transfer ${nativeTokenSymbol}`}>*/}
-        {/*    <div className="App-card-content">*/}
-        {/*      {isArbitrum ? (*/}
-        {/*        <div className="BuyGMXGLP-description">*/}
-        {/*          <Trans>You can transfer ETH from other networks to Arbitrum using any of the below options:</Trans>*/}
-        {/*        </div>*/}
-        {/*      ) : (*/}
-        {/*        <div className="BuyGMXGLP-description">*/}
-        {/*          <Trans>You can transfer AVAX from other networks to Avalanche using any of the below options:</Trans>*/}
-        {/*        </div>*/}
-        {/*      )}*/}
-        {/*      <div className="buttons-group">*/}
-        {/*        {TRANSFER_EXCHANGES.filter((e) => chainId in e.links).map((exchange) => {*/}
-        {/*          const icon = importImage(exchange.icon) || "";*/}
-        {/*          const link = exchange.links[chainId];*/}
-        {/*          return (*/}
-        {/*            <Button key={exchange.name} href={link} imgSrc={icon}>*/}
-        {/*              {exchange.name}*/}
-        {/*            </Button>*/}
-        {/*          );*/}
-        {/*        })}*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </Card>*/}
-        {/*</div>*/}
       </div>
       <Footer />
     </div>
@@ -149,7 +65,6 @@ export default function BuyGMX() {
 }
 
 function DecentralisedExchanges({ chainId, externalLinks }) {
-  const isArbitrum = chainId === ARBITRUM;
   return (
     <Card title={t`Buy UNIP from a Decentralized Exchange`}>
       <div className="App-card-content">
@@ -163,126 +78,6 @@ function DecentralisedExchanges({ chainId, externalLinks }) {
               </Button>
             </div>
           </div>
-      </div>
-    </Card>
-  );
-}
-
-function DecentralisedExchangesbak({ chainId, externalLinks }) {
-  const isArbitrum = chainId === ARBITRUM;
-  return (
-    <Card title={t`Buy UNIP from a Decentralized Exchange`}>
-      <div className="App-card-content">
-        {isArbitrum ? (
-          <div className="exchange-info-group">
-            <div className="BuyGMXGLP-description">
-              <Trans>Buy UNIP from Uniswap (make sure to select Arbitrum):</Trans>
-            </div>
-            <div className="buttons-group col-1">
-              <Button imgSrc={uniswapArbitrumIcon} href={externalLinks.buyGmx.uniswap}>
-                Uniswap
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="exchange-info-group">
-            <div className="BuyGMXGLP-description">
-              <Trans>Buy UNIP from Traderjoe:</Trans>
-            </div>
-            <div className="buttons-group col-1">
-              <Button imgSrc={traderjoeIcon} href={externalLinks.buyGmx.traderjoe}>
-                TraderJoe
-              </Button>
-            </div>
-          </div>
-        )}
-        <div className="exchange-info-group">
-          <div className="BuyGMXGLP-description">
-            <Trans>Buy UNIP using Decentralized Exchange Aggregators:</Trans>
-          </div>
-          <div className="buttons-group">
-            {DECENTRALISED_AGGRIGATORS.filter((e) => chainId in e.links).map((exchange) => {
-              const icon = importImage(exchange.icon) || "";
-              const link = exchange.links[chainId];
-              return (
-                <Button key={exchange.name} imgSrc={icon} href={link}>
-                  {exchange.name}
-                </Button>
-              );
-            })}
-          </div>
-        </div>
-        <div className="exchange-info-group">
-          <div className="BuyGMXGLP-description">
-            <Trans>Buy UNIP using any token from any network:</Trans>
-          </div>
-          <div className="buttons-group">
-            {GMX_FROM_ANY_NETWORKS.filter((e) => chainId in e.links).map((exchange) => {
-              const icon = importImage(exchange.icon) || "";
-              const link = exchange.links[chainId];
-              return (
-                <Button key={exchange.name} href={link} imgSrc={icon}>
-                  {exchange.name}
-                </Button>
-              );
-            })}
-          </div>
-        </div>
-        {isArbitrum && (
-          <div className="exchange-info-group">
-            <div className="BuyGMXGLP-description">
-              <Trans>UNIP bonds can be bought on Bond Protocol with a discount and a small vesting period:</Trans>
-            </div>
-            <div className="buttons-group col-1">
-              <Button imgSrc={bondProtocolIcon} href="https://app.bondprotocol.finance/#/issuers/GMX">
-                Bond Protocol
-              </Button>
-            </div>
-          </div>
-        )}
-      </div>
-    </Card>
-  );
-}
-
-function CentralisedExchanges({ chainId }) {
-  return (
-    <Card title={t`Buy UNIP from centralized services`}>
-      <div className="App-card-content">
-        <div className="exchange-info-group">
-          <div className="BuyGMXGLP-description">
-            <Trans>Buy UNIP from centralized exchanges:</Trans>
-          </div>
-          <div className="buttons-group">
-            {CENTRALISED_EXCHANGES.filter((e) => chainId in e.links).map((exchange) => {
-              const icon = importImage(exchange.icon) || "";
-              const link = exchange.links[chainId];
-              return (
-                <Button key={exchange.name} href={link} imgSrc={icon}>
-                  {exchange.name}
-                </Button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="exchange-info-group">
-          <div className="BuyGMXGLP-description">
-            <Trans>Buy UNIP using FIAT gateways:</Trans>
-          </div>
-          <div className="buttons-group col-2">
-            {FIAT_GATEWAYS.filter((e) => chainId in e.links).map((exchange) => {
-              const icon = importImage(exchange.icon) || "";
-              let link = exchange.links[chainId];
-
-              return (
-                <Button key={exchange.name} href={link} imgSrc={icon}>
-                  {exchange.name}
-                </Button>
-              );
-            })}
-          </div>
-        </div>
       </div>
     </Card>
   );

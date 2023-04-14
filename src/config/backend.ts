@@ -1,6 +1,9 @@
-import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, MAINNET, CHAIN_ID } from "./chains";
+import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, MAINNET, CHAIN_ID, DEFAULT_CHAIN_ID } from "./chains";
 
-export const GMX_STATS_API_URL = "https://stats.gmx.io/api";
+export const UNIP_STATS_API_URL = {
+  [ARBITRUM_TESTNET]: "https://arbgoerli.api.uniperp.io",
+  [ARBITRUM]: "https://api.uniperp.io",
+}
 
 const BACKEND_URLS = {
   default: "https://gmx-server-mainnet.uw.r.appspot.com",
@@ -29,10 +32,9 @@ export function getServerUrl(chainId: number, path: string) {
   return `${getServerBaseUrl(chainId)}${path}`;
 }
 
-
 export function getServerUrlNew(chainId: number, path: string) {
-  if (CHAIN_ID === ARBITRUM_TESTNET){
-    return `https://arbgoerli.api.uniperp.io${path}`;
+  if (chainId && UNIP_STATS_API_URL.hasOwnProperty(chainId)){
+    return `${UNIP_STATS_API_URL[chainId]}${path}`;
   }
-  return `https://api.uniperp.io${path}`;
+  return `${UNIP_STATS_API_URL[DEFAULT_CHAIN_ID]}${path}`;
 }
