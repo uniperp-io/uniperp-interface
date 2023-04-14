@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { ethers } from "ethers";
 
 import { USD_DECIMALS, CHART_PERIODS } from "lib/legacy";
-import { getServerUrlNew, GMX_STATS_API_URL } from "config/backend";
+import { getServerUrlNew } from "config/backend";
 import { chainlinkClient } from "lib/subgraph/clients";
 import { sleep } from "lib/sleep";
 import { formatAmount } from "lib/numbers";

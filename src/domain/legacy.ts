@@ -498,14 +498,14 @@ export function useTotalGmxSupply() {
   };
 }
 
-export function useTotalGmxStaked() {
-  const stakedGmxTrackerAddressArbitrum = getContract(ARBITRUM, "StakedGmxTracker");
+export function useTotalGmxStaked(chainId) {
+  const stakedGmxTrackerAddressArbitrum = getContract(chainId, "StakedGmxTracker");
   let totalStakedGmx = useRef(bigNumberify(0));
   const { data: stakedGmxSupplyArbitrum, mutate: updateStakedGmxSupplyArbitrum } = useSWR<BigNumber>(
     [
-      `StakeV2:stakedGmxSupply:${ARBITRUM}`,
-      ARBITRUM,
-      getContract(ARBITRUM, "GMX"),
+      `StakeV2:stakedGmxSupply:${chainId}`,
+      chainId,
+      getContract(chainId, "GMX"),
       "balanceOf",
       stakedGmxTrackerAddressArbitrum,
     ],

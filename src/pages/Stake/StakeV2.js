@@ -1085,7 +1085,7 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
 
   let { total: totalGmxSupply } = useTotalGmxSupply();
 
-  let {arbitrum: arbitrumGmxStaked, total: totalGmxStaked } = useTotalGmxStaked();
+  let {arbitrum: arbitrumGmxStaked, total: totalGmxStaked } = useTotalGmxStaked(chainId);
 
   const gmxSupplyUrl = getServerUrlNew(chainId, `/unip_supply?chain_id=${chainId}`);
   const { data: gmxSupply } = useSWR([gmxSupplyUrl], {
