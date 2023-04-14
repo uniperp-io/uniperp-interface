@@ -30,7 +30,7 @@ function getPositionDisplay(increase, indexToken, isLong, sizeDelta) {
   const symbol = indexToken ? (indexToken.isWrapped ? indexToken.baseSymbol : indexToken.symbol) : "";
   return `
     ${increase ? t`Increase` : t`Decrease`} ${symbol} ${isLong ? t`Long` : t`Short`}
-    ${increase ? "+" : "-"}${formatAmount(sizeDelta, USD_DECIMALS, 2, true)} USD`;
+    ${increase ? "+" : "-"}${formatAmount(sizeDelta, USD_DECIMALS, indexToken.displayDecimals, true)} USD`;
 }
 
 function getOrderActionTitle(action) {
@@ -226,12 +226,12 @@ export default function TradeHistory(props) {
           <>
             <Trans>
               Could not increase {indexToken.symbol} {longOrShortText},
-              {`+${formatAmount(params.sizeDelta, USD_DECIMALS, 2, true)}`} USD, Acceptable Price:&nbsp;
+              {`+${formatAmount(params.sizeDelta, USD_DECIMALS, indexToken.displayDecimals, true)}`} USD, Acceptable Price:&nbsp;
               {params.isLong ? "<" : ">"}&nbsp;
             </Trans>
             <Tooltip
               position="center-top"
-              handle={`${formatAmount(params.acceptablePrice, USD_DECIMALS, 2, true)} USD`}
+              handle={`${formatAmount(params.acceptablePrice, USD_DECIMALS, indexToken.displayDecimals, true)} USD`}
               renderContent={() => (
                 <Trans>Try increasing the "Allowed Slippage", under the Settings menu on the top right.</Trans>
               )}
@@ -254,12 +254,12 @@ export default function TradeHistory(props) {
           <>
             <Trans>
               Could not decrease {indexToken.symbol} {longOrShortText},
-              {`+${formatAmount(params.sizeDelta, USD_DECIMALS, 2, true)}`} USD, Acceptable Price:&nbsp;
+              {`+${formatAmount(params.sizeDelta, USD_DECIMALS, indexToken.displayDecimals, true)}`} USD, Acceptable Price:&nbsp;
               {params.isLong ? ">" : "<"}&nbsp;
             </Trans>
             <Tooltip
               position="right-top"
-              handle={`${formatAmount(params.acceptablePrice, USD_DECIMALS, 2, true)} USD`}
+              handle={`${formatAmount(params.acceptablePrice, USD_DECIMALS, indexToken.displayDecimals, true)} USD`}
               renderContent={() => (
                 <Trans>Try increasing the "Allowed Slippage", under the Settings menu on the top right</Trans>
               )}
@@ -278,7 +278,7 @@ export default function TradeHistory(props) {
           return defaultMsg;
         }
         if (bigNumberify(params.sizeDelta).eq(0)) {
-          return t`Deposit ${formatAmount(params.collateralDelta, USD_DECIMALS, 2, true)} USD into ${
+          return t`Deposit ${formatAmount(params.collateralDelta, USD_DECIMALS, indexToken.displayDecimals, true)} USD into ${
             indexToken.symbol
           } ${longOrShortText}`;
         }
@@ -287,7 +287,7 @@ export default function TradeHistory(props) {
           USD_DECIMALS,
           indexToken.displayDecimals,
           true
-        )} USD, ${indexToken.symbol} Price: ${formatAmount(params.price, USD_DECIMALS, 2, true)} USD`;
+        )} USD, ${indexToken.symbol} Price: ${formatAmount(params.price, USD_DECIMALS, indexToken.displayDecimals, true)} USD`;
       }
 
       if (tradeData.action === "DecreasePosition-Long" || tradeData.action === "DecreasePosition-Short") {
@@ -300,7 +300,7 @@ export default function TradeHistory(props) {
           return defaultMsg;
         }
         if (bigNumberify(params.sizeDelta).eq(0)) {
-          return t`Withdraw ${formatAmount(params.collateralDelta, USD_DECIMALS, 2, true)} USD from ${
+          return t`Withdraw ${formatAmount(params.collateralDelta, USD_DECIMALS, indexToken.displayDecimals, true)} USD from ${
             indexToken.symbol
           } ${longOrShortText}`;
         }
@@ -311,15 +311,15 @@ export default function TradeHistory(props) {
           return (
             <>
               {renderLiquidationTooltip(liquidationData, t`Partial Liquidation`)}&nbsp;
-              {indexToken.symbol} {longOrShortText}, -{formatAmount(params.sizeDelta, USD_DECIMALS, 2, true)} USD,{" "}
-              {indexToken.symbol}&nbsp; Price: ${formatAmount(params.price, USD_DECIMALS, 2, true)} USD
+              {indexToken.symbol} {longOrShortText}, -{formatAmount(params.sizeDelta, USD_DECIMALS, indexToken.displayDecimals, true)} USD,{" "}
+              {indexToken.symbol}&nbsp; Price: ${formatAmount(params.price, USD_DECIMALS, indexToken.displayDecimals, true)} USD
             </>
           );
         }
         const actionDisplay = isLiquidation ? t`Partially Liquidated` : t`Decreased`;
         return t`${actionDisplay} ${indexToken.symbol} ${longOrShortText},
-        -${formatAmount(params.sizeDelta, USD_DECIMALS, 2, true)} USD,
-        ${indexToken.symbol} Price: ${formatAmount(params.price, USD_DECIMALS, 2, true)} USD
+        -${formatAmount(params.sizeDelta, USD_DECIMALS, indexToken.displayDecimals, true)} USD,
+        ${indexToken.symbol} Price: ${formatAmount(params.price, USD_DECIMALS, indexToken.displayDecimals, true)} USD
       `;
       }
 
@@ -333,15 +333,15 @@ export default function TradeHistory(props) {
           return (
             <Trans>
               {renderLiquidationTooltip(liquidationData, t`Liquidated`)}&nbsp; {indexToken.symbol} {longOrShortText}, -
-              {formatAmount(params.size, USD_DECIMALS, 2, true)} USD,&nbsp;
-              {indexToken.symbol} Price: ${formatAmount(params.markPrice, USD_DECIMALS, 2, true)} USD
+              {formatAmount(params.size, USD_DECIMALS, indexToken.displayDecimals, true)} USD,&nbsp;
+              {indexToken.symbol} Price: ${formatAmount(params.markPrice, USD_DECIMALS, indexToken.displayDecimals, true)} USD
             </Trans>
           );
         }
         return t`
         Liquidated ${indexToken.symbol} ${longOrShortText},
-        -${formatAmount(params.size, USD_DECIMALS, 2, true)} USD,
-        ${indexToken.symbol} Price: ${formatAmount(params.markPrice, USD_DECIMALS, 2, true)} USD
+        -${formatAmount(params.size, USD_DECIMALS, indexToken.displayDecimals, true)} USD,
+        ${indexToken.symbol} Price: ${formatAmount(params.markPrice, USD_DECIMALS, indexToken.displayDecimals, true)} USD
       `;
       }
 
