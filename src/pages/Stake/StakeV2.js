@@ -1083,7 +1083,7 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
     active
   );
 
-  let { total: totalGmxSupply } = useTotalGmxSupply();
+  let { total: totalGmxSupply } = useTotalGmxSupply(chainId);
 
   let {arbitrum: arbitrumGmxStaked, total: totalGmxStaked } = useTotalGmxStaked(chainId);
 

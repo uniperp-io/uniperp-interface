@@ -485,8 +485,8 @@ export function useGmxPrice(chainId, libraries, active) {
 }
 
 // use only the supply endpoint on arbitrum
-export function useTotalGmxSupply() {
-  const gmxSupplyUrlArbitrum = getServerUrlNew(ARBITRUM, `/unip_supply?chain_id=${useChainId().chainId}`);
+export function useTotalGmxSupply(chainId) {
+  const gmxSupplyUrlArbitrum = getServerUrlNew(chainId, `/unip_supply?chain_id=${chainId}`);
   const { data: gmxSupply, mutate: updateGmxSupply } = useSWR([gmxSupplyUrlArbitrum], {
     // @ts-ignore
     fetcher: (...args) => fetch(...args).then((res) => res.text()),

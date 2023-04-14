@@ -151,7 +151,7 @@ export default function DashboardV2() {
     }
   );
 
-  let { total: totalGmxSupply } = useTotalGmxSupply();
+  let { total: totalGmxSupply } = useTotalGmxSupply(chainId);
 
   const currentVolumeInfo = getVolumeInfo(hourlyVolumes);
 
