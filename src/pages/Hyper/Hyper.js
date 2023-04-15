@@ -35,19 +35,19 @@ export default function Hyper() {
   }
 
   const tierLists = [
-    {index:1, filled:500000, rate:"0.500"},
-    {index:2, filled:1500000, rate:"0.375"},
-    {index:3, filled:3000000, rate:"0.333"},
-    {index:4, filled:5000000, rate:"0.250"},
-    {index:5, filled:7500000, rate:"0.200"},
-    {index:6, filled:10000000, rate:"0.150"},
+    {index:1, filled:500000, rate:"0.500", isPass:false},
+    {index:2, filled:1500000, rate:"0.375", isPass:false},
+    {index:3, filled:3000000, rate:"0.333", isPass:false},
+    {index:4, filled:5000000, rate:"0.250", isPass:false},
+    {index:5, filled:7500000, rate:"0.200", isPass:false},
+    {index:6, filled:10000000, rate:"0.150", isPass:false},
   ];
 
   const getText = (filled) =>{
     return (filled/1000) + '.0K'
   }
 
-  const nowGlpSupply = parseInt(formatAmount(glpSupply, GLP_DECIMALS, 0, true, 0))
+  const nowGlpSupply = parseInt(formatAmount(glpSupply, GLP_DECIMALS, 0, false, 0))
 
   const currentTier = (tierLists, glpSupply)=>{
     if (!glpSupply){
@@ -64,14 +64,14 @@ export default function Hyper() {
 
   const tmpCurrentTier = currentTier(tierLists, glpSupply)
 
-  const sumLine = (filled, nowGlpSupply) => {
-    const isFilled = filled < nowGlpSupply;
-    if (isFilled){
+  const sumLine = (item, nowGlpSupply) => {
+    const isFilled = item.filled < nowGlpSupply;
+    if (isFilled || item.isPass){
       return (<div className="line" style={{ width: "100%" }}/>)
     }
 
-    let t = ((nowGlpSupply / filled)*100).toFixed(2)
-    t = t > 1 ? 100 : t;
+    let t = ((nowGlpSupply / item.filled)*100).toFixed(2)
+    t = t > 100 ? 100 : t;
     return (<div className="line" style={{ width: `${t}%` }}>
       <Tooltip
         handle={`${t}%`}
@@ -104,12 +104,12 @@ export default function Hyper() {
             {tierLists.map((item, idx)=>{
               return(
                 <div className="card_item" key={idx}>
-                  <div className={`card_header ${item.index === tmpCurrentTier.index ? 'active' : 'default'}`}>
+                  <div className={`card_header ${item.index === tmpCurrentTier.index || item.isPass ? 'active' : 'default'}`}>
                     <div className="inblock left">Tier{item.index}</div>
                     <div className="inblock right">
                       <div>{getText(item.filled)} Filled</div>
                       {item.index === tmpCurrentTier.index ? (
-                        <div className="disline">{sumLine(item.filled, nowGlpSupply)}</div>
+                        <div className="disline">{sumLine(item, nowGlpSupply)}</div>
                       ):(
                         <div className="disline"></div>
                       )}

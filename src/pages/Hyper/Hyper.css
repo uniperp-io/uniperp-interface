@@ -65,6 +65,7 @@
 }
 
 .card_header .line{
+  padding-left: 1rem;
   background-color: #00F0FF;
 }
 
