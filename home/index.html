@@ -4,7 +4,8 @@
   <title>Uniperp Exchange</title>
   <meta content="Trade on Uniperp Exchange, the next-generation decentralized trading platform with fast execution, cheap transactions, and advanced trading features." name="description">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-  <link href="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/css/starlight-money.webflow.c668ee678.min.css" rel="stylesheet" type="text/css">
+  <link href="./css/style.min.css" rel="stylesheet" type="text/css">
+  <link href="./css/uniperp.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="./css/popup.css">
   <link rel="shortcut icon " type="images/x-icon" href="https://app.uniperp.io/favicon/favicon.ico">
 </head>
@@ -114,6 +115,7 @@
         animation: fadeIn 0.4s backwards ease;
         -webkit-animation-delay: 0.1s;
         animation-delay: 0.1s;
+        font-family: "Relative", sans-serif;
       }
 
       .home-hero-header .home-hero-paragraph {
@@ -526,6 +528,9 @@
           <a href="https://uniperp.gitbook.io/v1/" class="nav-link w-inline-block">
             <div>Docs</div>
           </a>
+          <a href="https://app.uniperp.io/#/presale" class="nav-link w-inline-block">
+            <div style="color: orangered">Presale</div>
+          </a>
           <a href="https://app.uniperp.io/#/trade" class="nav-link nav-link--cta w-inline-block">
             <div>Launch App</div>
           </a>
@@ -607,32 +612,50 @@
               </div>
             </div>
           </div>
+
           <div class="home-hero-header">
             <h1 class="home-hero-heading">Decentralized Perpetual Exchange</h1>
-            <p class="home-hero-paragraph">Trade BTC, ETH, AVAX and other top cryptocurrencies with up to 50x leverage directly from your wallet.</p>
+            <p class="home-hero-paragraph">Trade BTC, ETH, other digital currencies and Forex with up to 50x leverage directly from your wallet.</p>
             <a href="https://app.uniperp.io/#/buy" target="_blank" class="cta-button w-inline-block">
               <div class="cta-button-bg"></div>
               <div class="cta-gradient">Buy UNIP Token</div>
             </a>
           </div>
+
           <div class="container-small">
-            <div class="home-hero-img-wrap" style="--cursor-x:485px; --cursor-y:22.3125px;">
-              <div class="home-hero-lines">
-                <div class="home-hero-h-line"></div>
-                <div class="home-hero-h-line cc-bottom"></div>
-                <div class="home-hero-v-line"></div>
-                <div class="home-hero-v-line cc-right"></div>
+            <div class="home-hero-img-wrap">
+              <div class="item">
+                <img src="https://uploads-ssl.webflow.com/63ac810eeb51b00b62294cee/63acaa31da54a22f090450e1_Total%20Trading%20Volume.svg" alt="">
+                <div class="lineblock vm">
+                  <p class="ptitle">Total Trading Volume</p>
+                  <p class="pfont" id="trv">$0</p>
+                </div>
               </div>
-              <img src="./img/short.png" loading="eager" height="567" width="992" alt="" class="home-hero-img">
-              <div class="home-hero-img-blur blur-perf"></div>
+              <div class="item">
+                <img src="https://uploads-ssl.webflow.com/63ac810eeb51b00b62294cee/63acaa43dd43e2f44d625151_Open%20Invest%20Icon.svg" alt="">
+                <div class="lineblock vm">
+                  <p class="ptitle">Open Interest</p>
+                  <p class="pfont" id="openInterest">$0</p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://uploads-ssl.webflow.com/63ac810eeb51b00b62294cee/63acaa500281d27b55c2c9cb_Total%20Users%20Icon.svg" alt="">
+                <div class="lineblock vm">
+                  <p class="ptitle">Total Value Locked</p>
+                  <p class="pfont" id="tvl">$0</p>
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="home-hero-logos-wrap">
             <div>Powering by Uniperp team</div>
+          </div>
         </div>
       </div>
       <div class="home-hero-bg-bottom-overlay"></div>
     </header>
+
     <section class="section">
       <div class="page-padding">
         <div class="container-medium">
@@ -742,120 +765,21 @@
             <div class="use-cases-inner">
               <div class="use-cases-bg-blur blur-perf"></div>
               <div class="container-small">
-                <div class="section-header section-header--use-cases"><h2 class="section-heading">Available on your preferred network</h2>
-                  <p class="section-paragraph">UNIP is currently live on Arbitrum.</p></div>
+                <div class="section-header section-header--use-cases"><h2 class="section-heading">Two tokens create our ecosystem</h2>
+                  <p class="section-paragraph">UNIP is the utility and governance token. Accrues 30% of the platform's generated fees.
+                    ULP is the liquidity provider token. Accrues 70% of the platform's generated fees.</p></div>
               </div>
               <a href="https://app.uniperp.io/#/buy" target="_blank" class="cta-button w-inline-block">
                 <div class="cta-button-bg"></div>
-                <div class="cta-gradient">Buy UNIP Token</div>
+                <div class="cta-gradient">Buy Now</div>
               </a>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="section">
-      <div class="divider"></div>
-      <div class="page-padding">
-        <div class="container-medium">
-          <div class="container-small">
-            <div class="section-header"><h2 class="section-heading">(Future) A Few More Things You’re Going To&nbsp;Love </h2>
-              <p class="section-paragraph">Uniperp is built from the ground up for organizations to operate in both crypto and fiat.</p></div>
-          </div>
-          <div class="features-grid">
-            <div id="w-node-e9e63939-1594-895c-b6ea-cb43633f5772-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/632c26bbd5bf25bb2550a51e_safe.webp"
-                loading="lazy" width="256" height="217" alt="" class="feature-card-img feature-card-img--security">
-                <div class="feature-card-content feature-card-content--orange"><h3 class="card-heading">Enterprise Grade
-                  Security</h3></div>
-              </div>
-            </div>
-            <div id="w-node-e39712dc-80ff-0e9b-8aca-8ebf03825241-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/632c270f2c8ac04931159b36_accounting-tools.webp"
-                loading="lazy" height="218" width="525" alt="" class="feature-card-img feature-card-img--tools">
-                <div class="feature-card-content feature-card-content--orange"><h3 class="card-heading">Synchronize with
-                  Accounting&nbsp;Tools</h3></div>
-              </div>
-            </div>
-            <div id="w-node-_13891267-9d42-ff4b-2482-9285811b8470-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/632c278ad7b61c67f0b5eaf8_expense-management.webp"
-                loading="lazy" height="448" width="329" alt="" class="feature-card-img">
-                <div class="feature-card-content feature-card-content--purple"><h3 class="card-heading">Business
-                  Checking Accounts</h3></div>
-              </div>
-            </div>
-            <div id="w-node-_33eb0596-0a6e-eacf-3682-c6b15df54306-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/6347d6d275591d465aa83756_automated%20payments.webp"
-                loading="lazy" height="220" width="330" alt="" class="feature-card-img">
-                <div class="feature-card-content cc-top feature-card-content--orange"><h3 class="card-heading">Automated
-                  Payments</h3></div>
-              </div>
-            </div>
-            <div id="w-node-c5afcfb3-53db-b692-7976-4afea82b84cd-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/633c398ff1f1bf28630d0c07_roles-permissions.webp"
-                loading="lazy" height="220" width="454" alt="" class="feature-card-img">
-                <div class="feature-card-content cc-br feature-card-content--purple"><h3 class="card-heading">Custom
-                  Roles &amp;<br>Permissions</h3></div>
-              </div>
-            </div>
-            <div id="w-node-_8684c57b-b19b-1c40-5fcc-a0dbc6c38960-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/632c2610fe47a205db746e3f_gain-loss-calculations.webp"
-                loading="lazy" height="448" width="329" alt="" class="feature-card-img">
-                <div class="feature-card-content feature-card-content--yellow"><h3 class="card-heading">Automated Gain
-                  &amp; Loss&nbsp;Calculations</h3></div>
-              </div>
-            </div>
-            <div id="w-node-a76dc0b7-c176-7de2-5066-0d7dbe0cface-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/641223d43c31374c75616ef7_Banks.png"
-                loading="lazy" height="218" width="452" alt="" class="feature-card-img">
-                <div class="feature-card-content cc-br feature-card-content--blue"><h3 class="card-heading">Integrate
-                  with 10,000+ Banks</h3></div>
-              </div>
-            </div>
-            <div id="w-node-_852bcc7f-a05f-67ef-adf7-42e4d55f837d-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/632c2b81bb03b844667c0163_contacts.webp"
-                loading="lazy" height="218" width="330" alt="" class="feature-card-img">
-                <div class="feature-card-content feature-card-content--blue"><h3 class="card-heading">Unified On &amp;
-                  <br>Off-chain Contacts</h3></div>
-              </div>
-            </div>
-            <div id="w-node-_1e048438-f748-f067-e42f-b96702b4680f-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/632c34044c575b5b2d37a385_debit-cards.webp"
-                loading="lazy" height="218" width="268" alt="" class="feature-card-img">
-                <div class="feature-card-content feature-card-content--yellow"><h3 class="card-heading">Cards for <br>Crypto
-                  &amp;&nbsp;Fiat</h3></div>
-              </div>
-            </div>
-            <div id="w-node-_61dd4df7-766a-ddd9-1986-674d177694f4-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/632c347bc3279a30b893cc0f_notifications.webp"
-                loading="lazy" height="218" width="256" alt="" class="feature-card-img">
-                <div class="feature-card-content feature-card-content--turquoise"><h3 class="card-heading">Powerful
-                  Notifications</h3></div>
-              </div>
-            </div>
-            <div id="w-node-c5dbb301-a395-e6c4-6940-68549f90144a-b49f6aaf" class="feature-card">
-              <div class="feature-card-inner"><img
-                src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/632c34d46010263d157e26dd_gnosis-safe.webp"
-                loading="lazy" height="218" width="246" alt="" class="feature-card-img">
-                <div class="feature-card-content feature-card-content--green"><h3 class="card-heading">Compatible with&nbsp;Gnosis&nbsp;Safe</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="overflow-hidden">
+
+    <div class="overflow-hidden none">
       <section id="faq" class="section">
         <div class="divider"></div>
         <div class="page-padding">
@@ -919,24 +843,6 @@
           </div>
         </div>
       </section>
-      <section class="section">
-        <div class="cta-banner-wrap">
-          <div class="divider"></div>
-          <div class="page-padding">
-            <div class="container-medium">
-              <div class="cta-banner-inner">
-                <div id="w-node-_6f0a7a77-0f3e-2467-96b8-34dc12493a1c-b49f6aaf" class="cta-banner-blur blur-perf"></div>
-                <div class="cta-banner-content"><h3 class="section-heading">Set Up In Minutes. Not&nbsp;Months.</h3>
-                  <p class="section-paragraph">Get access to state of the art financial stack to operate in the crypto economy.</p>
-                </div>
-                <img
-                  src="https://uploads-ssl.webflow.com/63281d362a9501fa6e9f6aae/637ce0bc9b844c0b52baf3fb_cta-banner.jpg"
-                  loading="lazy" width="1708" height="1342" id="w-node-_5ab7bce2-1ef1-787b-4c3e-5e205aa13dd8-b49f6aaf"
-                  alt="" class="cta-banner-img"></div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   </main>
 
@@ -970,27 +876,19 @@
           <div id="w-node-_9b886c16-9ede-fb79-87d2-0d55d6caec42-d6caec06">
             <h4 class="footer-heading">Follow us</h4>
 
-            <a href="https://twitter.com/starlight_money" target="_blank" class="footer-link w-inline-block">
+            <a href="https://twitter.com/uniperpofficial" target="_blank" class="footer-link w-inline-block">
               <div>Twitter</div>
             </a>
 
             <a href="https://discord.gg/GEZq2ymh" target="_blank" class="footer-link w-inline-block">
               <div>Discord</div>
             </a>
-            <a href="https://discord.gg/GEZq2ymh" target="_blank" class="footer-link w-inline-block">
+            <a href="https://github.com/uniperp-io" target="_blank" class="footer-link w-inline-block">
               <div>Github</div>
             </a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="tf-embed w-embed w-iframe w-script">
-      <button id="tf-open" data-tf-popup="wjnd0f8p" data-tf-iframe-props="title=Starlight Beta Program"
-              data-tf-medium="snippet"
-              style="all:unset;font-family:Helvetica,Arial,sans-serif;display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background-color:#0445AF;color:#FFFFFF;font-size:20px;border-radius:25px;padding:0 33px;font-weight:bold;height:50px;cursor:pointer;line-height:50px;text-align:center;margin:0;text-decoration:none;"
-              data-tf-loaded="true">Launch me
-      </button>
-      <script src="./js/embed.js"></script>
     </div>
   </footer>
 </div>
@@ -1124,24 +1022,6 @@
     });
   }
 
-  //Spline init
-  /*
-  const initSpline = function () {
-    const splineEl = document.getElementById("spline");
-    if (window.innerWidth > 991 && !splineEl.hasAttribute("src")) {
-      splineEl.setAttribute(
-        "src",
-        "https://my.spline.design/websitefundstackliveversioncopy-3f3ef7fcac10d711f84b24d5c0a470e8/"
-      );
-    } else if (window.innerWidth <= 991) {
-      splineEl.removeAttribute("src");
-    }
-  };
-  setTimeout(() => {
-     initSpline();
-  }, 1000);
-  window.addEventListener("resize", initSpline);
-  */
   //FAQ auto collapse
   document.querySelectorAll(".faq-header").forEach((faq) => {
     faq.addEventListener("click", function() {
@@ -1155,6 +1035,26 @@
       }
     });
   });
+
+  $(function(){
+    let host = window.location.host
+    let api = "https://arbgoerli.api.uniperp.io/tvl_metrics?chain_id=42161"
+    if (host === "uniperp.io"){
+      api = "https:/api.uniperp.io/tvl_metrics?chain_id=42161"
+    }
+
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0
+    });
+
+    $.get(api, (response)=>{
+      $("#trv").html(formatter.format(response.trv))
+      $("#tvl").html(formatter.format(response.tvl))
+      $("#openInterest").html(formatter.format(response.openInterest))
+    }, 'json')
+  })
 </script>
 </body>
 </html>
