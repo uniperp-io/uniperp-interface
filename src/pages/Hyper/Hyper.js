@@ -12,6 +12,7 @@ import { formatAmount } from "../../lib/numbers";
 import { Trans } from "@lingui/macro";
 import React from "react";
 import Tooltip from "components/Tooltip/Tooltip";
+import { GMX_DECIMALS } from "../../lib/legacy";
 const { AddressZero } = ethers.constants;
 
 export default function Hyper() {
@@ -19,8 +20,9 @@ export default function Hyper() {
   const {chainId} = useChainId()
   const readerAddress = getContract(chainId, "Reader");
 
-  const glpAddress = getContract(chainId, "GLP");
-  const tokensForSupplyQuery = [glpAddress];
+  const ulpAddress = getContract(chainId, "GLP");
+  const unippAddress = getContract(chainId, "GMX");
+  const tokensForSupplyQuery = [ulpAddress, unippAddress];
 
   const { data: totalSupplies } = useSWR(
     [`Dashboard:totalSupplies:${active}`, chainId, readerAddress, "getTokenBalancesWithSupplies", AddressZero],
@@ -29,9 +31,11 @@ export default function Hyper() {
     }
   );
 
-  let glpSupply;
+  let ulpSupply;
+  let unipSupply;
   if (totalSupplies && totalSupplies[1]) {
-    glpSupply = totalSupplies[1];
+    ulpSupply = totalSupplies[1];
+    unipSupply = totalSupplies[3];
   }
 
   const tierLists = [
@@ -47,7 +51,8 @@ export default function Hyper() {
     return (filled/1000) + '.0K'
   }
 
-  const nowGlpSupply = parseInt(formatAmount(glpSupply, GLP_DECIMALS, 0, false, 0))
+  const nowUlpSupply = parseInt(formatAmount(ulpSupply, GLP_DECIMALS, 0, false, 0))
+  const nowUnipSupply = parseInt(formatAmount(unipSupply, GMX_DECIMALS, 0, false, 0))
 
   const currentTier = (tierLists, glpSupply)=>{
     if (!glpSupply){
@@ -55,22 +60,22 @@ export default function Hyper() {
     }
     for (const idx in tierLists){
       const item = tierLists[idx]
-      if (item.filled > nowGlpSupply){
+      if (item.filled > nowUlpSupply){
         return tierLists[idx]
       }
     }
     return tierLists[0]
   }
 
-  const tmpCurrentTier = currentTier(tierLists, glpSupply)
+  const tmpCurrentTier = currentTier(tierLists, ulpSupply)
 
-  const sumLine = (item, nowGlpSupply) => {
-    const isFilled = item.filled < nowGlpSupply;
+  const sumLine = (item, nowUlpSupply) => {
+    const isFilled = item.filled < nowUlpSupply;
     if (isFilled || item.isPass){
       return (<div className="line" style={{ width: "100%" }}/>)
     }
 
-    let t = ((nowGlpSupply / item.filled)*100).toFixed(2)
+    let t = ((nowUlpSupply / item.filled)*100).toFixed(2)
     t = t > 100 ? 100 : t;
     return (<div className="line" style={{ width: `${t}%` }}>
       <Tooltip
@@ -78,7 +83,7 @@ export default function Hyper() {
         position="left-bottom"
         renderContent={() => {
           return (
-            <Trans>UlpSupply: {nowGlpSupply}</Trans>
+            <Trans>UlpSupply: {nowUlpSupply}</Trans>
           );
         }}
       />
@@ -109,7 +114,7 @@ export default function Hyper() {
                     <div className="inblock right">
                       <div>{getText(item.filled)} Filled</div>
                       {item.index === tmpCurrentTier.index ? (
-                        <div className="disline">{sumLine(item, nowGlpSupply)}</div>
+                        <div className="disline">{sumLine(item, nowUlpSupply)}</div>
                       ):(
                         <div className="disline"></div>
                       )}
@@ -118,10 +123,10 @@ export default function Hyper() {
                   <div className={`info_list ${item.index === tmpCurrentTier.index ? 'lactive' : ''}`}>
                     <div>
                       <div className="left">ULP</div>
-                      <div className="right">First {getText(item.filled)}</div>
+                      <div className="right">{getText(item.filled)}</div>
                     </div>
                     <div>
-                      <div className="left">ARP</div>
+                      <div className="left">APR</div>
                       <div className="right">Reward rate (UNIP/ULP)</div>
                     </div>
                     <div>
