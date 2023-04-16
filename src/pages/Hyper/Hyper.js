@@ -8,15 +8,16 @@ import useSWR from "swr";
 import { getContract } from "config/contracts";
 import { ethers } from "ethers";
 import { useChainId } from "lib/chains";
-import { formatAmount } from "../../lib/numbers";
+import { formatAmount } from "lib/numbers";
 import { Trans } from "@lingui/macro";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Tooltip from "components/Tooltip/Tooltip";
-import { GMX_DECIMALS } from "../../lib/legacy";
+import { GMX_DECIMALS, isMobileDevice } from "lib/legacy";
+import { getServerUrlNew } from "config/backend";
 const { AddressZero } = ethers.constants;
 
-export default function Hyper() {
-  const {library, active} = useWeb3React()
+export default function Hyper({userOnMobileDevice}) {
+  const {library, active, account} = useWeb3React()
   const {chainId} = useChainId()
   const readerAddress = getContract(chainId, "Reader");
 
@@ -39,12 +40,12 @@ export default function Hyper() {
   }
 
   const tierLists = [
-    {index:1, filled:500000, rate:"0.500", isPass:false},
-    {index:2, filled:1500000, rate:"0.375", isPass:false},
-    {index:3, filled:3000000, rate:"0.333", isPass:false},
-    {index:4, filled:5000000, rate:"0.250", isPass:false},
-    {index:5, filled:7500000, rate:"0.200", isPass:false},
-    {index:6, filled:10000000, rate:"0.150", isPass:false},
+    {index:1, filled:500000, rate:"0.500", isPass:false, apr:"200%"},
+    {index:2, filled:1500000, rate:"0.375", isPass:false, apr:"150%"},
+    {index:3, filled:3000000, rate:"0.333", isPass:false, apr:"133%"},
+    {index:4, filled:5000000, rate:"0.250", isPass:false, apr:"100%"},
+    {index:5, filled:7500000, rate:"0.200", isPass:false, apr:"80%"},
+    {index:6, filled:10000000, rate:"0.150", isPass:false, apr:"60%"},
   ];
 
   const getText = (filled) =>{
@@ -90,6 +91,37 @@ export default function Hyper() {
     </div>)
   }
 
+  const [superUlp, setSuperUlp] = useState({account:"", details:[]})
+  useEffect(()=>{
+    async function fetData(){
+      const url = getServerUrlNew(chainId, `/superulp_details?chain_id=${chainId}&account=${account}`);
+      try {
+        const response = await fetch(url)
+        const data = await response.json().then(t=>t);
+        setSuperUlp(data)
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(`Error fetching data: ${error}`);
+      }
+    }
+
+    account && fetData()
+  }, [account, chainId]);
+
+  const formatDate = (timestamp, isShort)=>{
+    const date = new Date(timestamp * 1000);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hour = String(date.getHours()).padStart(2, '0');
+    const minute = String(date.getMinutes()).padStart(2, '0');
+    const second = String(date.getSeconds()).padStart(2, '0');
+
+    if(isShort)
+      return `${year}-${month}-${day}`
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+  }
+
   return (
     <SEO title={getPageTitle("Uniperp")}>
       <div className="main_body">
@@ -109,7 +141,7 @@ export default function Hyper() {
             {tierLists.map((item, idx)=>{
               return(
                 <div className="card_item" key={idx}>
-                  <div className={`card_header ${item.index === tmpCurrentTier.index || item.isPass ? 'active' : 'default'}`}>
+                  <div className={`card_header ${item.index <= tmpCurrentTier.index || item.isPass ? 'active' : 'default'}`}>
                     <div className="inblock left">Tier{item.index}</div>
                     <div className="inblock right">
                       <div>{getText(item.filled)} Filled</div>
@@ -120,7 +152,7 @@ export default function Hyper() {
                       )}
                     </div>
                   </div>
-                  <div className={`info_list ${item.index === tmpCurrentTier.index ? 'lactive' : ''}`}>
+                  <div className={`info_list ${item.index <= tmpCurrentTier.index ? 'lactive' : ''}`}>
                     <div>
                       <div className="left">ULP</div>
                       <div className="right">{getText(item.filled)}</div>
@@ -130,7 +162,7 @@ export default function Hyper() {
                       <div className="right">Reward rate (UNIP/ULP)</div>
                     </div>
                     <div>
-                      <div className="left">220.2%</div>
+                      <div className="left">{item.apr}</div>
                       <div className="right">{item.rate.toString()}</div>
                     </div>
                   </div>
@@ -143,28 +175,25 @@ export default function Hyper() {
         <div className="your_cardinfo">
           <div className="your">
             <h2>Your Hyper Rewards Details</h2>
-            <div className="list_item">
-              <div className="item">
-                <div className="inblock left">APR</div>
-                <div className="inblock right">0.0%</div>
-              </div>
-              <div className="item">
-                <div className="inblock left">ULP Amount</div>
-                <div className="inblock right">0</div>
-              </div>
-              <div className="item">
-                <div className="inblock left">USDC Staked</div>
-                <div className="inblock right">0</div>
-              </div>
-            </div>
             <div className="contribution">
               <h2>Contribution</h2>
-              <div className="table">
-                <div>Tier</div>
-                <div>Vested VELA</div>
-                <div>USDC Committed</div>
-                <div>Total VLP</div>
+              <div className={userOnMobileDevice ? 'table_wap' : 'table'}>
+                <div className="wap1">Timestamp</div>
+                <div className="wap2">Tier</div>
+                <div className="wap3">{userOnMobileDevice ? "buyedUlp" : "buyedUlpAmount"}</div>
+                <div className="wap4">Vested UNIP</div>
               </div>
+
+              {superUlp.details.map((item, idx)=>{
+                  return (
+                    <div className={userOnMobileDevice ? 'table_wap' : 'table'} key={idx}>
+                      <div className="wap1">{formatDate(item.timestamp, userOnMobileDevice)}</div>
+                      <div className="wap2">{item.tier}</div>
+                      <div className="wap3">{item.buyedUlpAmount}</div>
+                      <div className="wap4">{item.vestedUNIPAmount}</div>
+                    </div>
+                  )
+              })}
             </div>
           </div>
         </div>

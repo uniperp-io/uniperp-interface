@@ -533,7 +533,7 @@ function FullApp() {
                 <Presale connectWallet={connectWallet} />
               </Route>
               <Route exact path="/hyper">
-                <Hyper/>
+                <Hyper userOnMobileDevice={userOnMobileDevice}/>
               </Route>
               <Route exact path="/complete_account_transfer/:sender/:receiver">
                 <CompleteAccountTransfer setPendingTxns={setPendingTxns} />

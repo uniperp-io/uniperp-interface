@@ -106,33 +106,48 @@
   width: 30%;
   text-align: left;
 }
+
 .your_cardinfo{
   background-color: #080E12;
-  width: 50%;
   border-radius: 10px 10px;
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 5rem 3rem;
   margin-bottom: 2rem;
 }
+
 .list_item .item{
   margin-top: 2rem;
   border-bottom: 1px solid #1F2B33;
   padding-bottom: 2rem;
 }
-.your .left{
-  font-weight: bold;
-  width: 40%;
-  vertical-align: middle;
+
+.your_cardinfo .table{
+  border-bottom: 1px solid hsla(0,0%,100%,.05);
+  padding-bottom: 1rem;
+  margin-top: 3rem;
 }
-.your .right{
-  width: 60%;
-  text-align: right;
-  vertical-align: middle;
+
+.your_cardinfo .table div{
+  width: 24%;
+  display: inline-block;
 }
-.contribution .table{
-  width: 100%;
+
+.your_cardinfo .table_wap div{
+  display: inline-block;
 }
-.contribution .table div{
-  display: flex;
+
+.your_cardinfo .table:last-child{
+  border-bottom: none;
+}
+
+.contribution h2{
+  width: 14rem;
+  border-bottom: 5px solid #235DEB;
+  padding-bottom: 1rem;
+}
+
+h3{
+  margin-bottom: 4rem;
+  margin-top: 4rem;
 }
 
 @media (max-width: 900px) {
@@ -146,5 +161,29 @@
 
   .cardinfo {
     padding: 1rem 1rem;
+  }
+
+  .wap1{width: 30%;text-align: center;}
+  .wap2{width: 15%;text-align: center;}
+  .wap3{width: 21%;text-align: center;}
+  .wap4{
+    width: 32%;
+    text-align: center;
+  }
+
+  .table_wap{
+    margin-top: 2rem;
+    border-bottom: 1px solid hsla(0,0%,100%,.05);
+    padding-bottom: 2rem;
+  }
+
+  .your_cardinfo{
+    padding: 2rem 0 5rem 0;
+  }
+
+  .contribution h2{
+    width: 14rem;
+    border-bottom: 5px solid #235DEB;
+    padding-bottom: 1rem;
   }
 }
