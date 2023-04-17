@@ -12,8 +12,7 @@ export const locales = {
   ru: "Russian",
   ja: "Japanese",
   fr: "French",
-  de: "German",
-  ...(isDevelopment() && { pseudo: "Test" }),
+  de: "German"
 };
 
 export const defaultLocale = "en";

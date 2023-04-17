@@ -58,7 +58,7 @@
   vertical-align: middle;
 }
 .card_header .line, .card_header .disline{
-  height: 2rem;
+  height: 1rem;
   border-radius: 10px 10px;
   text-align: right;
   display: flex;

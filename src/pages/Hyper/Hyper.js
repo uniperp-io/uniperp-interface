@@ -78,17 +78,7 @@ export default function Hyper({userOnMobileDevice}) {
 
     let t = ((nowUlpSupply / item.filled)*100).toFixed(2)
     t = t > 100 ? 100 : t;
-    return (<div className="line" style={{ width: `${t}%` }}>
-      <Tooltip
-        handle={`${t}%`}
-        position="left-bottom"
-        renderContent={() => {
-          return (
-            <Trans>UlpSupply: {nowUlpSupply}</Trans>
-          );
-        }}
-      />
-    </div>)
+    return (<div className="line" style={{ width: `${t}%` }}/>)
   }
 
   const [superUlp, setSuperUlp] = useState({account:"", details:[]})
@@ -122,11 +112,20 @@ export default function Hyper({userOnMobileDevice}) {
     return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
   }
 
+  const getFilledNum = (item, tmpCurrentTier)=>{
+    if (item.index <= tmpCurrentTier.index){
+      if (tmpCurrentTier.index === 1){
+        return nowUlpSupply
+      }
+    }
+    return 0;
+  }
+
   return (
     <SEO title={getPageTitle("Uniperp")}>
       <div className="main_body">
       <div>
-        <h1>Hyper ULP Rewards</h1>
+        <h1>Super ULP Rewards</h1>
         <h3>Earn high APR bonus rewards for minting early</h3>
       </div>
 
@@ -136,7 +135,7 @@ export default function Hyper({userOnMobileDevice}) {
         {/*</div>*/}
 
         <div className="cardinfo">
-          <h2>Hyper ULP Event</h2>
+          <h2>Super ULP Event</h2>
           <div className="card_block">
             {tierLists.map((item, idx)=>{
               return(
@@ -144,7 +143,7 @@ export default function Hyper({userOnMobileDevice}) {
                   <div className={`card_header ${item.index <= tmpCurrentTier.index || item.isPass ? 'active' : 'default'}`}>
                     <div className="inblock left">Tier{item.index}</div>
                     <div className="inblock right">
-                      <div>{getText(item.filled)} Filled</div>
+                      <div>{getFilledNum(item, tmpCurrentTier)} Filled</div>
                       {item.index === tmpCurrentTier.index ? (
                         <div className="disline">{sumLine(item, nowUlpSupply)}</div>
                       ):(
@@ -174,7 +173,7 @@ export default function Hyper({userOnMobileDevice}) {
 
         <div className="your_cardinfo">
           <div className="your">
-            <h2>Your Hyper Rewards Details</h2>
+            <h2>Your Super Rewards Details</h2>
             <div className="contribution">
               <h2>Contribution</h2>
               <div className={userOnMobileDevice ? 'table_wap' : 'table'}>
