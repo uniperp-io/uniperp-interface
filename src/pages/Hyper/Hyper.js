@@ -179,7 +179,7 @@ export default function Hyper({userOnMobileDevice}) {
               <div className={userOnMobileDevice ? 'table_wap' : 'table'}>
                 <div className="wap1">Timestamp</div>
                 <div className="wap2">Tier</div>
-                <div className="wap3">{userOnMobileDevice ? "buyedUlp" : "buyedUlpAmount"}</div>
+                <div className="wap3">Total ULP</div>
                 <div className="wap4">Vested UNIP</div>
               </div>
 

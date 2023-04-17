@@ -1,5 +1,7 @@
 .main_body{
-  padding-left: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 
 .main_body h1{
@@ -11,7 +13,7 @@
   text-align: center;
 }
 .pre_cardinfo{
-  width: 80%;
+  width: 100%;
 }
 
 .pre_cardinfo h4{
@@ -25,8 +27,14 @@
   margin-bottom: 2rem;
 }
 
-.card_item{
-  width: 30%;
+.card_block{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+}
+
+.card_block .card_item{
   display: inline-block;
   margin-right: 4rem;
   margin-bottom: 4rem;
@@ -154,9 +162,14 @@ h3{
   .main_body{
     padding-left: 1rem;
     padding-right: 1rem;
+    width: 98%;
   }
   .pre_cardinfo, .your_cardinfo,.card_item{
     width: 100%;
+  }
+
+  .card_block{
+    display: block;
   }
 
   .cardinfo {
