@@ -1439,7 +1439,7 @@ msgid "High USDG Slippage, Long Anyway"
 msgstr ""
 
 #: src/components/Header/AppHeaderLinks.tsx
-msgid "HyperUlp"
+msgid "SuperUlp"
 msgstr ""
 
 #: src/components/Exchange/ConfirmationBox.js

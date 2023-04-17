@@ -55,7 +55,7 @@ export function AppHeaderLinks({
       </div>
       <div className="App-header-link-container">
         <HeaderLink to="/hyper" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
-          <Trans>HyperUlp</Trans>
+          <Trans>SuperUlp</Trans>
         </HeaderLink>
       </div>
       <div className="App-header-link-container">

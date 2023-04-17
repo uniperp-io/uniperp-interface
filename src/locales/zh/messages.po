@@ -1439,8 +1439,8 @@ msgid "High USDG Slippage, Long Anyway"
 msgstr "高 USDG 滑点，继续做多"
 
 #: src/components/Header/AppHeaderLinks.tsx
-msgid "HyperUlp"
-msgstr ""
+msgid "SuperUlp"
+msgstr "超级LP奖励"
 
 #: src/components/Exchange/ConfirmationBox.js
 msgid "I am aware of the trigger orders"
