@@ -289,7 +289,7 @@ function appendCurrentAveragePrice(prices, currentAveragePrice, period) {
   const periodSeconds = CHART_PERIODS[period];
   const currentCandleTime = Math.floor(Date.now() / 1000 / periodSeconds) * periodSeconds + timezoneOffset;
   const last = prices[prices.length - 1];
-  const averagePriceValue = parseFloat(formatAmount(currentAveragePrice, USD_DECIMALS, 2));
+  const averagePriceValue = parseFloat(formatAmount(currentAveragePrice, USD_DECIMALS, 8));
   if (currentCandleTime === last.time) {
     last.close = averagePriceValue;
     last.high = Math.max(last.high, averagePriceValue);

@@ -136,6 +136,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isShortable: true,
       max_allowed_leverage:50,
       imageUrl: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+      displayPricePrecision:2,
     },
     {
       name: "Wrapped Ethereum",
@@ -145,6 +146,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isWrapped: true,
       baseSymbol: "ETH",
       imageUrl: "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295",
+      displayPricePrecision:2,
     },
     {
       name: "Bitcoin (WBTC)",
@@ -153,6 +155,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       address: "0x40c2228f2Bc74420363bbF27A316cf49D56C4907",
       isShortable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/7598/thumb/wrapped_bitcoin_wbtc.png?1548822744",
+      displayPricePrecision:2,
     },
     {
       name: "Euro",
@@ -203,6 +206,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isShortable: true,
       max_allowed_leverage:50,
       imageUrl: "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+      displayPricePrecision:2,
     },
     {
       name: "Wrapped Ethereum",
@@ -212,6 +216,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isWrapped: true,
       baseSymbol: "ETH",
       imageUrl: "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1628852295",
+      displayPricePrecision:2,
     },
     {
       name: "Bitcoin (WBTC)",
@@ -220,6 +225,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       address: "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
       isShortable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/7598/thumb/wrapped_bitcoin_wbtc.png?1548822744",
+      displayPricePrecision:2,
     },
     {
       name: "Uniswap",
@@ -229,6 +235,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isStable: false,
       isShortable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/12504/thumb/uniswap-uni.png?1600306604",
+      displayPricePrecision:2,
     },
     {
       name: "Chainlink",
@@ -238,6 +245,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isStable: false,
       isShortable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/877/thumb/chainlink-new-logo.png?1547034700",
+      displayPricePrecision:2,
     },
     {
       name: "Binance Coin",
@@ -248,6 +256,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isShortable: true,
       isSynthetic: true,
       imageUrl: "https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png?1644979850",
+      displayPricePrecision:2,
     },
     {
       name: "Arbitrum",
@@ -257,6 +266,7 @@ export const TOKENS: { [chainId: number]: Token[] } = {
       isStable: false,
       isShortable: true,
       imageUrl: "https://assets.coingecko.com/coins/images/16547/thumb/photo_2023-03-29_21.47.00.jpeg?1680097630",
+      displayPricePrecision:2,
     },
     {
       name: "Euro",

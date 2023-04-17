@@ -350,7 +350,7 @@ export default function SwapBox(props) {
         </div>
         <div className="align-right">
           <Tooltip
-            handle={`$${formatAmount(toTokenInfo.maxAvailableLong, USD_DECIMALS, toTokenInfo.displayPricePrecision, true)}`}
+            handle={`$${formatAmount(toTokenInfo.maxAvailableLong, USD_DECIMALS, 2, true)}`}
             position="right-bottom"
             renderContent={() => {
               return (
