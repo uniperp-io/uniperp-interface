@@ -1310,7 +1310,7 @@ msgid "Financial reports and protocol analytics"
 msgstr ""
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "Floor Price Fund"
+msgid "Growth Fund"
 msgstr ""
 
 #: src/components/Exchange/ConfirmationBox.js

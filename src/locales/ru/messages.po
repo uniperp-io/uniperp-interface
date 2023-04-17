@@ -1310,8 +1310,8 @@ msgid "Financial reports and protocol analytics"
 msgstr "Финансовые отчеты и аналитика протоколов"
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "Floor Price Fund"
-msgstr "Фонд Минимальной Цены"
+msgid "Growth Fund"
+msgstr "Фонд роста"
 
 #: src/components/Exchange/ConfirmationBox.js
 msgid "Forfeit profit"

@@ -733,7 +733,7 @@ export default function DashboardV2() {
                 </div>
                 <div className="App-card-row">
                   <div className="label">
-                    <Trans>Floor Price Fund</Trans>
+                    <Trans>Growth Fund</Trans>
                   </div>
                   <div>${formatAmount(totalFloorPriceFundUsd, 30, 0, true)}</div>
                 </div>

@@ -1310,8 +1310,8 @@ msgid "Financial reports and protocol analytics"
 msgstr "금융 보고서 및 프로토콜 분석"
 
 #: src/pages/Dashboard/DashboardV2.js
-msgid "Floor Price Fund"
-msgstr "하한 가격 펀드"
+msgid "Growth Fund"
+msgstr "성장기금"
 
 #: src/components/Exchange/ConfirmationBox.js
 msgid "Forfeit profit"
