@@ -4,6 +4,14 @@ import { getLeaderboardLink } from "config/links";
 import cx from "classnames";
 import { useChainId } from "lib/chains";
 
+//      <div className="Exchange-info-row">
+//        <div className="Exchange-info-label-button">
+//          <ExternalLink href={leaderBoardLink}>
+//            <Trans>Leaderboard</Trans>
+//          </ExternalLink>
+//        </div>
+//      </div>
+
 export default function UsefulLinks({ className }) {
   const { chainId } = useChainId();
   const leaderBoardLink = getLeaderboardLink(chainId);
@@ -18,13 +26,6 @@ export default function UsefulLinks({ className }) {
         <div className="Exchange-info-label-button">
           <ExternalLink href="https://uniperp.gitbook.io/v1/trading">
             <Trans>Trading guide</Trans>
-          </ExternalLink>
-        </div>
-      </div>
-      <div className="Exchange-info-row">
-        <div className="Exchange-info-label-button">
-          <ExternalLink href={leaderBoardLink}>
-            <Trans>Leaderboard</Trans>
           </ExternalLink>
         </div>
       </div>

@@ -257,7 +257,7 @@ export default function ExchangeTVChart(props) {
   }
 
   if (deltaPrice && currentAveragePrice) {
-    const average = parseFloat(formatAmount(currentAveragePrice, USD_DECIMALS, 2));
+    const average = parseFloat(formatAmount(currentAveragePrice, USD_DECIMALS, 8));
     delta = average - deltaPrice;
     deltaPercentage = (delta * 100) / average;
     if (deltaPercentage > 0) {
