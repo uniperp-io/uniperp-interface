@@ -33,9 +33,56 @@
   -webkit-text-fill-color:transparent;
 }
 
+.uniperpcy{
+  display: flex;
+  flex-direction: inherit;
+}
+
+.uniperpcy div{
+  flex: 1;
+}
+
+.liveinfo{
+  background: url('https://gmx.io/static/media/btn_big_arbitrum.ff6ad480.png');
+  padding: 2rem 1rem;
+}
+
+.liveinfo {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.liveinfo div:first-child {
+  grid-column: 1 / 2;
+}
+
+.liveinfo div:last-child {
+  text-align: right;
+  grid-column: 2 / 3;
+}
+
+.uniperpbtn{
+  background: #2d42fc;
+  padding: 0.6rem 0.6rem;
+  border-radius: 10px 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
 @media (max-width: 900px) {
   .home-hero-img-wrap .item{
     width: 100%;
     margin-bottom: 2rem;
   }
+  .uniperpcy{
+    display: block;
+  }
+  .liveinfo{
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+  .liveinfo div{
+    width: auto;
+  }
+
 }
