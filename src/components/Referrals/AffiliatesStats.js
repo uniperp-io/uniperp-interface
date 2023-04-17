@@ -209,9 +209,8 @@ function AffiliatesStats({
                                   <div>
                                     <Trans>
                                       This code has been taken by someone else on{" "}
-                                      {chainId === AVALANCHE ? "Arbitrum" : "Avalanche"}, you will not receive rebates
-                                      from traders using this code on {chainId === AVALANCHE ? "Arbitrum" : "Avalanche"}
-                                      .
+                                      Arbitrum, you will not receive rebates
+                                      from traders using this code on Arbitrum.
                                     </Trans>
                                   </div>
                                 )}

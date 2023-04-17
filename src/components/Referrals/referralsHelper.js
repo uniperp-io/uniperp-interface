@@ -23,22 +23,13 @@ export function isRecentReferralCodeNotExpired(referralCodeInfo) {
 
 export async function getReferralCodeTakenStatus(account, referralCode, chainId) {
   const referralCodeBytes32 = encodeReferralCode(referralCode);
-  const [ownerArbitrum, ownerAvax] = await Promise.all([
-    getReferralCodeOwner(ARBITRUM, referralCodeBytes32),
-    getReferralCodeOwner(AVALANCHE, referralCodeBytes32),
-  ]);
+  const [ownerArbitrum] = await Promise.all([getReferralCodeOwner(ARBITRUM, referralCodeBytes32)]);
 
   const takenOnArb =
     !isAddressZero(ownerArbitrum) && (ownerArbitrum !== account || (ownerArbitrum === account && chainId === ARBITRUM));
-  const takenOnAvax =
-    !isAddressZero(ownerAvax) && (ownerAvax !== account || (ownerAvax === account && chainId === AVALANCHE));
 
   const referralCodeTakenInfo = {
     [ARBITRUM]: takenOnArb,
-    [AVALANCHE]: takenOnAvax,
-    both: takenOnArb && takenOnAvax,
-    ownerArbitrum,
-    ownerAvax,
   };
 
   if (referralCodeTakenInfo.both) {
@@ -136,7 +127,7 @@ export function getReferralCodeTradeUrl(referralCode) {
 }
 
 export function getTwitterShareUrl(referralCode) {
-  const message = ["Trying out trading on @GMX_IO, up to 50x leverage on $BTC, $ETH 📈", "For fee discounts use:"];
+  const message = ["Trying out trading on @UNIPERP_IO, up to 50x leverage on $BTC, $ETH 📈", "For fee discounts use:"];
   const shareURL = getReferralCodeTradeUrl(referralCode);
 
   return getTwitterIntentURL(message, shareURL);
