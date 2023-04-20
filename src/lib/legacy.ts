@@ -1467,7 +1467,7 @@ export function importImage(name) {
   let tokenImage: { default: string } | null = null;
 
   try {
-    const pngs = ['ic_arb_', 'ic_bnb_'];
+    const pngs = ['ic_bnb_'];
     for(let item of pngs){
       if(name.indexOf(item) !== -1){
         name = name.replace(".svg", ".png").toLowerCase()
