@@ -39,7 +39,7 @@ export function getFooterLinks(isHome) {
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { link: "https://twitter.com/uniperpofficial", name: "Twitter", icon: twitterIcon },
-  { link: "https://github.com/uniperp-io", name: "Github", icon: githubIcon },
-  // { link: "https://t.me/GMX_IO", name: "Telegram", icon: telegramIcon },
+  { link: "https://t.me/+F--OPG4c6VA3NWU1", name: "Telegram", icon: telegramIcon },
   { link: "https://discord.gg/GEZq2ymh", name: "Discord", icon: discordIcon },
+  { link: "https://github.com/uniperp-io", name: "Github", icon: githubIcon },
 ];
