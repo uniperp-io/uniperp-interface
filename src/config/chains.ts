@@ -248,14 +248,14 @@ export function getFallbackRpcUrl(chainId: number): string | undefined {
 }
 
 export function getAlchemyHttpUrl() {
-  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
+  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host) || DEFAULT_CHAIN_ID === ARBITRUM) {
     return "https://arb-mainnet.g.alchemy.com/v2/86zbimir5o_-mUcBAC_2QeUPhiLTICju";
   }
   return "https://arb-goerli.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
 }
 
 export function getAlchemyWsUrl() {
-  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host)) {
+  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host) || DEFAULT_CHAIN_ID === ARBITRUM) {
     return "wss://arb-mainnet.g.alchemy.com/v2/86zbimir5o_-mUcBAC_2QeUPhiLTICju";
   }
   return "wss://arb-goerli.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
