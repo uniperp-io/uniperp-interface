@@ -87,6 +87,12 @@ export function AppHeaderLinks({
         </HeaderLink>
       </div>
       <div className="App-header-link-container">
+        <HeaderLink to="/rekt" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
+          <Trans>REKTClaim</Trans>
+        </HeaderLink>
+      </div>
+
+      <div className="App-header-link-container">
         <ExternalLink href="https://uniperp.gitbook.io/v1/">
           <Trans>Docs</Trans>
         </ExternalLink>

@@ -33,6 +33,7 @@ import ClaimEsGmx from "pages/ClaimEsGmx/ClaimEsGmx";
 import BeginAccountTransfer from "pages/BeginAccountTransfer/BeginAccountTransfer";
 import CompleteAccountTransfer from "pages/CompleteAccountTransfer/CompleteAccountTransfer";
 import Presale from "pages/Presale/Presale";
+import Rekt from "pages/Rekt/Rekt";
 import Hyper from "pages/Hyper/Hyper";
 
 import { cssTransition, ToastContainer } from "react-toastify";
@@ -538,6 +539,11 @@ function FullApp() {
               <Route exact path="/complete_account_transfer/:sender/:receiver">
                 <CompleteAccountTransfer setPendingTxns={setPendingTxns} />
               </Route>
+
+              <Route exact path="/rekt">
+                <Rekt connectWallet={connectWallet}/>
+              </Route>
+
               <Route path="*">
                 <PageNotFound />
               </Route>
