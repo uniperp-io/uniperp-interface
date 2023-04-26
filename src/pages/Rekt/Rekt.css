@@ -86,7 +86,46 @@
   font-size: 1rem;
 }
 
+.proccess{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.proccess_item{
+  background: #1e2740;
+  height: 1.4rem;
+  border-radius: 1rem 1rem;
+}
+
+.proccess_text div{
+  margin-top: 4rem;
+  width: 50%;
+  display: inline-block;
+  font-size: 2rem;
+  color: #cccccc;
+  margin-bottom: 1rem;
+}
+
+.proccess_text div:first-child{
+  text-align: left;
+}
+
+.proccess_text div:last-child{
+  text-align: right;
+}
+
+.proccess_iteming{
+  background-image: linear-gradient(to right, #9b52ff, #32d5f9);
+  height: 1.4rem;
+  border-radius: 1rem 1rem;
+}
+
 @media (max-width: 900px) {
+  .proccess{
+    width: 94%;
+  }
+
   .rekt_main {
     width: 96%;
     font-size:2rem;

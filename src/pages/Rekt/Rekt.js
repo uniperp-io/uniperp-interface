@@ -120,7 +120,7 @@ export default function Rekt({connectWallet}) {
     return { d:days, h:hours, m:minutes, s:seconds };
   }
 
-  const endAt = 1682870400;
+  const endAt = 1683820800;
   useEffect(()=>{
     const timer = setInterval(()=>{
       const tmp = timeLeft(endAt);
@@ -160,6 +160,16 @@ export default function Rekt({connectWallet}) {
             </div>
           </div>
         ):(<></>)}
+
+        <div className="proccess">
+          <div className="proccess_text">
+            <div>Claim</div>
+            <div>14,400,000</div>
+          </div>
+          <div className="proccess_item">
+            <div className="proccess_iteming" style={{width:"10%"}}/>
+          </div>
+        </div>
 
         <div className="rekt_btn">{btnGroup()}</div>
       </div>
