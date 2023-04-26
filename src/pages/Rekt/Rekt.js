@@ -7,7 +7,7 @@ import { useChainId } from "lib/chains";
 import { contractFetcher,callContract } from "lib/contracts";
 import { formatAmount } from "lib/numbers";
 import { helperToast } from "lib/helperToast";
-import { getServerUrlNew } from "../../config/backend";
+import { getServerUrlNew } from "config/backend";
 import { useEffect, useState } from "react";
 import { ethers } from 'ethers';
 import { useHistory } from "react-router-dom";
@@ -17,6 +17,8 @@ export default function Rekt({connectWallet}) {
   const distributor = "0x78FA2EC29A3C781E434CfE6AE3c5d14C7aad7a62";
   const { chainId } = useChainId();
   const [count, setCount] = useState(null);
+  const [copyText, setCopyText] = useState("Invite Friends");
+  const [countdown, setCountdown] = useState({d:0, h:0, m:0, s:0});
 
   const history = useHistory();
   const searchParams = new URLSearchParams(history.location.search);
@@ -43,15 +45,15 @@ export default function Rekt({connectWallet}) {
     return (
       <>
         <p>Provide some liquidity for  <a href="https://app.uniperp.io/#/buy_ulp" target="_blank">Uniperp</a></p>
-        <p>you can earn UNIP token and REKT token. One minute later</p>
-        <p>you can claim REKT here!</p>
+        <p>you can earn UNIP token One minute later</p>
+        <p>you can claim UNIP here!</p>
       </>
     )
   }
 
   const getBtnText = ()=>{
     if (active){
-      return "Claim $REKT"
+      return "Claim $UNIP"
     }
 
     if (!active){
@@ -93,28 +95,73 @@ export default function Rekt({connectWallet}) {
       <>
         <button className="fYSqLR" onClick={clickClaim}>{getBtnText()}</button>
         <button className="ORQPg" onClick={()=>{
-          if (account){
-            const textToCopy = `https://app.uniperp.io/#/rekt?ref=${account}`;
-            navigator.clipboard.writeText(textToCopy);
-            helperToast.success("copy success!")
-          }
-        }}>Invite Friends</button>
-        <div>You can claim <span>{token}</span> REKT token</div>
+              if (account){
+                const textToCopy = `https://app.uniperp.io/#/airdrop?ref=${account}`;
+                navigator.clipboard.writeText(textToCopy);
+                helperToast.success("copy success!")
+                setCopyText("Copied")
+              }
+            }}
+          >
+          {copyText}
+        </button>
+        <div>You can claim <span>{token}</span> $UNIP token</div>
       </>
     )
   }
 
-  return (<div className="rekt_main">
-    <div className="rekt_block rekt_showpc">
-      <div className="rekt_text">{textBlock()}</div>
-      <div className="rekt_btn">{btnGroup()}</div>
-    </div>
+  function timeLeft(timestamp) {
+    const now = Math.floor(Date.now() / 1000);
+    const timeLeft = timestamp - now;
+    const days = Math.floor(timeLeft / (60 * 60 * 24)).toString().padStart(2, '0');
+    const hours = Math.floor((timeLeft % (60 * 60 * 24)) / (60 * 60)).toString().padStart(2, '0');
+    const minutes = Math.floor((timeLeft % (60 * 60)) / 60).toString().padStart(2, '0');
+    const seconds = Math.floor(timeLeft % 60).toString().padStart(2, '0');
+    return { d:days, h:hours, m:minutes, s:seconds };
+  }
 
-    <div className="jGKbQD rekt_showwap">
+  const endAt = 1682870400;
+  useEffect(()=>{
+    const timer = setInterval(()=>{
+      const tmp = timeLeft(endAt);
+      if (tmp.m && tmp.s){
+        setCountdown(tmp)
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [endAt, setCountdown])
+
+  return (
+    <div className="rekt_main">
       <div className="rekt_block">
+        <h1>You can claim $UNIP now!</h1>
         <div className="rekt_text">{textBlock()}</div>
+
+        {countdown.m && countdown.s ? (
+          <div className="airdrop_date">
+            <div className="item">
+              <span>{countdown.d}</span>
+              <div>DAYS</div>
+            </div>
+            <div className="item">
+              <span>{countdown.h}</span>
+              <div>HOURS</div>
+            </div>
+            <div className="item">
+              <span>{countdown.m}</span>
+              <div>MINUTES</div>
+            </div>
+            <div className="item">
+              <span>{countdown.s}</span>
+              <div>SECONDS</div>
+            </div>
+          </div>
+        ):(<></>)}
+
         <div className="rekt_btn">{btnGroup()}</div>
       </div>
-    </div>
   </div>)
 }

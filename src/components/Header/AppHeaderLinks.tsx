@@ -73,22 +73,13 @@ export function AppHeaderLinks({
         </HeaderLink>
       </div>
       {/*<div className="App-header-link-container">*/}
-      {/*  <HeaderLink*/}
-      {/*    to="/ecosystem"*/}
-      {/*    redirectPopupTimestamp={redirectPopupTimestamp}*/}
-      {/*    showRedirectModal={showRedirectModal}*/}
-      {/*  >*/}
-      {/*    <Trans>Ecosystem</Trans>*/}
+      {/*  <HeaderLink to="/presale" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>*/}
+      {/*    <Trans>Presale</Trans>*/}
       {/*  </HeaderLink>*/}
       {/*</div>*/}
       <div className="App-header-link-container">
-        <HeaderLink to="/presale" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
-          <Trans>Presale</Trans>
-        </HeaderLink>
-      </div>
-      <div className="App-header-link-container">
-        <HeaderLink to="/rekt" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
-          <Trans>REKTClaim</Trans>
+        <HeaderLink to="/airdrop" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
+          <Trans>Airdrop</Trans>
         </HeaderLink>
       </div>
 

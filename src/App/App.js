@@ -540,7 +540,7 @@ function FullApp() {
                 <CompleteAccountTransfer setPendingTxns={setPendingTxns} />
               </Route>
 
-              <Route exact path="/rekt">
+              <Route exact path="/airdrop">
                 <Rekt connectWallet={connectWallet}/>
               </Route>
 
