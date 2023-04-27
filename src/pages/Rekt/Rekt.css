@@ -8,6 +8,7 @@
   padding: 0.4rem 0.4rem;
   text-align: center;
   font-size: 3rem;
+  margin-bottom: 23rem;
 }
 
 .rekt_btn button{
@@ -129,6 +130,7 @@
   .rekt_main {
     width: 96%;
     font-size:2rem;
+    margin-bottom: 23rem;
   }
 
   .rekt_block h1 {

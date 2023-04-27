@@ -8,9 +8,10 @@ import { contractFetcher,callContract } from "lib/contracts";
 import { formatAmount } from "lib/numbers";
 import { helperToast } from "lib/helperToast";
 import { getServerUrlNew } from "config/backend";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ethers } from 'ethers';
 import { useHistory } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 export default function Rekt({connectWallet}) {
   const { active, account, library } = useWeb3React();
@@ -135,43 +136,47 @@ export default function Rekt({connectWallet}) {
   }, [endAt, setCountdown])
 
   return (
-    <div className="rekt_main">
-      <div className="rekt_block">
-        <h1>You can claim $UNIP now!</h1>
-        <div className="rekt_text">{textBlock()}</div>
+    <>
+      <div className="rekt_main">
+        <div className="rekt_block">
+          <h1>You can claim $UNIP now!</h1>
+          <div className="rekt_text">{textBlock()}</div>
 
-        {countdown.m && countdown.s ? (
-          <div className="airdrop_date">
-            <div className="item">
-              <span>{countdown.d}</span>
-              <div>DAYS</div>
-            </div>
-            <div className="item">
-              <span>{countdown.h}</span>
-              <div>HOURS</div>
-            </div>
-            <div className="item">
-              <span>{countdown.m}</span>
-              <div>MINUTES</div>
-            </div>
-            <div className="item">
-              <span>{countdown.s}</span>
-              <div>SECONDS</div>
-            </div>
-          </div>
-        ):(<></>)}
+          {/*{countdown.m && countdown.s ? (*/}
+          {/*  <div className="airdrop_date">*/}
+          {/*    <div className="item">*/}
+          {/*      <span>{countdown.d}</span>*/}
+          {/*      <div>DAYS</div>*/}
+          {/*    </div>*/}
+          {/*    <div className="item">*/}
+          {/*      <span>{countdown.h}</span>*/}
+          {/*      <div>HOURS</div>*/}
+          {/*    </div>*/}
+          {/*    <div className="item">*/}
+          {/*      <span>{countdown.m}</span>*/}
+          {/*      <div>MINUTES</div>*/}
+          {/*    </div>*/}
+          {/*    <div className="item">*/}
+          {/*      <span>{countdown.s}</span>*/}
+          {/*      <div>SECONDS</div>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*):(<></>)}*/}
 
-        <div className="proccess">
-          <div className="proccess_text">
-            <div>Claim</div>
-            <div>14,400,000</div>
+          <div className="proccess">
+            <div className="proccess_text">
+              <div>Claim</div>
+              <div>14,400,000</div>
+            </div>
+            <div className="proccess_item">
+              <div className="proccess_iteming" style={{width:"10%"}}/>
+            </div>
           </div>
-          <div className="proccess_item">
-            <div className="proccess_iteming" style={{width:"10%"}}/>
-          </div>
+
+          <div className="rekt_btn">{btnGroup()}</div>
         </div>
-
-        <div className="rekt_btn">{btnGroup()}</div>
       </div>
-  </div>)
+      <Footer />
+    </>
+  )
 }
