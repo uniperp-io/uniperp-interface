@@ -11,7 +11,7 @@ import { getServerUrlNew } from "config/backend";
 import React, { useEffect, useState } from "react";
 import { ethers } from 'ethers';
 import { useHistory } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
+import Footer from "components/Footer/Footer";
 
 export default function Rekt({connectWallet}) {
   const { active, account, library } = useWeb3React();
