@@ -69,7 +69,7 @@ export default function Rekt({connectWallet}) {
     }
 
     if (chainId && account){
-      const api = getServerUrlNew(chainId, `/rekt_claimable?chain_id=${chainId}&account=${account}&nonce=${count}`)
+      const api = getServerUrlNew(chainId, `/claimable?chain_id=${chainId}&account=${account}&nonce=${count}`)
       const data = await fetch(api).then((resp)=>resp.json())
 
       if (!data.isClaimable) {
