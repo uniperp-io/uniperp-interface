@@ -30,6 +30,15 @@
   background-image: linear-gradient(to right, #8461da, #9e2a8e);
 }
 
+.fYSqLR{
+  background-image: linear-gradient(to right,  #6451da, #7e2a8e);
+  margin-bottom: 2rem;
+}
+
+.fYSqLR:hover{
+  background-image: linear-gradient(to right, #8461da, #9e2a8e);
+}
+
 .ORQPg{
   background-image: linear-gradient(to right, #e9be56, #d73d00);
   margin-bottom: 2rem;
@@ -44,17 +53,19 @@
   padding-bottom: 1rem;
   margin-top: 0;
   margin-bottom: 0;
+  font-size: 2rem;
+  text-align: left;
 }
 
 .rekt_block{
   background: #16182e;
-  padding-top: 3rem;
+  padding-top: 2rem;
   border-radius: 1rem 1rem;
-  padding-bottom: 6rem;
+  padding-bottom: 3rem;
 }
 
 .rekt_block h1{
-  font-size: 5rem;
+  font-size: 4rem;
   margin-top: 0;
   padding-top: 0;
   background: linear-gradient(to right, #6451da, #7e2a8e);
@@ -120,6 +131,7 @@
   background-image: linear-gradient(to right, #9b52ff, #32d5f9);
   height: 1.4rem;
   border-radius: 1rem 1rem;
+  margin-bottom: 3rem;
 }
 
 @media (max-width: 900px) {

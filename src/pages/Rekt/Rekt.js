@@ -19,7 +19,7 @@ export default function Rekt({connectWallet}) {
   const { active, account, library } = useWeb3React();
   const distributorMap = {
     [ARBITRUM]:"0xBd4E5EBAEBb5935b8F5F1ab1CAbec40f9E25980d",
-    [ARBITRUM_TESTNET]:"0x8FD1c2417F373239845B09125F02a9BC053B8F31",
+    [ARBITRUM_TESTNET]:"0x016f52F69F85F595914997E9e577f01Db609ffba",
   };
   const { chainId } = useChainId();
 
@@ -72,9 +72,9 @@ export default function Rekt({connectWallet}) {
   const textBlock = () => {
     return (
       <>
-        <p>Provide some liquidity for  <a href="https://app.uniperp.io/#/buy_ulp" target="_blank">Uniperp</a></p>
-        <p>you can earn UNIP token One minute later</p>
-        <p>you can claim UNIP here!</p>
+        <p>Uniperp's 1680w $UNIP token airdrop is for ARB, GLP holders and Uniperp <a href="https://app.uniperp.io/#/buy_ulp" target="_blank">liquidity providers</a>.</p>
+        <p>For every 3% increase in claimed tokens, the amount per address decreases by 20%.</p>
+        <p>Users can invite friends and receive 10% of their claimed airdrop without affecting their friend's amount. No limit to the number of rewards earned.</p>
       </>
     )
   }
@@ -127,6 +127,7 @@ export default function Rekt({connectWallet}) {
     const token = formatAmount(canClaimAmount, GMX_DECIMALS, false, true)
     return (
       <>
+        <div><br />You can claim <span>{token}</span> UNIP token</div>
         <button className="fYSqLR" disabled={claimedUser} onClick={clickClaim}>
           {getBtnText()}
         </button>
@@ -142,7 +143,6 @@ export default function Rekt({connectWallet}) {
           >
           {copyText}
         </button>
-        <div>You can claim <span>{token}</span> UNIP token</div>
       </>
     )
   }
@@ -175,29 +175,8 @@ export default function Rekt({connectWallet}) {
     <>
       <div className="rekt_main">
         <div className="rekt_block">
-          <h1>You can claim $UNIP now!</h1>
+          <h1>claim $UNIP now!</h1>
           <div className="rekt_text">{textBlock()}</div>
-
-          {endTime && countdown.m && countdown.s ? (
-            <div className="airdrop_date">
-              <div className="item">
-                <span>{countdown.d}</span>
-                <div>DAYS</div>
-              </div>
-              <div className="item">
-                <span>{countdown.h}</span>
-                <div>HOURS</div>
-              </div>
-              <div className="item">
-                <span>{countdown.m}</span>
-                <div>MINUTES</div>
-              </div>
-              <div className="item">
-                <span>{countdown.s}</span>
-                <div>SECONDS</div>
-              </div>
-            </div>
-          ):(<></>)}
 
           <div className="proccess">
             <div className="proccess_text">
