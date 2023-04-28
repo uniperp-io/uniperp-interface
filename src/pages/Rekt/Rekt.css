@@ -151,6 +151,16 @@
   }
 }
 
+@media screen and (min-width: 1601px) and (max-width: 1899px) {
+  .rekt_main {
+    margin-top: 4%;
+  }
+
+  .rekt_btn button {
+    margin-bottom: 6rem;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .proccess{
     width: 94%;
