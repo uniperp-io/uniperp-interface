@@ -12,11 +12,15 @@ import React, { useEffect, useState } from "react";
 import { ethers } from 'ethers';
 import { useHistory } from "react-router-dom";
 import Footer from "components/Footer/Footer";
-import { GMX_DECIMALS } from "../../lib/legacy";
+import { GMX_DECIMALS } from "lib/legacy";
+import { ARBITRUM_TESTNET, ARBITRUM } from "config/chains";
 
 export default function Rekt({connectWallet}) {
   const { active, account, library } = useWeb3React();
-  const distributor = "0x8FD1c2417F373239845B09125F02a9BC053B8F31";
+  const distributorMap = {
+    [ARBITRUM]:"0xBd4E5EBAEBb5935b8F5F1ab1CAbec40f9E25980d",
+    [ARBITRUM_TESTNET]:"0x8FD1c2417F373239845B09125F02a9BC053B8F31",
+  };
   const { chainId } = useChainId();
 
   const [copyText, setCopyText] = useState("Invite Friends");
@@ -26,6 +30,7 @@ export default function Rekt({connectWallet}) {
   const searchParams = new URLSearchParams(history.location.search);
   const refAddress = searchParams.get("ref");
   const totalAidrop = 16800000;
+  const distributor = distributorMap[chainId]
 
   const { data: canClaimAmount } = useSWR(
     active && [active, chainId, distributor, "calcClaimableAmount"],
