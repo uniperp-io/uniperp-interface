@@ -145,7 +145,7 @@ export const RPC_PROVIDERS = {
 };
 
 export const FALLBACK_PROVIDERS = {
-  [ARBITRUM]: [getAlchemyHttpUrl()],
+  [ARBITRUM]: [getAlchemyHttpUrl(DEFAULT_CHAIN_ID)],
   [ARBITRUM_TESTNET]: ["https://goerli-rollup.arbitrum.io/rpc/"],
   [AVALANCHE]: ["https://avax-mainnet.gateway.pokt.network/v1/lb/626f37766c499d003aada23b"],
 };
@@ -247,15 +247,15 @@ export function getFallbackRpcUrl(chainId: number): string | undefined {
   return sample(FALLBACK_PROVIDERS[chainId]);
 }
 
-export function getAlchemyHttpUrl() {
-  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host) || DEFAULT_CHAIN_ID === ARBITRUM) {
+export function getAlchemyHttpUrl(chainId) {
+  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host) || ARBITRUM === chainId) {
     return "https://arb-mainnet.g.alchemy.com/v2/86zbimir5o_-mUcBAC_2QeUPhiLTICju";
   }
   return "https://arb-goerli.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";
 }
 
-export function getAlchemyWsUrl() {
-  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host) || DEFAULT_CHAIN_ID === ARBITRUM) {
+export function getAlchemyWsUrl(chainId) {
+  if (ALCHEMY_WHITELISTED_DOMAINS.includes(window.location.host) || ARBITRUM === chainId) {
     return "wss://arb-mainnet.g.alchemy.com/v2/86zbimir5o_-mUcBAC_2QeUPhiLTICju";
   }
   return "wss://arb-goerli.g.alchemy.com/v2/jVMqVTabj7WopxQS8F_t5JbSTUkvYlII";

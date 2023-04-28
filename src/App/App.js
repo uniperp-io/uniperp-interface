@@ -101,6 +101,7 @@ import {
 import { useChainId } from "lib/chains";
 import ExternalLink from "components/ExternalLink/ExternalLink";
 import { isDevelopment } from "config/env";
+import { DEFAULT_CHAIN_ID } from "config/chains";
 
 if ("ethereum" in window) {
   window.ethereum.autoRefreshOnNetworkChange = false;
@@ -120,7 +121,7 @@ const Zoom = cssTransition({
   duration: 200,
 });
 
-const arbWsProvider = new ethers.providers.WebSocketProvider(getAlchemyWsUrl());
+const arbWsProvider = new ethers.providers.WebSocketProvider(getAlchemyWsUrl(DEFAULT_CHAIN_ID));
 
 function getWsProvider(active, chainId) {
   if (!active) {
