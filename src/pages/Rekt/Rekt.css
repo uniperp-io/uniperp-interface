@@ -2,7 +2,7 @@
   width: 40%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5%;
+  margin-top: 3%;
   background: linear-gradient(270deg, rgb(156, 81, 255) 0%, rgb(85, 161, 255) 50%, rgb(156, 81, 255) 100%);
   border-radius: 10px 10px;
   padding: 0.4rem 0.4rem;
@@ -15,7 +15,7 @@
   margin-left: 2rem;
   border: none;
   font-size: 2rem;
-  padding: 2rem 7rem;
+  padding: 2rem 6rem;
   border-radius: 10px 10px;
   color: #ffffff;
   margin-top: 4rem;
@@ -136,7 +136,22 @@
   margin-bottom: 3rem;
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 1900px) {
+  .rekt_btn button {
+    padding: 2rem 4rem;
+    margin-bottom: 2rem;
+  }
+  .rekt_main {
+    margin-top: 2%;
+    width: 60%;
+  }
+
+  .rekt_block{
+    padding-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .proccess{
     width: 94%;
   }
