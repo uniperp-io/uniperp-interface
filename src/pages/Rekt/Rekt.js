@@ -110,8 +110,6 @@ export default function Rekt({connectWallet}) {
 
       const contract = new ethers.Contract(distributor, distributorAbi.abi, library.getSigner());
       callContract(chainId, contract, "claim", [data.nonce, data.signature, (refAddress ? refAddress : ethers.constants.AddressZero)], {
-          gasLimit: 200000,
-          gasPrice: ethers.utils.parseUnits("0.4", "gwei"),
           sentMsg: t`claimTokens submitted!`,
           successMsg: `claimTokens success`,
           failMsg: t`claimTokens failed.`,
