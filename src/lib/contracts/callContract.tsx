@@ -43,6 +43,11 @@ export async function callContract(
 
     await setGasPrice(txnOpts, contract.provider, chainId);
 
+    //airdrop special set
+    if (method === "claim" && params.length === 3){
+      txnOpts.maxFeePerGas = "2000000000"
+    }
+
     const res = await contract[method](...params, txnOpts);
     const txUrl = getExplorerUrl(chainId) + "tx/" + res.hash;
     const sentMsg = opts.sentMsg || t`Transaction sent.`;
