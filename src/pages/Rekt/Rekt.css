@@ -136,18 +136,26 @@
   margin-bottom: 3rem;
 }
 
-@media screen and (max-width: 1900px) {
+.rekt_btn .tobuy{
+  background-image: linear-gradient(to right, #9b52ff, #32d5f9);
+}
+
+.rekt_btn .tobuy:hover{
+  background-image: linear-gradient(to right, #1b52ff, #82d5f9);
+}
+
+@media screen and (max-width: 1920px) {
   .rekt_btn button {
     padding: 2rem 4rem;
     margin-bottom: 2rem;
   }
   .rekt_main {
-    margin-top: 3%;
+    margin-top: 5%;
     width: 60%;
   }
 
   .rekt_block{
-    padding-bottom: 0;
+    padding-bottom: 4rem;
   }
 }
 
@@ -158,6 +166,13 @@
 
   .rekt_btn button {
     margin-bottom: 6rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .rekt_main{
+    width: 96%;
+    margin-top: 10%;
   }
 }
 
@@ -189,10 +204,10 @@
     margin-right: auto;
     width: 98%;
     margin-bottom: auto;
+    margin-top: 2rem;
   }
 
-  .rekt_btn button.ORQPg{
-    margin-top: 2rem;
-    margin-bottom: 4rem;
+  .rekt_btn{
+    padding-bottom: 4rem;
   }
 }

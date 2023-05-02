@@ -12,8 +12,9 @@ import React, { useEffect, useState } from "react";
 import { ethers } from 'ethers';
 import { useHistory } from "react-router-dom";
 import Footer from "components/Footer/Footer";
-import { GMX_DECIMALS } from "lib/legacy";
+import { getUsdcToken, GMX_DECIMALS } from "lib/legacy";
 import { ARBITRUM_TESTNET, ARBITRUM } from "config/chains";
+import { getContract } from "config/contracts";
 
 export default function Rekt({connectWallet}) {
   const { active, account, library } = useWeb3React();
@@ -40,7 +41,7 @@ export default function Rekt({connectWallet}) {
   );
 
   const { data: totalClaimedAmount } = useSWR(
-    active && [active, chainId, distributor, "totalClaimedAmount"],
+    [active, chainId, distributor, "totalClaimedAmount"],
     {
       fetcher: contractFetcher(library, distributorAbi),
     }
@@ -61,6 +62,10 @@ export default function Rekt({connectWallet}) {
   );
 
   const getPercent = ()=>{
+    if(!totalClaimedAmount){
+      return 0
+    }
+
     let t = formatAmount(totalClaimedAmount, GMX_DECIMALS, false, false);
     const tmp = (t / totalAidrop)*100;
     if (tmp >= 100){
@@ -121,6 +126,12 @@ export default function Rekt({connectWallet}) {
     }
   }
 
+  const getSwapLink = ()=>{
+    const usdc = getUsdcToken(chainId);
+    const unipAddress = getContract(chainId, "GMX");
+    return `https://app.uniswap.org/#/swap?inputCurrency=${usdc.address}&outputCurrency=${unipAddress}`
+  }
+
   const btnGroup = () => {
     const token = formatAmount(canClaimAmount, GMX_DECIMALS, false, true)
     return (
@@ -140,6 +151,10 @@ export default function Rekt({connectWallet}) {
             }}
           >
           {copyText}
+        </button>
+
+        <button className="tobuy" onClick={()=>window.open(getSwapLink())}>
+          Buy UNIP
         </button>
       </>
     )
