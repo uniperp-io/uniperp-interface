@@ -1480,12 +1480,12 @@ export default function StakeV2({ setPendingTxns, connectWallet }) {
                     <Tooltip
                       position="right-bottom"
                       className="nowrap"
-                      handle={"$" + formatAmount(gmxPrice, USD_DECIMALS, 2, true)}
+                      handle={"$" + formatAmount(gmxPrice, USD_DECIMALS, 4, true)}
                       renderContent={() => (
                         <>
                           <StatsTooltipRow
                             label={t`Price on Arbitrum`}
-                            value={formatAmount(gmxPriceFromArbitrum, USD_DECIMALS, 2, true)}
+                            value={formatAmount(gmxPriceFromArbitrum, USD_DECIMALS, 4, true)}
                           />
                         </>
                       )}

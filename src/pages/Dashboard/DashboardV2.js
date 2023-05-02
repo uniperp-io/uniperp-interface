@@ -778,31 +778,17 @@ export default function DashboardV2() {
                           <TooltipComponent
                             position="right-bottom"
                             className="nowrap"
-                            handle={"$0.3"}
+                            handle={"$" + formatAmount(gmxPrice, USD_DECIMALS, 4, true)}
                             renderContent={() => (
                               <>
                                 <StatsTooltipRow
                                   label={t`Price on Arbitrum`}
-                                  value="$0.3"
+                                  value={formatAmount(gmxPriceFromArbitrum, USD_DECIMALS, 4, true)}
                                   showDollar={true}
                                 />
                               </>
                             )}
                           />
-                          // <TooltipComponent
-                          //   position="right-bottom"
-                          //   className="nowrap"
-                          //   handle={"$" + formatAmount(gmxPrice, USD_DECIMALS, 2, true)}
-                          //   renderContent={() => (
-                          //     <>
-                          //       <StatsTooltipRow
-                          //         label={t`Price on Arbitrum`}
-                          //         value={formatAmount(gmxPriceFromArbitrum, USD_DECIMALS, 2, true)}
-                          //         showDollar={true}
-                          //       />
-                          //     </>
-                          //   )}
-                          // />
                         )}
                       </div>
                     </div>

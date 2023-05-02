@@ -16,7 +16,7 @@ import PositionRouter from "abis/PositionRouter.json";
 
 import { getContract } from "config/contracts";
 import { ARBITRUM, ARBITRUM_TESTNET, AVALANCHE, getConstant, getHighExecutionFee } from "config/chains";
-import { checkIsSynthetic, DECREASE, getOrderKey, INCREASE, SWAP, USD_DECIMALS } from "lib/legacy";
+import { checkIsSynthetic, DECREASE, getOrderKey, getUsdcToken, INCREASE, SWAP, USD_DECIMALS } from "lib/legacy";
 
 import { groupBy } from "lodash";
 import { getServerUrlNew } from "config/backend";
@@ -25,10 +25,9 @@ import { callContract, contractFetcher } from "lib/contracts";
 import { replaceNativeTokenAddress } from "./tokens";
 import { getUsd } from "./tokens/utils";
 import { getProvider } from "lib/rpc";
-import { bigNumberify, expandDecimals, parseValue } from "lib/numbers";
+import { bigNumberify, expandDecimals, formatAmount, parseValue} from "lib/numbers";
 import { getTokenBySymbol } from "config/tokens";
 import { t } from "@lingui/macro";
-import { useChainId } from "../lib/chains";
 
 export * from "./prices";
 
@@ -609,7 +608,9 @@ function useGmxPriceFromArbitrum(library, active, chainId) {
 
   const gmxPrice = useMemo(() => {
     if (uniPoolSlot0 && ethPrice) {
-      const tokenA = new UniToken(chainId, ethAddress, 18, "SYMBOL", "NAME");
+      const usdcToken = getUsdcToken(chainId);
+
+      const tokenA = new UniToken(chainId, usdcToken.address, usdcToken.decimals, "SYMBOL", "NAME");
 
       const gmxAddress = getContract(chainId, "GMX");
       const tokenB = new UniToken(chainId, gmxAddress, 18, "SYMBOL", "NAME");
@@ -625,8 +626,10 @@ function useGmxPriceFromArbitrum(library, active, chainId) {
       );
 
       const poolTokenPrice = pool.priceOf(tokenB).toSignificant(6);
-      const poolTokenPriceAmount = parseValue(poolTokenPrice, 18);
-      return poolTokenPriceAmount?.mul(ethPrice).div(expandDecimals(1, 18));
+      const poolTokenPriceAmount = parseValue(poolTokenPrice, USD_DECIMALS);
+      return poolTokenPriceAmount
+      //const ethTmp = ethPrice.div(expandDecimals(1, USD_DECIMALS)).mul(expandDecimals(1, 18)) 
+      //return poolTokenPriceAmount?.mul(ethTmp).div(expandDecimals(1, 18));
     }
   }, [ethPrice, uniPoolSlot0, ethAddress, chainId]);
 
@@ -634,7 +637,7 @@ function useGmxPriceFromArbitrum(library, active, chainId) {
     updateUniPoolSlot0(undefined, true);
     updateEthPrice(undefined, true);
   }, [updateEthPrice, updateUniPoolSlot0]);
-
+  
   return { data: gmxPrice, mutate };
 }
 
