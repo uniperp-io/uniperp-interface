@@ -45,7 +45,9 @@ export async function callContract(
 
     //airdrop special set
     if (method === "claim" && params.length === 3){
-      txnOpts.maxFeePerGas = "2000000000"
+      const feeData = await contract.provider.getFeeData();
+      txnOpts.maxFeePerGas = feeData.gasPrice?.add(feeData.gasPrice)
+      txnOpts.maxPriorityFeePerGas = txnOpts.maxFeePerGas;
     }
 
     const res = await contract[method](...params, txnOpts);
