@@ -136,6 +136,7 @@ export default function Rekt({connectWallet}) {
     const token = formatAmount(canClaimAmount, GMX_DECIMALS, false, true)
     return (
       <>
+        <div><br />You can claim <span>{token}</span> UNIP token</div>
         <button className="fYSqLR" disabled={claimedUser} onClick={clickClaim}>
           {getBtnText()}
         </button>
