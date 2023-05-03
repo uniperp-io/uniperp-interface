@@ -152,10 +152,12 @@ export default function Rekt({connectWallet}) {
   const btnGroup = () => {
     const trueVal = getTrueCanClaimAmount();
     const token = formatAmount(trueVal, GMX_DECIMALS, false, true);
+    const canClaim = getTrueCanClaimAmount().toString() === '0';
+
     return (
       <>
         <div><br />You can claim <span>{token}</span> UNIP token</div>
-        <button className="fYSqLR" disabled={claimedUser} onClick={clickClaim}>
+        <button className="fYSqLR" disabled={claimedUser || canClaim} onClick={clickClaim}>
           {getBtnText()}
         </button>
 
