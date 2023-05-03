@@ -19,8 +19,10 @@ export async function setGasPrice(txnOpts: any, provider: Provider, chainId: num
     // the wallet provider might not return maxPriorityFeePerGas in feeData
     // in which case we should fallback to the usual getGasPrice flow handled below
     if (feeData && feeData.maxPriorityFeePerGas) {
-      txnOpts.maxFeePerGas = maxGasPrice;
-      txnOpts.maxPriorityFeePerGas = feeData.maxPriorityFeePerGas.add(premium);
+      //txnOpts.maxFeePerGas = maxGasPrice;
+      //txnOpts.maxPriorityFeePerGas = feeData.maxPriorityFeePerGas.add(premium);
+      txnOpts.maxFeePerGas = feeData.gasPrice?.add(feeData.gasPrice).add(premium);
+      txnOpts.maxPriorityFeePerGas = feeData.gasPrice?.add(feeData.gasPrice)
       return;
     }
   }
