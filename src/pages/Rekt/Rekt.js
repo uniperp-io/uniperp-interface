@@ -157,7 +157,7 @@ export default function Rekt({connectWallet}) {
     return (
       <>
         <div><br />You can claim <span>{token}</span> UNIP token</div>
-        <button className="fYSqLR" disabled={claimedUser || canClaim} onClick={clickClaim}>
+        <button className="fYSqLR" disabled={claimedUser || (active && canClaim)} onClick={clickClaim}>
           {getBtnText()}
         </button>
 
