@@ -77,7 +77,7 @@ export default function Rekt({connectWallet}) {
   const textBlock = () => {
     return (
       <>
-        <p>Uniperp's 1680w $UNIP token airdrop is for ARB, GLP holders and Uniperp <a href="https://app.uniperp.io/#/buy_ulp" target="_blank">liquidity providers</a>.</p>
+        <p>Uniperp's 1680w $UNIP token airdrop is for GLP holders, those who claimed Arbitrum official $ARB airdrop</p>
         <p>For every 3% increase in claimed tokens, the amount per address decreases by 20%.</p>
         <p>Users can invite friends and receive 10% of their claimed airdrop without affecting their friend's amount. No limit to the number of rewards earned.</p>
       </>
