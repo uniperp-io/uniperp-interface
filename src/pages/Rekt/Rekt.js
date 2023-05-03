@@ -132,8 +132,26 @@ export default function Rekt({connectWallet}) {
     return `https://app.uniswap.org/#/swap?inputCurrency=${usdc.address}&outputCurrency=${unipAddress}`
   }
 
+  function bigNumberify(n) {
+    return ethers.BigNumber.from(n);
+  }
+
+  function expandDecimals(n, decimals) {
+    return bigNumberify(n).mul(bigNumberify(10).pow(decimals));
+  }
+
+  const getTrueCanClaimAmount = ()=>{
+    if(!canClaimAmount){
+      return ethers.BigNumber.from(0);
+    }
+
+    const trueVal = canClaimAmount.gt(expandDecimals(100, 18))? canClaimAmount : ethers.BigNumber.from(0);
+    return trueVal;
+  }
+
   const btnGroup = () => {
-    const token = formatAmount(canClaimAmount, GMX_DECIMALS, false, true)
+    const trueVal = getTrueCanClaimAmount();
+    const token = formatAmount(trueVal, GMX_DECIMALS, false, true);
     return (
       <>
         <div><br />You can claim <span>{token}</span> UNIP token</div>
