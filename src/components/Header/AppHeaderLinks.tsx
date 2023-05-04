@@ -77,11 +77,11 @@ export function AppHeaderLinks({
       {/*    <Trans>Presale</Trans>*/}
       {/*  </HeaderLink>*/}
       {/*</div>*/}
-      <div className="App-header-link-container">
-        <HeaderLink to="/airdrop" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>
-          <Trans>Airdrop</Trans>
-        </HeaderLink>
-      </div>
+      {/*<div className="App-header-link-container">*/}
+      {/*  <HeaderLink to="/airdrop" redirectPopupTimestamp={redirectPopupTimestamp} showRedirectModal={showRedirectModal}>*/}
+      {/*    <Trans>Airdrop</Trans>*/}
+      {/*  </HeaderLink>*/}
+      {/*</div>*/}
 
       <div className="App-header-link-container">
         <ExternalLink href="https://uniperp.gitbook.io/v1/">
